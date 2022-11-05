@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <!--상단 4개의 메뉴 바-->
+    <div class="bar">
+        <div class="bar-name" style="float: left; width: 30%;"><span style="color: #FFC000;">00 가게</span> 리뷰</div>
+        <div class="bar-rank"style="float: left; width: 20%;">4.3/5</div>
+        <div class="bar-review"style="float: right; width: 20%;">리뷰 수 23</div>
+        <div class="bar-goto"style="float: right; width: 30%">00 가게 세부정보로 이동</div>
+    </div>
+
+    <!--리뷰 리스트-->
+    <div id="review-list">
+        <div class="review-card">
+            <div style="display: inline-block; vertical-align:top;">
+                <img class="review-img" src="./food.jpg" alt="사진 불러오기 실패">
+            </div>
+
+            <div style="color: gray; font-size: 20px; position: absolute; top: 8px; right: 8px;">홍길동</div>
+
+            <div class="review-contents" style="display:inline-block; margin-left: 25px">
+                <p style="margin-bottom: 15px; font-size: 40px; font-weight: bold;">평점</p>
+                <p style="margin-bottom: 15px;font-size: 30px; font-weight: bold;">#혼밥가능 #고소한</p>
+                <p style="font-size: 25px;">육회덮밥에 노른자를 터뜨려 비벼 먹으면 한 그릇 뚝딱!</p>
+            </div>
+
+        </div>
+
+        <div class="review-card">
+
+        </div>
+
+        <div class="review-card">
+
+        </div>
+
+        <div class="review-card">
+
+        </div>
+    </div>
+
+
+
+</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰 조회 화면</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*상단 4개의 메뉴바*/
+        .bar {
+            width: 100%;
+            margin: 10px auto;
+            display: flex;
+        }
+
+        .bar-name,
+        .bar-rank,
+        .bar-review,
+        .bar-goto {
+            border: 1px solid #506A4C;
+            background-color: #506A4C;
+            box-sizing: border-box;
+            border-radius: 5px;
+
+            font-size: 38px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+
+            height: 80px;
+            padding: 10px 10px;
+            margin-left: 2%;
+            flex: 1;
+        }
+        #review-list{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .review-card{
+            width: 95%;
+            height: 300px;
+            background-color: white;
+            border: solid 2px #506A4C;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .review-img{
+            width: 280px;
+            height: 280px;
+            margin: 10px 10px;
+            border: 1px solid black;
+        }
+        .review-contents{
+            color: #506A4C;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+</html>
