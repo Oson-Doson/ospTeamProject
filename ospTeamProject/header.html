@@ -1,0 +1,59 @@
+<head>
+    <!-- Header 부분 -->
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 헤더 배경이미지 */
+        .headerbackground {
+            background-image: url("header_plain.png");
+            background-size: 100%;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 이미지 위에 투명도 필터 */
+        .headerbackground::before{
+            content: "";
+            opacity: 0.4;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #fff;
+        }
+
+        /* 오손도손 로고 */
+        .osondoson {
+            /* padding: 30px; 
+            width: 187px;  */
+            padding: 15px;
+            width: 160px;
+            position: relative;
+        }
+
+        /* 오른쪽 상단 메뉴 */
+        .menu {
+            font-size: 20px;
+            font-weight: bold;
+            /* color: #263F18; */
+            padding: 0 20px;
+        }
+    </style>
+</head>
+
+<!-- html 부분 -->
+<div class="headerbackground">
+    <img class="osondoson" src="osondoson.png">
+    <div style="position: relative; padding-top: 10px;">
+        <a class="menu">맛집 전체 보기</a>
+        <a class="menu">리뷰 전체 보기</a>
+        <a class="menu">맛집 등록하기</a>
+    </div>
+</div>
