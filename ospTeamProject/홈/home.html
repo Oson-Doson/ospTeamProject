@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <style>
+
+            @font-face{
+                font-family:'BMJUA';
+                src:url('BMJUA_otf.otf');
+            }
+            @font-face{
+                font-family:'BMDOHYUN';
+                src:url('BMDOHYEON_otf.otf');
+            }
+            @font-face{
+                font-family:'BMHANNAPro';
+                src:url('BMHANNAProOTF.otf');
+            }
+
+            html{
+                font-family:'BMJUA';
+                text-align:center;
+            }
+            body{
+                position:relative;
+                min-width:320px;
+                margin:0 auto;
+                font-size:100%;
+                line-height:100%;
+                text-align:center;
+            }
+            button{
+                appearance:none;
+                border:0px;
+                background-color:transparent;
+                font-family:'BMJUA';
+            }
+
+            #menuType{
+                margin-bottom:1px;
+            }
+
+           .typeButton{
+                width:15%;
+                margin-left:-1px;
+                margin-right:-1px;
+                height:50px;
+                border-top-left-radius:10px;
+                border-top-right-radius:10px;
+                background-color:#CADFB8;
+                color:#506A4C;
+                font-size:large;
+            }
+            
+            .moreList{
+                height:25px;
+                margin:0px 50px;
+            }
+            .moreList button{
+                float:right;
+                margin-top:5px;
+                font-family:'BMHANNAPro';
+            }
+
+            #recommendBox{
+                display:flex;
+                float:center;
+            }
+
+            #recommendInnerBox{
+                width:100%;
+                padding:0;
+                margin-top:2px;
+                margin-bottom:10px;
+                background-color:#dfe7d8;
+                float:center;
+            }
+            
+            li.restaurant-item{
+                list-style-type:none;
+                float:left;
+                width:33%;
+            }
+            
+            .restaurant-item.figure{
+                width:100%;
+                float:center;
+            }
+
+            .thumb{
+                height:200px;
+                background-color:rgb(231,230,230);
+                margin :10px 5px;
+                box-shadow:2px -2px 10px -3px gray;
+            }
+
+            .info{ margin:10px 5px; text-align:center;}
+        
+
+            #btn_restaurantOfMonth{
+                height:60px;
+                background-color:#506A4C;
+                width:30%;
+                font-size:x-large;
+                color:white;
+                margin:20px 0 0 0;
+                border-radius:10px;
+                z-index:10;
+            }
+            #box_restaurantOfMonth{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                margin:0 50px;
+            }
+
+            #gold,#silver,#bronze{
+                width:33%;
+                height:300px;
+                margin: 0 1px 20px 1px;
+                background-color:rgb(226,240,217);
+            }
+
+            #gold{
+                box-shadow:0px 0px 20px 5px gray;
+                z-index:1;
+            }
+
+            #silver{
+                box-shadow:-5px -5px 20px -5px gray;
+            }
+            #bronze{
+                box-shadow: 5px -5px 20px -5px gray;
+            }
+
+            .medalBox{
+                height:210px;
+                padding:0;
+                background-color:rgb(231,230,230);
+                margin :30px 30px 10px 30px;
+            }
+
+            #gold .medalBox{
+                border-color:gold;
+                border-width:5px;
+                border-style:solid;
+            }
+            #silver .medalBox{
+                border-color:rgb(127,127,127);
+                border-width:5px;
+                border-style:solid;
+            }
+            #bronze .medalBox{
+                border-color:rgb(132,60,12);
+                border-width:5px;
+                border-style:solid;
+            }
+
+            #quickMenu{
+                margin:10px 50px;
+                display:flex;
+            }
+             #box_quickMenu{
+                margin:0;
+                width:10%;
+                height:70px;
+                background-color:#506A4C;
+                color:white;
+                font-size:large;
+                font-family:'BMDOHYUN';
+            
+            }
+            #goto-restaurantShow,#goto-restaurantUpload,#goto-mapSearch{
+                width:30%;
+                height:70px;
+                background-color:#CADFB8;
+                border-color:#506A4C;
+                border-width:1px;
+                border-style:solid;
+                font-size:large;
+                font-family:'BMHANNAPro';
+            }
+           
+        </style>
+    </head>
+
+    <body>
+        <main class="pg_main">
+            <article id="contents">
+                <header></header>
+                <section id="restaurantRecommend">
+                    <div id="menuType">
+                        <button class="typeButton" id="typeTotal">total</button>
+                        <button class="typeButton" id="typeKorean">한식</button>
+                        <button class="typeButton" id="typeChinese">중식</button>
+                        <button class="typeButton" id="typeJapanese">일식</button>
+                        <button class="typeButton" id="typeWestern">양식</button>
+                        <button class="typeButton" id="typeCafe">카페</button>
+                    </div>
+                    <div class="moreList">
+                        <button onclick="mapSearch.html">+지도로 더보기</button>
+                        <button onclick="restaurantShow.html">+리스트 더보기</button>
+                    </div>
+                    <div id="recommendBox">
+                        <button class="btn-nav prev slick-arrow"><img src="left-removebg-preview.png" width="50px" height="100px"></button>
+                        <div id="recommendInnerBox">
+                            <ul>
+                                <li class="restaurant-item">
+                                    <a>
+                                        <div class="restaurant-item">
+                                            <figure class="thumb">
+                                                <img>
+                                            </figure>
+                                            <figcaption class="info">
+                                                <span class="restaurantTitle">식당이름</span>
+                                            </figcaption>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="restaurant-item">
+                                    <a>
+                                        <div class="restaurant-item">
+                                            <figure class="thumb">
+                                                <img>
+                                            </figure>
+                                            <figcaption class="info">
+                                                <span class="restaurantTitle">식당이름</span>
+                                            </figcaption>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="restaurant-item">
+                                    <a>
+                                        <div class="restaurant-item">
+                                            <figure class="thumb">
+                                                <img>
+                                            </figure>
+                                            <figcaption class="info">
+                                                <span class="restaurantTitle">식당이름</span>
+                                            </figcaption>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="restaurant-item">
+                                    <a>
+                                        <div class="restaurant-item">
+                                            <figure class="thumb">
+                                                <img>
+                                            </figure>
+                                            <figcaption class="info">
+                                                <span class="restaurantTitle">식당이름</span>
+                                            </figcaption>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="restaurant-item">
+                                    <a>
+                                        <div class="restaurant-item">
+                                            <figure class="thumb">
+                                                <img>
+                                            </figure>
+                                            <figcaption class="info">
+                                                <span class="restaurantTitle">식당이름</span>
+                                            </figcaption>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="restaurant-item">
+                                    <a>
+                                        <div class="restaurant-item">
+                                            <figure class="thumb">
+                                                <img>
+                                            </figure>
+                                            <figcaption class="info">
+                                                <span class="restaurantTitle">식당이름</span>
+                                            </figcaption>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="btn-nav next slick-arrow"><img src="right-removebg-preview.png" width="50px" height="100px"></button>
+                    </div>
+                </section>
+
+                <section id="restaurantOfMonth">
+                    <button id="btn_restaurantOfMonth">이달의 맛집</button>
+                    <div id="box_restaurantOfMonth">
+            
+                        <div id="silver">
+                                <a>
+                                    <div>
+                                        <figure class="medalBox">
+                                            <img>
+                                        </figure>
+                                        <figcaption>
+                                            <span class="restaurantTitle"><h4>식당 이름</h4></span>
+                                        </figcaption>
+                                    </div>
+                                </a>
+                        </div>
+
+                        <div id="gold">
+                                <a>
+                                    <div>
+                                        <figure class="medalBox gold">
+                                            <img>
+                                        </figure>
+                                        <figcaption>
+                                            <span class="restaurantTitle"><h4>식당 이름</h4></span>
+                                        </figcaption>
+                                    </div>
+                                </a>
+                        </div>
+                        
+                        <div id="bronze">
+                                <a>
+                                    <div>
+                                        <figure class="medalBox">
+                                            <img>
+                                        </figure>
+                                        <figcaption>
+                                            <span class="restaurantTitle"><h4>식당 이름</h4></span>
+                                        </figcaption>
+                                    </div>
+                                </a>
+                        </div>
+                    
+                    </div>
+                </section>
+                <section id="quickMenu">
+                        <button id="box_quickMenu">Quick<br>Menu</button>
+                        <button id="goto-restaurantUpload" onclick="restaurantUpload.html">맛집 등록하기</button>
+                        <button id="goto-restaurantShow" onclick="restaurantShow.html">맛집 리스트 전체보기</button>
+                        <button id="goto-mapSearch" onclick="mapSearch.html">지도로 맛집 찾아보기</button>
+                </section>
+                <section id="footer"></section>
+                <footer></footer>
+            </article>
+        </main>
+    </body>
+</html>
