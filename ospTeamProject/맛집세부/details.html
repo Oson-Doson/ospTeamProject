@@ -1,0 +1,212 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* {
+			font-size: 20px;
+		}
+		
+		header {
+ 		 	padding: 30px;
+ 		 	text-align: center;
+  			background: #f8ecc9;
+			}
+		
+		section {
+			padding: 20px;
+			border-bottom: #506A4C;
+		}
+		
+		/* 가게 소개 맨 위 */
+		div.list {
+			margin: 14px;
+			border: 1px solid none;
+			padding:15px;
+			padding-top:25px;
+			float: center;
+			width: 100%;
+			border-color: none;
+		}
+		
+		div.list img {
+			float: left;
+			width: 250px;
+			height: 250px;
+			padding: 25px;
+			border: 5px #506A4C;
+		}
+		
+		div.desc1 {
+			padding: 40px;
+			padding-left: 330px;
+			text-align: left;
+			line-height: 2.0em;
+		}
+		
+		div.desc2 {
+			padding: 40px;
+			padding-left: 50px;
+			text-align: left;
+			line-height: 2.0em;
+		}
+		
+		div.list.photo {
+			position: static;
+		}
+		
+		div.list.text {
+			position: relative; left: 200px;
+		}
+		
+		.store { 
+			font-size: 35px;
+			font-weight: bold;
+		}
+		
+		.sub1 {
+			font-size:20px;
+			position: static;
+		}
+		
+		.sub2 {
+			font-size:20px;
+			color: red;
+		}
+	
+		.sub3 {
+			font-size:25px;
+			font-weight: bold;
+
+		}
+		
+		.star {
+			color: #FFC000;
+			font-size:30px;
+			font-weight: bold;
+		}
+		
+		.picto {
+			color: #506A4C;
+			font-size:30px;
+			font-weight: bold;
+		}
+		/* 가게 소개 중간 */
+		
+		/* 대표메뉴 */
+		
+		.sort {
+			float: center;
+			padding: 7px;
+			text-align: center;
+			background-color: #506A4C;
+			border-color: #506A4C;
+			color: white;
+			width:200px;
+			height:45px;;
+			margin: 12px;
+		}
+		
+		/* 리뷰*/
+		h1 {
+			font-size:60px;
+		}
+		
+		
+		
+		/* Footer */
+		footer {
+ 			padding: 20px;
+  			text-align: center;
+  			background: #ddd;
+  			margin-top: 20px;
+  			clear : both;
+		}
+	</style>
+	</head>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	<body>
+		<header>
+  			사진 넣어야함
+		</header>
+		
+		<!-- 맨위  -->
+		<section>
+		<div class="list">
+			<a target="_blank" href="00식당사진">
+			<img src="food.jpg" alt="00식당사진" width=100% height=50%>
+			</a>
+			<div class="desc1">
+				<a class="store">00식당</a>
+				<a style="font-size:15px;">&nbsp;&nbsp;한식</a><br>
+				<a class= "sub1">#혼밥가능<br> 평균 평점</a>
+				<a class = "star">&#10030;&nbsp;</a>
+				<a class= "sub1"><b>4.4</b> / 5</a><br> 
+				<a class= "sub2">영업 중</a><br>
+				<a href="사이트">사이트</a>
+			</div>	
+		</div>
+		</section>
+		
+		
+		
+		<!-- 중간  -->
+		<section>
+		<div class="desc2">
+			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1">서울 서대문구 이화여대길 52-31</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class="picto"> &#9719;&nbsp;&nbsp;&nbsp;</a>
+			<a class= "sub1">매일 11:00 ~ 23:00</a><br> 
+			<a class="picto"> &#9742;&nbsp;&nbsp;&nbsp;</a>
+			<a class = "sub1">02-000-0000</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class="picto">&#8473;&nbsp;&nbsp;&nbsp;</a>
+			<a class= "sub1">주차 협소</a><br>
+			</div>	
+		</section>
+		
+		
+		<!-- 대표 메뉴  -->
+		<section>
+		<div class="desc2">
+			<h1 style="font-size:20px"><b>대표메뉴</b>
+			</h1>
+			<a class="picto"> &#8361;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1">최소 5000원 ~ 최대 11000원</a><br> 
+			<a class="picto"> &#9982;&nbsp;&nbsp;</a>
+			<a class=" sub1"><button class="sort" onclick="대표메뉴 페이지">메뉴 보러가기</button></a>
+			</div>	
+		</section>
+		
+		
+		<!-- 리뷰  -->
+		<section>
+		<div class="desc2">
+			<h1 style="font-size:20px"><b>리뷰</b>
+			</h1>
+			<a class = "star">&#10030;&nbsp;&nbsp;&nbsp;</a>
+			<a class ="sub1"> 평균평점 4.3/5  리뷰 23</a> <br>
+			<a class="picto">&#10146;&nbsp;&nbsp;</a>
+			<button class="sort" onclick="리뷰 보러가기">리뷰 보러가기 ></button>&nbsp;&nbsp; 
+			<a class=" sub1"><button class="sort" onclick="리뷰 등록하기">리뷰 등록하기 ></button></a>
+			</div>	
+		</section>
+		
+		<footer>
+  			<h2>~ 업데이트 중 ~</h2>
+		</footer>
+		
+	</body>
+</html>
