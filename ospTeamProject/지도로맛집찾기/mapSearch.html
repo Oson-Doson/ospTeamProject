@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+        <meta charset="UTF-8">
+        <title>지도로 맛집 찾기</title>
+    </head>
+    
+    <body>
+        <!-- header 붙여넣기 -->
+        <div id="header" style="width: 100%"></div>
+        <script>
+            document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
+        </script>
+
+        <!-- 지도 칸 - 웹서버 돌려야 보임 -->
+        <div id="map" style="width:100%;height:350px;"></div>
+
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱 키를 여기에 복붙"></script>
+        <script>
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = { 
+                    center: new kakao.maps.LatLng(37.55941644707541, 126.94566032683886), // 지도의 중심좌표 - 이화여대 정문
+                    level: 2 // 지도의 확대 레벨
+                };
+
+        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption); 
+        </script>
+    </body>
+</html>
