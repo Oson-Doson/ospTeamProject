@@ -4,6 +4,20 @@
 		<meta charset="utf-8">
         <title>맛집리스트화면</title>
 	<style>
+		@font-face{
+                font-family:'BMJUA';
+                src:url('BMJUA_otf.otf');
+            }
+            @font-face{
+                font-family:'BMDOHYUN';
+                src:url('BMDOHYEON_otf.otf');
+            }
+            @font-face{
+                font-family:'BMHANNAPro';
+                src:url('BMHANNAProOTF.otf');
+            }
+
+
 		* {
 			font-size: 20px;
 		}
@@ -88,6 +102,7 @@
             width: 180px;
             height: 60px;
             margin: 15px;
+			font-family:'BMJUA';
         } 
 		
 		.option {  /* select의 디자인 커스텀의 한계로 적용 안됨) */
@@ -116,7 +131,9 @@
 			float: left;
 			width: 160px;
 			height: 160px;
-			padding: 25px;
+			padding: 0px;
+			margin: 25px;
+			box-shadow: 1px -1px 5px 2px gray;
 		}
 		
 		div.desc {
@@ -136,29 +153,37 @@
 		.store { 
 			font-size: 35px;
 			font-weight: bold;
+			font-family:'BMJUA';
 		}
 		
 		.sub1 {
 			font-size:20px;
 			position: static;
+			font-family:'BMHANNAPro';
 		}
 		
 		.sub2 {
 			font-size:25px;
 			font-weight: bold;
    			position: relative; top:-20px; 
+			   font-family:'BMHANNAPro';
 		}
 	
 		.sub3 {
 			font-size:25px;
 			font-weight: bold;
-
+			font-family:'BMHANNAPro';
 		}
 		
 		.star {
 			color: #FFC000;
 			font-size:30px;
 			font-weight: bold;
+		}
+
+		#exclude{
+			font-family:none;
+
 		}
 		
 		</style>

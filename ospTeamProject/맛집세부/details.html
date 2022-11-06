@@ -5,7 +5,22 @@
 		<meta charset="utf-8">
         <title>맛집세부화면</title>
 	<style>
+		@font-face{
+                font-family:'BMJUA';
+                src:url('BMJUA_otf.otf');
+            }
+            @font-face{
+                font-family:'BMDOHYUN';
+                src:url('BMDOHYEON_otf.otf');
+            }
+            @font-face{
+                font-family:'BMHANNAPro';
+                src:url('BMHANNAProOTF.otf');
+            }
+
+
 		* {
+            font-family:'BMJUA';
 			font-size: 20px;
 		}
 				
@@ -32,20 +47,22 @@
 		/* 가게 소개 맨 위 */
 		div.box1 {
 			margin: 0px;
-			border-bottom: 1.5px solid #506A4C;
+			border-bottom: 1.5px solid #CADFB8 ;
 			padding:15px;
 			padding-bottom: 40px;
 			float: center;
 			width: 95%;
+			font-family:'BMHANNAPro';
 		}
 		
 		div.box1 img {
 			float: left;
 			width: 250px;
 			height: 250px;
-			padding: 25px;
-			padding-top: 15px;
-			border: 5px #506A4C;
+			padding: 0px;
+			padding-top: 0px;
+			margin: 20px;
+			border: 3px solid #506A4C;
 		}
 		
 		div.desc1 {
@@ -88,6 +105,11 @@
 			font-size:30px;
 			font-weight: bold;
 		}
+
+		#exclude{
+			font-family:none;
+
+		}
 		
 		/* 가게 소개 중간 */
 		div.box2.left {
@@ -100,7 +122,7 @@
 			text-align: left;
 			line-height: 3.0em;
 			width: 45%;
-			border-bottom: 1.5px solid #506A4C;
+			border-bottom: 1.5px solid #CADFB8 ;
 		}
 		div.box2.right {
 			float:left;
@@ -112,7 +134,7 @@
 			text-align: left;
 			line-height: 3.0em;
 			width: 45%;
-			border-bottom: 1.5px solid #506A4C;
+			border-bottom: 1.5px solid #CADFB8 ;
 		}
 
 		.picto {
@@ -125,7 +147,7 @@
 		div.box3 {
 			margin: 0px;
 			margin-top: 170px;
-			border-bottom: 1.5px solid #506A4C;
+			border-bottom: 1.5px solid #CADFB8 ;
 			padding: 0px;
 			padding-bottom: 20px;
 			padding-top: 20px;
@@ -193,20 +215,20 @@
 		<div class="box2 left">
 			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;</a>
 			<a class="sub1">서울 서대문구 이화여대길 52-31</a><br>
-			<a class="picto"> &#9742;&nbsp;&nbsp;&nbsp;</a>
+			<a class="picto" id="exclude"> &#9742;&nbsp;&nbsp;&nbsp;</a>
 			<a class = "sub1">02-000-0000</a><br>
 		</div>
 		<div class="box2 right">
 			<a class="picto"> &#9719;&nbsp;&nbsp;&nbsp;</a>
 			<a class= "sub1">매일 11:00 ~ 23:00</a><br> 
-			<a class="picto">&#8473;&nbsp;&nbsp;&nbsp;</a>
+			<a class="picto" id="exclude">&#8473;&nbsp;&nbsp;&nbsp;</a>
 			<a class= "sub1">주차 협소</a><br>
 		</div>
 
 		<!-- box3 대표메뉴  -->
 		<div class="box3">
 			<b style="font-size:30px">대표메뉴</b><br>
-			<a class="picto"> &#8361;&nbsp;&nbsp;&nbsp;</a>
+			<a class="picto" id="exclude"> &#8361;&nbsp;&nbsp;&nbsp;</a>
 			<a class="sub1">최소 5000원 ~ 최대 11000원</a><br> 
 			<a class="picto"> &#9982;&nbsp;&nbsp;</a>
 			<a class=" sub1"><button class="button" onclick="대표메뉴 페이지">메뉴 보러가기 ></button></a>
@@ -224,7 +246,7 @@
 	
 	</div>
 	</div>
-	
+
 	<!-- footer -->
 	<footer id="footer" style="width: 100%"></footer>
 	<script>
