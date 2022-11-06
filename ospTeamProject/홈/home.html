@@ -24,7 +24,7 @@
             }
             body{
                 position:relative;
-                min-width:320px;
+                min-width:1000px;
                 margin:0 auto;
                 font-size:100%;
                 line-height:100%;
@@ -52,15 +52,21 @@
                 color:#506A4C;
                 font-size:large;
             }
+
+            .typeButton:hover{
+                color:white;
+                background-color:#506A4C;
+            }
             
             .moreList{
                 height:25px;
-                margin:0px 50px;
+                margin:0px 60px;
             }
             .moreList button{
                 float:right;
                 margin-top:5px;
                 font-family:'BMHANNAPro';
+                font-size:medium;
             }
 
             #recommendBox{
@@ -157,6 +163,36 @@
                 border-style:solid;
             }
 
+            .goldCrownFix{
+                position:relative;
+            }
+            .goldCrown{
+                position:absolute;
+                top:-100px;
+                left:0px;
+                z-index:10;
+            }
+
+            .silverCrownFix{
+                position:relative;
+            }
+            .silverCrown{
+                position:absolute;
+                top:-100px;
+                left:0px;
+                z-index:10;
+            }
+
+            .bronzeCrownFix{
+                position:relative;
+            }
+            .bronzeCrown{
+                position:absolute;
+                top:-100px;
+                left:0px;
+                z-index:10;
+            }
+
             #quickMenu{
                 margin:10px 50px;
                 display:flex;
@@ -188,7 +224,14 @@
     <body>
         <main class="pg_main">
             <article id="contents">
-                <header></header>
+                <header>
+                     <!-- header 붙여넣기 -->
+                    <div id="header" style="width: 100%"></div>
+                    <script>
+                        document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
+                    </script>
+                </header>
+
                 <section id="restaurantRecommend">
                     <div id="menuType">
                         <button class="typeButton" id="typeTotal">total</button>
@@ -295,6 +338,9 @@
                                             <img>
                                         </figure>
                                         <figcaption>
+                                            <div class="silverCrownFix">
+                                                <object class="silverCrown" data="silver.svg" type="image/svg+xml"></object>
+                                            </div>
                                             <span class="restaurantTitle"><h4>식당 이름</h4></span>
                                         </figcaption>
                                     </div>
@@ -308,6 +354,9 @@
                                             <img>
                                         </figure>
                                         <figcaption>
+                                            <div class="goldCrownFix">
+                                                <object class="goldCrown" data="gold.svg" type="image/svg+xml"></object>
+                                            </div>
                                             <span class="restaurantTitle"><h4>식당 이름</h4></span>
                                         </figcaption>
                                     </div>
@@ -321,6 +370,9 @@
                                             <img>
                                         </figure>
                                         <figcaption>
+                                            <div class="bronzeCrownFix">
+                                                <object class="bronzeCrown" data="bronze.svg" type="image/svg+xml"></object>
+                                            </div>
                                             <span class="restaurantTitle"><h4>식당 이름</h4></span>
                                         </figcaption>
                                     </div>
@@ -335,8 +387,13 @@
                         <button id="goto-restaurantShow" onclick="restaurantShow.html">맛집 리스트 전체보기</button>
                         <button id="goto-mapSearch" onclick="mapSearch.html">지도로 맛집 찾아보기</button>
                 </section>
-                <section id="footer"></section>
-                <footer></footer>
+
+                <footer>
+                    <footer id="footer" style="width: 100%"></footer>
+                    <script>
+                        document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
+                    </script>
+                </footer>
             </article>
         </main>
     </body>
