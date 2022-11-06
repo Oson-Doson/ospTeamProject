@@ -1,6 +1,8 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+        <title>맛집리스트화면</title>
 	<style>
 		* {
 			font-size: 20px;
@@ -13,58 +15,16 @@
 
         body {
             position: relative;
-            min-width: 320px;
+            min-width: 1000px;
             margin: 0 auto;
             font-size: 100%;
             line-height: 100%;
             text-align: center;
         }
 
-		/* HEADER */ 
-		/*        */
-		header {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* 헤더 배경이미지 */
-        .headerbackground {
-            background-image: url("header_plain.png");
-            background-size: 100%;
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* 이미지 위에 투명도 필터 */
-        .headerbackground::before{
-            content: "";
-            opacity: 0.4;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            background-color: #fff;
-        }
-
-        /* 오손도손 로고 */
-        .osondoson {
-            /* padding: 30px; 
-            width: 187px;  */
-            padding: 15px;
-            width: 160px;
-            position: relative;
-        }
-
-        /* 오른쪽 상단 메뉴 */
-        .menu {
-            font-size: 20px;
-            font-weight: bold;
-            /* color: #263F18; */
-            padding: 0 20px;
-        }
+		.contents{
+			margin:0px 60px;
+		}
 
 		/* 상단 바 */
 		/*        */
@@ -154,8 +114,8 @@
 		
 		div.list img {
 			float: left;
-			width: 200px;
-			height: 200px;
+			width: 160px;
+			height: 160px;
 			padding: 25px;
 		}
 		
@@ -201,31 +161,19 @@
 			font-weight: bold;
 		}
 		
-		/* Footer */
-		footer {
- 			padding: 20px;
-  			text-align: center;
-  			background: #ddd;
-  			margin-top: 20px;
-  			clear : both;
-		}
 		</style>
 	</head>
 	
 	<body>
-		<header>
-			<div class="headerbackground">
-				<img class="osondoson" src="osondoson.png">
-				<div style="position: relative; padding-top: 10px;">
-					<a class="menu">맛집 전체 보기</a>
-					<a class="menu">리뷰 전체 보기</a>
-					<a class="menu">맛집 등록하기</a>
-				</div>
-			</div>
-		</header>
+		<!-- header 붙여넣기 -->
+        <div id="header" style="width: 100%"></div>
+        <script>
+            document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
+        </script>
 
+		<div class="contents"></div>
 		<div id="menuType">
-			<button class="typeButton" id="active">total</button>
+			<button class="typeButton" id="typetotal">total</button>
 			<button class="typeButton" id="typeKorean">한식</button>
 			<button class="typeButton" id="typeChinese">중식</button>
 			<button class="typeButton" id="typeJapanese">일식</button>
@@ -377,13 +325,13 @@
 				<a class="sub1">02-000-0000</a>
 			</div>
 		</div>
+	</div>
 
-
-
-
-		<footer>
-			<h2>~ 업데이트 중 ~</h2>
-		</footer>
+		<!-- footer -->
+        <footer id="footer" style="width: 100%"></footer>
+        <script>
+            document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
+        </script>
 
 	</body>
 </html>
