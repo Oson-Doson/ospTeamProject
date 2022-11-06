@@ -5,69 +5,143 @@
 		* {
 			font-size: 20px;
 		}
+
+		html {
+            font-family: 'BMJUA';
+            text-align: center;
+        }
+
+        body {
+            position: relative;
+            min-width: 320px;
+            margin: 0 auto;
+            font-size: 100%;
+            line-height: 100%;
+            text-align: center;
+        }
+
+		/* HEADER */ 
+		/*        */
 		header {
- 		 	padding: 30px;
- 		 	text-align: center;
-  			background: #f8ecc9;
-			}
-		
-		
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 헤더 배경이미지 */
+        .headerbackground {
+            background-image: url("header_plain.png");
+            background-size: 100%;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 이미지 위에 투명도 필터 */
+        .headerbackground::before{
+            content: "";
+            opacity: 0.4;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #fff;
+        }
+
+        /* 오손도손 로고 */
+        .osondoson {
+            /* padding: 30px; 
+            width: 187px;  */
+            padding: 15px;
+            width: 160px;
+            position: relative;
+        }
+
+        /* 오른쪽 상단 메뉴 */
+        .menu {
+            font-size: 20px;
+            font-weight: bold;
+            /* color: #263F18; */
+            padding: 0 20px;
+        }
+
 		/* 상단 바 */
-		ul {
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			background-color: #CADFB8;
-			border-top-right-radius: 20px;
-			border-top-left-radius: 20px;
+		/*        */
+        button {
+            appearance: none;
+            border: 0px;
+            background-color: transparent;
+            font-family: 'BMJUA';
+        }
+		#menuType{
+                margin-bottom:1px;
+                margin-top:15px;
+            }
+
+        .typeButton{
+             width:16%;
+             margin-left:-1px;
+             margin-right:-1px;
+             height:50px;
+             border-top-left-radius:10px;
+             border-top-right-radius:10px;
+             background-color:#CADFB8;
+             color:#506A4C;
+             font-size:large;
+        }
+		
+		.typeButton:hover:not(#active){
+			background-color: #506A4C;
+			color: white;
 			}
 		
-		li {
-			float: left;
-			}
-		
-		li a {
-			display: block;
-			color: #506A4C;
-			text-align: center;
-			padding: 14px 90px;
-			text-decoration: none;
-			font-weight: bold;
-			}
-		
-		li a: hover:not(.active){
-			background-color: #111;
-			}
-		
-		
-		.active {
-			background-color:  #506A4C;
+		#active {
+			background-color: #506A4C;
 			color: white;
 			}
 		
 		/* sort */
+		/*      */
 		div.SORTAREA {
 			text-align: center;
-			padding: 15px;
+			padding: 1px;
+			margin-top: 10px;
 		}
+
+        .sorting {
+			position: relative; left: -30px; top: 10px;
 		
-		.sort {
-			float: center;
-			padding: 15px;
-			text-align: center;
-			border-radius: 50px;
-			background-color: white;
-			border-color: #506A4C;
-			font-weight: bold;
+        } 
+
+        .sort {
+            float: center;
+            padding: 5px;
+            text-align: center;
+            border-radius: 50px;
+            background-color: white;
+            border-color: #506A4C;
+			border-width: 2px;
+			border-style: solid;
+            font-weight: bold;
+            color: #506A4C;
+            width: 180px;
+            height: 60px;
+            margin: 15px;
+        } 
+		
+		.option {  /* select의 디자인 커스텀의 한계로 적용 안됨) */
 			color: #506A4C;
-			width:200px;
-			height:60px;
-			padding:15px;
-			margin: 12px;
+			border-radius: 100px;
+			border: 2px solid #506A4C;
+			border-bottom: #506A4C;
+			width: 100px;
+			padding:10px;
+			margin: 10px;
 		}
-		
+
 		/* 리스트 */
+		/*        */
 		div.list {
 			margin: 14px;
 			border: 1px solid #506A4C;
@@ -138,187 +212,178 @@
 		</style>
 	</head>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
 	<body>
 		<header>
-  		사진 넣어야함
+			<div class="headerbackground">
+				<img class="osondoson" src="osondoson.png">
+				<div style="position: relative; padding-top: 10px;">
+					<a class="menu">맛집 전체 보기</a>
+					<a class="menu">리뷰 전체 보기</a>
+					<a class="menu">맛집 등록하기</a>
+				</div>
+			</div>
 		</header>
-		
-		<!-- 네비게이션 바 (상단바) 나중에 링크 연결 필요 -->
-		<!--<li><button class="navi" class="active" onclick="total">tatal</button></li>
-		<li><button class="navi" onclick="한식">한식</button></li>
-		<li><button class="navi" onclick="한식">한식</button></li>
-		<li><button class="navi" onclick="한식">한식</button></li>
-		<li><button class="navi" onclick="한식">한식</button></li>
-		<li><button class="navi" onclick="한식">한식</button></li>-->
-		
-		<nav>
-		<ul style="list-style-type:none;">
-			<li><a class="active" href="#total">total</a></li>
-			<li><a href="#한식">한식</a></li>
-			<li><a href="#중식">중식</a></li>
-			<li><a href="#일식">일식</a></li>
-			<li><a href="#양식">양식</a></li>
-			<li><a href="#카페">카페</a></li>
-		</ul>
-		</nav>
-		
-		
+
+		<div id="menuType">
+			<button class="typeButton" id="active">total</button>
+			<button class="typeButton" id="typeKorean">한식</button>
+			<button class="typeButton" id="typeChinese">중식</button>
+			<button class="typeButton" id="typeJapanese">일식</button>
+			<button class="typeButton" id="typeWestern">양식</button>
+			<button class="typeButton" id="typeCafe">카페</button>
+		</div>
+
+		<!-- SORT -->
 		<div class="SORTAREA">
-		<!-- 가격대 drop down -->
-		<select class="sort" id="price">
-			<option value ="all">&#8361;&nbsp;&nbsp;가격대</option>
-			<option value ="<10000">10000원 이하</option>
-			<option value ="10000">10000원대</option>
-			<option value ="10000< <20000">만원~2만원</option>
-			<option value =">20000">2만원 이상</option>
-		</select>
-		
-		<!-- 주차가능 -->
-		<button class="sort" onclick="parkingsort">
-			<b>&#8473;</b>&nbsp;&nbsp;주차가능
-		</button>
-		
-		<!-- 영업 중 -->
-		<button class="sort" onclick="open">
+		<!-- sorting img -->
+		<a class="sorting">
+			<img src="sorting sign.png" alt="sorting sign" width="40" height="40">
+		</a>
+			<!-- 가격대 select -->
+			<select class="sort" id="price">
+				<option value="all">&#8361;&nbsp;&nbsp;가격대</option>
+				<option value="<5000">~5000</option>
+				<option value="10000~15000">10000~15000</option>
+				<option value="15000~<20000">15000~20000</option>
+				<option value=">20000">20000~</option>
+			</select>
+
+			<!-- 주차가능 -->
+			<button class="sort" id="park" onclick="changeParkButton()">
+				<b>&#8473;</b>&nbsp;&nbsp;주차가능
+			</button>
+
+			<!-- 영업 중 -->
+			<button class="sort" id="open" onclick="changeOpenButton()">
 				<b>&#9719;</b>&nbsp;&nbsp;영업중
-		</button>
-		<br>
+			</button>
+			<br>
 		</div>
-		
+
 		<!-- 리스트  -->
 		<div class="list">
 			<a target="_blank" href="00식당사진">
-			<img src="food.jpg" alt="00식당사진" width=100% height=50%>
+				<img src="food.jpg" alt="00식당사진" width=100% height=50%>
 			</a>
 			<div class="desc">
 				<a class="store">00식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.4 </a><br> 
-					<a class= "sub1">02-000-0000</a>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">02-000-0000</a>
 			</div>
 		</div>
-		
+
 		<div class="list">
 			<a target="_blank" href="aa식당사진">
-				<img class ="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
+				<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
 			</a>
 			<div class="desc">
 				<a class="store">aa식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.2 </a><br>  
-					<a class= "sub1">02-000-0000</a>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.2 </a><br>
+				<a class="sub1">02-000-0000</a>
 			</div>
 		</div>
-		
+
 		<div class="list">
 			<a target="_blank" href="bb식당사진">
-			<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
+				<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
 			</a>
 			<div class="desc">
 				<a class="store">bb식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.4 </a><br> 
-					<a class= "sub1">02-000-0000</a>
-			</div>
-		</div>
-		<!-- 리스트  -->
-		<div class="list">
-			<a target="_blank" href="00식당사진">
-			<img src="food.jpg" alt="00식당사진" width=100% height=50%>
-			</a>
-			<div class="desc">
-				<a class="store">00식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.4 </a><br> 
-					<a class= "sub1">02-000-0000</a>
-			</div>
-		</div>
-		
-		<div class="list">
-			<a target="_blank" href="aa식당사진">
-				<img class ="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
-			</a>
-			<div class="desc">
-				<a class="store">aa식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.2 </a><br>  
-					<a class= "sub1">02-000-0000</a>
-			</div>
-		</div>
-		
-		<div class="list">
-			<a target="_blank" href="bb식당사진">
-			<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
-			</a>
-			<div class="desc">
-				<a class="store">bb식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.4 </a><br> 
-					<a class= "sub1">02-000-0000</a>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">02-000-0000</a>
 			</div>
 		</div>
 		<!-- 리스트  -->
 		<div class="list">
 			<a target="_blank" href="00식당사진">
-			<img src="food.jpg" alt="00식당사진" width=100% height=50%>
+				<img src="food.jpg" alt="00식당사진" width=100% height=50%>
 			</a>
 			<div class="desc">
 				<a class="store">00식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.4 </a><br> 
-					<a class= "sub1">02-000-0000</a>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">02-000-0000</a>
 			</div>
 		</div>
-		
+
 		<div class="list">
 			<a target="_blank" href="aa식당사진">
-				<img class ="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
+				<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
 			</a>
 			<div class="desc">
 				<a class="store">aa식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.2 </a><br>  
-					<a class= "sub1">02-000-0000</a>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.2 </a><br>
+				<a class="sub1">02-000-0000</a>
 			</div>
 		</div>
-		
+
 		<div class="list">
 			<a target="_blank" href="bb식당사진">
-			<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
+				<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
 			</a>
 			<div class="desc">
 				<a class="store">bb식당</a><br>
-				<a class= "sub1">#혼밥가능</a><br>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub3">4.4 </a><br> 
-					<a class= "sub1">02-000-0000</a>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">02-000-0000</a>
 			</div>
 		</div>
-		
-	
-	
-		
+		<!-- 리스트  -->
+		<div class="list">
+			<a target="_blank" href="00식당사진">
+				<img src="food.jpg" alt="00식당사진" width=100% height=50%>
+			</a>
+			<div class="desc">
+				<a class="store">00식당</a><br>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">02-000-0000</a>
+			</div>
+		</div>
+
+		<div class="list">
+			<a target="_blank" href="aa식당사진">
+				<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
+			</a>
+			<div class="desc">
+				<a class="store">aa식당</a><br>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.2 </a><br>
+				<a class="sub1">02-000-0000</a>
+			</div>
+		</div>
+
+		<div class="list">
+			<a target="_blank" href="bb식당사진">
+				<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
+			</a>
+			<div class="desc">
+				<a class="store">bb식당</a><br>
+				<a class="sub1">#혼밥가능</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">02-000-0000</a>
+			</div>
+		</div>
+
+
+
+
 		<footer>
-  			<h2>~ 업데이트 중 ~</h2>
+			<h2>~ 업데이트 중 ~</h2>
 		</footer>
-		
+
 	</body>
 </html>
