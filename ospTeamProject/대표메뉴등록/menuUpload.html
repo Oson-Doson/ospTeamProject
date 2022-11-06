@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>대표 메뉴 등록</title>
+	<style>
+	*{ /* 모든태그에 적용 : * (초기값 설정) */
+	padding:0;
+	margin:0;
+	box-sizing: border-box;
+    }
+	#header,#footer {margin:0;}
+    body{
+                position:relative;
+                min-width:1000px;
+                margin:0 auto;
+                font-size:100%;
+                line-height:100%;
+               
+            }
+
+    main{
+	margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
+	margin-bottom: 20px;
+    padding-bottom: 50px;
+	width: 100%;
+	height: 90%;
+    border:2px solid #506A4C;
+    }
+
+	#section{
+	margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
+	padding: 20px 0 20px 0; 
+	width: 90%;
+	height: 80%;	
+	border:2px solid  #CADFB8;
+    margin-top: 20px;
+	}
+	img{
+        float:top;
+        margin-right:20px;
+        
+    }
+    table{
+		margin:0 auto;
+		line-height:90px;
+		}
+	label{
+		text-decoration:underline;	
+		}
+		
+    tr{
+		color:#506A4C;
+		font-size:25px;
+		vertical-align : top;
+	}
+		td{
+            width:10%;
+			padding-left:40px;
+			
+		}
+        input[type=image]{
+        background-color:#D9D9D9;
+        height: 100px;
+        
+    }
+       
+    .filebox label {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        font-size:20px;
+        vertical-align: middle;
+        background-color: #999999;
+        cursor: pointer;
+        height: 40px;
+        margin-left: 10px;
+    }
+    .filebox input[type="file"] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+    }
+        #button{
+			text-align:center;
+			padding-bottom:20px;
+			padding-top:20px;
+		
+		}
+        button.fileupload{
+        height:30px;
+		width:100px;
+		font-size:15px;
+		background-color:#506A4C;
+        border-color:#506A4C; 
+		color:white;
+    }
+    input[type=image]{
+        background-color:#D9D9D9;
+        height: 150px;
+        width:  150px;
+        
+    }
+		input{
+		width:250px;
+		height:30px;
+		border:1.5px solid #506A4C;	
+		}
+		textarea{
+			border:1.5px solid #506A4C;	
+			resize: none;
+		}
+	  button.add,button.register{
+		background-color:white;
+		border-color: #506A4C;
+        color:#506A4C;
+		height:38px;
+		width:130px;
+        font-size: 17px;
+	}
+
+</style>
+	</head>
+	
+    <body>
+		<!-- header 붙여넣기 -->
+        <div id="header" style="width: 100%"></div>
+        <script>
+            document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
+        </script>
+		<nav>
+			<img src="menuregbar.png" alt="barimg" style="width: 100%; height:70px;">
+		</nav>
+		
+		<main>
+		<div id="section">
+			
+		
+		<a href=" "><img src="x.png" alt="cancel" width="25px" height="25px" style="float:right"></a>
+			
+		
+		<table>
+			
+            <tr>
+                <td><label for="Fname">음식명</label></td>
+                <td><input type="text" id="Fname" name="Fname" value=""></td>
+            </tr>
+            <tr>
+                <td><label for="pic">사진</label></td>
+                <td><input type="image" id="picture" name="picture" value="">
+                    <button class="fileupload" onclick ="">파일 선택</button>
+                    </td>
+              
+            </tr>
+            <tr>
+				<td><label for="price">가격 (원)</label></td>
+                <td><input type="text" id="price" name="price" value=""></td>
+            </tr>
+            <tr>
+                <td><label for="menudetail">메뉴 상세 설명</label></td>
+                <td><textarea name="menudetail" cols="100" rows="10" ></textarea>
+		
+		</td>
+            </tr>
+            <tr>
+                <td><label for="addinfor">추가 정보</label></td>
+	
+                <td><input type="checkbox" id="vegan" name ="vegan" value ="vegan" style="float:left;">
+	            비건 
+	            <input type="checkbox" id="allergy" name ="allergy" value ="allergy">
+				알레르기</td>
+            </tr>
+            <tr>
+               <td> <label for="allergy">알레르기</label></td>
+                <td><input type="text" id="Fname" name="Fname" value=""></td>
+
+            </tr>
+ 
+		</table>
+		
+		</div>
+		<div id= "button">
+		<button class="add" type="button" id= "btnadd" onclick =" ">메뉴 추가</button>
+		<button class="register" type="button" id= "btnregister" onclick =" ">등록</button>
+    
+			</div></main>
+      <!-- footer -->
+        <footer id="footer" style="width: 100%"></footer>
+        <script>
+            document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
+        </script>      
+	</body> 
+   
+</html>
