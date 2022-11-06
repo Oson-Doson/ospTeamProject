@@ -1,0 +1,157 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>리뷰 등록하기</title>
+        <style>
+            * {
+                margin: 0;
+            }
+
+            /* 리뷰등록 네비 */
+            #reviewUploadNavi {
+                display: flex; 
+                justify-content: center;
+                margin-top: 30px;
+            }
+
+            #uploadImage {
+                display: flex;
+                flex-direction: column;
+                margin-right: 30px;
+                align-items: center;
+            }
+
+            .uploadBtn {
+                background-color: #496B49;
+                color: #ffffff;
+                padding: 12px;
+            }
+
+            /* 리뷰등록 내용 */
+            #reviewUploadContents {
+                border: solid 3px #496B49;
+                width: 89.6%;
+                margin-left: auto;
+                margin-right: auto;
+
+                display: flex;
+                /* align-items: center; */
+                flex-direction: column;
+
+            }
+
+            #score {
+                display: flex;
+                align-items: center;
+            }
+
+            /* 별 그리기 css */
+
+            .star-rating {
+                /* border:solid 1px #ccc; */
+                display:flex;
+                flex-direction: row-reverse;
+                font-size:1.5em;
+                justify-content:space-around;
+                padding:0 .2em;
+                text-align:center;
+                width:5em;
+            }
+
+            .star-rating input {
+                display:none;
+            }
+
+            .star-rating label {
+                color:#ccc;
+                cursor:pointer;
+            }
+
+            .star-rating :checked ~ label {
+                color:#f90;
+            }
+
+            .star-rating label:hover,
+            .star-rating label:hover ~ label {
+                color:#fc0;
+            }
+
+            .reviewText {
+                border: solid 3px #496B49;
+                resize: none;
+                width: 850px;
+                height: 300px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- header 붙여넣기 -->
+        <div id="header" style="width: 100%"></div>
+        <script>
+            document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
+        </script>
+        <div id="reviewUploadNavi">
+            <img src="reviewUploadNavi.png" alt="리뷰등록" style="width: 90%" >
+        </div>
+        <div id="reviewUploadContents">
+            <div name="리뷰 정보 등록 첫 번째 문단" style="display: flex; align-items: center; margin-left:20px;">
+                <div id="uploadImage">
+                    <img src="imageIcon.png" alt="초기 이미지" style="width: 300px">
+                    <span class="uploadBtn">업로드</span>
+                </div>
+                <div name="이미지 옆 정보 입력">
+                    <h4>00가게</h4><br>
+    
+                    <div id="nickname">
+                        닉네임 
+                        <input type="text">
+                    </div><br>
+    
+                    <div id="keyword">
+                        키워드 
+                        <select>
+                            <option>분위기</option>
+                            <option>#혼밥가능</option>
+                            <option>#넓은장소</option>
+                            <option>#분위기좋은</option>
+                            <option>#아기자기한</option>
+                        </select>
+                    </div><br>
+    
+                    <div id="score">
+                        평점
+                        <!-- 별 그리기 -->
+                        <div class="star-rating">
+                            <input type="radio" id="5-stars" name="rating" value="5" />
+                            <label for="5-stars" class="star">&#9733;</label>
+                            <input type="radio" id="4-stars" name="rating" value="4" />
+                            <label for="4-stars" class="star">&#9733;</label>
+                            <input type="radio" id="3-stars" name="rating" value="3" />
+                            <label for="3-stars" class="star">&#9733;</label>
+                            <input type="radio" id="2-stars" name="rating" value="2" />
+                            <label for="2-stars" class="star">&#9733;</label>
+                            <input type="radio" id="1-star" name="rating" value="1" />
+                            <label for="1-star" class="star">&#9733;</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            <div name="리뷰 정보 등록 두 번째 문단" style="margin-left:20px">
+                리뷰 상세 설명<br>
+                <textarea class="reviewText"></textarea>
+            </div>
+
+            <div name="리뷰 정보 등록 세 번째 문단">저장</div>
+        </div>
+        
+
+        <!-- footer -->
+        <footer id="footer" style="width: 100%; margin-top: 30px;"></footer>
+        <script>
+            document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
+        </script>
+    </body>
+</html>
