@@ -5,6 +5,61 @@
                 padding: 0;
                 margin: 0;
             }
+
+            @font-face{
+                font-family:'BMJUA';
+                src:url('../홈/BMJUA_otf.otf');
+            }
+            @font-face{
+                font-family:'BMDOHYUN';
+                src:url('../홈/BMDOHYEON_otf.otf');
+            }
+            @font-face{
+                font-family:'BMHANNAPro';
+                src:url('../홈/BMHANNAProOTF.otf');
+            }
+
+            #menuType{
+                margin-bottom:1px;
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+            }
+
+            button{
+                appearance:none;
+                border:0px;
+                background-color:transparent;
+                font-family:'BMJUA';
+            }
+
+            .typeButton{
+                width:15%;
+                /* margin-left:-1px;
+                margin-right:-1px; */
+                margin-left: 1px;
+                margin-right: 1px;
+                height:50px;
+                border-top-left-radius:10px;
+                border-top-right-radius:10px;
+                background-color:#CADFB8;
+                color:#506A4C;
+                font-size:large;
+            }
+
+            .typeButton:hover {
+                background-color: #496B49;
+                color: #ffffff;
+            }
+
+            #map {
+                width: 90%; 
+                height: 450px; 
+                margin-left: auto; 
+                margin-right: auto;  
+                margin-top: 15px;
+            }
+
         </style>
         <meta charset="UTF-8">
         <title>지도로 맛집 찾기</title>
@@ -17,19 +72,34 @@
             document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
         </script>
 
-        <!-- 지도 칸 - 웹서버 돌려야 보임 -->
-        <div id="map" style="width:100%;height:350px;"></div>
+        <!-- 탭 부분 -->
+        <div id="menuType">
+            <button class="typeButton" id="typeKorean">한식</button>
+            <button class="typeButton" id="typeChinese">중식</button>
+            <button class="typeButton" id="typeJapanese">일식</button>
+            <button class="typeButton" id="typeWestern">양식</button>
+            <button class="typeButton" id="typeCafe">카페</button>
+        </div>
 
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱 키를 여기에 복붙"></script>
+        <!-- 지도 칸 - 웹서버 돌려야 보임 -->
+        <div id="map"></div>
+
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱 키 여기에 복붙"></script>
         <script>
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = { 
-                    center: new kakao.maps.LatLng(37.55941644707541, 126.94566032683886), // 지도의 중심좌표 - 이화여대 정문
+                    center: new kakao.maps.LatLng(37.55901644707541, 126.94566032683886), // 지도의 중심좌표 - 이화여대 정문
                     level: 2 // 지도의 확대 레벨
                 };
 
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
         var map = new kakao.maps.Map(mapContainer, mapOption); 
+        </script>
+
+        <!-- footer -->
+        <footer id="footer" style="width: 100%"></footer>
+        <script>
+            document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
         </script>
     </body>
 </html>
