@@ -5,22 +5,26 @@
 		<meta charset="utf-8">
         <title>맛집세부화면</title>
 	<style>
+		@font-face { font-family: 'NanumBarunGothic';
+			src: url('/fonts/NanumBarunGothic.eot');
+			src: url('/fonts/NanumBarunGothic.eot') format('embedded-opentype'),
+				 url('/fonts/NanumBarunGothic.woff') format('woff');
+		}
 		@font-face{
-                font-family:'BMJUA';
-                src:url('BMJUA_otf.otf');
-            }
-            @font-face{
-                font-family:'BMDOHYUN';
-                src:url('BMDOHYEON_otf.otf');
-            }
-            @font-face{
-                font-family:'BMHANNAPro';
-                src:url('BMHANNAProOTF.otf');
-            }
+            font-family:'BMJUA';
+            src:url('BMJUA_otf.otf');
+        }
+        @font-face{
+           font-family:'BMDOHYUN';
+           src:url('BMDOHYEON_otf.otf');
+        }
+        @font-face{
+           font-family:'BMHANNAPro';
+           src:url('BMHANNAProOTF.otf');
+        }
 
 
 		* {
-            font-family:'BMJUA';
 			font-size: 20px;
 		}
 				
@@ -31,6 +35,8 @@
             font-size: 100%;
             line-height: 100%;
             text-align: center;
+			font-family: 'NanumBarunGothic', 'serif';
+
         }
 
 		.contents{
@@ -52,7 +58,6 @@
 			padding-bottom: 40px;
 			float: center;
 			width: 95%;
-			font-family:'BMHANNAPro';
 		}
 		
 		div.box1 img {
@@ -82,6 +87,7 @@
 		.store { 
 			font-size: 35px;
 			font-weight: bold;
+            font-family:'BMJUA';
 		}
 		
 		.sub1 {
@@ -166,6 +172,7 @@
 			width:200px;
 			height:45px;;
 			margin: 12px;
+			font-family:'BMHANNAPro';
 		}
 		
 		/* 리뷰*/
@@ -213,7 +220,7 @@
 		
 		<!-- box2  -->
 		<div class="box2 left">
-			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;</a>
+			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			<a class="sub1">서울 서대문구 이화여대길 52-31</a><br>
 			<a class="picto" id="exclude"> &#9742;&nbsp;&nbsp;&nbsp;</a>
 			<a class = "sub1">02-000-0000</a><br>

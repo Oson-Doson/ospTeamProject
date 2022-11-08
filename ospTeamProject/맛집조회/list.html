@@ -4,19 +4,23 @@
 		<meta charset="utf-8">
         <title>맛집리스트화면</title>
 	<style>
+		@font-face { font-family: 'NanumBarunGothic';
+			src: url('/fonts/NanumBarunGothic.eot');
+			src: url('/fonts/NanumBarunGothic.eot') format('embedded-opentype'),
+				 url('/fonts/NanumBarunGothic.woff') format('woff');
+		}
 		@font-face{
-                font-family:'BMJUA';
-                src:url('BMJUA_otf.otf');
-            }
-            @font-face{
-                font-family:'BMDOHYUN';
-                src:url('BMDOHYEON_otf.otf');
-            }
-            @font-face{
-                font-family:'BMHANNAPro';
-                src:url('BMHANNAProOTF.otf');
-            }
-
+            font-family:'BMJUA';
+            src:url('BMJUA_otf.otf');
+        }
+        @font-face{              
+			font-family:'BMDOHYUN';
+            src:url('BMDOHYEON_otf.otf');
+        }
+        @font-face{
+           font-family:'BMHANNAPro';
+           src:url('BMHANNAProOTF.otf');
+        }
 
 		* {
 			font-size: 20px;
@@ -34,6 +38,7 @@
             font-size: 100%;
             line-height: 100%;
             text-align: center;
+			font-family: 'NanumBarunGothic', 'serif';
         }
 
 		.contents{
@@ -102,7 +107,7 @@
             width: 180px;
             height: 60px;
             margin: 15px;
-			font-family:'BMJUA';
+			font-family: 'BMHANNAPro', 'sans-serif';
         } 
 		
 		.option {  /* select의 디자인 커스텀의 한계로 적용 안됨) */
@@ -159,20 +164,13 @@
 		.sub1 {
 			font-size:20px;
 			position: static;
-			font-family:'BMHANNAPro';
+			font-family: 'NanumBarunGothic', 'serif';
 		}
 		
-		.sub2 {
-			font-size:25px;
-			font-weight: bold;
-   			position: relative; top:-20px; 
-			   font-family:'BMHANNAPro';
-		}
-	
 		.sub3 {
 			font-size:25px;
 			font-weight: bold;
-			font-family:'BMHANNAPro';
+			font-family: 'NanumBarunGothic', 'serif';
 		}
 		
 		.star {
@@ -182,8 +180,7 @@
 		}
 
 		#exclude{
-			font-family:none;
-
+			font-family: 'NanumBarunGothic', 'serif';
 		}
 		
 		</style>
@@ -214,7 +211,7 @@
 		</a>
 			<!-- 가격대 select -->
 			<select class="sort" id="price">
-				<option value="all">&#8361;&nbsp;&nbsp;가격대</option>
+				<option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
 				<option value="<5000">~5000</option>
 				<option value="10000~15000">10000~15000</option>
 				<option value="15000~<20000">15000~20000</option>
