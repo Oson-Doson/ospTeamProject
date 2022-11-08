@@ -33,7 +33,7 @@
 
         body {
             position: relative;
-            min-width: 1000px;
+            min-width: 1400px;
             margin: 0 auto;
             font-size: 100%;
             line-height: 100%;
@@ -122,13 +122,15 @@
 
 		/* 리스트 */
 		/*        */
+
 		div.list {
 			margin: 14px;
+			margin-right: 2px;
 			border: 1px solid #506A4C;
 			padding:15px;
 			padding-top:25px;
 			float: left;
-			width: 29%;
+			width: 28%;
 			border-color: #506A4C;
 		}
 		
@@ -137,7 +139,8 @@
 			width: 160px;
 			height: 160px;
 			padding: 0px;
-			margin: 25px;
+			margin: 21px;
+			margin-top: 25px;
 			box-shadow: 1px -1px 5px 2px gray;
 		}
 		
@@ -193,161 +196,161 @@
             document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
         </script>
 
-		<div class="contents"></div>
-		<div id="menuType">
-			<button class="typeButton" id="typetotal">total</button>
-			<button class="typeButton" id="typeKorean">한식</button>
-			<button class="typeButton" id="typeChinese">중식</button>
-			<button class="typeButton" id="typeJapanese">일식</button>
-			<button class="typeButton" id="typeWestern">양식</button>
-			<button class="typeButton" id="typeCafe">카페</button>
-		</div>
-
-		<!-- SORT -->
-		<div class="SORTAREA">
-		<!-- sorting img -->
-		<a class="sorting">
-			<img src="sorting sign.png" alt="sorting sign" width="40" height="40">
-		</a>
-			<!-- 가격대 select -->
-			<select class="sort" id="price">
-				<option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
-				<option value="<5000">~5000</option>
-				<option value="10000~15000">10000~15000</option>
-				<option value="15000~<20000">15000~20000</option>
-				<option value=">20000">20000~</option>
-			</select>
-
-			<!-- 주차가능 -->
-			<button class="sort" id="park" onclick="changeParkButton()">
-				<b>&#8473;</b>&nbsp;&nbsp;주차가능
-			</button>
-
-			<!-- 영업 중 -->
-			<button class="sort" id="open" onclick="changeOpenButton()">
-				<b>&#9719;</b>&nbsp;&nbsp;영업중
-			</button>
-			<br>
-		</div>
-
-		<!-- 리스트  -->
-		<div class="list">
-			<a target="_blank" href="00식당사진">
-				<img src="food.jpg" alt="00식당사진" width=100% height=50%>
-			</a>
-			<div class="desc">
-				<a class="store">00식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
+		<div class="contents">
+			<div id="menuType">
+				<button class="typeButton" id="typetotal">total</button>
+				<button class="typeButton" id="typeKorean">한식</button>
+				<button class="typeButton" id="typeChinese">중식</button>
+				<button class="typeButton" id="typeJapanese">일식</button>
+				<button class="typeButton" id="typeWestern">양식</button>
+				<button class="typeButton" id="typeCafe">카페</button>
 			</div>
-		</div>
 
-		<div class="list">
-			<a target="_blank" href="aa식당사진">
-				<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
+			<!-- SORT -->
+			<div class="SORTAREA">
+			<!-- sorting img -->
+			<a class="sorting">
+				<img src="sorting sign.png" alt="sorting sign" width="40" height="40">
 			</a>
-			<div class="desc">
-				<a class="store">aa식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.2 </a><br>
-				<a class="sub1">02-000-0000</a>
-			</div>
-		</div>
+				<!-- 가격대 select -->
+				<select class="sort" id="price">
+					<option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
+					<option value="<5000">~5000</option>
+					<option value="10000~15000">10000~15000</option>
+					<option value="15000~<20000">15000~20000</option>
+					<option value=">20000">20000~</option>
+				</select>
 
-		<div class="list">
-			<a target="_blank" href="bb식당사진">
-				<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
-			</a>
-			<div class="desc">
-				<a class="store">bb식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
-			</div>
-		</div>
-		<!-- 리스트  -->
-		<div class="list">
-			<a target="_blank" href="00식당사진">
-				<img src="food.jpg" alt="00식당사진" width=100% height=50%>
-			</a>
-			<div class="desc">
-				<a class="store">00식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
-			</div>
-		</div>
+				<!-- 주차가능 -->
+				<button class="sort" id="park" onclick="changeParkButton()">
+					<b>&#8473;</b>&nbsp;&nbsp;주차가능
+				</button>
 
-		<div class="list">
-			<a target="_blank" href="aa식당사진">
-				<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
-			</a>
-			<div class="desc">
-				<a class="store">aa식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.2 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<!-- 영업 중 -->
+				<button class="sort" id="open" onclick="changeOpenButton()">
+					<b>&#9719;</b>&nbsp;&nbsp;영업중
+				</button>
+				<br>
 			</div>
-		</div>
 
-		<div class="list">
-			<a target="_blank" href="bb식당사진">
-				<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
-			</a>
-			<div class="desc">
-				<a class="store">bb식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
-			</div>
-		</div>
-		<!-- 리스트  -->
-		<div class="list">
-			<a target="_blank" href="00식당사진">
-				<img src="food.jpg" alt="00식당사진" width=100% height=50%>
-			</a>
-			<div class="desc">
-				<a class="store">00식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
-			</div>
-		</div>
+			<!-- 리스트  -->
+				<div class="list">
+					<a target="_blank" href="00식당사진">
+						<img src="food.jpg" alt="00식당사진" width=100% height=50%>
+					</a>
+					<div class="desc">
+						<a class="store">00식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.4 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
 
-		<div class="list">
-			<a target="_blank" href="aa식당사진">
-				<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
-			</a>
-			<div class="desc">
-				<a class="store">aa식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.2 </a><br>
-				<a class="sub1">02-000-0000</a>
-			</div>
-		</div>
+				<div class="list">
+					<a target="_blank" href="aa식당사진">
+						<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
+					</a>
+					<div class="desc">
+						<a class="store">aa식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.2 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
 
-		<div class="list">
-			<a target="_blank" href="bb식당사진">
-				<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
-			</a>
-			<div class="desc">
-				<a class="store">bb식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
-			</div>
+				<div class="list">
+					<a target="_blank" href="bb식당사진">
+						<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
+					</a>
+					<div class="desc">
+						<a class="store">bb식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.4 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
+				<!-- 리스트  -->
+				<div class="list">
+					<a target="_blank" href="00식당사진">
+						<img src="food.jpg" alt="00식당사진" width=100% height=50%>
+					</a>
+					<div class="desc">
+						<a class="store">00식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.4 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
+
+				<div class="list">
+					<a target="_blank" href="aa식당사진">
+						<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
+					</a>
+					<div class="desc">
+						<a class="store">aa식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.2 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
+
+				<div class="list">
+					<a target="_blank" href="bb식당사진">
+						<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
+					</a>
+					<div class="desc">
+						<a class="store">bb식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.4 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
+				<!-- 리스트  -->
+				<div class="list">
+					<a target="_blank" href="00식당사진">
+						<img src="food.jpg" alt="00식당사진" width=100% height=50%>
+					</a>
+					<div class="desc">
+						<a class="store">00식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.4 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
+
+				<div class="list">
+					<a target="_blank" href="aa식당사진">
+						<img class="photo" src="food2.jpg" alt="aa식당사진" width="45%" height="50%">
+					</a>
+					<div class="desc">
+						<a class="store">aa식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.2 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
+
+				<div class="list">
+					<a target="_blank" href="bb식당사진">
+						<img src="food3.jpg" alt="bb식당사진" width=auto height="400">
+					</a>
+					<div class="desc">
+						<a class="store">bb식당</a><br>
+						<a class="sub1">#혼밥가능</a><br>
+						<a class="star">&#10030;&nbsp;</a>
+						<a class="sub3">4.4 </a><br>
+						<a class="sub1">02-000-0000</a>
+					</div>
+				</div>
 		</div>
-	</div>
 
 		<!-- footer -->
         <footer id="footer" style="width: 100%"></footer>
