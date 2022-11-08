@@ -29,8 +29,8 @@
             margin:0 auto;
             font-size:100%;
             line-height:100%;
-               
-            }
+               }
+
     label{
         font-family: 'BMHANNAPro';
         font-size: 30px;
@@ -69,13 +69,9 @@
 			padding-left:40px;
 			
 		}
-    input[type=image]{
-        background-color:#D9D9D9;
-        height: 100px;
-        margin-top: 30px;
-        
-    }
-       
+   
+    
+    /*파일 선택 버튼 꾸미기*/
     .filebox label {
         display: inline-block;
         padding: 10px 20px;
@@ -87,6 +83,7 @@
         height: 40px;
         margin-left: 10px;
     }
+
     .filebox input[type="file"] {
         position: absolute;
         width: 0;
@@ -101,7 +98,7 @@
 			padding-top:20px;
 		
 		}
-
+    
     button.fileupload{
         height:30px;
 		width:100px;
@@ -112,19 +109,26 @@
         font-size:17px;
         
     }
+    /*이미지 업로드 부분*/
     input[type=image]{
         background-color:#D9D9D9;
         height: 150px;
         width:  150px;
-        
+        margin-top: 30px;  
     }
+
+    /*비건 알레르기 체크박스*/
     input[type=checkbox]{
         width:30px;
         height:30px;
     }
+  
+    /*알레르기 체크박스 앞에 여백 주기*/    
     input[id="allergy"]{
         margin-left:150px;
     }
+
+    /*사용자 입력창 꾸미기*/
 	input{
 		width:250px;
 		height:30px;
@@ -142,7 +146,7 @@
         font-family:'NanumBarunGothic';
         font-size:15px;
 		}
-	  
+	/*메뉴추가, 등록 버튼 */  
     button.add,button.register{
 		background-color:white;
 		border-color: #506A4C;
@@ -175,11 +179,12 @@
             
             <table>
                 
+                <!--음식명 입력-->
                 <tr>
                     <td><label for="Fname">음식명</label></td>
                     <td><input type="text" id="Fname" name="Fname" value=""></td>
                 </tr>
-                
+                <!--사진 업로드-->
                 <tr>
                     <td><label for="pic">사진</label></td>
                     <td><input type="image" id="picture" name="picture" value="">
@@ -187,17 +192,20 @@
                         </td>
                 </tr>
                 
+                <!--가격 입력-->
                 <tr>
                     <td><label for="price">가격 (원)</label></td>
                     <td><input type="text" id="price" name="price" value=""></td>
                 </tr>
                 
+                <!--메뉴 상세 설명-->
                 <tr>
                     <td><label for="menudetail">메뉴 상세 설명</label></td>
                     <td><textarea name="menudetail" cols="100" rows="10" ></textarea>
                     </td>
                 </tr>
                 
+                <!--추가 정보(비건/ 알레르기)-->
                 <tr>
                     <td><label for="addinfor">추가 정보</label></td>
                     <td><input type="checkbox" id="vegan" name ="vegan" value ="vegan" >
@@ -206,6 +214,7 @@
                     <a>알레르기</a></td>
                 </tr>
                 
+                <!---알레르기 선택하면 보여지는 input-->
                 <tr>
                 <td> <label for="allergy">알레르기</label></td>
                     <td><input type="text" id="Fname" name="Fname" value=""></td>
@@ -215,6 +224,7 @@
             
             </div>
             
+            <!--메뉴추가 등록 버튼-->
             <div id= "button">
                 <button class="add" type="button" id= "btnadd" onclick =" ">메뉴 추가</button>
                 <button class="register" type="button" id= "btnregister" onclick =" ">등록</button>
@@ -222,7 +232,7 @@
         
         </div>
         <!-- footer -->
-        <footer id="footer" style="width: 100%"></footer>
+            <footer id="footer" style="width: 100%"></footer>
             <script>
                 document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
             </script>  
