@@ -2,20 +2,21 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Home</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>홈 화면</title>
         <style>
 
             @font-face{
                 font-family:'BMJUA';
-                src:url('BMJUA_otf.otf');
+                src:url('../BMJUA_otf.otf');
             }
             @font-face{
                 font-family:'BMDOHYUN';
-                src:url('BMDOHYEON_otf.otf');
+                src:url('../BMDOHYEON_otf.otf');
             }
             @font-face{
                 font-family:'BMHANNAPro';
-                src:url('BMHANNAProOTF.otf');
+                src:url('../BMHANNAProOTF.otf');
             }
 
             html{
@@ -24,7 +25,7 @@
             }
             body{
                 position:relative;
-                min-width:1000px;
+                min-width:1200px;
                 margin:0 auto;
                 font-size:100%;
                 line-height:100%;
@@ -38,11 +39,12 @@
             }
 
             #menuType{
+                margin-top:20px;
                 margin-bottom:1px;
             }
 
            .typeButton{
-                width:15%;
+                width:15.2%;
                 margin-left:-1px;
                 margin-right:-1px;
                 height:50px;
@@ -71,7 +73,6 @@
 
             #recommendBox{
                 display:flex;
-                float:center;
             }
 
             #recommendInnerBox{
@@ -80,28 +81,62 @@
                 margin-top:2px;
                 margin-bottom:10px;
                 background-color:#dfe7d8;
-                float:center;
+                display:flex;
             }
             
-            li.restaurant-item{
+            li {
                 list-style-type:none;
                 float:left;
                 width:33%;
             }
-            
-            .restaurant-item.figure{
-                width:100%;
-                float:center;
+
+            .restaurant-item{
+                display:flex;
+                align-items:center;
+                cursor:pointer;
+                margin: 10px 5px 10px 5px;
             }
 
             .thumb{
+                width:200px;
                 height:200px;
                 background-color:rgb(231,230,230);
-                margin :10px 5px;
+                margin-right:30px;
+                padding:0;
                 box-shadow:2px -2px 10px -3px gray;
             }
 
-            .info{ margin:10px 5px; text-align:center;}
+            .star-ratings {
+                color: #aaa9a9; 
+                position: relative;
+                unicode-bidi: bidi-override;
+                width: max-content;
+                -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+                -webkit-text-stroke-width: 1.3px;
+                -webkit-text-stroke-color: #2b2a29;
+            }
+            
+            .star-ratings-fill {
+                color: #fff58c;
+                padding: 0;
+                position: absolute;
+                z-index: 1;
+                display: flex;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                -webkit-text-fill-color: gold;
+            }
+            
+            .star-ratings-base {
+                z-index: 0;
+                padding: 0;
+            }
+
+            .restaurantTitle{
+                margin-top:30px;
+                font-size:xx-large;
+            }
         
 
             #btn_restaurantOfMonth{
@@ -194,7 +229,7 @@
             }
 
             #quickMenu{
-                margin:10px 50px;
+                margin:20px 50px 30px 50px;
                 display:flex;
             }
              #box_quickMenu{
@@ -249,78 +284,109 @@
                         <button class="btn-nav prev slick-arrow"><img src="left-removebg-preview.png" width="50px" height="100px"></button>
                         <div id="recommendInnerBox">
                             <ul>
-                                <li class="restaurant-item">
-                                    <a>
-                                        <div class="restaurant-item">
-                                            <figure class="thumb">
-                                                <img>
-                                            </figure>
-                                            <figcaption class="info">
-                                                <span class="restaurantTitle">식당이름</span>
-                                            </figcaption>
-                                        </div>
-                                    </a>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <img class="thumb">
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
                                 </li>
-                                <li class="restaurant-item">
-                                    <a>
-                                        <div class="restaurant-item">
-                                            <figure class="thumb">
-                                                <img>
-                                            </figure>
-                                            <figcaption class="info">
-                                                <span class="restaurantTitle">식당이름</span>
-                                            </figcaption>
-                                        </div>
-                                    </a>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <img class="thumb">
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
                                 </li>
-                                <li class="restaurant-item">
-                                    <a>
-                                        <div class="restaurant-item">
-                                            <figure class="thumb">
-                                                <img>
-                                            </figure>
-                                            <figcaption class="info">
-                                                <span class="restaurantTitle">식당이름</span>
-                                            </figcaption>
-                                        </div>
-                                    </a>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <img class="thumb">
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
                                 </li>
-                                <li class="restaurant-item">
-                                    <a>
-                                        <div class="restaurant-item">
-                                            <figure class="thumb">
-                                                <img>
-                                            </figure>
-                                            <figcaption class="info">
-                                                <span class="restaurantTitle">식당이름</span>
-                                            </figcaption>
-                                        </div>
-                                    </a>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <img class="thumb">
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
                                 </li>
-                                <li class="restaurant-item">
-                                    <a>
-                                        <div class="restaurant-item">
-                                            <figure class="thumb">
-                                                <img>
-                                            </figure>
-                                            <figcaption class="info">
-                                                <span class="restaurantTitle">식당이름</span>
-                                            </figcaption>
-                                        </div>
-                                    </a>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <img class="thumb">
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
                                 </li>
-                                <li class="restaurant-item">
-                                    <a>
-                                        <div class="restaurant-item">
-                                            <figure class="thumb">
-                                                <img>
-                                            </figure>
-                                            <figcaption class="info">
-                                                <span class="restaurantTitle">식당이름</span>
-                                            </figcaption>
-                                        </div>
-                                    </a>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <img class="thumb">
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
                                 </li>
+                                
                             </ul>
                         </div>
                         <button class="btn-nav next slick-arrow"><img src="right-removebg-preview.png" width="50px" height="100px"></button>
