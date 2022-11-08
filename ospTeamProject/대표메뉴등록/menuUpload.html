@@ -9,45 +9,54 @@
 	padding:0;
 	margin:0;
 	box-sizing: border-box;
+    
     }
-	#header,#footer {margin:0;}
-    body{
-                position:relative;
-                min-width:1000px;
-                margin:0 auto;
-                font-size:100%;
-                line-height:100%;
-               
+    @font-face {
+        font-family: 'NanumBarunGothic';
+        font-style: normal;
+        font-weight: 400;
+        src: url('../NaumBarunGothic.eot');
+        
+    }
+    @font-face{
+                font-family:'BMHANNAPro';
+                src:url('../BMHANNAProOTF.otf');
             }
 
-    main{
+    body{
+            position:relative;
+            min-width:1000px;
+            margin:0 auto;
+            font-size:100%;
+            line-height:100%;
+               }
+
+    label{
+        font-family: 'BMHANNAPro';
+        font-size: 30px;
+        white-space:nowrap;
+    }
+    
+    #main{
 	margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
-	margin-bottom: 20px;
     padding-bottom: 50px;
-	width: 100%;
+    margin:30px 60px 30px 60px;
 	height: 90%;
     border:2px solid #506A4C;
     }
 
 	#section{
 	margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
-	padding: 20px 0 20px 0; 
+	padding: 10px 10px 0px 0px; 
 	width: 90%;
 	height: 80%;	
 	border:2px solid  #CADFB8;
     margin-top: 20px;
 	}
-	img{
-        float:top;
-        margin-right:20px;
-        
-    }
+	
     table{
 		margin:0 auto;
 		line-height:90px;
-		}
-	label{
-		text-decoration:underline;	
 		}
 		
     tr{
@@ -60,12 +69,9 @@
 			padding-left:40px;
 			
 		}
-        input[type=image]{
-        background-color:#D9D9D9;
-        height: 100px;
-        
-    }
-       
+   
+    
+    /*파일 선택 버튼 꾸미기*/
     .filebox label {
         display: inline-block;
         padding: 10px 20px;
@@ -77,6 +83,7 @@
         height: 40px;
         margin-left: 10px;
     }
+
     .filebox input[type="file"] {
         position: absolute;
         width: 0;
@@ -85,42 +92,69 @@
         overflow: hidden;
         border: 0;
     }
-        #button{
+    #button{
 			text-align:center;
 			padding-bottom:20px;
 			padding-top:20px;
 		
 		}
-        button.fileupload{
+    
+    button.fileupload{
         height:30px;
 		width:100px;
-		font-size:15px;
 		background-color:#506A4C;
         border-color:#506A4C; 
 		color:white;
+        font-family: 'BMHANNAPro';
+        font-size:17px;
+        
     }
+    /*이미지 업로드 부분*/
     input[type=image]{
         background-color:#D9D9D9;
         height: 150px;
         width:  150px;
-        
+        margin-top: 30px;  
     }
-		input{
+
+    /*비건 알레르기 체크박스*/
+    input[type=checkbox]{
+        width:30px;
+        height:30px;
+    }
+  
+    /*알레르기 체크박스 앞에 여백 주기*/    
+    input[id="allergy"]{
+        margin-left:150px;
+    }
+
+    /*사용자 입력창 꾸미기*/
+	input{
 		width:250px;
 		height:30px;
+		border:1.5px solid #506A4C;
+        font-family:'NanumBarunGothic';
+        font-size:15px;
+	}
+    a{
+        font-family:'NanumBarunGothic';
+        font-size:22px;  
+    }
+	textarea{
 		border:1.5px solid #506A4C;	
+		resize: none;
+        font-family:'NanumBarunGothic';
+        font-size:15px;
 		}
-		textarea{
-			border:1.5px solid #506A4C;	
-			resize: none;
-		}
-	  button.add,button.register{
+	/*메뉴추가, 등록 버튼 */  
+    button.add,button.register{
 		background-color:white;
 		border-color: #506A4C;
         color:#506A4C;
 		height:38px;
 		width:130px;
-        font-size: 17px;
+        font-family: 'BMHANNAPro';
+        font-size:20px;
 	}
 
 </style>
@@ -132,67 +166,77 @@
         <script>
             document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
         </script>
-		<nav>
-			<img src="menuregbar.png" alt="barimg" style="width: 100%; height:70px;">
-		</nav>
 		
-		<main>
-		<div id="section">
-			
 		
-		<a href=" "><img src="x.png" alt="cancel" width="25px" height="25px" style="float:right"></a>
-			
+		<div id="main">
 		
-		<table>
-			
-            <tr>
-                <td><label for="Fname">음식명</label></td>
-                <td><input type="text" id="Fname" name="Fname" value=""></td>
-            </tr>
-            <tr>
-                <td><label for="pic">사진</label></td>
-                <td><input type="image" id="picture" name="picture" value="">
-                    <button class="fileupload" onclick ="">파일 선택</button>
+		    <nav><img src="menuregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>	
+		
+            <div id="section">
+                
+            <a href=" "><img src="x.png" alt="cancel" width="25px" height="25px" style="float:right"></a>
+                
+            
+            <table>
+                
+                <!--음식명 입력-->
+                <tr>
+                    <td><label for="Fname">음식명</label></td>
+                    <td><input type="text" id="Fname" name="Fname" value=""></td>
+                </tr>
+                <!--사진 업로드-->
+                <tr>
+                    <td><label for="pic">사진</label></td>
+                    <td><input type="image" id="picture" name="picture" value="">
+                        <button class="fileupload" onclick ="">파일 선택</button>
+                        </td>
+                </tr>
+                
+                <!--가격 입력-->
+                <tr>
+                    <td><label for="price">가격 (원)</label></td>
+                    <td><input type="text" id="price" name="price" value=""></td>
+                </tr>
+                
+                <!--메뉴 상세 설명-->
+                <tr>
+                    <td><label for="menudetail">메뉴 상세 설명</label></td>
+                    <td><textarea name="menudetail" cols="100" rows="10" ></textarea>
                     </td>
-              
-            </tr>
-            <tr>
-				<td><label for="price">가격 (원)</label></td>
-                <td><input type="text" id="price" name="price" value=""></td>
-            </tr>
-            <tr>
-                <td><label for="menudetail">메뉴 상세 설명</label></td>
-                <td><textarea name="menudetail" cols="100" rows="10" ></textarea>
-		
-		</td>
-            </tr>
-            <tr>
-                <td><label for="addinfor">추가 정보</label></td>
-	
-                <td><input type="checkbox" id="vegan" name ="vegan" value ="vegan" style="float:left;">
-	            비건 
-	            <input type="checkbox" id="allergy" name ="allergy" value ="allergy">
-				알레르기</td>
-            </tr>
-            <tr>
-               <td> <label for="allergy">알레르기</label></td>
-                <td><input type="text" id="Fname" name="Fname" value=""></td>
-
-            </tr>
- 
-		</table>
-		
-		</div>
-		<div id= "button">
-		<button class="add" type="button" id= "btnadd" onclick =" ">메뉴 추가</button>
-		<button class="register" type="button" id= "btnregister" onclick =" ">등록</button>
+                </tr>
+                
+                <!--추가 정보(비건/ 알레르기)-->
+                <tr>
+                    <td><label for="addinfor">추가 정보</label></td>
+                    <td><input type="checkbox" id="vegan" name ="vegan" value ="vegan" >
+                    <a>비건</a> 
+                    <input type="checkbox" id="allergy" name ="allergy" value ="allergy" >
+                    <a>알레르기</a></td>
+                </tr>
+                
+                <!---알레르기 선택하면 보여지는 input-->
+                <tr>
+                <td> <label for="allergy">알레르기</label></td>
+                    <td><input type="text" id="Fname" name="Fname" value=""></td>
+                </tr>
     
-			</div></main>
-      <!-- footer -->
-        <footer id="footer" style="width: 100%"></footer>
-        <script>
-            document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
-        </script>      
+            </table>
+            
+            </div>
+            
+            <!--메뉴추가 등록 버튼-->
+            <div id= "button">
+                <button class="add" type="button" id= "btnadd" onclick =" ">메뉴 추가</button>
+                <button class="register" type="button" id= "btnregister" onclick =" ">등록</button>
+            </div>
+        
+        </div>
+        <!-- footer -->
+            <footer id="footer" style="width: 100%"></footer>
+            <script>
+                document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
+            </script>  
+                
 	</body> 
    
 </html>
