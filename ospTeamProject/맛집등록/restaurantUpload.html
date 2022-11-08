@@ -1,85 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+
 <title> 맛집 등록 화면</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <style>
-*{ /* 모든태그에 적용 : * (초기값 설정) */
-	padding:0;
-	margin:0;
-	box-sizing: border-box;
-}
-
-
-body{
-                position:relative;
-                min-width:1000px;
-                margin:0 auto;
-                font-size:100%;
-                line-height:100%;
-                
+    *{ /* 모든태그에 적용 : * (초기값 설정) */
+        padding:0;
+        margin:0;
+        box-sizing: border-box;
+    }
+    @font-face {
+        font-family: 'NanumBarunGothic';
+        font-style: normal;
+        font-weight: 400;
+        src: url('../NaumBarunGothic.eot');
+        
+    }
+    @font-face{
+                font-family:'BMHANNAPro';
+                src:url('../BMHANNAProOTF.otf');
             }
-main{
-	margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
-	margin-bottom: 20px;
-    padding-bottom: 50px;
-	width: 100%;
-	height: 90%;
-    border:2px solid #506A4C;
-    
-}
-#header,#footer {margin:0;}
-	nav{
-		padding-bottom:20px;
 
-	}
-	
-	table{
-		margin:0 auto;
+    body{   
+            position:relative;
+            min-width:1000px;
+            margin:0 auto;
+            font-size:100%;
+            line-height:100%;  
+        
+            }
+
+    #main{
+        margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
+        padding-bottom: 50px;
+        margin:30px 60px 30px 60px;
+        height: 90%;
+        border:2px solid #506A4C;
+        }
+    
+    label{
+        font-family: 'BMHANNAPro';
+        font-size: 30px;
+    }
+    table{
+        margin-top: 20px;
 		border-collapse : collapse;
 		line-height:80px;
-        
-        
+        display:flex;
 		}
-	tr{
+	
+    tr{
 		color:#506A4C;
 		font-size:23px;
         vertical-align : top;
 	}
-	td{
-		padding-left:40px;
+	
+    td{
+        padding-right:20px;
+		padding-left:80px;
 	}
-
-	label{
-		text-decoration:underline;
-        
-            
-		}
-	input{
+    
+	input[type=text]{
 		border:1.5px solid #506A4C;
-        width:180px;
+        width:250px;
 		height:30px;	
 		}
     input[type=image]{
         background-color:#D9D9D9;
-        height: 100px;
-        width: 100px;
-        
+        height: 110px;
+        width: 110px;
+        margin-top: 30px;; 
+    }
+    input[type=checkbox]{
+        width:30px;
+        height:30px;
+    }
+    input[id="parkingx"]{
+        margin-left:50px;
+    }
+    
+    input,select{
+        font-family:'NanumBarunGothic';
+        font-size:15px;
+    }
+    a{
+        font-family:'NanumBarunGothic';
+        font-size:22px;  
     }
     select{
         border:1.5px solid #506A4C;
         height:30px;
             
         }
-	button.search{
+	
+    button.search{
 		height:30px;
 		width:50px;
 		font-size:15px;
 		background-color:#506A4C;
         border-color:#506A4C; 
 		color:white;
+        font-family: 'BMHANNAPro';
+        font-size:17px;
 	}
+    
     button.gotomenuUpload {
         float:right; 
         margin-right:30px;
@@ -87,9 +114,10 @@ main{
         color:#506A4C; 
         background-color:white;
         font-size: 15px;
-        height: 35px;
-        
+        height: 35px; 
+       
     }
+    
     button.fileupload{
         height:30px;
 		width:100px;
@@ -97,10 +125,11 @@ main{
 		background-color:#506A4C;
         border-color:#506A4C; 
 		color:white;
+        font-family: 'BMHANNAPro';
+        font-size:17px;
     }
-    
-	</style>
-	</head>
+</style>
+</head>
 	
 	<body>
 
@@ -109,10 +138,10 @@ main{
         <script>
             document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
         </script>
-        <nav> <img src="resregbar.png" alt="barimg" style="width: 100%; height:70px;"></nav>
-<main>
-	
-    <table>
+        
+    <div id ="main">
+	        <nav> <img src="resregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>
+        <table>
 			
             <tr>
                 <td><label>식당이름</label></td>
@@ -121,32 +150,32 @@ main{
             <tr>
                 <td><label for="address">주소</label></td>
                 <td><input type="text" id="address" name="address" value=""> 
-					<button class="search"onclick =" document.location='default.asp'">찾기</button></td>
-              
+					<button class="search"onclick =" document.location='default.asp'">찾기</button></td> 
             </tr>
+            
             <tr>
 			<td><label for="tel">전화번호</label></td>
-            <td><input type="text" id="tel1" name="tel" value=""style="width:50px;"> -
+            <td><input type="text" id="tel1" name="tel" value=""style="width:70px;"> -
 		    <input type="text" id="tel2" name="tel" value=""> -
 		    <input type="text" id="tel3" name="tel" value=""></td>
             </tr>
             
             <tr>
             <td><label for="select-food category">음식 category</label></td>
-		    <td>
-            <select id="select-food category">
+		    
+            <td><select id="select-food category">
             <option value="empty">-----------</option>
             <option value="korean">한식</option>
             <option value="chinese">중식</option>
             <option value="japanese">일식</option>
             <option value="western">양식</option>
             <option value="cafe">카페</option>
-                </select>
+        </select>
             </td>
-                </tr>
-                <tr>
+            </tr>
+                
+            <tr>
             <td><label for="keyword">키워드</label></td>
-
             <td><select id="selec-mood">
             <option value="empty">분위기</option>
             <option value="good">#분위기좋은</option>
@@ -158,7 +187,6 @@ main{
                 
             <tr>
             <td> <label for="price">가격대</label></td>
-
             <td><select id="select-price">
             <option value="empty">----------------------</option>
             <option value="5000">~5,000</option>
@@ -171,10 +199,10 @@ main{
             
             <tr>
 			<td><label for="parking">주차여부</label></td>
-			<td><input type="checkbox" id="parkging" name ="parking" value ="parkingo">
-	        주차 가능 
-	        <input type="checkbox" id="parkging" name ="parking" value ="parkingx">
-			주차 불가</td>
+			<td><input type="checkbox" id="parkingo" name ="parking" value ="parkingo">
+	        <a>주차 가능</a>
+	        <input type="checkbox" id="parkingx" name ="parking" value ="parkingx">
+			<a>주차 불가</a></td>
             </tr>
             
                         
@@ -208,7 +236,7 @@ main{
             <option value="22">22</option>
             <option value="23">23</option>	 
             <option value="24">24</option>
-                </select>
+            </select>
             :
             <select id="select-min">
             <option value="empty"></option>
@@ -260,22 +288,23 @@ main{
             <option value="50">50</option>
             </select></td>
 
-                <tr>
-                <td><label for="picture">외부 또는 내부 대표사진</label></td>
-                <td>
-                <input type="image" id="picture" name="picture" value="">
-                <button class="fileupload" onclick ="">파일 선택</button>
-                </td>
-                </tr>   
+            <tr>
+            <td><label for="picture">외부 또는 내부 대표사진</label></td>
+            <td>
+            <input type="image" id="picture" name="picture" value="">
+            <button class="fileupload" onclick ="">파일 선택</button>
+            </td>
+            </tr>   
                 
-	</table>
+	    </table>
 		<button class="gotomenuUpload" onclick="location.href='menuUpload.html'">맛집 대표 메뉴 등록 이어하기 &#9654;</button>
-</main>
+    </div>
     
-<!-- footer -->
-<footer id="footer" style="width: 100%"></footer>
-<script>
-    document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
-</script>
+        <!-- footer -->
+        <footer id="footer" style="width: 100%"></footer>
+        <script>
+            document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
+        </script>
+
 </body>
 </html>
