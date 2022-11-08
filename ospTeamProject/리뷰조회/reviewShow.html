@@ -3,50 +3,106 @@
 
 <body>
 
+    <!-- header 붙여넣기 -->
+    <div id="header" style="width: 100%"></div>
+    <script>
+        document.getElementById("header").innerHTML = '<object type="text/html" data="../header.html" style="width:100%"></object>';
+    </script>
+
     <!--상단 4개의 메뉴 바-->
+
     <div class="bar">
-        <div class="bar-name" style="float: left; width: 30%;"><span style="color: #FFC000;">00 가게</span> 리뷰</div>
-        <div class="bar-rank"style="float: left; width: 20%;">4.3/5</div>
-        <div class="bar-review"style="float: right; width: 20%;">리뷰 수 23</div>
-        <div class="bar-goto"style="float: right; width: 30%">00 가게 세부정보로 이동</div>
+        <div class="bar-name" style="width: 25%;"><span style="color: #FFC000;">00 가게</span> 리뷰</div>
+        <div class="bar-rank" style="width: 15%;"><span style="color: #FFc000; font-size: 40px;">★ </span>4.3/5
+        </div>
+        <div class="bar-review" style="width: 15%;">리뷰 수 23</div>
+        <div class="bar-goto" style="width: 25%">00 가게 세부정보로 이동</div>
     </div>
 
     <!--리뷰 리스트-->
     <div id="review-list">
         <div class="review-card">
             <div style="display: inline-block; vertical-align:top;">
-                <img class="review-img" src="./food.jpg" alt="사진 불러오기 실패">
+                <img class="review-img" src="./food1.jpg" alt="사진 불러오기 실패">
             </div>
 
-            <div style="color: gray; font-size: 20px; position: absolute; top: 8px; right: 8px;">홍길동</div>
+            <div style="color: gray; font-size: 25px; position: absolute; top: 10px; right: 15px;">홍길동</div>
 
-            <div class="review-contents" style="display:inline-block; margin-left: 25px">
-                <p style="margin-bottom: 15px; font-size: 40px; font-weight: bold;">평점</p>
-                <p style="margin-bottom: 15px;font-size: 30px; font-weight: bold;">#혼밥가능 #고소한</p>
-                <p style="font-size: 25px;">육회덮밥에 노른자를 터뜨려 비벼 먹으면 한 그릇 뚝딱!</p>
+            <div class="review-contents" style="display:inline-block; margin-left: 25px;">
+                <span style="display: inline-block; margin-bottom: 10px;">평점</span>
+                <div class="star-ratings">
+                    <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <div class="star-ratings-base space-x-2 text-lg">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 10px; font-size: 22px; color: gray;">#혼밥가능 #고소한</p>
+                <p>매일 가요.. 먹고 먹어도 계속 생각나는 맛..!</p>
+            </div>
+        </div>
+
+        <div class="review-card">
+            <div style="display: inline-block; vertical-align:top;">
+                <img class="review-img" src="./food2.jpg" alt="사진 불러오기 실패">
             </div>
 
+            <div style="color: gray; font-size: 25px; position: absolute; top: 10px; right: 15px;">이화연</div>
+
+            <div class="review-contents" style="display:inline-block; margin-left: 25px;">
+                <span style="display: inline-block; margin-bottom: 10px;">평점</span>
+                <div class="star-ratings">
+                    <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <div class="star-ratings-base space-x-2 text-lg">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 10px; font-size: 22px; color: gray;">#혼밥가능 #달달한</p>
+                <p>든든하고 건강해지는 느낌..!! 강추합니당!</p>
+            </div>
         </div>
 
-        <div class="review-card">
+        <div class="review-card" style="border-bottom:solid 3px #506A4C;">
+            <div style="display: inline-block; vertical-align:top;">
+                <img class="review-img" src="./food3.jpg" alt="사진 불러오기 실패">
+            </div>
 
+            <div style="color: gray; font-size: 25px; position: absolute; top: 10px; right: 15px;">김오손</div>
+
+            <div class="review-contents" style="display:inline-block; margin-left: 25px;">
+                <span style="display: inline-block; margin-bottom: 10px;">평점</span>
+                <div class="star-ratings">
+                    <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <div class="star-ratings-base space-x-2 text-lg">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 10px; font-size: 22px; color: gray;">#공간넓음 #고소한</p>
+                <p>재료가 신선하고 양도 많아요.</p>
+            </div>
         </div>
 
-        <div class="review-card">
 
-        </div>
 
-        <div class="review-card">
 
-        </div>
     </div>
 
-
+    <!-- footer -->
+    <footer id="footer" style="width: 100%; margin-top: 30px;"></footer>
+    <script>
+        document.getElementById("footer").innerHTML = '<object type="text/html" data="../footer.html" style="width:100%"></object>';
+    </script>
 
 </body>
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>리뷰 조회 화면</title>
     <style>
         * {
@@ -54,59 +110,112 @@
             padding: 0;
         }
 
+        @font-face{
+                font-family:'BMJUA';
+                src:url('../BMJUA_otf.otf');
+            }
+            @font-face{
+                font-family:'BMDOHYUN';
+                src:url('../BMDOHYEON_otf.otf');
+            }
+            @font-face{
+                font-family:'BMHANNAPro';
+                src:url('../BMHANNAProOTF.otf');
+            }
+
+        body {
+            min-width: 1000px;
+            margin: 0 auto;
+        }
+
         /*상단 4개의 메뉴바*/
         .bar {
-            width: 100%;
-            margin: 10px auto;
+            margin: 20px 60px;
+            position: relative;
             display: flex;
+            flex-direction: row;
+            justify-content: center;;
         }
 
         .bar-name,
         .bar-rank,
         .bar-review,
         .bar-goto {
+            position: relative;
             border: 1px solid #506A4C;
             background-color: #506A4C;
-            box-sizing: border-box;
-            border-radius: 5px;
+            border-radius: 10px;
+            box-shadow: 2px -2px 10px -3px gray;
 
-            font-size: 38px;
+            font-size: 40px;
             color: white;
-            font-weight: bold;
+            font-family: 'BMJUA';
             text-align: center;
+            line-height: 80px;
 
             height: 80px;
             padding: 10px 10px;
-            margin-left: 2%;
-            flex: 1;
-        }
-        #review-list{
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 12px;
+            margin: 0px 10px;
+            overflow: hidden;
         }
 
-        .review-card{
-            width: 95%;
+        .review-card {
             height: 300px;
             background-color: white;
-            border: solid 2px #506A4C;
+            border: solid 3px #506A4C;
             display: flex;
             align-items: center;
             position: relative;
-            margin: 0 auto;
+            margin: 0 60px;
+            border-bottom: none;
+            font-family: 'BMDOHYUN';
         }
 
-        .review-img{
-            width: 280px;
-            height: 280px;
-            margin: 10px 10px;
-            border: 1px solid black;
+        .review-img {
+            width: 320px;
+            height: 240px;
+            margin: 15px 25px;
+            border: 2px solid #506A4C;
         }
-        .review-contents{
+
+        .review-contents {
             color: #506A4C;
+            position: relative;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            font-size: 27px;
+        }
+
+        .star-ratings {
+            color: #aaa9a9;
+            position: relative;
+            unicode-bidi: bidi-override;
+            width: max-content;
+            -webkit-text-fill-color: transparent;
+            /* Will override color (regardless of order) */
+            -webkit-text-stroke-width: 1.3px;
+            -webkit-text-stroke-color: #2b2a29;
+            margin-left: 5px;
+            margin-bottom: 10px;
+            display: inline-block;
+            font-size: 30px;
+        }
+
+        .star-ratings-fill {
+            color: #ffc000;
+            padding: 0;
+            position: absolute;
+            z-index: 1;
+            display: flex;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            -webkit-text-fill-color: #FFc000;
+        }
+
+        .star-ratings-base {
+            z-index: 0;
+            padding: 0;
         }
     </style>
 
