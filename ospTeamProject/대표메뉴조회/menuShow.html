@@ -3,118 +3,197 @@
 
 <body>
 
+    <!-- header 붙여넣기 -->
+    <div id="header" style="width: 100%"></div>
+    <script>
+        document.getElementById("header").innerHTML = '<object type="text/html" data="../header.html" style="width:100%"></object>';
+    </script>
+
     <!--상단 바-->
-    <div class="bar">
-        <div class="bar-backImg">
-            <img src="./bar.png" alt="사진 불러오기 실패" style="width: 100%; height: 120px" />
-        </div>
-        <div class="bar-title">
-            <p><span style="color: #FFC000;">00 가게</span> 대표 메뉴 조회</p>
-        </div>
-        <div class="bar-veganImg">
-            <img src="./vegan.png" alt="사진 불러오기 실패" style="width:80px; height: 60px;"/>
-        </div>
-        <div class="bar-veganTitle">
-            <p>비건 표시</p>
-        </div>
-    </div>
+    <div class="cover"
+        style="border: 3px solid #506A4C; margin: 0px 60px; margin-top: 30px; position: relative; height: 800px;">
 
-
-    <!--대표 메뉴 리스트-->
-
-    <div id="menu-list">
-        <div class="menu-card">
-            <div>
-                <img class="menu-img" src="./food.jpg" alt="사진 불러오기 실패">
-            </div>
-            <div class="menu-contents">
-                <p style="margin-bottom: 5px; font-size: 30px; font-weight: bold;">음식명</p>
-                <img class="began-img" src="./vegan.png" alt="사진 불러오기 실패" style="float: right; margin-right: 25px; width: 80px; height: 60px;">
-                <p style="margin-bottom: 5px; font-size: 25px; font-weight: bold;">\ 10,000</p>
-                <p style="margin-bottom: 5px; font-size: 20px; font-weight: bold;">알레르기: 토마토, 복숭아</p>
-                <p style="font-size: 20px; color: gray;">(음식 설명란) 설탕이 조금도 들어가지 않았습니다. 처음부터 끝까지 주인장의 정성을 쏟아 만들었습니다.</p>
+        <div class="bar" style="position: absolute; width: 100%; height: 100px;">
+            <img src="./bar.png" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
+            <div class="bar-title">
+                <span style="color: #FFC000;">00 가게</span> 대표 메뉴 조회
             </div>
 
+            <div class="bar-vegan">
+                <div class="bar-veganImg">
+                    <img src="./vegan.png" alt="사진 불러오기 실패" style="width: 60px; height: 48px;" />
+                </div>
+                <div class="bar-veganTitle">비건 표시</div>
+            </div>
         </div>
 
-        <div class="menu-card">
+        <!--대표 메뉴 리스트-->
+        <div id="menu-list">
+            <div class="menu-card">
+                <div>
+                    <img class="menu-img" src="./food1.jpg" alt="사진 불러오기 실패">
+                </div>
+                <div class="menu-contents">
+                    <img class="began-img" src="./vegan.png" alt="사진 불러오기 실패"
+                        style="float: right; margin-right: 20px; width: 60px; height: 48px; ">
+                    <span
+                        style=" font-size: 30px; font-family: 'BMHANNAPro'; margin: 8px 0px 8px 0px; background-color: #ffedb7;">풀문
+                        Full_Moon</span>
+                    <p style=" font-size: 23px; font-weight: bold; margin: 8px 0px 8px 0px;">\ 11,900</p>
+                    <p style=" font-size: 18px; font-weight: bold; margin: 8px 0px 8px 0px;">알레르기: 땅콩, 토마토</p>
+                    <p style="font-size: 17px; color: gray;">강황 렌틸콩밥과 바질두부튀김이 특징으로 올리브유, 허브&향신료를 활용하여 만들었습니다.</p>
+                </div>
+            </div>
+
+
+            <div class=" menu-card">
+                <div>
+                    <img class="menu-img" src="./food2.jpg" alt="사진 불러오기 실패">
+                </div>
+                <div class="menu-contents">
+                    <span
+                        style=" font-size: 30px; font-family: 'BMHANNAPro'; margin: 8px 0px 8px 0px; background-color: #ffedb7;">뽀빠이
+                        Popeye</span>
+                    <p style=" font-size: 23px; font-weight: bold; margin: 8px 0px 8px 0px;">\ 13,000</p>
+                    <p style=" font-size: 18px; font-weight: bold; margin: 8px 0px 8px 0px;">알레르기: 닭고기, 우유, 밀</p>
+                    <p style="font-size: 17px; color: gray;">뽀빠이는 이스라엘 가정식 메뉴인 샥슈카 종류로 시금치, 버섯, 렌틸콩, 양파등 다양한 채소와 닭가슴살
+                        그리고 수란이 들어간 스튜형태의 따듯한 건강식 메뉴입니다.</p>
+                </div>
+            </div>
+
+            <div class=" menu-card">
+                <div>
+                    <img class="menu-img" src="./food3.jpg" alt="사진 불러오기 실패">
+                </div>
+                <div class="menu-contents">
+                    <img class="began-img" src="./vegan.png" alt="사진 불러오기 실패"
+                        style="float: right; margin-right: 20px; width: 60px; height: 48px; ">
+                    <span
+                        style=" font-size: 30px; font-family: 'BMHANNAPro'; margin: 8px 0px 8px 0px; background-color: #ffedb7;">노바
+                        Nova</span>
+                    <p style=" font-size: 23px; font-weight: bold; margin: 8px 0px 8px 0px;">\ 13,000</p>
+                    <p style=" font-size: 18px; font-weight: bold; margin: 8px 0px 8px 0px;">알레르기: 없음</p>
+                    <p style="font-size: 17px; color: gray;">시금치 렌틸콩밥과 바질두부튀김이 특징으로 올리브유, 허브&향신료를 활용하여 만들었습니다.</p>
+                </div>
+            </div>
 
         </div>
 
-        <div class="menu-card">
 
-        </div>
     </div>
 
-
-
+    <!-- footer -->
+    <footer id="footer" style="width: 100%; margin-top: 30px;"></footer>
+    <script>
+        document.getElementById("footer").innerHTML = '<object type="text/html" data="../footer.html" style="width:100%"></object>';
+    </script>
 </body>
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>대표 메뉴 조회 화면</title>
     <style>
-        .bar-title{
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'BMJUA';
+            src: url('../BMJUA_otf.otf');
+        }
+
+        @font-face {
+            font-family: 'BMDOHYUN';
+            src: url('../BMDOHYEON_otf.otf');
+        }
+
+        @font-face {
+            font-family: 'BMHANNAPro';
+            src: url('../BMHANNAProOTF.otf');
+        }
+
+
+        body {
+            min-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .bar-title {
             position: absolute;
-            top: 10px;
+            bottom: 25px;
             left: 50px;
             color: white;
+            font-family: 'BMJUA';
             font-size: 38px;
-            font-weight: bold;
         }
-        .bar-veganImg{
+
+        .bar-veganImg {
             position: absolute;
-            top: 55px;
-            right: 50px;
-            margin-right: 100px;
+            bottom: 10px;
+            right: 130px;
+            margin-left: 10px;
         }
-        .bar-veganTitle{
+
+        .bar-veganTitle {
             position: absolute;
-            top: 60px;
-            right: 20px;
-            margin-right: 25px;
+            bottom: 20px;
+            right: 23px;
             color: white;
-            font-size: 20px;
+            font-size: 22px;
         }
 
-        #menu-list{
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
 
-        .menu-card{
-            width: 550px;
+        #menu-list {
             height: 700px;
-            margin-right: 30px;
-            margin-bottom: 20px;
-            
-            background-color: white;
-            border: solid 3px #506A4C;
-            display: flex;
-            align-items: center;
             position: relative;
-            margin: 0 auto;
+            top: 100px;
+
+            display: flex;
+            flex-direction: row;
+            overflow: auto;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .menu-card {
+            width: 30%;
+            height: 600px;
+
+
+            background-color: white;
+            border: solid 3px rgb(194, 207, 192);
+            color: black;
+
+            display: flex;
             flex-direction: column;
 
         }
-        
-        .menu-img{
-            width: 360px;
-            height: 240px;
-            margin-top: 50px;
-            margin-bottom: 25px;
-            border: 1px solid black;
+
+        .menu-img {
+            width: 70%;
+            height: auto;
+            position: relative;
+            top: 35px;
+            border: 2px solid #506A4C;
+            margin-left: 15%;
         }
-        .menu-contents{
+
+        .menu-contents {
+            position: relative;
+            top: 55px;
+
             color: black;
-            display: flex;
-            display: inline-block;
-            margin-left: 25px;
-            margin-right: 25px;
+            margin-left: 15%;
+            margin-right: 15%;
+            height: auto;
         }
 
-
+        .began-img {
+            float: right;
+            margin-right: 15px;
+        }
     </style>
 
 </head>
