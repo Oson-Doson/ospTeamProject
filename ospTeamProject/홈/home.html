@@ -54,8 +54,11 @@
                 background-color:#CADFB8;
                 color:#506A4C;
                 font-size:large;
-            }
+                cursor:pointer;
 
+                transition:color .5s ease;
+                transition:background-color .7s ease;
+            }
             .typeButton:hover{
                 color:white;
                 background-color:#506A4C;
@@ -91,14 +94,22 @@
                 list-style-type:none;
                 float:left;
                 width:33%;
+                border-radius:10px;
+                transition:background-color .5s ease;
             }
+            li:hover{
+                background-color:#CADFB8;
+            }
+           
 
             .restaurant-item{
                 display:flex;
                 align-items:center;
                 cursor:pointer;
                 margin: 10px 5px 10px 5px;
+                
             }
+            
 
             .thumb{
                 width:200px;
@@ -283,6 +294,8 @@
                         document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
                     </script>
                 </header>
+
+                <a></a>
 
                 <section id="restaurantRecommend">
                     <div id="menuType">
