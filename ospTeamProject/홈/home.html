@@ -4,284 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>홈 화면</title>
-        <style>
-
-            @font-face{
-                font-family:'BMJUA';
-                src:url('../BMJUA_otf.otf');
-            }
-            @font-face{
-                font-family:'BMDOHYUN';
-                src:url('../BMDOHYEON_otf.otf');
-            }
-            @font-face{
-                font-family:'BMHANNAPro';
-                src:url('../BMHANNAProOTF.otf');
-            }
-
-            html{
-                font-family:'BMJUA';
-                text-align:center;
-            }
-            body{
-                position:relative;
-                min-width:1200px;
-                margin:0 auto;
-                font-size:100%;
-                line-height:100%;
-                text-align:center;
-            }
-            button{
-                appearance:none;
-                border:0px;
-                background-color:transparent;
-                font-family:'BMJUA';
-            }
-
-            #menuType{
-                margin-top:20px;
-                margin-bottom:1px;
-            }
-
-           .typeButton{
-                width:15.2%;
-                margin-left:-1px;
-                margin-right:-1px;
-                margin-bottom:2px;
-                height:50px;
-                border-top-left-radius:10px;
-                border-top-right-radius:10px;
-                background-color:#CADFB8;
-                color:#506A4C;
-                font-size:large;
-                cursor:pointer;
-
-                transition:color .5s ease;
-                transition:background-color .7s ease;
-            }
-            .typeButton:hover{
-                color:white;
-                background-color:#506A4C;
-            }
-            
-            .moreList{
-                height:25px;
-                margin:0px 60px;
-            }
-            .moreList button{
-                float:right;
-                margin-top:5px;
-                font-family:'BMHANNAPro';
-                font-size:medium;
-                text-decoration-line:underline;
-                cursor:pointer;
-            }
-
-            #recommendBox{
-                display:flex;
-            }
-
-            #recommendInnerBox{
-                width:100%;
-                padding:0;
-                margin-top:5px;
-                margin-bottom:10px;
-                background-color:#dfe7d8;
-                display:flex;
-            }
-            
-            li {
-                list-style-type:none;
-                float:left;
-                width:33%;
-                border-radius:10px;
-                transition:background-color .5s ease;
-            }
-            li:hover{
-                background-color:#CADFB8;
-            }
-           
-
-            .restaurant-item{
-                display:flex;
-                align-items:center;
-                cursor:pointer;
-                margin: 10px 5px 10px 5px;
-                
-            }
-            
-
-            .thumb{
-                width:200px;
-                height:200px;
-                background-color:rgb(231,230,230);
-                padding:0;
-                box-shadow:2px -2px 10px -3px gray;
-                margin-right:auto;
-            }
-
-            .info{
-                margin-right:auto;
-            }
-
-            .star-ratings {
-                color: #aaa9a9; 
-                position: relative;
-                unicode-bidi: bidi-override;
-                width: max-content;
-                -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
-                -webkit-text-stroke-width: 1.3px;
-                -webkit-text-stroke-color: #2b2a29;
-            }
-            
-            .star-ratings-fill {
-                color: #fff58c;
-                padding: 0;
-                position: absolute;
-                z-index: 1;
-                display: flex;
-                top: 0;
-                left: 0;
-                overflow: hidden;
-                -webkit-text-fill-color: gold;
-            }
-            
-            .star-ratings-base {
-                z-index: 0;
-                padding: 0;
-            }
-
-            #recommendBox .restaurantTitle{
-                margin-top:30px;
-                margin-bottom:20px;
-                font-size:xx-large;
-            }
-
-            /*이달의 맛집*/
-
-            #btn_restaurantOfMonth{
-                height:70px;
-                background-color:#506A4C;
-                width:30%;
-                font-size:xx-large;
-                color:white;
-                margin:20px 0 0 0;
-                border-radius:10px;
-                z-index:10;
-            }
-            #box_restaurantOfMonth{
-                display:flex;
-                justify-content: center;
-                align-items: center;
-                margin:0 50px;
-            }
-
-            #gold,#silver,#bronze{
-                width:33%;
-                margin: 0 1px 20px 1px;
-                background-color:rgb(226,240,217);
-            }
-
-            #gold{
-                box-shadow:0px 0px 20px 5px gray;
-                z-index:1;
-            }
-
-            #silver{
-                box-shadow:-5px -5px 20px -5px gray;
-            }
-            #bronze{
-                box-shadow: 5px -5px 20px -5px gray;
-            }
-
-            .medalBox{
-                height:210px;
-                padding:0;
-                background-color:rgb(231,230,230);
-                margin :30px 30px 10px 30px;
-            }
-
-            #gold .medalBox{
-                border-color:gold;
-                border-width:5px;
-                border-style:solid;
-            }
-            #silver .medalBox{
-                border-color:rgb(127,127,127);
-                border-width:5px;
-                border-style:solid;
-            }
-            #bronze .medalBox{
-                border-color:rgb(132,60,12);
-                border-width:5px;
-                border-style:solid;
-            }
-
-            .goldCrownFix{
-                position:relative;
-            }
-            .goldCrown{
-                position:absolute;
-                top:-87px;
-                left:0px;
-                z-index:10;
-            }
-
-            .silverCrownFix{
-                position:relative;
-            }
-            .silverCrown{
-                position:absolute;
-                top:-87px;
-                left:0px;
-                z-index:10;
-            }
-
-            .bronzeCrownFix{
-                position:relative;
-            }
-            .bronzeCrown{
-                position:absolute;
-                top:-87px;
-                left:0px;
-                z-index:10;
-            }
-
-            #restaurantOfMonth .restaurantTitle{
-                font-family:'BMHANNAPro';
-                font-size:x-large;
-                margin-top:20px;
-                margin-bottom:20px;
-            }
-
-            /*퀵메뉴*/
-
-            #quickMenu{
-                margin:20px 50px 30px 50px;
-                display:flex;
-            }
-             #box_quickMenu{
-                margin:0;
-                width:10%;
-                height:70px;
-                background-color:#506A4C;
-                color:white;
-                font-size:large;
-                font-family:'BMDOHYUN';
-            
-            }
-            #goto-restaurantShow,#goto-restaurantUpload,#goto-mapSearch{
-                width:30%;
-                height:70px;
-                background-color:#CADFB8;
-                border-color:#506A4C;
-                border-width:1px;
-                border-style:solid;
-                font-size:large;
-                font-family:'BMHANNAPro';
-            }
-           
-        </style>
+        <link rel="stylesheet" href="home.css">
     </head>
 
     <body>
@@ -295,7 +18,16 @@
                     </script>
                 </header>
 
-                <a></a>
+                <div class="floating-button">
+                    <div class="floating-hidden">
+                        <div class="floating icon-map"></div>
+                        <div class="floating icon-reviewShow"></div>
+                        <div class="floating icon-restaurantList"></div>
+                    </div>
+                    <div class="floating icon-menu">
+                    </div>
+                    
+                </div>
 
                 <section id="restaurantRecommend">
                     <div id="menuType">
@@ -316,7 +48,7 @@
                             <ul>
                                 <li>
                                     <div class="restaurant-item">
-                                         <div class="thumb"><img></div>
+                                         <div class="thumb thumb1"></div>
                                          <div class="info">
                                             <p style="margin-top:70px;"></p>
                                             <div class="star-ratings">
@@ -333,7 +65,7 @@
                                 </li>
                                 <li>
                                     <div class="restaurant-item">
-                                         <div class="thumb"><img></div>
+                                         <div class="thumb thumb2"></div>
                                          <div class="info">
                                             <p style="margin-top:70px;"></p>
                                             <div class="star-ratings">
@@ -350,7 +82,7 @@
                                 </li>
                                 <li>
                                     <div class="restaurant-item">
-                                         <div class="thumb"><img></div>
+                                         <div class="thumb thumb3"></div>
                                          <div class="info">
                                             <p style="margin-top:70px;"></p>
                                             <div class="star-ratings">
@@ -367,7 +99,7 @@
                                 </li>
                                 <li>
                                     <div class="restaurant-item">
-                                         <div class="thumb"><img></div>
+                                         <div class="thumb thumb4"></div>
                                          <div class="info">
                                             <p style="margin-top:70px;"></p>
                                             <div class="star-ratings">
@@ -384,7 +116,7 @@
                                 </li>
                                 <li>
                                     <div class="restaurant-item">
-                                         <div class="thumb"><img></div>
+                                         <div class="thumb thumb5"></div>
                                          <div class="info">
                                             <p style="margin-top:70px;"></p>
                                             <div class="star-ratings">
@@ -401,7 +133,7 @@
                                 </li>
                                 <li>
                                     <div class="restaurant-item">
-                                         <div class="thumb"><img></div>
+                                         <div class="thumb thumb6"></div>
                                          <div class="info">
                                             <p style="margin-top:70px;"></p>
                                             <div class="star-ratings">
@@ -430,15 +162,14 @@
                         <div id="silver">
                                 <a>
                                     <div>
-                                        <figure class="medalBox">
-                                            <img>
-                                        </figure>
-                                        <figcaption>
+                                        <div class="medalBox">
+                                        </div>
+                                        <div>
                                             <div class="silverCrownFix">
                                                 <object class="silverCrown" data="silver.svg" type="image/svg+xml"></object>
                                             </div>
                                             <div class="restaurantTitle">식당 이름</div>
-                                        </figcaption>
+                                        </div>
                                     </div>
                                 </a>
                         </div>
@@ -446,15 +177,14 @@
                         <div id="gold">
                                 <a>
                                     <div>
-                                        <figure class="medalBox gold">
-                                            <img>
-                                        </figure>
-                                        <figcaption>
+                                        <div class="medalBox">
+                                        </div>
+                                        <div>
                                             <div class="goldCrownFix">
                                                 <object class="goldCrown" data="gold.svg" type="image/svg+xml"></object>
                                             </div>
                                             <div class="restaurantTitle">식당 이름</div>
-                                        </figcaption>
+                                        </div>
                                     </div>
                                 </a>
                         </div>
@@ -462,15 +192,14 @@
                         <div id="bronze">
                                 <a>
                                     <div>
-                                        <figure class="medalBox">
-                                            <img>
-                                        </figure>
-                                        <figcaption>
+                                        <div class="medalBox">
+                                        </div>
+                                        <div>
                                             <div class="bronzeCrownFix">
                                                 <object class="bronzeCrown" data="bronze.svg" type="image/svg+xml"></object>
                                             </div>
                                             <div class="restaurantTitle">식당 이름</div>
-                                        </figcaption>
+                                        </div>
                                     </div>
                                 </a>
                         </div>
@@ -479,9 +208,9 @@
                 </section>
                 <section id="quickMenu">
                         <button id="box_quickMenu">Quick<br>Menu</button>
-                        <button id="goto-restaurantUpload" onclick="restaurantUpload.html">맛집 등록하기</button>
-                        <button id="goto-restaurantShow" onclick="restaurantShow.html">맛집 리스트 전체보기</button>
-                        <button id="goto-mapSearch" onclick="mapSearch.html">지도로 맛집 찾아보기</button>
+                        <button id="goto-restaurantUpload"><span class="highlight">맛집 등록하기</span></button>
+                        <button id="goto-restaurantShow">맛집 리스트 전체보기</button>
+                        <button id="goto-mapSearch">지도로 맛집 찾아보기</button>
                 </section>
 
                 <footer>
