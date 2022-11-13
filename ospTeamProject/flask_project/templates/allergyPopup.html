@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>알레르기 정보 입력 팝업</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='allergyPopup.css') }}">
+</head>
+
+<body class="dimmed">
+    <div class="popup">
+        <div class="title">
+            <div style="display: flex; justify-content: flex-end;">
+                <img src="./allergyPopup/x.png" style="width: 30px; margin-top: 140px;" onclick="closePopUp()">
+            </div>
+            <p
+                style="font-family: 'BMJUA'; color: #506A4C; font-size: 43px; margin-top: 35px; margin-bottom: 10px; text-align:center;">
+                알레르기 정보 선택</p>
+            <p
+                style="font-family: 'NanumBarunGothic'; color:black; font-size: 20px; font-weight: bold; text-align: center; margin: 10px;">
+                메뉴에 함유되어 있는 항목을 모두 선택해주세요</p>
+        </div>
+        <div class="content">
+            <table style="width: 100%; table-layout: fixed;">
+                <tr>
+                    <td><img src="./allergyPopup/알1_1.png"></td>
+                    <td><img src="./allergyPopup/알1_2.png"></td>
+                    <td><img src="./allergyPopup/알1_3.png"></td>
+                    <td><img src="./allergyPopup/알1_4.png"></td>
+                </tr>
+                <tr>
+                    <td><img src="./allergyPopup/알2_1.png"></td>
+                    <td><img src="./allergyPopup/알2_2.png"></td>
+                    <td><img src="./allergyPopup/알2_3.png"></td>
+                    <td><img src="./allergyPopup/알2_4.png"></td>
+                </tr>
+                <tr>
+                    <td><img src="./allergyPopup/알3_1.png"></td>
+                    <td><img src="./allergyPopup/알3_2.png"></td>
+                    <td><img src="./allergyPopup/알3_3.png"></td>
+                    <td><img src="./allergyPopup/알3_4.png"></td>
+                </tr>
+                <tr>
+                    <td><img src="./allergyPopup/알4_1.png"></td>
+                    <td><img src="./allergyPopup/알4_2.png"></td>
+                    <td><img src="./allergyPopup/알4_3.png"></td>
+                    <td><img src="./allergyPopup/알4_4.png"></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="cmd">
+            <input type="button" name="btnclose" class="button" value="취소">
+            <input type="button" name="btnclose" class="button" value="등록">
+        </div>
+    </div>
+</body>
+
+<script>
+    function closePopUp() {
+        const popup = document.getElementsByClassName("popup")[0];
+        popup.style.visibility = "hidden";
+    }
+</script>
+
+
+
+
+
+</html>

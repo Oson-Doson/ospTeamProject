@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title> 맛집 등록 저장 화면</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+        <!-- header 붙여넣기 -->
+           <div class="headerbackground">
+               <img class="osondoson" src="../static/osondoson.png">
+           </div>
+    </header>
+    
+    <h1>
+        맛집 등록 데이터 값
+    </h1>
+    <h2>
+        <p>식당 이름: {{data.Rname}}</p>
+        <p>주소: {{data.address}}</p>
+        <p>전화번호: {{data.tel1}}-{{data.tel2}}-{{data.tel3}}</p>
+        <p>음식 category: {{data.foodchoice}}</p>
+        <p>키워드: {{data.moodchoice}}</p>
+        <p>가격대: {{data.pircechoice}}</p>
+        <p> 주차여부: {{data.parking}}</p>
+        <p>영업시간: {{data.openhour}} : {{data.openmin}} ~ {{data.closehour}}: {{data.closemin}}</p>
+        <p>외부 또는 내부 대표 사진:</p>
+    </h2>
+
+    <footer>
+        <div id="footer">
+            <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
+            <div style="color:#ffffff">
+                (주) 오손도손 컴퍼니<br>
+                서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
+                ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

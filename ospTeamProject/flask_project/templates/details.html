@@ -1,0 +1,90 @@
+<html>
+
+<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+        <title>맛집세부화면</title>
+		<link rel="stylesheet" href="{{url_for('static', filename='details.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
+</head>
+	
+
+<body>
+	<header>
+		<!-- header 붙여넣기 -->
+		   <div class="headerbackground">
+			   <img class="osondoson" src="../static/osondoson.png">
+		   </div>
+   	</header>
+		
+	<!-- contents -->
+	<div class="contents">
+	<div class="Box">
+
+		<!-- box1  -->
+		<div class="box1">
+			<a target="_blank" href="00식당사진">
+			<img src="../static/details/food.jpg" alt="00식당사진" width=100% height=50%>
+			</a>
+			<div class="desc1">
+				<a class="store">00식당</a>
+				<a style="font-size:15px;">&nbsp;&nbsp;한식</a><br>
+				<a class= "sub1">#혼밥가능<br> 평균 평점</a>
+				<a class = "star">&#10030;&nbsp;</a>
+				<a class= "sub1"><b>4.4</b> / 5</a><br> 
+				<a class= "sub2">영업 중</a><br>
+				<a href="사이트">사이트</a>
+			</div>	
+		</div>
+		
+		<!-- box2  -->
+		<div class="box2 left">
+			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1">서울 서대문구 이화여대길 52-31</a><br>
+			<a class="picto" id="exclude"> &#9742;&nbsp;&nbsp;&nbsp;</a>
+			<a class = "sub1">02-000-0000</a><br>
+		</div>
+		<div class="box2 right">
+			<a class="picto"> &#9719;&nbsp;&nbsp;&nbsp;</a>
+			<a class= "sub1">매일 11:00 ~ 23:00</a><br> 
+			<a class="picto" id="exclude">&#8473;&nbsp;&nbsp;&nbsp;</a>
+			<a class= "sub1">주차 협소</a><br>
+		</div>
+
+		<!-- box3 대표메뉴  -->
+		<div class="box3">
+			<b style="font-size:30px">대표메뉴</b><br>
+			<a class="picto" id="exclude"> &#8361;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1">최소 5000원 ~ 최대 11000원</a><br> 
+			<a class="picto"> &#9982;&nbsp;&nbsp;</a>
+			<a class=" sub1"><button class="button" onclick="대표메뉴 페이지">메뉴 보러가기 ></button></a>
+		</div>	
+		
+		<!-- 리뷰  -->
+		<div class="box4">
+			<b style="font-size:30px">리뷰</b><br>
+			<a class = "star">&#10030;&nbsp;&nbsp;&nbsp;</a>
+			<a class ="sub1"> 평균평점 <b>4.3/5 </b> &nbsp;&nbsp; 리뷰 <b>23</b></a> <br>
+			<a class="picto">&#10146;&nbsp;&nbsp;</a>
+			<button class="button" onclick="리뷰 보러가기">리뷰 보러가기 ></button>&nbsp;&nbsp; 
+			<a class=" sub1"><button class="button" onclick="리뷰 등록하기">리뷰 등록하기 ></button></a>
+		</div>	
+	
+	</div>
+	</div>
+
+	<footer>
+		<div id="footer">
+			<img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
+			<div style="color:#ffffff">
+				(주) 오손도손 컴퍼니<br>
+				서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
+				ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
+			</div>
+		</div>
+	</footer>
+		
+</body>
+
+</html>

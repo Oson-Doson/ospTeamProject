@@ -1,0 +1,181 @@
+@font-face { font-family: 'NanumBarunGothic';
+    src: url('./nanum/NanumBarunGothic.eot');
+    src: url('./nanum/NanumBarunGothic.eot') format('embedded-opentype'),
+         url('./nanum/NanumBarunGothic.woff') format('woff');
+}
+@font-face{
+    font-family:'BMJUA';
+    src:url('./BMJUA_otf.otf');
+}
+@font-face{
+   font-family:'BMDOHYUN';
+   src:url('./BMDOHYEON_otf.otf');
+}
+@font-face{
+   font-family:'BMHANNAPro';
+   src:url('./BMHANNAProOTF.otf');
+}
+
+
+* {
+    font-size: 20px;
+}
+        
+body {
+    position: relative;
+    min-width: 1400px;
+    margin: 0 auto;
+    font-size: 100%;
+    line-height: 100%;
+    text-align: center;
+    font-family: 'NanumBarunGothic', 'serif';
+
+}
+
+.contents{
+    margin:0px 60px;
+}
+
+/* 테두리 박스 */ 
+.Box {
+    border: 1.5px solid #506A4C;
+    margin: 10px;
+    padding: 15px;
+}
+
+/* 가게 소개 맨 위 */
+div.box1 {
+    margin: 0px;
+    border-bottom: 1.5px solid #CADFB8 ;
+    padding:15px;
+    padding-bottom: 40px;
+    float: center;
+    width: 95%;
+}
+
+div.box1 img {
+    float: left;
+    width: 250px;
+    height: 250px;
+    padding: 0px;
+    padding-top: 0px;
+    margin: 20px;
+    border: 3px solid #506A4C;
+}
+
+div.desc1 {
+    padding: 30px;
+    padding-left: 330px;
+    text-align: left;
+    line-height: 2.0em;
+}
+
+div.box1.photo {
+    position: static;
+}
+div.box1.text {
+    position: relative; left: 200px;
+}
+
+.store { 
+    font-size: 35px;
+    font-weight: bold;
+    font-family:'BMJUA';
+}
+
+.sub1 {
+    font-size:20px;
+    position: static;
+}
+
+.sub2 {
+    font-size:20px;
+    color: red;
+}
+
+.sub3 {
+    font-size:25px;
+    font-weight: bold;
+
+}
+
+.star {
+    color: #FFC000;
+    font-size:30px;
+    font-weight: bold;
+}
+
+#exclude{
+    font-family:none;
+
+}
+
+/* 가게 소개 중간 */
+div.box2.left {
+    float:left;
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 50px;
+    text-align: left;
+    line-height: 3.0em; 
+    width: 45%;
+    border-bottom: 1.5px solid #CADFB8 ;
+}
+div.box2.right {
+    float:left;
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 50px;
+    text-align: left;
+    line-height: 3.0em;
+    width: 45%;
+    border-bottom: 1.5px solid #CADFB8 ;
+}
+
+.picto {
+    color: #506A4C;
+    font-size:30px;
+    font-weight: bold;
+}
+
+/* 대표메뉴 */
+div.box3 {
+    margin: 0px;
+    margin-top: 170px;
+    border-bottom: 1.5px solid #CADFB8 ;
+    padding: 0px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 50px;
+    text-align: left;
+    line-height: 3.0em;
+    width: 95%;
+}
+.button {
+    float: center;
+    padding: 7px;
+    text-align: center;
+    background-color: #506A4C;
+    border-color: #506A4C;
+    color: white;
+    width:200px;
+    height:45px;;
+    margin: 12px;
+    font-family:'BMHANNAPro';
+}
+
+/* 리뷰*/
+div.box4 {
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 50px;
+    text-align: left;
+    line-height: 3.0em;
+    width: 95%;
+}

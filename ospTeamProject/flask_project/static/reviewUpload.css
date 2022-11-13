@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-width: 1000px;
+}
+
+@font-face{
+    font-family:'BMJUA';
+    src:url('./BMJUA_otf.otf');
+}
+@font-face{
+    font-family:'BMDOHYUN';
+    src:url('./BMDOHYEON_otf.otf');
+}
+@font-face{
+    font-family:'BMHANNAPro';
+    src:url('./BMHANNAProOTF.otf');
+}
+@font-face{
+    font-family:'NanumBarunGothic';
+    src:url('./nanum/NanumBarunGothic.ttf');
+}
+
+/* 리뷰등록 상단바 */
+#reviewUploadNavi {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    /* margin-top: 30px; */
+}
+
+/* 리뷰등록 글자 */
+.reviewUploadText {
+    padding: 30px;
+    font-family: 'BMJUA';
+    color: white;
+   
+}
+
+#uploadImage {
+    display: flex;
+    width: 280px;
+    flex-direction: column;
+    margin-right: 30px;
+    align-items: center;
+    
+}
+
+.uploadBtn {
+    background-color: #496B49;
+    color: #ffffff;
+    padding: 12px;
+    font-family: 'BMHANNAPro';
+    cursor: pointer;
+}
+
+/*파일 선택 버튼 꾸미기*/
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    font-size:20px;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+#button{
+    text-align:center;
+    padding-bottom:20px;
+    padding-top:20px;
+    
+}
+
+button.fileupload{
+    height:30px;
+    width:100px;
+    background-color:#506A4C;
+    border-color:#506A4C; 
+    color:white;
+    font-family: 'BMHANNAPro';
+    font-size:17px;
+    margin-left: 90px;
+    margin-top: 10px;
+}
+
+#picture-div{
+background-color:#D9D9D9;
+height: 280px;
+width: 280px;
+margin-top: 30px;  
+margin-right: 30px;
+border: solid 1px #506A4C;
+ }
+
+#picture-div img {
+ display: block;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+
+/* 리뷰등록 내용 */
+#reviewUploadContents {
+    border: solid 3px #496B49;
+    margin-left: 60px;
+    margin-right: 60px;
+
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+
+.storeName {
+    font-size: 35px;
+    font-weight: bold;
+    color: #496B49;
+    font-family: 'BMJUA';
+}
+
+.contentsAlign {
+    display: flex;
+    align-items: center;
+}
+
+.contentsTitle {
+    color: #506A4C;
+    font-size: 25px;
+    margin-right: 30px;
+    font-family: 'BMHANNAPro';
+}
+
+
+.nicknameInput {
+    width: 250px;
+    height: 30px;
+    border: 1.5px solid #506A4C;
+}
+
+.keywordDropdown {
+    border: 1.5px solid #506A4C;
+    height: 30px;
+    margin-right: 30px;
+    font-family: 'NanumBarunGothic';
+}
+
+#score {
+    display: flex;
+    align-items: center;
+}
+
+/* 별 그리기 css */
+
+.star-rating {
+    /* border:solid 1px #ccc; */
+    display:flex;
+    flex-direction: row-reverse;
+    font-size:1.5em;
+    justify-content:space-around;
+    padding:0 .2em;
+    text-align:center;
+    width:5em;
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+
+.star-rating input {
+    display:none;
+}
+
+.star-rating label {
+    color:#ccc;
+    cursor:pointer;
+    font-size: 35px;
+}
+
+.star-rating :checked ~ label {
+    color:#f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color:#fc0;
+}
+
+/* 리뷰 상세 설명 textarea*/
+.reviewText {
+    border: solid 3px #496B49;
+    resize: none;
+    width: 850px;
+    height: 300px;
+}
+
+.reviewText::placeholder {
+    font-family: 'NanumBarunGothic';
+    font-size: 17px;
+    text-align: center;
+    vertical-align: center;
+}
+
+/* 등록 버튼 */
+#saveBtn {
+    margin-left: 45%; 
+    margin-right: auto; 
+    /* padding: 8px 12px; */
+    padding: 12px;
+    border: solid 3px #496B49;
+    color: #496B49;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-family: 'BMHANNAPro';
+    cursor: pointer;
+}

@@ -1,0 +1,181 @@
+@font-face { font-family: 'NanumBarunGothic';
+    src: url('./nanum/NanumBarunGothic.eot');
+    src: url('./nanum/NanumBarunGothic.eot') format('embedded-opentype'),
+         url('./nanum/NanumBarunGothic.woff') format('woff');
+}
+@font-face{
+    font-family:'BMJUA';
+    src:url('./BMJUA_otf.otf');
+}
+@font-face{              
+    font-family:'BMDOHYUN';
+    src:url('./BMDOHYEON_otf.otf');
+}
+@font-face{
+   font-family:'BMHANNAPro';
+   src:url('./BMHANNAProOTF.otf');
+}
+
+* {
+    font-size: 20px;
+}
+
+html {
+    font-family: 'BMJUA';
+    text-align: center;
+}
+
+body {
+    position: relative;
+    min-width: 1400px;
+    margin: 0 auto;
+    font-size: 100%;
+    line-height: 100%;
+    text-align: center;
+    font-family: 'NanumBarunGothic', 'serif';
+}
+
+.contents{
+    margin:0px 60px;
+}
+
+/* 상단 바 */
+/*        */
+button {
+    appearance: none;
+    border: 0px;
+    background-color: transparent;
+    font-family: 'BMJUA';
+}
+#menuType{
+        margin-bottom:1px;
+        margin-top:15px;
+    }
+
+.typeButton{
+     width:16%;
+     margin-left:-1px;
+     margin-right:-1px;
+     height:50px;
+     border-top-left-radius:10px;
+     border-top-right-radius:10px;
+     background-color:#CADFB8;
+     color:#506A4C;
+     font-size:large;
+}
+
+.typeButton:hover:not(#active){
+    background-color: #506A4C;
+    color: white;
+    }
+
+#active {
+    background-color: #506A4C;
+    color: white;
+    }
+
+/* sort */
+/*      */
+div.SORTAREA {
+    text-align: center;
+    padding: 1px;
+    margin-top: 10px;
+}
+
+.sorting {
+    position: relative; left: -30px; top: 10px;
+
+} 
+
+.sort {
+    float: center;
+    padding: 5px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: white;
+    border-color: #506A4C;
+    border-width: 2px;
+    border-style: solid;
+    font-weight: bold;
+    color: #506A4C;
+    width: 180px;
+    height: 60px;
+    margin: 15px;
+    font-family: 'BMHANNAPro', 'sans-serif';
+} 
+
+.option {  /* select의 디자인 커스텀의 한계로 적용 안됨) */
+    color: #506A4C;
+    border-radius: 100px;
+    border: 2px solid #506A4C;
+    border-bottom: #506A4C;
+    width: 100px;
+    padding:10px;
+    margin: 10px;
+}
+
+/* 리스트 */
+/*        */
+
+div.list {
+    margin: 14px;
+    margin-right: 2px;
+    border: 1px solid #506A4C;
+    padding:15px;
+    padding-top:25px;
+    float: left;
+    width: 28%;
+    border-color: #506A4C;
+}
+
+div.list img {
+    float: left;
+    width: 160px;
+    height: 160px;
+    padding: 0px;
+    margin: 21px;
+    margin-top: 25px;
+    box-shadow: 1px -1px 5px 2px gray;
+}
+
+div.desc {
+    padding: 28px;
+    text-align: left;
+    line-height: 2.3em;
+}
+
+div.list.photo {
+    position: static;
+}
+
+div.list.text {
+    position: relative; left: 200px;
+}
+
+.store { 
+    font-size: 35px;
+    font-weight: bold;
+    font-family:'BMJUA';
+}
+
+.sub1 {
+    font-size:20px;
+    position: static;
+    font-family: 'NanumBarunGothic', 'serif';
+}
+
+.sub3 {
+    font-size:25px;
+    font-weight: bold;
+    font-family: 'NanumBarunGothic', 'serif';
+}
+
+.star {
+    color: #FFC000;
+    font-size:30px;
+    font-weight: bold;
+}
+
+#exclude{
+    font-family: 'NanumBarunGothic', 'serif';
+}

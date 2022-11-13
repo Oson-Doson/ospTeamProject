@@ -2,76 +2,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <style>
-            * {
-                padding: 0;
-                margin: 0;
-            }
-
-            @font-face{
-                font-family:'BMJUA';
-                src:url('../BMJUA_otf.otf');
-            }
-            @font-face{
-                font-family:'BMDOHYUN';
-                src:url('../BMDOHYEON_otf.otf');
-            }
-            @font-face{
-                font-family:'BMHANNAPro';
-                src:url('../BMHANNAProOTF.otf');
-            }
-
-            #menuType{
-                margin-bottom:1px;
-                display: flex;
-                justify-content: center;
-                margin-top: 30px;
-            }
-
-            button{
-                appearance:none;
-                border:0px;
-                background-color:transparent;
-                font-family:'BMJUA';
-            }
-
-            .typeButton{
-                width:15%;
-                /* margin-left:-1px;
-                margin-right:-1px; */
-                margin-left: 1px;
-                margin-right: 1px;
-                height:50px;
-                border-top-left-radius:10px;
-                border-top-right-radius:10px;
-                background-color:#CADFB8;
-                color:#506A4C;
-                font-size:large;
-            }
-
-            .typeButton:hover {
-                background-color: #496B49;
-                color: #ffffff;
-            }
-
-            #map {
-                width: 90%; 
-                height: 450px; 
-                margin-left: auto; 
-                margin-right: auto;  
-                margin-top: 15px;
-            }
-
-        </style>
         <title>지도로 맛집 찾기</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='mapSearch.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
     </head>
     
     <body>
-        <!-- header 붙여넣기 -->
-        <div id="header" style="width: 100%"></div>
-        <script>
-            document.getElementById("header").innerHTML='<object type="text/html" data="../header.html" style="width:100%"></object>';
-        </script>
+        <header>
+            <!-- header 붙여넣기 -->
+               <div class="headerbackground">
+                   <img class="osondoson" src="../static/osondoson.png">
+               </div>
+        </header>
 
         <!-- 탭 부분 -->
         <div id="menuType">
@@ -97,10 +40,16 @@
         var map = new kakao.maps.Map(mapContainer, mapOption); 
         </script>
 
-        <!-- footer -->
-        <footer id="footer" style="width: 100%"></footer>
-        <script>
-            document.getElementById("footer").innerHTML='<object type="text/html" data="../footer.html" style="width:100%"></object>';
-        </script>
+        <footer>
+            <div id="footer">
+                <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
+                <div style="color:#ffffff">
+                    (주) 오손도손 컴퍼니<br>
+                    서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
+                    ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
+                </div>
+            </div>
+        </footer>
+
     </body>
 </html>
