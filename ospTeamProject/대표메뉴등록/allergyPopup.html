@@ -4,6 +4,13 @@
 <body class="dimmed">
     <div class="popup">
         <div class="title">
+            <div style="display: flex; justify-content: flex-end;">
+                <img 
+                    src="x.png" 
+                    style="width: 30px; margin-top: 140px;"
+                    onclick="closePopUp()"
+                    >
+            </div>
             <p
                 style="font-family: 'BMJUA'; color: #506A4C; font-size: 43px; margin-top: 35px; margin-bottom: 10px; text-align:center;">
                 알레르기 정보 선택</p>
@@ -46,6 +53,13 @@
         </div>
     </div>
 </body>
+
+<script>
+    function closePopUp () {
+        const popup = document.getElementsByClassName("popup")[0];
+        popup.style.visibility = "hidden";
+    }
+</script>
 
 <head>
     <meta charset="UTF-8">
