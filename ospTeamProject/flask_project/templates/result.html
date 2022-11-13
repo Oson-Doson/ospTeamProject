@@ -5,6 +5,8 @@
 <title> 맛집 등록 저장 화면</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
+<link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
 </head>
 
 <body>
@@ -14,7 +16,7 @@
                <img class="osondoson" src="../static/osondoson.png">
            </div>
     </header>
-    
+    <br><br>
     <h1>
         맛집 등록 데이터 값
     </h1>
@@ -29,7 +31,7 @@
         <p>영업시간: {{data.openhour}} : {{data.openmin}} ~ {{data.closehour}}: {{data.closemin}}</p>
         <p>외부 또는 내부 대표 사진:</p>
     </h2>
-
+    <br><br>
     <footer>
         <div id="footer">
             <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
