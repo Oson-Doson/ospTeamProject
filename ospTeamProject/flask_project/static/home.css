@@ -289,37 +289,6 @@ li:hover .thumb{
     margin-bottom:20px;
 }
 
-/*퀵메뉴*/
-
-#quickMenu{
-    margin:20px 50px 30px 50px;
-    display:flex;
-}
- #box_quickMenu{
-    margin:0;
-    width:10%;
-    height:70px;
-    background-color:#506A4C;
-    color:white;
-    font-size:large;
-    font-family:'BMDOHYUN';
-
-}
-#goto-restaurantShow,#goto-restaurantUpload,#goto-mapSearch{
-    width:30%;
-    height:70px;
-    background-color:#CADFB8;
-    border-color:#506A4C;
-    border-width:1px;
-    border-style:solid;
-    font-size:large;
-    font-family:'BMHANNAPro';
-    cursor:pointer;
-}
-#goto-restaurantShow:hover ,#goto-restaurantUpload:hover,#goto-mapSearch:hover{
-    background-color:rgb(226,240,217);
-}
-
 /*floating button*/
 
 .floating-button{

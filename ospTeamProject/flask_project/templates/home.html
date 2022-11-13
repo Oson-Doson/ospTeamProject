@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>홈 화면</title>
         <link rel="stylesheet" href="{{url_for('static', filename='home.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
     </head>
 
     <body>
@@ -12,10 +14,9 @@
             <article id="contents">
                 <header>
                      <!-- header 붙여넣기 -->
-                    <div id="header" style="width: 100%"></div>
-                    <script>
-                        document.getElementById("header").innerHTML='<object type="text/html" data="./header.html" style="width:100%"></object>';
-                    </script>
+                        <div class="headerbackground">
+                            <img class="osondoson" src="../static/osondoson.png">
+                        </div>
                 </header>
 
                 <div class="floating-button">
@@ -26,7 +27,6 @@
                     </div>
                     <div class="floating icon-menu">
                     </div>
-                    
                 </div>
 
                 <section id="restaurantRecommend">
@@ -206,19 +206,18 @@
                     
                     </div>
                 </section>
-                <section id="quickMenu">
-                        <button id="box_quickMenu">Quick<br>Menu</button>
-                        <button id="goto-restaurantUpload" onclick="restaurantUpload.html"><span class="highlight">맛집 등록하기</span></button>
-                        <button id="goto-restaurantShow" onclick="list.html">맛집 리스트 전체보기</button>
-                        <button id="goto-mapSearch" onclick="mapSearch.html">지도로 맛집 찾아보기</button>
-                </section>
-
+    
                 <footer>
-                    <footer id="footer" style="width: 100%"></footer>
-                    <script>
-                        document.getElementById("footer").innerHTML='<object type="text/html" data="./footer.html" style="width:100%"></object>';
-                    </script>
+                    <div id="footer">
+                        <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
+                        <div style="color:#ffffff">
+                            (주) 오손도손 컴퍼니<br>
+                            서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
+                            ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
+                        </div>
+                    </div>
                 </footer>
+
             </article>
         </main>
     </body>
