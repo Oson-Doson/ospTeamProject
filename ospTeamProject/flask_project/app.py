@@ -25,16 +25,17 @@ def reg_restaurant_submit_post():
     data=request.form
     return render_template("result.html",data=data)
 
-@app.route('/menu_upload')
+@app.route('/menuUpload')
 def menuUpload():
     return render_template("menuUpload.html")
 
-@app.route("/submit_menu_post", methods = ['POST'])
+@app.route("/submit_menu_post", methods=['POST'])
 def reg_menu_submit_post():
     image_file=request.files["file"]
     image_file.save("static/image/{}".format(image_file.filename))
-    data=request.form
-    return render_template("", data=data)
+    data = request.form
+    print(data)
+    return render_template("menuUpload_submit.html", result = data)
     
 
 # 아래는 여진언니 꺼에서...
