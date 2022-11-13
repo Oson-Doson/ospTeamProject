@@ -1,3 +1,9 @@
+@font-face { font-family: 'NanumBarunGothic';
+    src: url('./nanum/NanumBarunGothic.eot');
+    src: url('./nanum/NanumBarunGothic.eot') format('embedded-opentype'),
+         url('./nanum/NanumBarunGothic.woff') format('woff');
+}
+
 * {
     margin: 0;
 }
@@ -8,6 +14,7 @@
     display: flex;
     align-items: center;
     margin-top:30px;
+    font-family:'NanumBarunGothic';
 }
 
 .osondoson {
@@ -15,4 +22,9 @@
     padding: 30px;
     width: 160px;
     position: relative;
+}
+
+.footer-text{
+    font-size:medium;
+    color:lightgray;
 }
