@@ -54,6 +54,10 @@ def reg_menu_submit_post():
 
 # 아래는 여진언니 꺼에서...
 
+@app.route('/reviewUpload')
+def reviewUpload():
+    return render_template("reviewUpload.html")
+    
 @app.route("/submit_review_post", methods=['POST'])
 def submit_review_post():
 
