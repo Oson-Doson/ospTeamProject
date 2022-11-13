@@ -12,6 +12,7 @@
     justify-content: space-between;
     position: relative;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom:30px;
 }
 
 /* 이미지 위에 투명도 필터 */
