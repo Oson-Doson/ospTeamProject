@@ -15,7 +15,7 @@
     <header>
         <!-- header 붙여넣기 -->
            <div class="headerbackground">
-               <a href="/"><img class="osondoson" src="../static/osondoson.png"></a>
+               <img class="osondoson" src="../static/osondoson.png">
            </div>
     </header>
 
@@ -35,7 +35,7 @@
                         <!--음식명 입력-->
                         <tr>
                             <td><label for="Fname">음식명</label></td>
-                            <td><input type="text" id="Fname" name="Fname" value=""></td>
+                            <td><input type="text" id="Fname" name="menuname" value=""></td>
                         </tr>
                         <!--사진 업로드-->
                         <tr>
@@ -46,7 +46,7 @@
                                     <!-- <input type="image" id="picture" name="picture" value=""> -->
                                     <div id="picture-div" name="picture-div"></div>
                                     <button type="button" class="fileupload" onclick="onClickUpload();">파일 선택</button>
-                                    <input type="file" accept="image/*" id="file-upload-input" name="image" style="display: none;"
+                                    <input type="file" accept="image/*" id="file-upload-input" name="MENUIMAGE" style="display: none;"
                                         onchange="setThumbnail(event);">
                                 </div>
                                 <script>
@@ -90,13 +90,14 @@
                         <!--가격 입력-->
                         <tr>
                             <td><label for="price">가격 (원)</label></td>
-                            <td><input type="number" id="price" name="price" value=""></td>
+                            <td><input type="number" id="price" name="menuprice" value=""></td>
                         </tr>
 
                         <!--메뉴 상세 설명-->
                         <tr>
                             <td><label for="menudetail">메뉴 상세 설명</label></td>
-                            <td><textarea name="menudetail" cols="100" rows="10"></textarea>
+                            <td>
+                                <textarea name="menudetail" cols="100" rows="10"></textarea>
                             </td>
                         </tr>
 
@@ -116,7 +117,7 @@
                         <!---알레르기 선택하면 보여지는 input-->
                         <tr>
                             <td> <label for="allergy">알레르기</label></td>
-                            <td><input type="text" id="Fname" name="allergylist value=""></td>
+                            <td><input type="text" id="Fname" name="allergylist" value=""></td>
                         </tr>
 
                     </table>
@@ -136,7 +137,7 @@
     <footer>
         <div id="footer">
             <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
-            <div class="footer-text">
+            <div style="color:#ffffff">
                 (주) 오손도손 컴퍼니<br>
                 서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
                 ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
