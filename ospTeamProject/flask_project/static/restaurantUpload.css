@@ -1,133 +1,141 @@
-*{ /* 모든태그에 적용 : * (초기값 설정) */
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
+* {
+    /* 모든태그에 적용 : * (초기값 설정) */
+    padding: 0;
+    margin: 0;
 }
+
 @font-face {
     font-family: 'NanumBarunGothic';
     font-style: normal;
     font-weight: 400;
     src: url('./nanum/NaumBarunGothic.eot');
-    
+
 }
-@font-face{
-            font-family:'BMHANNAPro';
-            src:url('./BMHANNAProOTF.otf');
-        }
 
-body{   
-        position:relative;
-        min-width:1000px;
-        margin:0 auto;
-        font-size:100%;
-        line-height:100%;  
-    
-        }
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('./BMHANNAProOTF.otf');
+}
 
-#main{
-    margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
+body {
+    position: relative;
+    min-width: 1000px;
+    margin: 0 auto;
+    font-size: 100%;
+    line-height: 100%;
+}
+
+#main {
+    margin: 0 auto;
+    /* auto 알아서 중앙으로 맞춰줌 */
     padding-bottom: 50px;
-    margin:30px 60px 30px 60px;
+    margin: 30px 80px 30px 80px;
     height: 90%;
-    border:2px solid #506A4C;
-    }
+    border: 2px solid #506A4C;
+}
 
-label{
+label {
     font-family: 'BMHANNAPro';
     font-size: 30px;
 }
 
 /* 입력창 테이블*/
-table{
+table {
     margin-top: 20px;
-    border-collapse : collapse;
-    line-height:80px;
-    display:flex;
-    }
-
-tr{
-    color:#506A4C;
-    font-size:23px;
-    vertical-align : top;
+    border-collapse: collapse;
+    line-height: 80px;
+    display: flex;
 }
 
-td{
-    padding-right:20px;
-    padding-left:80px;
+tr {
+    color: #506A4C;
+    font-size: 23px;
+    vertical-align: top;
 }
+
+td {
+    padding-right: 20px;
+    padding-left: 80px;
+}
+
 /* 입력창 입력 부분*/
-input[type=text]{
-    border:1.5px solid #506A4C;
-    width:250px;
-    height:30px;	
-    }
+input[type=text] {
+    border: 1.5px solid #506A4C;
+    width: 250px;
+    height: 30px;
+}
 
 /*사진 이미지 업로드 부분*/
-input[type=image]{
-    background-color:#D9D9D9;
+input[type=image] {
+    background-color: #D9D9D9;
     height: 110px;
     width: 110px;
-    margin-top: 30px;; 
+    margin-top: 30px;
+    ;
 }
 
 /*주차 여부 체크 박스*/
-input[type=checkbox]{
-    width:30px;
-    height:30px;
+input[type=checkbox] {
+    width: 30px;
+    height: 30px;
 }
 
-input[id="parkingx"]{
-    margin-left:50px;
+input[id="parkingx"] {
+    margin-left: 50px;
 }
 
 /*입력 부분 토글 글씨체 적용*/
-input,select{
-    font-family:'NanumBarunGothic';
-    font-size:15px;
+input,
+select {
+    font-family: 'NanumBarunGothic';
+    font-size: 15px;
 }
 
 /*주차 여부 글씨체 적용*/
-a{
-    font-family:'NanumBarunGothic';
-    font-size:22px;  
+a {
+    font-family: 'NanumBarunGothic';
+    font-size: 22px;
 }
 
-select{
-    border:1.5px solid #506A4C;
-    height:30px;
-        
-    }
+select {
+    border: 1.5px solid #506A4C;
+    height: 30px;
+
+}
 
 /*주소찾기 버튼*/
-input[type=button],[type=submit] {
-    height:30px;
-    width:50px;
-    font-size:15px;
-    background-color:#506A4C;
-    border-color:#506A4C; 
-    color:white;
+input[type=button],
+[type=submit] {
+    height: 30px;
+    width: 50px;
+    font-size: 15px;
+    background-color: #506A4C;
+    border-color: #506A4C;
+    color: white;
     font-family: 'BMHANNAPro';
-    font-size:17px;
+    font-size: 17px;
 }
+
 /*맛집 대표 메뉴 등록 버튼*/
 button.gotomenuUpload {
-    float:right; 
-    margin-right:30px;
-    margin-bottom:20px; 
-    color:#506A4C; 
-    background-color:white;
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    color: #506A4C;
+    background-color: white;
     font-size: 15px;
-    height: 35px; 
-   
+    height: 35px;
+
 }
+
 /*사진 업로드 버튼*/
-button.fileupload{
-    height:30px;
-    width:100px;
-    font-size:15px;
-    background-color:#506A4C;
-    border-color:#506A4C; 
-    color:white;
+button.fileupload {
+    height: 30px;
+    width: 100px;
+    font-size: 15px;
+    background-color: #506A4C;
+    border-color: #506A4C;
+    color: white;
     font-family: 'BMHANNAPro';
-    font-size:17px;
+    font-size: 17px;
 }
