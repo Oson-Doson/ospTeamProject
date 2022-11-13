@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#header{
+    width:100%;
+}
+
+/* 헤더 배경이미지 */
+.headerbackground {
+    background-image: url(./header/header_1.png);
+    background-size: 100%;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 이미지 위에 투명도 필터 */
+.headerbackground::before {
+    content: "";
+    opacity: 0.4;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #CADFB8;
+}
+
+/* 오손도손 로고 */
+.osondoson {
+    /* width: 187px;  */
+    padding:30px;
+    width: 160px;
+    position: relative;
+    cursor:pointer;
+}
+
+/* 오른쪽 상단 메뉴 */
+.menu {
+    font-size: 20px;
+    font-weight: bold;
+    /* color: #263F18; */
+    padding: 0 20px;
+}

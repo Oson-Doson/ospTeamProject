@@ -17,7 +17,7 @@ html{
 }
 body{
     position:relative;
-    min-width:1200px;
+    min-width:1000px;
     margin:0 auto;
     font-size:100%;
     line-height:100%;
@@ -164,6 +164,23 @@ li:hover .thumb{
     font-size:xx-large;
 }
 
+.btn-nav{
+    width:5%;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:50px 100px;
+}
+
+.prev-slick-arrow{
+    background-image:url(left-removebg-preview.png);
+}
+
+.next-slick-arrow{
+    background-image:url(right-removebg-preview.png);
+}
+
+
+
 /*이달의 맛집*/
 
 #btn_restaurantOfMonth{
@@ -237,6 +254,8 @@ li:hover .thumb{
 .goldCrown{
     position:absolute;
     z-index:10;
+    background-image: url(gold.svg);
+    background-repeat:no-repeat;
 }
 
 .silverCrownFix{
@@ -247,6 +266,8 @@ li:hover .thumb{
 .silverCrown{
     position:absolute;
     z-index:10;
+    background-image: url(silver.svg);
+    background-repeat:no-repeat;
 }
 
 .bronzeCrownFix{
@@ -257,6 +278,8 @@ li:hover .thumb{
 .bronzeCrown{
     position:absolute;
     z-index:10;
+    background-image: url(bronze.svg);
+    background-repeat:no-repeat;
 }
 
 #restaurantOfMonth .restaurantTitle{
@@ -348,13 +371,13 @@ li:hover .thumb{
     box-shadow:0px 0px 10px 10px #d9e670;
 }
 
-.icon-reviewShow{
-    background-image: url(icon-review.png);
+.icon-restaurantUpload{
+    background-image: url(icon-Upload.png);
     transition:box-shadow 0.1s ease;
 }
-.icon-reviewShow:hover{
+.icon-restaurantUpload:hover{
     background-color: #3d5031;
-    background-image:url(text-review.png);
+    background-image:url(text-Upload.png);
     background-size:60px 60px;
     box-shadow:0px 0px 10px 10px #d9e670;
 }

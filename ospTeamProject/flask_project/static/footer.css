@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+}
+
+#footer {
+    background-image: url(./footer/footer.jpg);
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.osondoson {
+    /* width: 187px;  */
+    padding: 30px;
+    width: 160px;
+    position: relative;
+}

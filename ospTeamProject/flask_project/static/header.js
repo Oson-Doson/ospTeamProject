@@ -1,0 +1,1 @@
+document.getElementById("header").innerHTML='<object type="text/html" data="url(../templates/header.html)" style="width:100%"></object>';

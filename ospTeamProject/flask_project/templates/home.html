@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>홈 화면</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='home.css') }}">
+    </head>
+
+    <body>
+        <main class="pg_main">
+            <article id="contents">
+                <header>
+                     <!-- header 붙여넣기 -->
+                    <div id="header" style="width: 100%"></div>
+                    <script>
+                        document.getElementById("header").innerHTML='<object type="text/html" data="./header.html" style="width:100%"></object>';
+                    </script>
+                </header>
+
+                <div class="floating-button">
+                    <div class="floating-hidden">
+                        <a href="/mapSearch"><div class="floating icon-map"></div></a>
+                        <a href="/list"><div class="floating icon-restaurantList"></div></a>
+                        <a href="/restaurantUpload"><div class="floating icon-restaurantUpload"></div></a>
+                    </div>
+                    <div class="floating icon-menu">
+                    </div>
+                    
+                </div>
+
+                <section id="restaurantRecommend">
+                    <div id="menuType">
+                        <button class="typeButton" id="typeTotal">total</button>
+                        <button class="typeButton" id="typeKorean">한식</button>
+                        <button class="typeButton" id="typeChinese">중식</button>
+                        <button class="typeButton" id="typeJapanese">일식</button>
+                        <button class="typeButton" id="typeWestern">양식</button>
+                        <button class="typeButton" id="typeCafe">카페</button>
+                    </div>
+                    <div class="moreList">
+                        <button onclick="mapSearch.html">+지도로 더보기</button>
+                        <button onclick="restaurantShow.html">+리스트 더보기</button>
+                    </div>
+                    <div id="recommendBox">
+                        <button class="btn-nav prev-slick-arrow"></button>
+                        <div id="recommendInnerBox">
+                            <ul>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <div class="thumb thumb1"></div>
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <div class="thumb thumb2"></div>
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <div class="thumb thumb3"></div>
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <div class="thumb thumb4"></div>
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <div class="thumb thumb5"></div>
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="restaurant-item">
+                                         <div class="thumb thumb6"></div>
+                                         <div class="info">
+                                            <p style="margin-top:70px;"></p>
+                                            <div class="star-ratings">
+                                                <div class="star-ratings-fill space-x-2 text-lg" :style="{ width: ratingToPercent + '%' }">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                                <div class="star-ratings-base space-x-2 text-lg">
+                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                                </div>
+                                            </div>
+                                            <div class="restaurantTitle">식당이름</div>
+                                         <div>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <button class="btn-nav next-slick-arrow"></button>
+                    </div>
+                </section>
+
+                <section id="restaurantOfMonth">
+                    <button id="btn_restaurantOfMonth">이달의 맛집</button>
+                    <div id="box_restaurantOfMonth">
+            
+                        <div id="silver">
+                                <a>
+                                    <div>
+                                        <div class="medalBox">
+                                        </div>
+                                        <div>
+                                            <div class="silverCrownFix">
+                                                <object class="silverCrown" type="image/svg+xml"></object>
+                                            </div>
+                                            <div class="restaurantTitle">식당 이름</div>
+                                        </div>
+                                    </div>
+                                </a>
+                        </div>
+
+                        <div id="gold">
+                                <a>
+                                    <div>
+                                        <div class="medalBox">
+                                        </div>
+                                        <div>
+                                            <div class="goldCrownFix">
+                                                <object class="goldCrown" type="image/svg+xml"></object>
+                                            </div>
+                                            <div class="restaurantTitle">식당 이름</div>
+                                        </div>
+                                    </div>
+                                </a>
+                        </div>
+                        
+                        <div id="bronze">
+                                <a>
+                                    <div>
+                                        <div class="medalBox">
+                                        </div>
+                                        <div>
+                                            <div class="bronzeCrownFix">
+                                                <object class="bronzeCrown" type="image/svg+xml"></object>
+                                            </div>
+                                            <div class="restaurantTitle">식당 이름</div>
+                                        </div>
+                                    </div>
+                                </a>
+                        </div>
+                    
+                    </div>
+                </section>
+                <section id="quickMenu">
+                        <button id="box_quickMenu">Quick<br>Menu</button>
+                        <button id="goto-restaurantUpload" onclick="restaurantUpload.html"><span class="highlight">맛집 등록하기</span></button>
+                        <button id="goto-restaurantShow" onclick="list.html">맛집 리스트 전체보기</button>
+                        <button id="goto-mapSearch" onclick="mapSearch.html">지도로 맛집 찾아보기</button>
+                </section>
+
+                <footer>
+                    <footer id="footer" style="width: 100%"></footer>
+                    <script>
+                        document.getElementById("footer").innerHTML='<object type="text/html" data="./footer.html" style="width:100%"></object>';
+                    </script>
+                </footer>
+            </article>
+        </main>
+    </body>
+</html>

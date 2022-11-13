@@ -20,9 +20,9 @@
 
                 <div class="floating-button">
                     <div class="floating-hidden">
-                        <div class="floating icon-map"></div>
-                        <div class="floating icon-reviewShow"></div>
-                        <div class="floating icon-restaurantList"></div>
+                        <a href="/mapSearch"><div class="floating icon-map"></div></a>
+                        <a href="/list"><div class="floating icon-restaurantList"></div></a>
+                        <a href="/restaurantUpload"><div class="floating icon-restaurantUpload"></div></a>
                     </div>
                     <div class="floating icon-menu">
                     </div>
@@ -43,7 +43,7 @@
                         <button onclick="restaurantShow.html">+리스트 더보기</button>
                     </div>
                     <div id="recommendBox">
-                        <button class="btn-nav prev slick-arrow"><img src="left-removebg-preview.png" width="50px" height="100px"></button>
+                        <button class="btn-nav prev-slick-arrow"></button>
                         <div id="recommendInnerBox">
                             <ul>
                                 <li>
@@ -151,7 +151,7 @@
                                 
                             </ul>
                         </div>
-                        <button class="btn-nav next slick-arrow"><img src="right-removebg-preview.png" width="50px" height="100px"></button>
+                        <button class="btn-nav next-slick-arrow"></button>
                     </div>
                 </section>
 
@@ -166,7 +166,7 @@
                                         </div>
                                         <div>
                                             <div class="silverCrownFix">
-                                                <object class="silverCrown" data="silver.svg" type="image/svg+xml"></object>
+                                                <object class="silverCrown"type="image/svg+xml"></object>
                                             </div>
                                             <div class="restaurantTitle">식당 이름</div>
                                         </div>
@@ -181,7 +181,7 @@
                                         </div>
                                         <div>
                                             <div class="goldCrownFix">
-                                                <object class="goldCrown" data="gold.svg" type="image/svg+xml"></object>
+                                                <object class="goldCrown" type="image/svg+xml"></object>
                                             </div>
                                             <div class="restaurantTitle">식당 이름</div>
                                         </div>
@@ -196,7 +196,7 @@
                                         </div>
                                         <div>
                                             <div class="bronzeCrownFix">
-                                                <object class="bronzeCrown" data="bronze.svg" type="image/svg+xml"></object>
+                                                <object class="bronzeCrown" type="image/svg+xml"></object>
                                             </div>
                                             <div class="restaurantTitle">식당 이름</div>
                                         </div>
@@ -208,9 +208,9 @@
                 </section>
                 <section id="quickMenu">
                         <button id="box_quickMenu">Quick<br>Menu</button>
-                        <button id="goto-restaurantUpload"><span class="highlight">맛집 등록하기</span></button>
-                        <button id="goto-restaurantShow">맛집 리스트 전체보기</button>
-                        <button id="goto-mapSearch">지도로 맛집 찾아보기</button>
+                        <button id="goto-restaurantUpload" onclick="restaurantUpload.html"><span class="highlight">맛집 등록하기</span></button>
+                        <button id="goto-restaurantShow" onclick="list.html">맛집 리스트 전체보기</button>
+                        <button id="goto-mapSearch" onclick="mapSearch.html">지도로 맛집 찾아보기</button>
                 </section>
 
                 <footer>
