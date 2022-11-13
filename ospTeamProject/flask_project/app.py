@@ -57,10 +57,6 @@ def reg_menu_submit_post():
 @app.route("/submit_review_post", methods=['POST'])
 def submit_review_post():
 
-    image_file=request.files["image_uploads"]
-    image_file.save("static/image/{}".format(image_file.filename))
     data = request.form
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0',port='5001', debug=True)
-    
+    print(data)
+   
