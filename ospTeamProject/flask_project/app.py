@@ -18,7 +18,7 @@ def reg_restaurant():
 def view_map():
     return render_template('mapSearch.html')  
 
-# 아래는 가은언니꺼에서 따온 거   
+# 가은 - 맛집등록 post
 
 @app.route("/submit_restaurant_post", methods=['POST'])
 def reg_restaurant_submit_post():
@@ -26,17 +26,30 @@ def reg_restaurant_submit_post():
     print(data)
     return render_template("result.html",data=data)
 
+# 민정 - 대표메뉴등록 post
+
 @app.route('/menuUpload')
 def menuUpload():
     return render_template("menuUpload.html")
 
 @app.route("/submit_menu_post", methods=['POST'])
 def reg_menu_submit_post():
-    image_file=request.files["file"]
-    image_file.save("static/image/{}".format(image_file.filename))
-    data = request.form
-    print(data)
-    return render_template("menuUpload_submit.html", result = data)
+    # image_file=request.files["file"]
+    # image_file.save("static/image/{}".format(image_file.filename))
+    name = request.form['menuname']
+    price = request.form['menuprice']
+    textarea = request.form['menudetail']
+    vegan = request.form.get('vegan')
+    allergy = request.form.get('allergy')
+    allergylist = request.form.get('allergylist')
+
+    print("음식명 : "+name)
+    print("가격 : "+price)
+    print("메뉴 상세 설명 : "+textarea)
+    print("추가 정보 - 비건 여부 : "+str(vegan))
+    print("추가 정보 - 알레르기 여부 : "+str(allergy))
+    print("알레르기 종류 : "+allergylist)
+    return name, price, textarea, vegan, allergy, allergylist
     
 
 # 아래는 여진언니 꺼에서...
