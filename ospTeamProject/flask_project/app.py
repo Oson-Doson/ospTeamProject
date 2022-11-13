@@ -23,6 +23,7 @@ def view_map():
 @app.route("/submit_restaurant_post", methods=['POST'])
 def reg_restaurant_submit_post():
     data=request.form
+    print(data)
     return render_template("result.html",data=data)
 
 @app.route('/menuUpload')
