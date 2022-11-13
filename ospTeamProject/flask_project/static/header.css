@@ -3,12 +3,10 @@
     padding: 0;
 }
 
-#header{
-    width:100%;
-}
-
 /* 헤더 배경이미지 */
 .headerbackground {
+    width:100%;
+    display:flex;
     background-image: url(./header/header_1.png);
     background-size: 100%;
     justify-content: space-between;
