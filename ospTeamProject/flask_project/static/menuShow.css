@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('./BMJUA_otf.otf');
+}
+
+@font-face {
+    font-family: 'BMDOHYUN';
+    src: url('./BMDOHYEON_otf.otf');
+}
+
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('./BMHANNAProOTF.otf');
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    src: url('../nanum/NanumBarunGothic.ttf');
+}
+
+body {
+    min-width: 1000px;
+    margin: 0 auto;
+}
+
+.bar-title {
+    position: absolute;
+    bottom: 25px;
+    left: 50px;
+    color: white;
+    font-family: 'BMJUA';
+    font-size: 38px;
+}
+
+.bar-veganImg {
+    position: absolute;
+    bottom: 10px;
+    right: 130px;
+    margin-left: 10px;
+}
+
+.bar-veganTitle {
+    position: absolute;
+    bottom: 20px;
+    right: 23px;
+    color: white;
+    font-size: 22px;
+}
+
+
+#menu-list {
+    height: 700px;
+    position: relative;
+    top: 100px;
+
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.menu-card {
+    width: 30%;
+    height: 600px;
+
+    background-color: white;
+    border: solid 3px rgb(194, 207, 192);
+    color: black;
+    font-family: 'NanumBarunGothic';
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.menu-detail {
+    font-size: 17px;
+    line-height: 1.6;
+    color: gray;
+}
+
+.menu-img {
+    width: 70%;
+    height: auto;
+    position: relative;
+    top: 35px;
+    border: 2px solid #506A4C;
+    margin-left: 15%;
+}
+
+.menu-contents {
+    position: relative;
+    top: 65px;
+
+    color: black;
+    height: auto;
+    margin: 0% 15%;
+}
+
+.began-img {
+    float: right;
+    margin-right: 15px;
+    display: inline-block;
+}

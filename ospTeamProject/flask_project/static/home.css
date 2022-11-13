@@ -63,6 +63,7 @@ button{
 .moreList button{
     float:right;
     margin-top:5px;
+    margin-left:10px;
     font-family:'BMHANNAPro';
     font-size:medium;
     text-decoration-line:underline;

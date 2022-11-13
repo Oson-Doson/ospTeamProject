@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@font-face{
+    font-family:'BMJUA';
+    src:url('./BMJUA_otf.otf');
+}
+@font-face{
+    font-family:'BMDOHYUN';
+    src:url('./BMDOHYEON_otf.otf');
+}
+@font-face{
+    font-family:'BMHANNAPro';
+    src:url('./BMHANNAProOTF.otf');
+}
+
+#menuType{
+    margin-bottom:1px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+button{
+    appearance:none;
+    border:0px;
+    background-color:transparent;
+    font-family:'BMJUA';
+}
+
+.typeButton{
+    width:15%;
+    /* margin-left:-1px;
+    margin-right:-1px; */
+    margin-left: 1px;
+    margin-right: 1px;
+    height:50px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    background-color:#CADFB8;
+    color:#506A4C;
+    font-size:large;
+}
+
+.typeButton:hover {
+    background-color: #496B49;
+    color: #ffffff;
+}
+
+#map {
+    width: 90%; 
+    height: 450px; 
+    margin-left: auto; 
+    margin-right: auto;  
+    margin-top: 15px;
+}
