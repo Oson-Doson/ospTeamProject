@@ -1,5 +1,7 @@
 from flask import Flask, render_template,request
+from database import DBhandler
 app = Flask(__name__)
+DB=DBhandler()
 
 
 @app.route('/')
@@ -24,7 +26,10 @@ def view_map():
 def reg_restaurant_submit_post():
     data=request.form
     print(data)
-    return render_template("result.html",data=data)
+    #return render_template("result.html",data=data)
+
+    if DB.insert_restaurant(data['Rname'],data):
+        return render_template("result.html",data=data)
 
 # 민정 - 대표메뉴등록 post
 
@@ -54,13 +59,13 @@ def reg_menu_submit_post():
 
 # 아래는 여진언니 꺼에서...
 
-@app.route('/reviewUpload')
-def reviewUpload():
-    return render_template("reviewUpload.html")
-    
 @app.route("/submit_review_post", methods=['POST'])
 def submit_review_post():
 
+    image_file=request.files["image_uploads"]
+    image_file.save("static/image/{}".format(image_file.filename))
     data = request.form
-    print(data)
-   
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port='5001', debug=True)
+    
