@@ -20,6 +20,10 @@ def reg_restaurant():
 def view_map():
     return render_template('mapSearch.html')  
 
+@app.route('/allergycheck')
+def allergy_popup():
+    return render_template('allergyPopup.html')
+
 # 가은 - 맛집등록 post
 
 @app.route("/submit_restaurant_post", methods=['POST'])

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='menuUpload.css') }}">
     <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
     <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
+    <script src="{{ url_for('static', filename='popup_parent.js') }}" defer></script>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <header>
         <!-- header 붙여넣기 -->
            <div class="headerbackground">
-               <img class="osondoson" src="../static/osondoson.png">
+            <a href="/"><img class="osondoson" src="../static/osondoson.png"></a>
            </div>
     </header>
 
@@ -97,7 +98,7 @@
                         <tr>
                             <td><label for="menudetail">메뉴 상세 설명</label></td>
                             <td>
-                                <textarea name="menudetail" cols="100" rows="10"></textarea>
+                                <textarea class="menudetail" name="menudetail"></textarea>
                             </td>
                         </tr>
 
@@ -108,7 +109,7 @@
                                 <div style="display: flex; align-items: center;">
                                     <input type="checkbox" id="vegan" name="vegan" value="vegan">
                                     <a>비건</a>
-                                    <input type="checkbox" id="allergy" name="allergy" value="allergy">
+                                    <input type="checkbox" id="allergy" name="allergy" value="allergy" onclick="allergyPopup();">
                                     <a>알레르기</a>
                                 </div>
                             </td>
@@ -117,7 +118,7 @@
                         <!---알레르기 선택하면 보여지는 input-->
                         <tr>
                             <td> <label for="allergy">알레르기</label></td>
-                            <td><input type="text" id="Fname" name="allergylist" value=""></td>
+                            <td><input type="text" id="allergylist" name="allergylist" value="" readonly/></td>
                         </tr>
 
                     </table>
@@ -137,7 +138,7 @@
     <footer>
         <div id="footer">
             <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
-            <div style="color:#ffffff">
+            <div class="footer-text">
                 (주) 오손도손 컴퍼니<br>
                 서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
                 ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.

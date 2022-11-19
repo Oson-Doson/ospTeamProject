@@ -1,160 +1,178 @@
-*{ /* 모든태그에 적용 : * (초기값 설정) */
-	padding:0;
-	margin:0;
-	box-sizing: border-box;
-    
-    }
-    @font-face {
-        font-family: 'NanumBarunGothic';
-        font-style: normal;
-        font-weight: 400;
-        src: url('./nanum/NaumBarunGothic.eot');
-        
-    }
-    @font-face{
-                font-family:'BMHANNAPro';
-                src:url('./BMHANNAProOTF.otf');
-            }
+* {
+    /* 모든태그에 적용 : * (초기값 설정) */
+    padding: 0;
+    margin: 0;
 
-    body{
-            position:relative;
-            min-width:1000px;
-            margin:0 auto;
-            font-size:100%;
-            line-height:100%;
-               }
+}
 
-    label{
-        font-family: 'BMHANNAPro';
-        font-size: 30px;
-        white-space:nowrap;
-    }
-    
-    #main{
-	margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./nanum/NaumBarunGothic.eot');
+
+}
+
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('./BMHANNAProOTF.otf');
+}
+
+body {
+    position: relative;
+    min-width: 1000px;
+    margin: 0 auto;
+    font-size: 100%;
+    line-height: 100%;
+}
+
+label {
+    font-family: 'BMHANNAPro';
+    font-size: 30px;
+    white-space: nowrap;
+}
+
+#main {
+    margin: 0 auto;
+    /* auto 알아서 중앙으로 맞춰줌 */
     padding-bottom: 50px;
-    margin:30px 60px 30px 60px;
-	height: 90%;
-    border:2px solid #506A4C;
-    }
+    margin: 30px 60px 30px 60px;
+    height: 90%;
+    border: 2px solid #506A4C;
+}
 
-	#section{
-	margin: 0 auto; /* auto 알아서 중앙으로 맞춰줌 */
-	padding: 10px 10px 0px 0px; 
-	width: 90%;
-	height: 80%;	
-	border:2px solid  #CADFB8;
+#section {
+    margin: 0 auto;
+    /* auto 알아서 중앙으로 맞춰줌 */
+    padding: 10px 10px 0px 0px;
+    width: 90%;
+    height: 80%;
+    border: 2px solid #CADFB8;
     margin-top: 20px;
-	}
-	
-    table{
-		margin:0 auto;
-		line-height:90px;
-		}
-		
-    tr{
-		color:#506A4C;
-		font-size:25px;
-		vertical-align : top;
-	}
-		td{
-            width:10%;
-			padding-left:40px;
-			
-		}
-   
-    
-    /*파일 선택 버튼 꾸미기*/
-    .filebox label {
-        display: inline-block;
-        padding: 10px 20px;
-        color: #fff;
-        font-size:20px;
-        vertical-align: middle;
-        background-color: #999999;
-        cursor: pointer;
-        height: 40px;
-        margin-left: 10px;
-    }
+}
 
-    .filebox input[type="file"] {
-        position: absolute;
-        width: 0;
-        height: 0;
-        padding: 0;
-        overflow: hidden;
-        border: 0;
-    }
-    #button{
-			text-align:center;
-			padding-bottom:20px;
-			padding-top:20px;
-		
-	}
-    
-    button.fileupload{
-        height:30px;
-		width:100px;
-		background-color:#506A4C;
-        border-color:#506A4C; 
-		color:white;
-        font-family: 'BMHANNAPro';
-        font-size:17px;
-        
-    }
-    /*이미지 업로드 부분*/
-    #picture-div{
-        background-color:#D9D9D9;
-        height: 150px;
-        width:  150px;
-        margin-top: 30px;  
-        border: solid 1px #506A4C;
-    }
+table {
+    margin: 0 auto;
+    line-height: 90px;
+}
 
-    #picture-div img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+tr {
+    color: #506A4C;
+    font-size: 25px;
+    vertical-align: top;
+}
 
-    /*비건 알레르기 체크박스*/
-    input[type=checkbox]{
-        width:30px;
-        height:30px;
-        margin-right:15px;
-    }
-  
-    /*알레르기 체크박스 앞에 여백 주기*/    
-    input[id="allergy"]{
-        margin-left:150px;
-    }
+td {
+    padding-left: 40px;
 
-    /*사용자 입력창 꾸미기*/
-	input{
-		width:250px;
-		height:30px;
-		border:1.5px solid #506A4C;
-        font-family:'NanumBarunGothic';
-        font-size:15px;
-	}
-    a{
-        font-family:'NanumBarunGothic';
-        font-size:22px;  
-    }
-	textarea{
-		border:1.5px solid #506A4C;	
-		resize: none;
-        font-family:'NanumBarunGothic';
-        font-size:15px;
-	}
-	/*메뉴추가, 등록 버튼 */  
-    button.add,button.register{
-		background-color:white;
-		border-color: #506A4C;
-        color:#506A4C;
-		height:38px;
-		width:130px;
-        font-family: 'BMHANNAPro';
-        font-size:20px;
-	}
+}
+
+
+/*파일 선택 버튼 꾸미기*/
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 20px;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+#button {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+}
+
+button.fileupload {
+    height: 30px;
+    width: 100px;
+    background-color: #506A4C;
+    border-color: #506A4C;
+    color: white;
+    font-family: 'BMHANNAPro';
+    font-size: 17px;
+
+}
+
+/*이미지 업로드 부분*/
+#picture-div {
+    background-color: #D9D9D9;
+    height: 150px;
+    width: 150px;
+    margin-top: 30px;
+    border: solid 1px #506A4C;
+}
+
+#picture-div img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*비건 알레르기 체크박스*/
+input[type=checkbox] {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+/*알레르기 체크박스 앞에 여백 주기*/
+input[id="allergy"] {
+    margin-left: 150px;
+}
+
+/*사용자 입력창 꾸미기*/
+input {
+    width: 250px;
+    height: 30px;
+    border: 1.5px solid #506A4C;
+    font-family: 'NanumBarunGothic';
+    font-size: 15px;
+}
+
+a {
+    font-family: 'NanumBarunGothic';
+    font-size: 22px;
+}
+
+textarea {
+    border: 1.5px solid #506A4C;
+    resize: none;
+    font-family: 'NanumBarunGothic';
+    font-size: 15px;
+}
+
+/*메뉴추가, 등록 버튼 */
+button.add,
+button.register {
+    background-color: white;
+    border-color: #506A4C;
+    color: #506A4C;
+    height: 38px;
+    width: 130px;
+    font-family: 'BMHANNAPro';
+    font-size: 20px;
+}
+
+table{
+    width:100%;
+}
+
+.menudetail{
+    width:70%; height:200px;
+}
