@@ -39,8 +39,7 @@ def reg_restaurant_submit_post():
     
     data=request.form
 
-
-    if DB.insert_restaurantUpload(data['name'], data, image_file.filename):
+    if DB.insert_restaurantUpload(data['Rname'], data, image_file.filename):
         return render_template("result.html", data=data, image_path="static/image/" +image_file.filename)
     else:
         return "Restaurant name already exist!"
