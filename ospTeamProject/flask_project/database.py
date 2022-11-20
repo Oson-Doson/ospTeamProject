@@ -12,13 +12,13 @@ class DBhandler:
     def insert_restaurantUpload(self, name, data, image_path):
         restaurant_info = {
             "Rname":data['Rname'],
-            "address":data['adress'],
+            "address":data['address'],
             "tel1":data['tel1'],
             "tel2":data['tel2'],
             "tel3":data['tel3'],
             "foodchoice":data['foodchoice'],
             "moodchoice":data['moodchoice'],
-            "pircechoice":data['pircechoice'],
+            "pircechoice":data['pricechoice'],
             "parking":data['parking'],
             "openhour":data['openhour'],
             "openmin":data['openmin'],
