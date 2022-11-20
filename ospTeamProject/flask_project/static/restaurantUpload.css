@@ -128,6 +128,22 @@ button.gotomenuUpload {
 
 }
 
+ /*이미지 업로드 부분*/
+ #picture-div{
+    background-color:#D9D9D9;
+    height: 150px;
+    width:  150px;
+    margin-top: 30px;  
+    border: solid 1px #506A4C;
+}
+
+#picture-div img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /*사진 업로드 버튼*/
 button.fileupload {
     height: 30px;

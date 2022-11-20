@@ -5,6 +5,7 @@ import sys
 
 
 app = Flask(__name__)
+DB=DBhandler()
 
 DB= DBhandler()
 
@@ -24,12 +25,18 @@ def reg_restaurant():
 def view_map():
     return render_template('mapSearch.html')  
 
+@app.route('/allergycheck')
+def allergy_popup():
+    return render_template('allergyPopup.html')
+
 # 가은 - 맛집등록 post
 
 @app.route("/submit_restaurant_post", methods=['POST'])
 def reg_restaurant_submit_post():
+  
     image_file=request.files["file"]
-    image_file.save("static/image/{}".format(image_file.filename))
+    image_file.save("static/image/".format(image_file.filename))
+    
     data=request.form
 
     if DB.insert_restaurant(data['name'], data, image_file.filename):
@@ -37,15 +44,22 @@ def reg_restaurant_submit_post():
     else:
         return "Restaurant name already exist!"
     print(data)
-    return render_template("result.html",data=data)
+    return render_template("result.html",data=data,image_path="static/image"+image_file.filename)
 
+#result.html에서 대표 메뉴 등록으로 이동
+@app.route('/menuUpload', methods=['post'])
+def menuUpload():
+    data=request.form
+    return render_template("menuUpload.html",data=data)
+    
 
 
 # 민정 - 대표메뉴등록 post
 
-@app.route('/menuUpload')
-def menuUpload():
-    return render_template("menuUpload.html")
+#@app.route('/menuUpload')
+#def menuUpload():
+    
+ #   return render_template("menuUpload.html")
 
 @app.route("/submit_menu_post", methods=['POST'])
 def reg_menu_submit_post():
@@ -69,13 +83,13 @@ def reg_menu_submit_post():
 
 # 아래는 여진언니 꺼에서...
 
-@app.route('/reviewUpload')
-def reviewUpload():
-    return render_template("reviewUpload.html")
-    
 @app.route("/submit_review_post", methods=['POST'])
 def submit_review_post():
 
+    image_file=request.files["image_uploads"]
+    image_file.save("static/image/{}".format(image_file.filename))
     data = request.form
-    print(data)
-   
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port='5001', debug=True)
+    

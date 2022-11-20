@@ -10,8 +10,12 @@
     <form action="/submit_menu_post" enctype="multipart/form-data" method="post">
         <div id="main">
 
-            <nav><img src="../static/menuUpload/menuregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>
-
+            <nav> 
+                <img src="../static/menuShow/bar.png" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
+                <div class="bar-title">
+                    <span style="color: #FFC000;">{{data.Rname}}</span> 대표 메뉴 등록
+                </div>
+                </nav>
             <div id="section">
 
                 <a href=" "><img src="../static/menuUpload/x.png" alt="cancel" width="25px" height="25px" style="float:right"></a>
@@ -85,7 +89,7 @@
                         <tr>
                             <td><label for="menudetail">메뉴 상세 설명</label></td>
                             <td>
-                                <textarea name="menudetail" cols="100" rows="10"></textarea>
+                                <textarea class="menudetail" name="menudetail"></textarea>
                             </td>
                         </tr>
 
@@ -105,7 +109,7 @@
                         <!---알레르기 선택하면 보여지는 input-->
                         <tr>
                             <td> <label for="allergy">알레르기</label></td>
-                            <td><input type="text" id="Fname" name="allergylist" value=""></td>
+                            <td><input type="text" id="allergylist" name="allergylist" value="" readonly/></td>
                         </tr>
 
                     </table>
