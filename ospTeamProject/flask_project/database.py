@@ -2,13 +2,15 @@ import pyrebase
 import json
 
 class DBhandler:
-    def _init_(self):
+    def __init__(self):
         with open('./authentication/firebase_auth.json') as f:
             config=json.load(f)
 
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
 
+    
+        
     def insert_restaurantUpload(self, name, data, image_path):
         restaurant_info = {
             "Rname":data['Rname'],
@@ -26,6 +28,8 @@ class DBhandler:
             "closemin":data['closemin'],
             "image_path":image_path
         }
+
+        
         if self.restaurant_duplicate_check(name):
             self.db.child("restaurant").child(name).set(restaurant_info)
             print(data,image_path)
