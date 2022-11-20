@@ -1,8 +1,13 @@
+
 from flask import Flask, render_template,request
 from database import DBhandler
+import sys
+
+
 app = Flask(__name__)
 DB=DBhandler()
 
+DB= DBhandler()
 
 @app.route('/')
 def home():
@@ -28,15 +33,18 @@ def allergy_popup():
 
 @app.route("/submit_restaurant_post", methods=['POST'])
 def reg_restaurant_submit_post():
+  
     image_file=request.files["file"]
-    image_file.save("../static/image/".format(image_file.filename))
+    image_file.save("static/image/".format(image_file.filename))
+    
     data=request.form
-    data=request.form
-    print(data)
-    return render_template("result.html",data=data,image_path="../static/image"+image_file.filename)
 
-    #if DB.insert_restaurant(data['Rname'],data):
-     #   return render_template("result.html",data=data)
+    if DB.insert_restaurant(data['name'], data, image_file.filename):
+        return render_template("submit_restaurnat_result.html", data=data, image_path="static/image/" +image_file.filename)
+    else:
+        return "Restaurant name already exist!"
+    print(data)
+    return render_template("result.html",data=data,image_path="static/image"+image_file.filename)
 
 #result.html에서 대표 메뉴 등록으로 이동
 @app.route('/menuUpload', methods=['post'])
@@ -44,6 +52,8 @@ def menuUpload():
     data=request.form
     return render_template("menuUpload.html",data=data)
     
+
+
 # 민정 - 대표메뉴등록 post
 
 #@app.route('/menuUpload')

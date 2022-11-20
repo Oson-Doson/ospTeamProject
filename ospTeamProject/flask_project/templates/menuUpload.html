@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html>
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+{% block sectionheader %}
     <title>대표 메뉴 등록</title>
     <link rel="stylesheet" href="{{url_for('static', filename='menuUpload.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
-    <script src="{{ url_for('static', filename='popup_parent.js') }}" defer></script>
-</head>
+{% endblock sectionheader %}
 
-<body>
-
-    <header>
-        <!-- header 붙여넣기 -->
-           <div class="headerbackground">
-            <a href="/"><img class="osondoson" src="../static/osondoson.png"></a>
-           </div>
-    </header>
+{% block section %}
 
     <form action="/submit_menu_post" enctype="multipart/form-data" method="post">
         <div id="main">
@@ -138,18 +125,4 @@
 
         </div>
     </form>
-
-    <footer>
-        <div id="footer">
-            <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
-            <div class="footer-text">
-                (주) 오손도손 컴퍼니<br>
-                서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
-                ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+{% endblock section %}
