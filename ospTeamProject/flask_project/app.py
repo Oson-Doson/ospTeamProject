@@ -35,16 +35,17 @@ def allergy_popup():
 def reg_restaurant_submit_post():
   
     image_file=request.files["file"]
-    image_file.save("static/image/".format(image_file.filename))
+    image_file.save("static/image/{}".format(image_file.filename))
     
     data=request.form
 
-    if DB.insert_restaurant(data['name'], data, image_file.filename):
-        return render_template("submit_restaurnat_result.html", data=data, image_path="static/image/" +image_file.filename)
+
+    if DB.insert_restaurantUpload(data['name'], data, image_file.filename):
+        return render_template("result.html", data=data, image_path="static/image/" +image_file.filename)
     else:
         return "Restaurant name already exist!"
     print(data)
-    return render_template("result.html",data=data,image_path="static/image"+image_file.filename)
+   
 
 #result.html에서 대표 메뉴 등록으로 이동
 @app.route('/menuUpload', methods=['post'])
