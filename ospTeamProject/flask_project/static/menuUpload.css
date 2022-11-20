@@ -176,3 +176,8 @@ table{
 .menudetail{
     width:70%; height:200px;
 }
+
+#allergylist{
+    cursor:default;
+    background-color:lightgray;
+}

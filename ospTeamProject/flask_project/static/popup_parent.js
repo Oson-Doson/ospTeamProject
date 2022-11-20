@@ -1,6 +1,6 @@
 var popup;
 
-function allergyPopup() {
+document.getElementById("allergy").onclick = function(){
     var url = "/allergycheck";
 
     var name = 'allergy check';
@@ -14,10 +14,17 @@ function allergyPopup() {
 
     popup = window.open(url, name, windowStatus);
 
-    /*팝업창에서 아무 행동도 하지 않고 그냥 닫을 시 menuUpload 창의 알레르기 체크박스 선택이 해제된다.*/
-    popup.addEventListener('unload', function () {
-        document.getElementById("allergy").checked = false;
+    /*allergylist의 값이 비어있지 않을 시, 팝업창을 닫아도 menuUpload.html의 allergy 체크박스 선택이 유지되도록 설정*/
+    if(document.getElementById("allergylist").value!=""){
+        popup.addEventListener('unload', function () {
+            document.getElementById("allergy").checked = true;
+    })}
+    //allergylist에 아무것도 들어있지 않을 때 팝업창을 닫으면 menuUpload.html의 allergy 체크박스 선택이 해제되도록 설정
+    else{
+        popup.addEventListener('unload', function () {
+            document.getElementById("allergy").checked = false;
     })
+    }
 
 }
 
