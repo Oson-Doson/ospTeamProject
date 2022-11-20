@@ -18,6 +18,11 @@
     src: url('./BMHANNAProOTF.otf');
 }
 
+@font-face {
+    font-family: 'BMJUA';
+    src: url('./BMJUA_otf.otf');
+}
+
 body {
     position: relative;
     min-width: 1000px;
@@ -25,6 +30,21 @@ body {
     font-size: 100%;
     line-height: 100%;
 }
+
+/*상단바 입력받은 가게 글자*/
+.bar-title {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    color: white;
+    font-family: 'BMJUA';
+    font-size: 45px;
+
+}
+
+nav{
+    position: relative;
+}        
 
 label {
     font-family: 'BMHANNAPro';

@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
 <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
+<link rel="stylesheet" href="{{url_for('static', filename='restaurantUpload.css') }}">
 </head>
 
 <body>
@@ -17,20 +18,74 @@
            </div>
     </header>
     <br><br>
-    <h1>
-        맛집 등록 데이터 값
-    </h1>
-    <h2>
-        <p>식당 이름: {{data.Rname}}</p>
-        <p>주소: {{data.address}}</p>
-        <p>전화번호: {{data.tel1}}-{{data.tel2}}-{{data.tel3}}</p>
-        <p>음식 category: {{data.foodchoice}}</p>
-        <p>키워드: {{data.moodchoice}}</p>
-        <p>가격대: {{data.pircechoice}}</p>
-        <p> 주차여부: {{data.parking}}</p>
-        <p>영업시간: {{data.openhour}} : {{data.openmin}} ~ {{data.closehour}}: {{data.closemin}}</p>
-        <p>외부 또는 내부 대표 사진:</p>
-    </h2>
+    <div id="main">
+        <nav> <img src="../static/restaurantUpload/resregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>
+
+            <!--맛집 등록 입력 받은 table-->
+            <table>
+
+                <tr>
+                    <td><label>식당이름</label></td>
+                    <td> {{data.Rname}} </td>
+                </tr>
+                 <!--주소 입력-->
+                <tr>
+                    <td><label for="address">주소</label></td>
+                    <td>{{data.address}}</td>
+                </tr>
+
+                <!--전화 번호 입력-->
+                <tr>
+                    <td><label for="tel">전화번호</label></td>
+                    <td>{{data.tel1}}-{{data.tel2}}-{{data.tel3}}</td>
+                </tr>
+
+                <!--음식 종류 선택-->
+                <tr>
+                    <td><label for="select-food category">음식 category</label></td>
+                    <td>{{data.foodchoice}}</td>
+                </tr>
+
+                <!--키워드 선택-->
+                <tr>
+                    <td><label for="keyword">키워드</label></td>
+                    <td>{{data.moodchoice}}</td>
+                </tr>
+
+                <!--가격대 선택-->
+                <tr>
+                    <td> <label for="price">가격대</label></td>
+                    <td>{{data.pircechoice}}</td>
+                </tr>
+
+                <!--주차여부 선택-->
+                <tr>
+                    <td><label for="parking">주차여부</label></td>
+                    <td>{{data.parking}}</td>
+                </tr>
+
+                <!--영업 시간 선택-->
+                <tr>
+                    <td> <label for="opening">영업시간</label></td>
+                    <td> {{data.openhour}} : {{data.openmin}} ~ {{data.closehour}} : {{data.closemin}}</td>
+                    </tr>
+                    <!--대표 사진 업로드-->
+                <tr>
+                    <td><label for="picture">외부 또는 내부 대표사진</label></td>
+                    <td>
+                        <img src="{{image_path}}" alt= "대표사진">
+                    </td>
+                </tr>
+
+            </table>
+            <form method="post" action="/menuUpload">
+                <input type="hidden" name="Rname" value="{{data.Rname}}">
+                <div>
+                    <button type="submit" name="menu" class="gotomenuUpload">맛집 대표 메뉴 등록 이어하기</button>
+                </div>
+            </form>
+  </div>
+
     <br><br>
     <footer>
         <div id="footer">
