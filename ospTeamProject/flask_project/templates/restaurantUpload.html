@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% extends "index.html" %}
 
-<head>
-
+{% block sectionheader %}
     <title> 맛집 등록 화면</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='restaurantUpload.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
-</head>
+{% endblock sectionheader %}
 
-<body>
-
-    <header>
-        <!-- header 붙여넣기 -->
-        <div class="headerbackground">
-            <a href="/"><img class="osondoson" src="../static/osondoson.png"></a>
-        </div>
-    </header>
-
+{% block section %}
     <div id="main">
         <nav> <img src="../static/restaurantUpload/resregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>
 
-        <form action="/submit_restaurant_post" method="post">
+        <form action="/submit_restaurant_post" enctype="multipart/form-data" method="post">
             <!--맛집 등록 입력창 table-->
             <table>
 
@@ -105,13 +91,13 @@
                 <!--가격대 선택-->
                 <tr>
                     <td> <label for="price">가격대</label></td>
-                    <td><select id="select-price" name="pircechoice">
+                    <td><select id="select-price" name="pricechoice">
                             <option value="empty">----------------------</option>
-                            <option name="pircechoice" value="~5000">~5,000</option>
-                            <option name="pircechoice" value="5,000~10000">5,000~10,000</option>
-                            <option name="pircechoice" value="10,000~15,000">10,000~15,000</option>
-                            <option name="pircechoice" value="15,000~20,000">15,000~20,000</option>
-                            <option name="pircechoice" value="20000~">20,000~</option>
+                            <option name="pricechoice" value="~5000">~5,000</option>
+                            <option name="pricechoice" value="5,000~10000">5,000~10,000</option>
+                            <option name="pricechoice" value="10,000~15,000">10,000~15,000</option>
+                            <option name="pricechoice" value="15,000~20,000">15,000~20,000</option>
+                            <option name="pricechoice" value="20000~">20,000~</option>
                         </select></td>
                 </tr>
 
@@ -133,10 +119,10 @@
 
                         }</script>
                     <td><input type="checkbox" id="parkingo" name="parking" value="주차 가능" onclick='checkOnlyOne(this);'
-                            getCheckboxValue()' />
+                            getCheckboxValue() />
                         <a>주차 가능</a>
                         <input type="checkbox" id="parkingx" name="parking" value="주차 불가" onclick='checkOnlyOne(this);'
-                            getCheckboxValue()' />
+                            getCheckboxValue() />
                         <a>주차 불가</a>
                     </td>
                 </tr>
@@ -228,9 +214,52 @@
                     <!--대표 사진 업로드-->
                 <tr>
                     <td><label for="picture">외부 또는 내부 대표사진</label></td>
-                    <td>
+                    <td><!-- 정렬 위해서 이미지 미리보기 부분과 파일 선택 버튼 flex로 감싸기 -->
+                        <div style="display: flex; align-items: flex-end;">
+                          <!-- <input type="image" id="picture" name="picture" value=""> -->
+                          <div id="picture-div" name="picture-div"></div>
+                          <button type="button" class="fileupload" onclick="onClickUpload();">파일 선택</button>
+                          <input type="file" accept="image/*" id="file-upload-input" name="file" style="display: none;"
+                              onchange="setThumbnail(event);"/>
+                      </div>
+                      <script>
+                          // 파일 선택 버튼과 파일 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
+                          function onClickUpload() {
+                              // 파일 업로드용 input은 display: none 처리
+                              let fileUpload = document.getElementById("file-upload-input");
+                              fileUpload.click();
+                          }
+
+                          // 이미지 업로드하는 함수
+                          function setThumbnail(event) {
+                              // FileReader 객체 생성
+                              var reader = new FileReader();
+
+                              // FileReader가 로드될 때 발생할 이벤트 
+                              reader.onload = function (event) {
+                                  // id가 picture-content인 요소가 있다면 true 반환
+                                  var isImgExists = !!document.getElementById("picture-content");
+
+                                  if (isImgExists) {
+                                      // 이미 picture-content가 있다면 (즉 이미 업로드된 a이미지가 있다면) - src만 변경
+                                      var imgAlready = document.getElementById("picture-content");
+                                      imgAlready.src = event.target.result;
+                                  } else {
+                                      // 업로드된 이미지 없는 경우 
+                                      // img 엘리먼트를 새로 생성하고 src 속성을 설정 > 이미지가 들어갈 div에 넣기
+                                      var img = document.createElement("img");
+                                      img.setAttribute("src", event.target.result);
+                                      img.id = 'picture-content';
+                                      document.querySelector("div#picture-div").appendChild(img);
+                                  }
+                              };
+
+                              reader.readAsDataURL(event.target.files[0]);
+                          }
+                      </script>
+                        <!--
                         <input type="image" id="picture" name="picture" value="">
-                        <button class="fileupload" onclick="">파일 선택</button>
+                        <button class="fileupload" onclick="">파일 선택</button>-->
                     </td>
                 </tr>
 
@@ -238,23 +267,9 @@
             <div style=" text-align: center;">
                 <input type="submit" value="저장" />
             </div>
-            <!--맛집 대표 메뉴 등록 이어하기 버튼-->
-            <button class="gotomenuUpload" onclick="location.href='menuUpload.html'">맛집 대표 메뉴 등록 이어하기 &#9654;</button>
+            <!--맛집 대표 메뉴 등록 이어하기 버튼
+            <button class="gotomenuUpload" onclick="location.href='menuUpload.html'">맛집 대표 메뉴 등록 이어하기 &#9654;</button>-->
         </form>
 
     </div>
-
-    <footer>
-        <div id="footer">
-            <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
-            <div class="footer-text">
-                (주) 오손도손 컴퍼니<br>
-                서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
-                ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+{% endblock section %}

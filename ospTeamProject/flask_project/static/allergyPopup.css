@@ -2,10 +2,12 @@
     font-family: 'BMJUA';
     src: url('./BMJUA_otf.otf');
 }
+
 @font-face {
     font-family: 'NanumBarunGothic';
     src: url('./nanum/NanumBarunGothic.ttf');
 }
+
 /*
 table {
     border: 1px solid black;
@@ -22,13 +24,6 @@ img {
 
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
 
 body {
     background-image: url('./allergyPopup/bg.png');
@@ -50,48 +45,226 @@ body.dimmed::before {
     backdrop-filter: blur(5px);
 }
 
+#allergyText1 {
+    font-family: 'BMJUA';
+    color: #506A4C;
+    font-size: xx-large;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#allergyText2 {
+    font-family: 'NanumBarunGothic';
+    color: black;
+    font-size: small;
+    text-align: center;
+    margin: 10px;
+    font-weight: bold;
+}
+
 .popup {
-    z-index: 1;
+    display:flex;
+    flex-direction: column;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 300px;
-    max-width: 600px;
     background-color: #FAEFAD;
     border-radius: 15px;
+    min-width:570px;
     box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);
 }
 
 .popup>.content {
     padding: 20px;
     padding-bottom: 0px;
+    padding-top: 0;
     box-sizing: border-box;
 }
 
 .popup>.cmd {
     bottom: 0;
-    min-height: 40px;
     padding: 15px 15px;
-    box-sizing: border-box;
     border-radius: 0 0 15px 15px;
-    min-height: 40px;
     text-align: center;
 }
 
-.popup>.cmd .button {
+.popup>.cmd .button,.popup>.cmd .regbutton{
     border-radius: 8px;
     padding: 5px 10px;
-    margin: 10px 10px;
+    margin: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
     border: 1px solid #aaa;
     font-family: 'NanumBarunGothic';
     color: black;
-    font-size: 17px;
     font-weight: bold;
 }
 
-.popup>.cmd .button:hover {
+.popup>.cmd .button:hover,.popup>.cmd .regbutton:hover {
     color: #fff;
     background-color: #000;
     border-color: #000;
+}
+
+/*알러지 체크박스*/
+
+.allergyImage{
+    width:100px;
+    height:100px;
+}
+
+    /*체크박스 안 보이게 하기*/
+input[name="allergy_check"] {
+	display: none;
+}
+
+    /*알러지 이미지*/
+
+input[name="allergy_check"]+label{
+    background-size:cover;
+}
+input[name="allergy_check"]:checked+label {
+    background-image:url('./allergyPopup/checked.png');
+}
+
+
+input[id="allergy1"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알1_2.png');
+}
+
+
+input[id="allergy2"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알1_3.png');
+}
+input[id="allergy3"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알1_4.png');
+}
+input[id="allergy4"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알1_5.png');
+}
+
+input[id="allergy5"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알2_1.png');
+}
+
+input[id="allergy6"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알2_2.png');
+}
+input[id="allergy7"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알2_3.png');
+}
+input[id="allergy8"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알2_4.png');
+}
+input[id="allergy9"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알2_5.png');
+}
+
+input[id="allergy10"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알3_1.png');
+}
+input[id="allergy11"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알3_2.png');
+}
+input[id="allergy12"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알3_3.png');
+}
+input[id="allergy13"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알3_4.png');
+}
+input[id="allergy14"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알3_5.png');
+}
+input[id="allergy15"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알4_1.png');
+}
+input[id="allergy16"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알4_2.png');
+}
+input[id="allergy17"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알4_3.png');
+}
+input[id="allergy18"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알4_4.png');
+}
+input[id="allergy19"]+label {
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-image: url('./allergyPopup/알4_5.png');
 }

@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html>
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+{% block sectionheader %}
     <title>대표 메뉴 등록</title>
     <link rel="stylesheet" href="{{url_for('static', filename='menuUpload.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
-</head>
+    <script src="{{ url_for('static', filename='popup_parent.js') }}" defer></script>
+{% endblock sectionheader %}
 
-<body>
-
-    <header>
-        <!-- header 붙여넣기 -->
-           <div class="headerbackground">
-               <img class="osondoson" src="../static/osondoson.png">
-           </div>
-    </header>
+{% block section %}
 
     <form action="/submit_menu_post" enctype="multipart/form-data" method="post">
         <div id="main">
-
-            <nav><img src="../static/menuUpload/menuregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>
-
+            <input type="hidden" name="Rname" value="{{Rname}}">
+            <nav> 
+                <img src="../static/menuShow/bar.png" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
+                <div class="bar-title">
+                    <span style="color: #FFC000;">{{data.Rname}}</span> 대표 메뉴 등록
+                </div>
+                </nav>
             <div id="section">
 
                 <a href=" "><img src="../static/menuUpload/x.png" alt="cancel" width="25px" height="25px" style="float:right"></a>
@@ -46,9 +39,10 @@
                                     <!-- <input type="image" id="picture" name="picture" value=""> -->
                                     <div id="picture-div" name="picture-div"></div>
                                     <button type="button" class="fileupload" onclick="onClickUpload();">파일 선택</button>
-                                    <input type="file" accept="image/*" id="file-upload-input" name="MENUIMAGE" style="display: none;"
+                                    <input type="file" accept="image/*" id="file-upload-input" name="menuimage" style="display: none;"
                                         onchange="setThumbnail(event);">
                                 </div>
+                                
                                 <script>
                                     // 파일 선택 버튼과 파일 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
                                     function onClickUpload() {
@@ -97,7 +91,7 @@
                         <tr>
                             <td><label for="menudetail">메뉴 상세 설명</label></td>
                             <td>
-                                <textarea name="menudetail" cols="100" rows="10"></textarea>
+                                <textarea class="menudetail" name="menudetail"></textarea>
                             </td>
                         </tr>
 
@@ -117,7 +111,7 @@
                         <!---알레르기 선택하면 보여지는 input-->
                         <tr>
                             <td> <label for="allergy">알레르기</label></td>
-                            <td><input type="text" id="Fname" name="allergylist" value=""></td>
+                            <td><input type="text" id="allergylist" name="allergylist" value="" readonly/></td>
                         </tr>
 
                     </table>
@@ -133,18 +127,4 @@
 
         </div>
     </form>
-
-    <footer>
-        <div id="footer">
-            <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
-            <div style="color:#ffffff">
-                (주) 오손도손 컴퍼니<br>
-                서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
-                ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+{% endblock section %}

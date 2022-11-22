@@ -1,19 +1,11 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+{% extends "index.html" %}
+
+{% block sectionheader %}
         <title>리뷰 등록하기</title>
         <link rel="stylesheet" href="{{url_for('static', filename='reviewUpload.css') }}">
-        <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
-        <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
-    </head>
-    <body>
-        <header>
-            <!-- header 붙여넣기 -->
-               <div class="headerbackground">
-                   <img class="osondoson" src="../static/osondoson.png">
-               </div>
-        </header>
+{% endblock sectionheader %}
+
+{% block section %}
 
         <!-- <div id="reviewUploadNavi">
             <img src="greenbar.png" alt="리뷰등록" style="width: 90%" >
@@ -39,6 +31,7 @@
                     accept="image/*" 
                     id="file-upload-input" 
                     style="display: none; width:280px; "
+                    name="picture-input"
                     onchange="setThumbnail(event);"
                                 >
                 </div>
@@ -139,16 +132,5 @@
         </div>
         </form>
 
-        <footer>
-        <div id="footer">
-            <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
-            <div style="color:#ffffff">
-                (주) 오손도손 컴퍼니<br>
-                서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
-                ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-    </body>
-</html>
+{% endblock section %}
+       

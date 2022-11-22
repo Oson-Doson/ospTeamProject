@@ -1,21 +1,11 @@
-<html>
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+{% block sectionheader %}
     <title>지도로 맛집 찾기</title>
     <link rel="stylesheet" href="{{url_for('static', filename='mapSearch.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
-</head>
+{% endblock sectionheader %}
 
-<body>
-    <header>
-        <!-- header 붙여넣기 -->
-        <div class="headerbackground">
-            <a href="/"><img class="osondoson" src="../static/osondoson.png"></a>
-        </div>
-    </header>
+{% block section %}
 
     <!-- 탭 부분 -->
     <div id="menuType">
@@ -41,17 +31,4 @@
         var map = new kakao.maps.Map(mapContainer, mapOption); 
     </script>
 
-    <footer>
-        <div id="footer">
-            <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
-            <div class="footer-text">
-                (주) 오손도손 컴퍼니<br>
-                서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
-                ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+{% endblock section %}

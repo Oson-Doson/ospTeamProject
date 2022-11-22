@@ -5,53 +5,91 @@
     <meta charset="UTF-8">
     <title>알레르기 정보 입력 팝업</title>
     <link rel="stylesheet" href="{{url_for('static', filename='allergyPopup.css') }}">
+    <script src="{{ url_for('static', filename='popup.js') }}" defer></script>
 </head>
 
 <body class="dimmed">
     <div class="popup">
+
         <div class="title">
-            <div style="display: flex; justify-content: flex-end;">
-                <img src="./allergyPopup/x.png" style="width: 30px; margin-top: 140px;" onclick="closePopUp()">
-            </div>
-            <p
-                style="font-family: 'BMJUA'; color: #506A4C; font-size: 43px; margin-top: 35px; margin-bottom: 10px; text-align:center;">
-                알레르기 정보 선택</p>
-            <p
-                style="font-family: 'NanumBarunGothic'; color:black; font-size: 20px; font-weight: bold; text-align: center; margin: 10px;">
-                메뉴에 함유되어 있는 항목을 모두 선택해주세요</p>
+            <p id="allergyText1">알레르기 정보 선택</p>
+            <p id="allergyText2">메뉴에 함유되어 있는 항목을 1가지 이상 선택해주세요</p>
         </div>
+
         <div class="content">
-            <table style="width: 100%; table-layout: fixed;">
-                <tr>
-                    <td><img src="./allergyPopup/알1_1.png"></td>
-                    <td><img src="./allergyPopup/알1_2.png"></td>
-                    <td><img src="./allergyPopup/알1_3.png"></td>
-                    <td><img src="./allergyPopup/알1_4.png"></td>
-                </tr>
-                <tr>
-                    <td><img src="./allergyPopup/알2_1.png"></td>
-                    <td><img src="./allergyPopup/알2_2.png"></td>
-                    <td><img src="./allergyPopup/알2_3.png"></td>
-                    <td><img src="./allergyPopup/알2_4.png"></td>
-                </tr>
-                <tr>
-                    <td><img src="./allergyPopup/알3_1.png"></td>
-                    <td><img src="./allergyPopup/알3_2.png"></td>
-                    <td><img src="./allergyPopup/알3_3.png"></td>
-                    <td><img src="./allergyPopup/알3_4.png"></td>
-                </tr>
-                <tr>
-                    <td><img src="./allergyPopup/알4_1.png"></td>
-                    <td><img src="./allergyPopup/알4_2.png"></td>
-                    <td><img src="./allergyPopup/알4_3.png"></td>
-                    <td><img src="./allergyPopup/알4_4.png"></td>
-                </tr>
-            </table>
+            <form method="post" action="/submit_menu_post">
+                <div>
+                    <img src="../static/allergyPopup/알1_1.png" class="allergyImage">
+                    <input type="checkbox" id="allergy1" name="allergy_check" value="난류"><label for="allergy1">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy2" name="allergy_check" value="소고기"><label for="allergy2">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy3" name="allergy_check" value="돼지고기"><label for="allergy3">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy4" name="allergy_check" value="닭고기"><label for="allergy4">
+                        <div class="allergyImage"></div>
+                    </label>
+                </div>
+                <div>
+                    <input type="checkbox" id="allergy5" name="allergy_check" value="새우"><label for="allergy5">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy6" name="allergy_check" value="게"><label for="allergy6">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy7" name="allergy_check" value="오징어"><label for="allergy7">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy8" name="allergy_check" value="고등어"><label for="allergy8">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy9" name="allergy_check" value="조개류"><label for="allergy9">
+                        <div class="allergyImage"></div>
+                    </label>
+                </div>
+                <div>
+                    <input type="checkbox" id="allergy10" name="allergy_check" value="우유"><label for="allergy10">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy11" name="allergy_check" value="땅콩"><label for="allergy11">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy12" name="allergy_check" value="호두"><label for="allergy12">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy13" name="allergy_check" value="잣"><label for="allergy13">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy14" name="allergy_check" value="대두"><label for="allergy14">
+                        <div class="allergyImage"></div>
+                    </label>
+                </div>
+                <div>
+                    <input type="checkbox" id="allergy15" name="allergy_check" value="복숭아"><label for="allergy15">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy16" name="allergy_check" value="토마토"><label for="allergy16">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy17" name="allergy_check" value="밀"><label for="allergy17">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy18" name="allergy_check" value="메밀"><label for="allergy18">
+                        <div class="allergyImage"></div>
+                    </label>
+                    <input type="checkbox" id="allergy19" name="allergy_check" value="이황산류"><label for="allergy19">
+                        <div class="allergyImage"></div>
+                    </label>
+                </div>
+            </form>
 
         </div>
         <div class="cmd">
-            <input type="button" name="btnclose" class="button" value="취소">
-            <input type="button" name="btnclose" class="button" value="등록">
+            <input type="button" name="btnclose" class="button" value="초기화" id="xbtn">
+            <input type="submit" name="btnclose" class="regbutton" value="등록" id="regbtn">
         </div>
     </div>
 </body>
