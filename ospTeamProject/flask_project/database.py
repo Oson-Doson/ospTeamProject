@@ -43,6 +43,19 @@ class DBhandler:
             if res.key() == name:
                 return False
             return True
+
+    def insert_review(self, name, data, image_path):
+        review_content = {
+            "nickname": data['nickname'],
+            "mood": data['moodchoice'],
+            "taste": data['taste'],
+            "star": data['star'],
+            "text": data['text'],
+            "image_path": image_path
+        }
+        self.db.child("review").child(name).set(review_content)
+        print(data, image_path)
+        return True
     
 
     def insert_menuUpload(self,name,data,image_path):

@@ -73,13 +73,20 @@ def reg_menu_submit_post():
         return "Menu name already exist!"
 
 # 아래는 여진언니 꺼에서...
+# 추가한 부분 - 리뷰등록 url
+@app.route('/reviewUpload')
+def reviewUpload():
+    return render_template("reviewUpload.html")
 
 @app.route("/submit_review_post", methods=['POST'])
 def submit_review_post():
 
-    image_file=request.files["image_uploads"]
-    image_file.save("static/image/{}".format(image_file.filename))
+    image_file=request.files["picture-input"]
+    image_file.save("static/review-image/{}".format(image_file.filename))
     data = request.form
+
+    if DB.insert_review(data['nickname'], data, image_file.filename):
+        return render_template("home.html")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port='5001', debug=True)
