@@ -1,3 +1,7 @@
 *.pyc
+*.jpeg
+*.png
+*.svg
 
 __pycache__
+
