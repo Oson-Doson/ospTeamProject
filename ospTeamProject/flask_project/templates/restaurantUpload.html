@@ -9,7 +9,7 @@
     <div id="main">
         <nav> <img src="../static/restaurantUpload/resregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>
 
-        <form action="/submit_restaurant_post" method="post">
+        <form action="/submit_restaurant_post" enctype="multipart/form-data" method="post">
             <!--맛집 등록 입력창 table-->
             <table>
 
@@ -119,10 +119,10 @@
 
                         }</script>
                     <td><input type="checkbox" id="parkingo" name="parking" value="주차 가능" onclick='checkOnlyOne(this);'
-                            getCheckboxValue()' />
+                            getCheckboxValue() />
                         <a>주차 가능</a>
                         <input type="checkbox" id="parkingx" name="parking" value="주차 불가" onclick='checkOnlyOne(this);'
-                            getCheckboxValue()' />
+                            getCheckboxValue() />
                         <a>주차 불가</a>
                     </td>
                 </tr>
@@ -220,7 +220,7 @@
                           <div id="picture-div" name="picture-div"></div>
                           <button type="button" class="fileupload" onclick="onClickUpload();">파일 선택</button>
                           <input type="file" accept="image/*" id="file-upload-input" name="file" style="display: none;"
-                              onchange="setThumbnail(event);">
+                              onchange="setThumbnail(event);"/>
                       </div>
                       <script>
                           // 파일 선택 버튼과 파일 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
@@ -241,7 +241,7 @@
                                   var isImgExists = !!document.getElementById("picture-content");
 
                                   if (isImgExists) {
-                                      // 이미 picture-content가 있다면 (즉 이미 업로드된 이미지가 있다면) - src만 변경
+                                      // 이미 picture-content가 있다면 (즉 이미 업로드된 a이미지가 있다면) - src만 변경
                                       var imgAlready = document.getElementById("picture-content");
                                       imgAlready.src = event.target.result;
                                   } else {

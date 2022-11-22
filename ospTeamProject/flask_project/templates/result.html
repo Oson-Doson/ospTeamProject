@@ -2,6 +2,7 @@
 
 {% block sectionheader %}
 <title> 맛집 등록 저장 화면</title>
+<link rel="stylesheet" href="{{url_for('static', filename='restaurantUpload.css') }}">
 {% endblock sectionheader %}
 
 {% block section %}
@@ -61,7 +62,7 @@
                 <tr>
                     <td><label for="picture">외부 또는 내부 대표사진</label></td>
                     <td>
-                        <img src="{{image_path}}" alt= "대표사진">
+                        <img src="{{image_path}}" alt= "대표사진" style="width: 100%; height:100px;">
                     </td>
                 </tr>
 
