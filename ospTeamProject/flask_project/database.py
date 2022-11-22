@@ -31,7 +31,7 @@ class DBhandler:
         
         
         if self.restaurant_duplicate_check(name):
-            self.db.child("restaurant").child(name).set(restaurant_info)
+            self.db.child("restaurant").child(name).push(restaurant_info)
             print(data,image_path)
             return True
         else:
@@ -40,7 +40,9 @@ class DBhandler:
     def restaurant_duplicate_check(self, name):
         restaurants = self.db.child("restaurant").get()
         for res in restaurants.each():
-            if res.key() == name:
+            value=res.val()
+
+            if value['Rname'] == name:
                 return False
         return True
 
@@ -60,19 +62,19 @@ class DBhandler:
 
     def insert_menuUpload(self,name,data,image_path):
         menu_info={
-            "식당이름" : data['Rname'],
-            "메뉴 이름" : data['menuname'],
-            "메뉴 가격" : data['menuprice'],
-            "메뉴 상세" : data['menudetail'],
-            "비건 여부" : data['vegan'],
-            "알러지 여부" : data['allergy'],
-            "알러지 목록" : data['allergylist'],
+            "restaurant_name" : data['Rname'],
+            "menuname" : data['menuname'],
+            "menuprice" : data['menuprice'],
+            "menudetail" : data['menudetail'],
+            "vegan" : data['vegan'],
+            "allergy" : data['allergy'],
+            "allergylist" : data['allergylist'],
             "image_path" : image_path
         }
 
     
         if self.menu_duplicate_check(name):
-                self.db.child("menu").child(name).set(menu_info)
+                self.db.child("menu").child(name).push(menu_info)
                 print(data,image_path)
                 return True
         else:
@@ -81,6 +83,8 @@ class DBhandler:
     def menu_duplicate_check(self, name):
         menus = self.db.child("menu").get()
         for m in menus.each():
-            if m.key() == name:
+            value=m.val()
+
+            if value['menuname'] == name:
                 return False
         return True
