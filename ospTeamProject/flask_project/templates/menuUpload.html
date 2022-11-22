@@ -3,13 +3,14 @@
 {% block sectionheader %}
     <title>대표 메뉴 등록</title>
     <link rel="stylesheet" href="{{url_for('static', filename='menuUpload.css') }}">
+    <script src="{{ url_for('static', filename='popup_parent.js') }}" defer></script>
 {% endblock sectionheader %}
 
 {% block section %}
 
     <form action="/submit_menu_post" enctype="multipart/form-data" method="post">
         <div id="main">
-
+            <input type="hidden" name="Rname" value="{{Rname}}">
             <nav> 
                 <img src="../static/menuShow/bar.png" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
                 <div class="bar-title">
@@ -38,9 +39,10 @@
                                     <!-- <input type="image" id="picture" name="picture" value=""> -->
                                     <div id="picture-div" name="picture-div"></div>
                                     <button type="button" class="fileupload" onclick="onClickUpload();">파일 선택</button>
-                                    <input type="file" accept="image/*" id="file-upload-input" name="MENUIMAGE" style="display: none;"
+                                    <input type="file" accept="image/*" id="file-upload-input" name="menuimage" style="display: none;"
                                         onchange="setThumbnail(event);">
                                 </div>
+                                
                                 <script>
                                     // 파일 선택 버튼과 파일 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
                                     function onClickUpload() {

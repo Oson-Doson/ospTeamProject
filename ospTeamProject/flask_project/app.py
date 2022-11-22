@@ -44,12 +44,12 @@ def reg_restaurant_submit_post():
         return "Restaurant name already exist!"
     
    
-
+                                                                                                        
 #result.html에서 대표 메뉴 등록으로 이동
 @app.route('/menuUpload', methods=['post'])
 def menuUpload():
-    data=request.form
-    return render_template("menuUpload.html",data=data)
+    Rname=request.form
+    return render_template("menuUpload.html",data=Rname)
     
 
 
@@ -62,23 +62,15 @@ def menuUpload():
 
 @app.route("/submit_menu_post", methods=['POST'])
 def reg_menu_submit_post():
-    # image_file=request.files["file"]
-    # image_file.save("static/image/{}".format(image_file.filename))
-    name = request.form['menuname']
-    price = request.form['menuprice']
-    textarea = request.form['menudetail']
-    vegan = request.form.get('vegan')
-    allergy = request.form.get('allergy')
-    allergylist = request.form.get('allergylist')
+    image_file=request.files["menuimage"]
+    image_file.save("static/menu-image-upload/{}".format(image_file.filename))
 
-    print("음식명 : "+name)
-    print("가격 : "+price)
-    print("메뉴 상세 설명 : "+textarea)
-    print("추가 정보 - 비건 여부 : "+str(vegan))
-    print("추가 정보 - 알레르기 여부 : "+str(allergy))
-    print("알레르기 종류 : "+allergylist)
-    return name, price, textarea, vegan, allergy, allergylist
+    data=request.form
     
+    if DB.insert_menuUpload(data['menuname'],data,image_file.filename):
+        return render_template("home.html")
+    else:
+        return "Menu name already exist!"
 
 # 아래는 여진언니 꺼에서...
 
