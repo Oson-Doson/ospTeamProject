@@ -16,7 +16,7 @@
 			<img src="../static/details/food.jpg" alt="00식당사진" width=100% height=50%>
 			</a>
 			<div class="desc1">
-				<a class="store">00식당</a>
+				<a class="store">{{data.Rname}}</a>
 				<a style="font-size:15px;">&nbsp;&nbsp;한식</a><br>
 				<a class= "sub1">#혼밥가능<br> 평균 평점</a>
 				<a class = "star">&#10030;&nbsp;</a>
@@ -29,15 +29,15 @@
 		<!-- box2  -->
 		<div class="box2 left">
 			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			<a class="sub1">서울 서대문구 이화여대길 52-31</a><br>
+			<a class="sub1">{{data.address}}</a><br>
 			<a class="picto" id="exclude"> &#9742;&nbsp;&nbsp;&nbsp;</a>
-			<a class = "sub1">02-000-0000</a><br>
+			<a class = "sub1">{{data.tel1}}-{{data.tel2}}-{{data.tel3}}</a><br>
 		</div>
 		<div class="box2 right">
 			<a class="picto"> &#9719;&nbsp;&nbsp;&nbsp;</a>
-			<a class= "sub1">매일 11:00 ~ 23:00</a><br> 
+			<a class= "sub1">{{data.openhour}}:{{data.openmin}} ~ {{data.closehour}}:{{data.closemin}}</a><br> 
 			<a class="picto" id="exclude">&#8473;&nbsp;&nbsp;&nbsp;</a>
-			<a class= "sub1">주차 협소</a><br>
+			<a class= "sub1">주차 {% if data['parking']=="주차 가능" %}가능{% endif %}{% if data['parking']=="주차 불가" %}불가{% endif %}</a><br>
 		</div>
 
 		<!-- box3 대표메뉴  -->
@@ -56,7 +56,11 @@
 			<a class ="sub1"> 평균평점 <b>4.3/5 </b> &nbsp;&nbsp; 리뷰 <b>23</b></a> <br>
 			<a class="picto">&#10146;&nbsp;&nbsp;</a>
 			<button class="button" onclick="리뷰 보러가기">리뷰 보러가기 ></button>&nbsp;&nbsp; 
-			<a class=" sub1"><button class="button" onclick="리뷰 등록하기">리뷰 등록하기 ></button></a>
+
+			<form method="post">
+				<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
+				<a class=" sub1" href="/submit_review_post/{{data.Rname}}"><button class="button" type="submit">리뷰 등록하기 ></button></a>
+			</form>
 		</div>	
 	
 	</div>
