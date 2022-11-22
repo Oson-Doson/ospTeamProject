@@ -10,7 +10,8 @@ class DBhandler:
         self.db = firebase.database()
 
     
-        
+    """식당 데이터 등록""" 
+
     def insert_restaurantUpload(self, name, data, image_path):
         restaurant_info = {
             "Rname":data['Rname'],
@@ -46,8 +47,12 @@ class DBhandler:
                 return False
         return True
 
+
+    """리뷰 데이터 등록"""
+
     def insert_review(self, name, data, image_path):
         review_content = {
+           
             "nickname": data['nickname'],
             "mood": data['moodchoice'],
             "taste": data['taste'],
@@ -59,6 +64,9 @@ class DBhandler:
         print(data, image_path)
         return True
     
+
+
+    """메뉴 데이터 등록""" 
 
     def insert_menuUpload(self,name,data,image_path):
         menu_info={
@@ -88,3 +96,32 @@ class DBhandler:
             if value['menuname'] == name:
                 return False
         return True
+
+
+    def get_restaurants(self):
+        restaurants=self.db.child("restaurant").get().val()
+
+
+    """맛집 이름으로 restaurant 테이블에서 정보 가져오기"""
+
+    def get_restaurant_byname(self,name):
+        restaurants=self.db.child("restaurant").get()
+        target_value=""
+        for res in restaurants.each():
+            value=res.val()
+
+            if value['name']==name:
+                target_value=value
+        return target_value
+
+
+    """맛집 이름으로 review 테이블에서 평점 가져와서 평균 계산하기"""
+
+    def get_avgrate_byname(self,name):
+        reviews=self.db.child("review").get()
+        rates=[]
+        for res in reviews.each():
+            value=res.val()
+            if value['restaurant_name']==name:
+                rates.append(float(value['rate']))
+        return sum(rates)/len(rates)
