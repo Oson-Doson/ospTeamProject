@@ -42,7 +42,7 @@ class DBhandler:
         for res in restaurants.each():
             if res.key() == name:
                 return False
-            return True
+        return True
 
     def insert_review(self, name, data, image_path):
         review_content = {
@@ -70,6 +70,7 @@ class DBhandler:
             "image_path" : image_path
         }
 
+    
         if self.menu_duplicate_check(name):
                 self.db.child("menu").child(name).set(menu_info)
                 print(data,image_path)
@@ -82,4 +83,4 @@ class DBhandler:
         for m in menus.each():
             if m.key() == name:
                 return False
-            return True
+        return True
