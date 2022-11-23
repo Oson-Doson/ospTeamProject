@@ -10,7 +10,8 @@ class DBhandler:
         self.db = firebase.database()
 
     
-        
+    """식당 데이터 등록""" 
+
     def insert_restaurantUpload(self, name, data, image_path):
         restaurant_info = {
             "Rname":data['Rname'],
@@ -31,7 +32,7 @@ class DBhandler:
         
         
         if self.restaurant_duplicate_check(name):
-            self.db.child("restaurant").child(name).set(restaurant_info)
+            self.db.child("restaurant").child(name).push(restaurant_info)
             print(data,image_path)
             return True
         else:
@@ -40,12 +41,18 @@ class DBhandler:
     def restaurant_duplicate_check(self, name):
         restaurants = self.db.child("restaurant").get()
         for res in restaurants.each():
-            if res.key() == name:
+            value=res.val()
+
+            if value['Rname'] == name:
                 return False
-            return True
+        return True
+
+
+    """리뷰 데이터 등록"""
 
     def insert_review(self, name, data, image_path):
         review_content = {
+           
             "nickname": data['nickname'],
             "mood": data['moodchoice'],
             "taste": data['taste'],
@@ -58,20 +65,24 @@ class DBhandler:
         return True
     
 
+
+    """메뉴 데이터 등록""" 
+
     def insert_menuUpload(self,name,data,image_path):
         menu_info={
-            "식당이름" : data['Rname'],
-            "메뉴 이름" : data['menuname'],
-            "메뉴 가격" : data['menuprice'],
-            "메뉴 상세" : data['menudetail'],
-            "비건 여부" : data['vegan'],
-            "알러지 여부" : data['allergy'],
-            "알러지 목록" : data['allergylist'],
+            "restaurant_name" : data['Rname'],
+            "menuname" : data['menuname'],
+            "menuprice" : data['menuprice'],
+            "menudetail" : data['menudetail'],
+            "vegan" : data['vegan'],
+            "allergy" : data['allergy'],
+            "allergylist" : data['allergylist'],
             "image_path" : image_path
         }
 
+    
         if self.menu_duplicate_check(name):
-                self.db.child("menu").child(name).set(menu_info)
+                self.db.child("menu").child(name).push(menu_info)
                 print(data,image_path)
                 return True
         else:
@@ -80,6 +91,37 @@ class DBhandler:
     def menu_duplicate_check(self, name):
         menus = self.db.child("menu").get()
         for m in menus.each():
-            if m.key() == name:
+            value=m.val()
+
+            if value['menuname'] == name:
                 return False
-            return True
+        return True
+
+
+    def get_restaurants(self):
+        restaurants=self.db.child("restaurant").get().val()
+
+
+    """맛집 이름으로 restaurant 테이블에서 정보 가져오기"""
+
+    def get_restaurant_byname(self,name):
+        restaurants=self.db.child("restaurant").get()
+        target_value=""
+        for res in restaurants.each():
+            value=res.val()
+
+            if value['name']==name:
+                target_value=value
+        return target_value
+
+
+    """맛집 이름으로 review 테이블에서 평점 가져와서 평균 계산하기"""
+
+    def get_avgrate_byname(self,name):
+        reviews=self.db.child("review").get()
+        rates=[]
+        for res in reviews.each():
+            value=res.val()
+            if value['restaurant_name']==name:
+                rates.append(float(value['rate']))
+        return sum(rates)/len(rates)
