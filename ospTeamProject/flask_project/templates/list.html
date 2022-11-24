@@ -6,6 +6,7 @@
 {% endblock sectionheader %}
 
 {% block section %}
+{%for data in datas%}
 	<div class="contents">
 
 		<div id="menuType">
@@ -26,10 +27,10 @@
 			<!-- 가격대 select -->
 			<select class="sort" id="price">
 				<option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
-				<option value="<5000">~5000</option>
+				<option value="~5000">~5000</option>
 				<option value="10000~15000">10000~15000</option>
-				<option value="15000~<20000">15000~20000</option>
-				<option value=">20000">20000~</option>
+				<option value="15000~20000">15000~20000</option>
+				<option value="20000~">20000~</option>
 			</select>
 
 			<!-- 주차가능 -->
@@ -50,11 +51,11 @@
 				<img src="../static/list/food.jpg" alt="00식당사진" width=100% height=50%>
 			</a>
 			<div class="desc">
-				<a class="store">00식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
 				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 
@@ -63,11 +64,11 @@
 				<img class="photo" src="../static/list/food2.jpg" alt="aa식당사진" width="45%" height="50%">
 			</a>
 			<div class="desc">
-				<a class="store">aa식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.2 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 
@@ -76,11 +77,11 @@
 				<img src="../static/list/food3.jpg" alt="bb식당사진" width=auto height="400">
 			</a>
 			<div class="desc">
-				<a class="store">bb식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
 				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 		<!-- 리스트  -->
@@ -89,11 +90,11 @@
 				<img src="../static/list/food.jpg" alt="00식당사진" width=100% height=50%>
 			</a>
 			<div class="desc">
-				<a class="store">00식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
 				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 
@@ -102,11 +103,11 @@
 				<img class="photo" src="../static/list/food2.jpg" alt="aa식당사진" width="45%" height="50%">
 			</a>
 			<div class="desc">
-				<a class="store">aa식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.2 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 
@@ -115,11 +116,11 @@
 				<img src="../static/list/food3.jpg" alt="bb식당사진" width=auto height="400">
 			</a>
 			<div class="desc">
-				<a class="store">bb식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
 				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 		<!-- 리스트  -->
@@ -128,11 +129,11 @@
 				<img src="../static/list/food.jpg" alt="00식당사진" width=100% height=50%>
 			</a>
 			<div class="desc">
-				<a class="store">00식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
 				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 
@@ -141,11 +142,11 @@
 				<img class="photo" src="../static/list/food2.jpg" alt="aa식당사진" width="45%" height="50%">
 			</a>
 			<div class="desc">
-				<a class="store">aa식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">4.2 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub3">4.4 </a><br>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 
@@ -154,14 +155,15 @@
 				<img src="../static/list/food3.jpg" alt="bb식당사진" width=auto height="400">
 			</a>
 			<div class="desc">
-				<a class="store">bb식당</a><br>
-				<a class="sub1">#혼밥가능</a><br>
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
 				<a class="sub3">4.4 </a><br>
-				<a class="sub1">02-000-0000</a>
+				<a class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</a>
 			</div>
 		</div>
 	</div>
+	{%endfor%}
 
 {% endblock section %}
 	

@@ -14,7 +14,7 @@ class DBhandler:
 
     def insert_restaurantUpload(self, name, data, image_path):
         restaurant_info = {
-            "Rname":data['Rname'],
+            "Rname":name,
             "address":data['address'],
             "tel1":data['tel1'],
             "tel2":data['tel2'],
@@ -82,7 +82,7 @@ class DBhandler:
 
     
         if self.menu_duplicate_check(name):
-                self.db.child("menu").child(name).push(menu_info)
+                self.db.child("menu").child(name).set(menu_info)
                 print(data,image_path)
                 return True
         else:
@@ -125,3 +125,4 @@ class DBhandler:
     # 맛집등록 테이블에서 데이터 가져오기
     def get_restaurants(self):
         restaurants = self.db.child("restaurant").get().val()
+        return restaurants

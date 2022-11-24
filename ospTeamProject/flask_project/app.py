@@ -89,7 +89,8 @@ def submit_review_post():
         return render_template("home.html")
 
 
-@app.route("/list")
+#app.py 에서 get_restaurants 호출
+@app.route("/list_res")
 def list_restaurants():
 
     data=DB.get_restaurants()
