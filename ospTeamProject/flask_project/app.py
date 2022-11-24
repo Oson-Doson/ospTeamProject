@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,redirect,url_for
 from database import DBhandler
 import sys
 
@@ -13,9 +13,10 @@ DB= DBhandler()
 def home():
     return render_template('home.html')
 
+# 맛집리스트화면으로 연결 & 페이징
 @app.route('/list')
 def view_list():
-    return render_template('list.html')
+    return redirect(url_for('list_restaurants'))
 
 @app.route('/restaurantUpload')
 def reg_restaurant():
@@ -29,7 +30,13 @@ def view_map():
 def allergy_popup():
     return render_template('allergyPopup.html')
 
-# 가은 - 맛집등록 post
+# 추가한 부분 - 리뷰등록 url
+@app.route('/reviewUpload')
+def reviewUpload():
+    return render_template("reviewUpload.html")
+
+
+# 맛집등록 post
 
 @app.route("/submit_restaurant_post", methods=['POST'])
 def reg_restaurant_submit_post():
@@ -45,7 +52,7 @@ def reg_restaurant_submit_post():
     
    
                                                                                                         
-#result.html에서 대표 메뉴 등록으로 이동
+#맛집 등록 -> result.html -> 대표 메뉴 등록으로 이동
 @app.route('/menuUpload', methods=['post'])
 def menuUpload():
     Rname=request.form
@@ -53,12 +60,7 @@ def menuUpload():
     
 
 
-# 민정 - 대표메뉴등록 post
-
-#@app.route('/menuUpload')
-#def menuUpload():
-    
- #   return render_template("menuUpload.html")
+# 대표메뉴등록 post
 
 @app.route("/submit_menu_post", methods=['POST'])
 def reg_menu_submit_post():
@@ -72,12 +74,10 @@ def reg_menu_submit_post():
     else:
         return "Menu name already exist!"
 
-# 아래는 여진언니 꺼에서...
-# 추가한 부분 - 리뷰등록 url
-@app.route('/reviewUpload')
-def reviewUpload():
-    return render_template("reviewUpload.html")
 
+
+
+# 리뷰 등록 post
 @app.route("/submit_review_post", methods=['POST'])
 def submit_review_post():
 
@@ -87,6 +87,32 @@ def submit_review_post():
 
     if DB.insert_review(data['nickname'], data, image_file.filename):
         return render_template("home.html")
+
+
+@app.route("/list")
+def list_restaurants():
+
+    data=DB.get_restaurants()
+    tot_count=len(data)
+
+    return render_template(
+        "list.html",
+        datas=data.items(),
+        total=tot_count)
+
+
+
+# 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 
+@app.route("/view_detail/<name>/")
+def view_restaurant_detail(name):
+    data=DB.get_restaurant_byname(str(name))  #맛집 이름으로 데이터 가져오는 함수
+    #avg_rate=DB.get_avgrate_byname(str(name))  #맛집 이름으로 평균 평점 가져오는 함수
+    print("####data:",data)
+    return render_template("details.html",data=data)
+
+
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port='5001', debug=True)
