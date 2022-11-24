@@ -32,7 +32,7 @@ class DBhandler:
         
         
         if self.restaurant_duplicate_check(name):
-            self.db.child("restaurant").child(name).push(restaurant_info)
+            self.db.child("restaurant").push(restaurant_info)
             print(data,image_path)
             return True
         else:
