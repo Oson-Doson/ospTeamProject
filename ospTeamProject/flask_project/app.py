@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,redirect,url_for
 from database import DBhandler
 import sys
 
@@ -13,9 +13,10 @@ DB= DBhandler()
 def home():
     return render_template('home.html')
 
+# 맛집리스트화면으로 연결 & 페이징
 @app.route('/list')
 def view_list():
-    return render_template('list.html')
+    return redirect(url_for('list_restaurants'))
 
 @app.route('/restaurantUpload')
 def reg_restaurant():

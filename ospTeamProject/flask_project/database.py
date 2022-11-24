@@ -98,10 +98,6 @@ class DBhandler:
         return True
 
 
-    def get_restaurants(self):
-        restaurants=self.db.child("restaurant").get().val()
-
-
     """맛집 이름으로 restaurant 테이블에서 정보 가져오기"""
 
     def get_restaurant_byname(self,name):
@@ -125,3 +121,7 @@ class DBhandler:
             if value['restaurant_name']==name:
                 rates.append(float(value['rate']))
         return sum(rates)/len(rates)
+
+    # 맛집등록 테이블에서 데이터 가져오기
+    def get_restaurants(self):
+        restaurants = self.db.child("restaurant").get().val()
