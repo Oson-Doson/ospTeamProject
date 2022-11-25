@@ -116,14 +116,14 @@ class DBhandler:
         reviews=self.db.child("review").get()
         rates=[]
 
-        if len(rates)==0:
-            return 0
-        else:
-            for res in reviews.each():
-                value=res.val()
-                if value['restaurant_name']==name:
-                    rates.append(float(value['star']))
-            return sum(rates)/len(rates)
+        for res in reviews.each():
+            value=res.val()
+            if value['restaurant_name']==name:
+                rates.append(float(value['star']))
+                if len(rates)==0:
+                    return 0
+                else:
+                    return sum(rates)/len(rates)
 
     # 맛집등록 테이블에서 데이터 가져오기
     def get_restaurants(self):
