@@ -92,15 +92,22 @@ def submit_review_post():
 #app.py 에서 get_restaurants 호출
 @app.route("/list_res")
 def list_restaurants():
+    page = request.args.get("page", 0, type=int)
+    limit = 9
 
+    start_idx=limit*page
+    end_idx=limit*(page+1)
     data=DB.get_restaurants()
     tot_count=len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
 
     return render_template(
         "list.html",
         datas=data.items(),
-        total=tot_count)
-
+        total=tot_count,
+        limit=limit,
+        page=page,
+        page_count=int((tot_count/9)+1))
 
 
 # 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 
