@@ -115,11 +115,15 @@ class DBhandler:
     def get_avgrate_byname(self,name):
         reviews=self.db.child("review").get()
         rates=[]
-        for res in reviews.each():
-            value=res.val()
-            if value['restaurant_name']==name:
-                rates.append(float(value['rate']))
-        return sum(rates)/len(rates)
+
+        if len(rates)==0:
+            return 0
+        else:
+            for res in reviews.each():
+                value=res.val()
+                if value['restaurant_name']==name:
+                    rates.append(float(value['star']))
+            return sum(rates)/len(rates)
 
     # 맛집등록 테이블에서 데이터 가져오기
     def get_restaurants(self):

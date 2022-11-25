@@ -114,9 +114,9 @@ def list_restaurants():
 @app.route("/view_detail/<name>/")
 def view_restaurant_detail(name):
     data=DB.get_restaurant_byname(str(name))  #맛집 이름으로 데이터 가져오는 함수
-    #avg_rate=DB.get_avgrate_byname(str(name))  #맛집 이름으로 평균 평점 가져오는 함수
+    avg_rate=DB.get_avgrate_byname(str(name))  #맛집 이름으로 평균 평점 가져오는 함수
     print("####data:",data)
-    return render_template("details.html",data=data)
+    return render_template("details.html",data=data,avg_rate=avg_rate)
 
 # 동적 라우팅 : 맛집 세부화면 - 맛집 리뷰등록 화면 
 @app.route("/review_post/<name>/")
