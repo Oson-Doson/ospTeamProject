@@ -53,14 +53,14 @@ class DBhandler:
     def insert_review(self, name, data, image_path):
         review_content = {
             "restaurant_name":data['Rname'],
-            "nickname": data['nickname'],
+            "nickname": name,
             "mood": data['moodchoice'],
             "taste": data['taste'],
             "star": data['star'],
             "text": data['text'],
             "image_path": image_path
         }
-        self.db.child("review").child(name).set(review_content)
+        self.db.child("review").push(review_content)
         print(data, image_path)
         return True
     
@@ -120,10 +120,23 @@ class DBhandler:
             value=res.val()
             if value['restaurant_name']==name:
                 rates.append(float(value['star']))
-                if len(rates)==0:
-                    return 0
-                else:
-                    return sum(rates)/len(rates)
+
+        if len(rates)==0:
+            return 0
+        else:
+            return sum(rates)/len(rates)
+    
+    """맛집 이름으로 review 테이블에서 별점 가져와서 리뷰 개수 구하기"""
+    def get_reviewnum_byname(self,name):
+        reviews=self.db.child("review").get()
+        rates=[]
+
+        for res in reviews.each():
+            value=res.val()
+            if value['restaurant_name']==name:
+                rates.append(float(value['star']))
+            
+        return len(rates)
 
     # 맛집등록 테이블에서 데이터 가져오기
     def get_restaurants(self):

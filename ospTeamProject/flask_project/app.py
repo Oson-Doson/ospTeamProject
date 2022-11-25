@@ -108,15 +108,16 @@ def list_restaurants():
         limit=limit,
         page=page,
         page_count=int((tot_count/9)+1))
-
+                          
 
 # 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 
 @app.route("/view_detail/<name>/")
 def view_restaurant_detail(name):
     data=DB.get_restaurant_byname(str(name))  #맛집 이름으로 데이터 가져오는 함수
     avg_rate=DB.get_avgrate_byname(str(name))  #맛집 이름으로 평균 평점 가져오는 함수
+    review_num=DB.get_reviewnum_byname(str(name))
     print("####data:",data)
-    return render_template("details.html",data=data,avg_rate=avg_rate)
+    return render_template("details.html",data=data,avg_rate=avg_rate,review_num=review_num)
 
 # 동적 라우팅 : 맛집 세부화면 - 맛집 리뷰등록 화면 
 @app.route("/review_post/<name>/")
