@@ -61,7 +61,7 @@ label {
     border: 2px solid #506A4C;
 }
 
-#section {
+#section,#form_add {
     margin: 0 auto;
     /* auto 알아서 중앙으로 맞춰줌 */
     padding: 10px 10px 0px 0px;
@@ -187,6 +187,7 @@ button.register {
     width: 130px;
     font-family: 'BMHANNAPro';
     font-size: 20px;
+    cursor:pointer;
 }
 
 table{

@@ -14,12 +14,12 @@ document.getElementById("regbtn").onclick = function () {
     }
 
     //배열데이터를 menuUpload의 allergylist 로 전달해주기
-    window.opener.document.getElementById("allergylist").value = allergy_arr;
+    window.opener.document.getElementsByClassName("allergylist").value = allergy_arr;
 
     //선택된 알레르기의 개수가 0개가 아니면, menuUpload 의 알레르기 체크박스를 선택된 상태로 유지시키기
     if (j != 0) {
         window.addEventListener('unload', function (event) {
-            this.window.opener.document.getElementById("allergy").checked = true;
+            this.window.opener.document.getElementsByClassName("allergy").checked = true;
         });
     }
 
@@ -27,14 +27,14 @@ document.getElementById("regbtn").onclick = function () {
 }
 
 //초기화버튼
-document.getElementById("xbtn").onclick = function () {
+document.getElementsByClassName("xbtn").onclick = function () {
 
     //초기화 버튼을 누를 시, allergylist 의 value가 초기화됨
-    window.opener.document.getElementById("allergylist").value="";
+    window.opener.document.getElementsByClassName("allergylist").value="";
 
     //초기화 버튼을 누를 시, menuUpload.html의 allergy 체크박스 선택이 해제됨
     window.addEventListener('unload', function (event) {
-        this.window.opener.document.getElementById("allergy").checked = false;
+        this.window.opener.document.getElementsByClassName("allergy").checked = false;
     });
     
     //팝업창을 닫음
