@@ -106,7 +106,7 @@ class DBhandler:
         for res in restaurants.each():
             value=res.val()
 
-            if value['name']==name:
+            if value['Rname']==name:
                 target_value=value
         return target_value
 

@@ -16,7 +16,7 @@
         <header>
             <!-- header 붙여넣기 -->
             <div class="headerbackground">
-                <a href="/"><img class="osondoson" src="../static/osondoson.png"></a>
+                <a href="/"><img class="osondoson" src="{{url_for('static', filename='osondoson.png') }}"></a>
             </div>
         </header>
 
@@ -28,7 +28,7 @@
 
         <footer>
             <div id="footer">
-                <img class="osondoson" src="../static/osondoson.png" alt="오손도손 로고">
+                <img class="osondoson" src="{{url_for('static', filename='osondoson.png') }}" alt="오손도손 로고">
                 <div class="footer-text">
                     (주) 오손도손 컴퍼니<br>
                     서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
