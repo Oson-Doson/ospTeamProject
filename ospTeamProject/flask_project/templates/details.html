@@ -18,7 +18,7 @@
 			<div class="desc1">
 				<a class="store">{{data.Rname}}</a>
 				<a style="font-size:15px;">&nbsp;&nbsp;한식</a><br>
-				<a class= "sub1">#혼밥가능<br> 평균 평점</a>
+				<a class= "sub1">{{data.moodchoice}}<br> 평균 평점</a>
 				<a class = "star">&#10030;&nbsp;</a>
 				<a class= "sub1"><b>4.4</b> / 5</a><br> 
 				<a class= "sub2">영업 중</a><br>
@@ -57,10 +57,8 @@
 			<a class="picto">&#10146;&nbsp;&nbsp;</a>
 			<button class="button" onclick="리뷰 보러가기">리뷰 보러가기 ></button>&nbsp;&nbsp; 
 
-			<form method="post">
-				<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
-				<a class=" sub1" href="/submit_review_post/{{data.Rname}}"><button class="button" type="submit">리뷰 등록하기 ></button></a>
-			</form>
+			
+			<a class=" sub1" href="/review_post/{{data.Rname}}/"><button class="button">리뷰 등록하기 ></button></a>
 		</div>	
 	
 	</div>

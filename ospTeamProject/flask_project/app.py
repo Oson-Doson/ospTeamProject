@@ -118,8 +118,11 @@ def view_restaurant_detail(name):
     print("####data:",data)
     return render_template("details.html",data=data)
 
-
-
+# 동적 라우팅 : 맛집 세부화면 - 맛집 리뷰등록 화면 
+@app.route("/review_post/<name>/")
+def review_post(name):
+    print(name)
+    return render_template("reviewUpload.html",data=name)
 
 
 if __name__ == '__main__':

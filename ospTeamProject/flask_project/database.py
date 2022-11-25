@@ -52,7 +52,7 @@ class DBhandler:
 
     def insert_review(self, name, data, image_path):
         review_content = {
-           
+            "restaurant_name":data['Rname'],
             "nickname": data['nickname'],
             "mood": data['moodchoice'],
             "taste": data['taste'],

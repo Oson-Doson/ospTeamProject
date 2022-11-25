@@ -13,15 +13,15 @@
         </div> -->
 
 <form action="/submit_review_post" enctype="multipart/form-data" method="post">
-    
+    <input type="hidden" name="Rname" value="{{data}}">
     
 
     <!-- 리뷰 등록 내용 -->
     <div id="reviewUploadContents">
         <nav>
-        <img src="../static/menuShow/bar.png" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
+        <img src="{{url_for('static', filename='menuShow/bar.png') }}" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
         <div class="bar-title">
-            <span style="color: #FFC000;">test</span> 대표 메뉴 등록
+            <span style="color: #FFC000;">{{data}}</span> 리뷰 등록
         </div>
         </nav>
         <div name="리뷰 정보 등록 첫 번째 문단" style="display: flex; align-items: center; margin-left:20px;">
@@ -75,7 +75,7 @@
             </script>
 
             <div name="이미지 옆 정보 입력">
-                <h4 class="storeName">00가게</h4><br>
+                <h4 class="storeName">{{data}}</h4><br>
 
                 <div id="nickname" class="contentsAlign">
                     <span class="contentsTitle">닉네임</span>
