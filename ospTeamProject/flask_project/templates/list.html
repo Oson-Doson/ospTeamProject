@@ -49,8 +49,8 @@
 	{%for data in datas%}
 		<!-- 리스트  -->
 		<div class="list">
-			<a target="_blank" href="00식당사진">
-				<img src="{{data[1].image_path}}" alt="00식당사진" width=100% height=50%>
+			<a target="_blank" href="/view_detail/{{data[1].Rname}}/">
+				<img src="../static/image/{{data[1].image_path}}" alt="00식당사진" width=100% height=50%>
 			</a>
 			<div class="desc">
 				<a class="store">{{data[1].Rname}}</a><br>

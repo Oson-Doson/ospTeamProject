@@ -4,6 +4,8 @@
     .page-wrap{
     text-align: center;
     font-size: 0;
+    width: 100%;
+    float:left;
     }
     .page-nation{
     display: flex;
@@ -15,14 +17,14 @@
     display: block;
     margin: 0 3px;
     float: left;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #CADFB8;
     width: 28px;
     height: 28px;
     line-height: 28px;
     text-align: center;
     background-color: #fff;
     font-size: 13px;
-    color: black;
+    color:  #506A4C;
     text-decoration: none;
     font-weight:bold;
     }

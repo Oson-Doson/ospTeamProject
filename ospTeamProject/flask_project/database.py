@@ -91,9 +91,8 @@ class DBhandler:
     def menu_duplicate_check(self, name):
         menus = self.db.child("menu").get()
         for m in menus.each():
-            value=m.val()
 
-            if value['menuname'] == name:
+            if m.key()==name:
                 return False
         return True
 
@@ -106,7 +105,7 @@ class DBhandler:
         for res in restaurants.each():
             value=res.val()
 
-            if value['name']==name:
+            if value['Rname']==name:
                 target_value=value
         return target_value
 
