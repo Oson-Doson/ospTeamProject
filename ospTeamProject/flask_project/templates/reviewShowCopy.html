@@ -10,11 +10,11 @@
     <!--상단 4개의 메뉴 바-->
 
     <div class="bar">
-        <div class="bar-name" style="width: 25%;"><span style="color: #FFC000;">{{data[1].restaurant_name}}</span> 리뷰</div>
+        <div class="bar-name" style="width: 25%;"><span style="color: #FFC000;">{{res_name}}</span> 리뷰</div>
         <div class="bar-rank" style="width: 15%;"><span style="color: #FFc000; font-size: 40px;">★ </span>{{avg_rate}}/5
         </div>
         <div class="bar-review" style="width: 15%;">{{review_num}}</div>
-        <div class="bar-goto" style="width: 25%">{{data[1].restaurant_name}}} 세부정보로 이동</div>
+        <div class="bar-goto" style="width: 25%">{{res_name}} 세부정보로 이동</div>
     </div>
     {% for data in datas %}
     {% if total > 0 %}
