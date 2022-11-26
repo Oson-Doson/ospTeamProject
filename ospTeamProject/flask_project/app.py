@@ -146,3 +146,10 @@ def menu_post(name):
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port='5001', debug=True)
     
+# 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 
+@app.route("/view_list/<name>/")
+def view_restaurant_list(name):
+    avg_rate=DB.get_avgrate_byname(str(name))  #맛집 이름으로 평균 평점 가져오는 함수
+    
+ 
+    return render_template("list.html",avg_rate=avg_rate)
