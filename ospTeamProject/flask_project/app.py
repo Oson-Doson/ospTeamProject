@@ -35,6 +35,10 @@ def allergy_popup():
 def reviewUpload():
     return render_template("reviewUpload.html")
 
+# 추가한 부분 - 대표메뉴조회 url
+@app.route('/menuShow')
+def menuShow():
+    return render_template("menuShow.html")
 
 # 맛집등록 post
 
@@ -124,12 +128,6 @@ def view_restaurant_detail(name):
 def review_post(name):
     print(name)
     return render_template("reviewUpload.html",data=name)
-
-# 동적 라우팅 : 맛집 세부화면 - 맛집 메뉴등록 화면 
-@app.route("/menu_post/<name>/")
-def menu_post(name):
-    print(name)
-    return render_template("menuUpload copy.html",data=name)
 
 
 if __name__ == '__main__':
