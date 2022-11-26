@@ -134,7 +134,7 @@ def review_post(name):
 def view_foods(res_name):
     data = DB.get_food_byname(str(res_name))
     tot_count = len(data)
-    page_count = len(data)
+    # page_count = len(data)
     return render_template("menuShow.html", datas=data, total=tot_count)
 
 if __name__ == '__main__':
