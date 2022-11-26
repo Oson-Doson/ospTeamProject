@@ -64,6 +64,9 @@ class DBhandler:
         print(data, image_path)
         return True
     
+    def get_reviews(self):
+        reviews=self.db.child("review").get().val()
+        return reviews
 
 
     """메뉴 데이터 등록""" 

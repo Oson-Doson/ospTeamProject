@@ -108,6 +108,18 @@ def list_restaurants():
         limit=limit,
         page=page,
         page_count=int((tot_count/9)+1))
+
+# 리뷰 보기
+@app.route("/reviewShow")
+def reviewShow():
+
+    data=DB.get_reviews()
+    tot_count=len(data)
+
+    return render_template(
+        "reviewShowCopy.html",
+        datas=data.items,
+        total=tot_count)
                           
 
 # 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 
