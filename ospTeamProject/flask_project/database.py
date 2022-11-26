@@ -27,6 +27,7 @@ class DBhandler:
             "openmin":data['openmin'],
             "closehour":data['closehour'],
             "closemin":data['closemin'],
+            "site":data['site'],
             "image_path":image_path
         }
         
