@@ -101,7 +101,22 @@ def list_restaurants():
 
     start_idx=limit*page
     end_idx=limit*(page+1)
+
     data=DB.get_restaurants()
+    res_name=DB.get_restaurantsName()
+    print(res_name)
+    avg_rate=[]
+    keys=list(data)
+    print(keys)
+    for res in res_name:
+        avg_rate.append(DB.get_avgrate_byname(res))
+ 
+    
+    for i in range(len(data)):
+        key=keys[i]
+        data[key]['avg_rate']=avg_rate[i]
+
+    print(data)
     tot_count=len(data)
     data = dict(list(data.items())[start_idx:end_idx])
 
