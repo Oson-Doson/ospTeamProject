@@ -109,18 +109,6 @@ def list_restaurants():
         page=page,
         page_count=int((tot_count/9)+1))
 
-# 리뷰 보기
-@app.route("/reviewShow")
-def reviewShow():
-
-    data=DB.get_reviews()
-    tot_count=len(data)
-
-    return render_template(
-        "reviewShowCopy.html",
-        datas=data.items,
-        total=tot_count)
-                          
 
 # 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 
 @app.route("/view_detail/<name>/")
@@ -136,6 +124,16 @@ def view_restaurant_detail(name):
 def review_post(name):
     print(name)
     return render_template("reviewUpload.html",data=name)
+
+# 동적 라우팅 : 맛집 세부화면 - 맛집 리뷰조회 화면 
+@app.route("/review_show/<name>/")
+def review_show(name):
+    datas=DB.get_review_byname(str(name))  #맛집 이름으로 리뷰 데이터 가져오는 함수
+    avg_rate=DB.get_avgrate_byname(str(name))  #맛집 이름으로 평균 평점 가져오는 함수
+    review_num=DB.get_reviewnum_byname(str(name))
+#    print(name)
+    return render_template("reviewShowCopy.html",datas=datas, avg_rate=avg_rate, review_num=review_num)
+
 
 
 if __name__ == '__main__':
