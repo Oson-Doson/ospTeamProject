@@ -129,6 +129,19 @@ def review_post(name):
     print(name)
     return render_template("reviewUpload.html",data=name)
 
+# 동적 라우팅 : 맛집 세부화면 - 대표메뉴조회 화면
+@app.route("/show_menu/<res_name>/", methods=['POST'])
+def view_foods(res_name):
+    data = DB.get_food_byname(str(res_name))
+    tot_count = len(data)
+    # page_count = len(data)
+    return render_template("menuShow.html", datas=data, total=tot_count)
+
+# 동적 라우팅 : 맛집 세부화면 - 맛집 메뉴등록 화면 
+@app.route("/menu_post/<name>/")
+def menu_post(name):
+    print(name)
+    return render_template("menuUpload copy.html",data=name)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port='5001', debug=True)
