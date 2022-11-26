@@ -46,7 +46,14 @@
 			<a class="picto" id="exclude"> &#8361;&nbsp;&nbsp;&nbsp;</a>
 			<a class="sub1">최소 5000원 ~ 최대 11000원</a><br> 
 			<a class="picto"> &#9982;&nbsp;&nbsp;</a>
-			<a class=" sub1"><button class="button" onclick="대표메뉴 페이지">메뉴 보러가기 ></button></a>
+			<form method="post" action="/show_menu/{{data.Rname}}/">
+				<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
+				<div>
+					<!-- onClick : 대표메뉴이미지 -->
+					<a class=" sub1" href="/show_menu/{{data.Rname}}/"><button class="button" onclick="">메뉴 보러가기 ></button></a>
+				</div>
+			</form>
+			<!-- <a class=" sub1"><button class="button" onclick="대표메뉴 페이지">메뉴 보러가기 ></button></a> -->
 		</div>	
 		
 		<!-- 리뷰  -->
@@ -55,7 +62,8 @@
 			<a class = "star">&#10030;&nbsp;&nbsp;&nbsp;</a>
 			<a class ="sub1"> 평균평점 <b>{{avg_rate}}/5 </b> &nbsp;&nbsp; 리뷰 <b>{{review_num}}</b></a> <br>
 			<a class="picto">&#10146;&nbsp;&nbsp;</a>
-			<button class="button" onclick="리뷰 보러가기">리뷰 보러가기 ></button>&nbsp;&nbsp; 
+			<!-- onclick : 리뷰 보러가기 -->
+			<button class="button" onclick="">리뷰 보러가기 ></button>&nbsp;&nbsp; 
 
 			
 			<a class=" sub1" href="/review_post/{{data.Rname}}/"><button class="button">리뷰 등록하기 ></button></a>
