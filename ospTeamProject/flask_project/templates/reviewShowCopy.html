@@ -16,16 +16,16 @@
         <div class="bar-review" style="width: 15%;">{{review_num}}</div>
         <div class="bar-goto" style="width: 25%">{{res_name}} 세부정보로 이동</div>
     </div>
+    {% if review_num > 0 %}
     {% for data in datas %}
-    {% if total > 0 %}
     <!--리뷰 리스트-->
     <div id="review-list">
         <div class="review-card">
             <div style="display: inline-block; vertical-align:top;">
-                <img class="review-img" src="../static/image/{{data[1].image_path}}" alt="사진 불러오기 실패">
+                <img class="review-img" src="../static/image/{{data.image_path}}" alt="사진 불러오기 실패">
             </div>
 
-            <div style="color: gray; font-size: 25px; position: absolute; top: 10px; right: 15px;">{{data[1].nickname}}</div>
+            <div style="color: gray; font-size: 25px; position: absolute; top: 10px; right: 15px;">{{data.nickname}}</div>
 
             <div class="review-contents" style="display:inline-block; margin-left: 25px;">
                 <span style="display: inline-block; margin-bottom: 10px;">평점</span>
@@ -37,8 +37,8 @@
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                 </div>
-                <p style="margin-bottom: 10px; font-size: 22px; color: gray;">#{{data[1].mood}} #{{data[1].taste}}</p>
-                <p>{{data[1].text}}</p>
+                <p style="margin-bottom: 10px; font-size: 22px; color: gray;">#{{data.mood}} #{{data.taste}}</p>
+                <p>{{data.text}}</p>
             </div>
         </div>
     </div>
