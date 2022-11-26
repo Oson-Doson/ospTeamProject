@@ -12,11 +12,11 @@
 
     <form action="/submit_menu_post" enctype="multipart/form-data" method="post">
         <div id="main">
-            <input type="hidden" name="Rname" value="{{data.Rname}}">
+            <input type="hidden" name="Rname" value="{{data}}">
             <nav>
                 <img src="{{url_for('static', filename='menuShow/bar.png') }}" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
                 <div class="bar-title">
-                    <span style="color: #FFC000;">{{data.Rname}}</span> 대표 메뉴 등록
+                    <span style="color: #FFC000;">{{data}}</span> 대표 메뉴 등록
                 </div>
             </nav>
 

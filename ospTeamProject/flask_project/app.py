@@ -125,6 +125,12 @@ def review_post(name):
     print(name)
     return render_template("reviewUpload.html",data=name)
 
+# 동적 라우팅 : 맛집 세부화면 - 맛집 메뉴등록 화면 
+@app.route("/menu_post/<name>/")
+def menu_post(name):
+    print(name)
+    return render_template("menuUpload copy.html",data=name)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port='5001', debug=True)
