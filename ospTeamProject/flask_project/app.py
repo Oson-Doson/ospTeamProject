@@ -132,7 +132,6 @@ def review_show(name):
     avg_rate=DB.get_avgrate_byname(str(name))  #맛집 이름으로 평균 평점 가져오는 함수
     review_num=DB.get_reviewnum_byname(str(name))
     res_name=name
-#    print(name)
     return render_template("reviewShowCopy.html",datas=datas, avg_rate=avg_rate, review_num=review_num, res_name=res_name)
 
 
