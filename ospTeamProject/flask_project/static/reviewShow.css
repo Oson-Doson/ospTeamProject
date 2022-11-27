@@ -55,13 +55,13 @@ body {
 .review-card {
     height: 300px;
     background-color: white;
-    border: solid 3px #506A4C;
+    border: solid 3px #CADFB8;
     display: flex;
     align-items: center;
     position: relative;
     margin: 0 60px;
-    border-bottom: none;
     font-family: 'BMDOHYUN';
+    margin-bottom: 10px;
 }
 
 .review-img {
@@ -77,36 +77,4 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 27px;
-}
-
-.star-ratings {
-    color: #aaa9a9;
-    position: relative;
-    unicode-bidi: bidi-override;
-    width: max-content;
-    -webkit-text-fill-color: transparent;
-    /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 1.3px;
-    -webkit-text-stroke-color: #2b2a29;
-    margin-left: 5px;
-    margin-bottom: 10px;
-    display: inline-block;
-    font-size: 30px;
-}
-
-.star-ratings-fill {
-    color: #ffc000;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    display: flex;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    -webkit-text-fill-color: #FFc000;
-}
-
-.star-ratings-base {
-    z-index: 0;
-    padding: 0;
 }

@@ -141,6 +141,19 @@ class DBhandler:
             
         return len(rates)
 
+    """맛집 이름으로 review 테이블에서 정보 가져오기"""
+    def get_review_byname(self, name):
+        reviews=self.db.child("review").get()
+        target_value=[]
+
+        for res in reviews.each():
+            value=res.val()
+
+            if value['restaurant_name']==name:
+                target_value.append(value)
+        return target_value
+
+
     # 맛집등록 테이블에서 데이터 가져오기
     def get_restaurants(self):
         restaurants = self.db.child("restaurant").get().val()
