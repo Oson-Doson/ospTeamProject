@@ -63,8 +63,14 @@
 			<a class = "star">&#10030;&nbsp;&nbsp;&nbsp;</a>
 			<a class ="sub1"> 평균평점 <b>{{avg_rate}}/5 </b> &nbsp;&nbsp; 리뷰 <b>{{review_num}}</b></a> <br>
 			<a class="picto">&#10146;&nbsp;&nbsp;</a>
+		
 			<!-- onclick : 리뷰 보러가기 -->
-			<button class="button" onclick="">리뷰 보러가기 ></button>&nbsp;&nbsp; 
+			<form method="post" action="/review_show/{{data.Rname}}/">
+				<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
+				<div>
+					<a class=" sub1" href="/review_show/{{data.Rname}}/"><button class="button" onclick="">리뷰 보러가기 ></button></a>
+				</div>
+			</form>			
 
 			
 			<a class=" sub1" href="/review_post/{{data.Rname}}/"><button class="button">리뷰 등록하기 ></button></a>

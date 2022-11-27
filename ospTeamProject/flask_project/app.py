@@ -143,6 +143,17 @@ def menu_post(name):
     print(name)
     return render_template("menuUpload copy.html",data=name)
 
+# 동적 라우팅 : 맛집 세부화면 - 맛집 리뷰조회 화면 
+@app.route("/review_show/<res_name>/", methods=['POST'])
+def review_show(res_name):
+    data=DB.get_review_byname(str(res_name))  #맛집 이름으로 리뷰 데이터 가져오는 함수
+    avg_rate=DB.get_avgrate_byname(str(res_name))  #맛집 이름으로 평균 평점 가져오는 함수
+    review_num=DB.get_reviewnum_byname(str(res_name))
+    res_name=res_name
+    print("####dataaa:",data)
+    return render_template("reviewShow.html",datas=data, avg_rate=avg_rate, review_num=review_num, res_name=res_name)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port='5001', debug=True)
     
