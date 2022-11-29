@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request,redirect,url_for
 from database import DBhandler
 import sys
+from config import kakaomap_key
 
 
 app = Flask(__name__)
@@ -23,7 +24,7 @@ def reg_restaurant():
 
 @app.route('/mapSearch')
 def view_map():
-    return render_template('mapSearch.html')  
+    return render_template('mapSearch.html', map_key=kakaomap_key)  
 
 @app.route('/allergycheck')
 def allergy_popup():
