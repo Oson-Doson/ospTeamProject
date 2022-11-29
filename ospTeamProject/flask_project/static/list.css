@@ -120,12 +120,14 @@ div.SORTAREA {
 
 div.list {
     margin: 14px;
-    margin-right: 2px;
+    margin-right: 1px;
     border: 1px solid #506A4C;
     padding:15px;
     padding-top:25px;
     float: left;
-    width: 28%;
+    width: 29%;
+    height: 250px;
+    max-height:max-content;
     border-color: #506A4C;
 }
 
@@ -134,8 +136,8 @@ div.list img {
     width: 160px;
     height: 160px;
     padding: 0px;
-    margin: 21px;
-    margin-top: 25px;
+    margin: 20px;
+    margin-top: 30px;
     box-shadow: 1px -1px 5px 2px gray;
 }
 
@@ -160,7 +162,7 @@ div.list.text {
 }
 
 .sub1 {
-    font-size:20px;
+    font-size:19px;
     position: static;
     font-family: 'NanumBarunGothic', 'serif';
 }

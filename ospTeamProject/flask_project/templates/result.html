@@ -57,12 +57,19 @@
                 <tr>
                     <td> <label for="opening">영업시간</label></td>
                     <td> {{data.openhour}} : {{data.openmin}} ~ {{data.closehour}} : {{data.closemin}}</td>
-                    </tr>
+                </tr>
+
+                <!--사이트 입력-->
+                <tr>
+                    <td><label>사이트</label></td>
+                    <td>{{data.site}}</td>
+                </tr>
+
                     <!--대표 사진 업로드-->
                 <tr>
                     <td><label for="picture">외부 또는 내부 대표사진</label></td>
                     <td>
-                        <img src="{{image_path}}" alt= "대표사진" style="width: 100%; height:100px;">
+                        <img src="{{image_path}}" alt= "대표사진" style="width: 150px; height:150px;">
                     </td>
                 </tr>
 

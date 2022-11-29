@@ -1,130 +1,134 @@
 {% extends "index.html" %}
 
 {% block sectionheader %}
-    <title>대표 메뉴 등록</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='menuUpload.css') }}">
-    <script src="{{ url_for('static', filename='popup_parent.js') }}" defer></script>
+<title>대표 메뉴 등록</title>
+<link rel="stylesheet" href="{{url_for('static', filename='menuUpload.css') }}">
+<script src="{{ url_for('static', filename='popup_parent.js') }}" defer></script>
+<script src="{{ url_for('static', filename='menuadd.js') }}" defer></script>
+<script src="{{ url_for('static', filename='menuUpload_checkbox.js') }}" defer></script>
 {% endblock sectionheader %}
 
 {% block section %}
 
     <form action="/submit_menu_post" enctype="multipart/form-data" method="post">
         <div id="main">
-            <input type="hidden" name="Rname" value="{{Rname}}">
-            <nav> 
-                <img src="../static/menuShow/bar.png" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
+            <input type="hidden" name="Rname" value="{{data.Rname}}">
+            <nav>
+                <img src="{{url_for('static', filename='menuShow/bar.png') }}" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
                 <div class="bar-title">
                     <span style="color: #FFC000;">{{data.Rname}}</span> 대표 메뉴 등록
                 </div>
-                </nav>
-            <div id="section">
-
-                <a href=" "><img src="../static/menuUpload/x.png" alt="cancel" width="25px" height="25px" style="float:right"></a>
+            </nav>
 
 
+        <div id="section">
+
+            <a href=" "><img src="{{url_for('static', filename='menuUpload/x.png') }}" alt="cancel" width="25px" height="25px" style="float:right"></a>
+
+            <table>
+
+                <!--음식명 입력-->
+                <tr>
+                    <td><label for="Fname">음식명</label></td>
+                    <td><input type="text" id="Fname" name="menuname" value=""></td>
+                </tr>
                 
-                    <table>
+                <!--사진 업로드-->
+                <tr>
+                    <td><label for="pic">사진</label></td>
+                    <td>
+                        <!-- 정렬 위해서 이미지 미리보기 부분과 파일 선택 버튼 flex로 감싸기 -->
+                        <div style="display: flex; align-items: flex-end;">
+                            <!-- <input type="image" id="picture" name="picture" value=""> -->
+                            <div id="picture-div" name="picture-div"></div>
+                            <button type="button" class="fileupload" onclick="onClickUpload();">파일 선택</button>
+                            <input type="file" accept="image/*" id="file-upload-input" name="menuimage" style="display: none;" onchange="setThumbnail(event);">
+                        </div>
 
-                        <!--음식명 입력-->
-                        <tr>
-                            <td><label for="Fname">음식명</label></td>
-                            <td><input type="text" id="Fname" name="menuname" value=""></td>
-                        </tr>
-                        <!--사진 업로드-->
-                        <tr>
-                            <td><label for="pic">사진</label></td>
-                            <td>
-                                <!-- 정렬 위해서 이미지 미리보기 부분과 파일 선택 버튼 flex로 감싸기 -->
-                                <div style="display: flex; align-items: flex-end;">
-                                    <!-- <input type="image" id="picture" name="picture" value=""> -->
-                                    <div id="picture-div" name="picture-div"></div>
-                                    <button type="button" class="fileupload" onclick="onClickUpload();">파일 선택</button>
-                                    <input type="file" accept="image/*" id="file-upload-input" name="menuimage" style="display: none;"
-                                        onchange="setThumbnail(event);">
-                                </div>
-                                
-                                <script>
-                                    // 파일 선택 버튼과 파일 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
-                                    function onClickUpload() {
-                                        // 파일 업로드용 input은 display: none 처리
-                                        let fileUpload = document.getElementById("file-upload-input");
-                                        fileUpload.click();
+                        <script>
+                            // 파일 선택 버튼과 파일 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
+                            function onClickUpload() {
+                                // 파일 업로드용 input은 display: none 처리
+                                let fileUpload = document.getElementById("file-upload-input");
+                                fileUpload.click();     }
+
+                            // 이미지 업로드하는 함수
+                            function setThumbnail(event) {
+                                // FileReader 객체 생성
+                                var reader = new FileReader();
+                                // FileReader가 로드될 때 발생할 이벤트 
+                                reader.onload = function (event) {
+                                    // id가 picture-content인 요소가 있다면 true 반환
+                                    var isImgExists = !!document.getElementById("picture-content");
+
+                                    if (isImgExists) {
+                                        // 이미 picture-content가 있다면 (즉 이미 업로드된 이미지가 있다면) - src만 변경
+                                        var imgAlready = document.getElementById("picture-content");
+                                        imgAlready.src = event.target.result;
+                                    } else {
+                                        // 업로드된 이미지 없는 경우 
+                                        // img 엘리먼트를 새로 생성하고 src 속성을 설정 > 이미지가 들어갈 div에 넣기
+                                        var img = document.createElement("img");
+                                        img.setAttribute("src", event.target.result);
+                                        img.id = 'picture-content';
+                                        document.querySelector("div#picture-div").appendChild(img);
                                     }
+                                };
 
-                                    // 이미지 업로드하는 함수
-                                    function setThumbnail(event) {
-                                        // FileReader 객체 생성
-                                        var reader = new FileReader();
+                                reader.readAsDataURL(event.target.files[0]);
+                            }
+                        </script>
+                    </td>
+                </tr>
 
-                                        // FileReader가 로드될 때 발생할 이벤트 
-                                        reader.onload = function (event) {
-                                            // id가 picture-content인 요소가 있다면 true 반환
-                                            var isImgExists = !!document.getElementById("picture-content");
+                <!--가격 입력-->
+                <tr>
+                    <td><label for="price">가격 (원)</label></td>
+                    <td><input type="number" id="price" name="menuprice" value=""></td>
+                </tr>
 
-                                            if (isImgExists) {
-                                                // 이미 picture-content가 있다면 (즉 이미 업로드된 이미지가 있다면) - src만 변경
-                                                var imgAlready = document.getElementById("picture-content");
-                                                imgAlready.src = event.target.result;
-                                            } else {
-                                                // 업로드된 이미지 없는 경우 
-                                                // img 엘리먼트를 새로 생성하고 src 속성을 설정 > 이미지가 들어갈 div에 넣기
-                                                var img = document.createElement("img");
-                                                img.setAttribute("src", event.target.result);
-                                                img.id = 'picture-content';
-                                                document.querySelector("div#picture-div").appendChild(img);
-                                            }
-                                        };
+                    <!--메뉴 상세 설명-->                    
+                <tr>
+                    <td><label for="menudetail">메뉴 상세 설명</label></td>
+                    <td>
+                        <textarea class="menudetail" name="menudetail"></textarea>
+                    </td>
+                </tr>
 
-                                        reader.readAsDataURL(event.target.files[0]);
-                                    }
-                                </script>
-                            </td>
-                        </tr>
+                <!--추가 정보(비건/ 알레르기)-->
+                <tr>
+                    <td><label for="addinfor">추가 정보</label></td>
+                    <td>
+                            <div style="display: flex; align-items: center;">
+                            <input type="checkbox" id="vegan" name="vegan" value="vegan">
+                            <input type="hidden" name="vegan" value='X' id="input_check_hidden"/>
+                            <a>비건</a>
+                            <input type="checkbox" id="allergy" name="allergy" value="allergy">
+                            <input type="hidden" name="allergy" value='X' id="input_check_hidden"/>
+                            <a>알레르기</a>
+                        </div>
+                    </td>
+                </tr>
 
-                        <!--가격 입력-->
-                        <tr>
-                            <td><label for="price">가격 (원)</label></td>
-                            <td><input type="number" id="price" name="menuprice" value=""></td>
-                        </tr>
+                    <!---알레르기 선택하면 보여지는 input-->
+                <tr>
+                    <td> <label for="allergy">알레르기</label></td>
+                    <td><input type="text" id="allergylist" name="allergylist" value="" readonly /></td>
+                </tr>
 
-                        <!--메뉴 상세 설명-->
-                        <tr>
-                            <td><label for="menudetail">메뉴 상세 설명</label></td>
-                            <td>
-                                <textarea class="menudetail" name="menudetail"></textarea>
-                            </td>
-                        </tr>
+            </table>
 
-                        <!--추가 정보(비건/ 알레르기)-->
-                        <tr>
-                            <td><label for="addinfor">추가 정보</label></td>
-                            <td>
-                                <div style="display: flex; align-items: center;">
-                                    <input type="checkbox" id="vegan" name="vegan" value="vegan">
-                                    <a>비건</a>
-                                    <input type="checkbox" id="allergy" name="allergy" value="allergy">
-                                    <a>알레르기</a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <!---알레르기 선택하면 보여지는 input-->
-                        <tr>
-                            <td> <label for="allergy">알레르기</label></td>
-                            <td><input type="text" id="allergylist" name="allergylist" value="" readonly/></td>
-                        </tr>
-
-                    </table>
-                
-
-            </div>
-
-            <!--메뉴추가 등록 버튼-->
-            <div id="button">
-                <button class="add" type="button" id="btnadd" onclick=" ">메뉴 추가</button>
-                <button class="register" type="submit" id="btnregister" onclick=" ">등록</button>
-            </div>
 
         </div>
+
+        <div id="form_add">
+
+            <!--메뉴추가 등록 버튼-->
+        <div id="button">
+            <button class="add" type="button" id="btnadd">메뉴 추가</button>
+            <button class="register" type="submit" id="btnregister" onclick=" ">등록</button>
+        </div>
+
     </form>
+
 {% endblock section %}

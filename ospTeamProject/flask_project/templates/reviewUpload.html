@@ -1,136 +1,138 @@
 {% extends "index.html" %}
 
 {% block sectionheader %}
-        <title>리뷰 등록하기</title>
-        <link rel="stylesheet" href="{{url_for('static', filename='reviewUpload.css') }}">
+<title>리뷰 등록하기</title>
+<link rel="stylesheet" href="{{url_for('static', filename='reviewUpload.css') }}">
 {% endblock sectionheader %}
 
 {% block section %}
 
-        <!-- <div id="reviewUploadNavi">
+<!-- <div id="reviewUploadNavi">
             <img src="greenbar.png" alt="리뷰등록" style="width: 90%" >
             <span style="position: absolute;">리뷰 등록</span>
         </div> -->
 
-        <form action="/submit_review_post" enctype="multipart/form-data"  method="post">
-        <!-- 리뷰 등록 내용 -->
-        <div id="reviewUploadContents">
-            <img id="reviewUploadNavi" src="../static/reviewUpload/reviewUpload.png" alt="리뷰 등록 상단바">
-            <div name="리뷰 정보 등록 첫 번째 문단" style="display: flex; align-items: center; margin-left:20px;">
-               <!-- <div id="uploadImage">
+<form action="/submit_review_post" enctype="multipart/form-data" method="post">
+    <input type="hidden" name="Rname" value="{{data}}">
+    
+
+    <!-- 리뷰 등록 내용 -->
+    <div id="reviewUploadContents">
+        <nav>
+        <img src="{{url_for('static', filename='menuShow/bar.png') }}" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
+        <div class="bar-title">
+            <span style="color: #FFC000;">{{data}}</span> 리뷰 등록
+        </div>
+        </nav>
+        <div name="리뷰 정보 등록 첫 번째 문단" style="display: flex; align-items: center; margin-left:20px;">
+            <!-- <div id="uploadImage">
                     <img src="imageIcon.png" alt="초기 이미지" style="width: 280px">
                     <span class="uploadBtn">업로드</span>
                 </div> -->
 
-                
-                <div>
-                    <div id = "picture-div", name="picture-div"></div>
-                <button type="button" class="fileupload" onclick ="onClickUpload();">업로드</button>
-                <input 
-                    type="file" 
-                    accept="image/*" 
-                    id="file-upload-input" 
-                    style="display: none; width:280px; "
-                    name="picture-input"
-                    onchange="setThumbnail(event);"
-                                >
-                </div>
 
-                <script>
-                    //파일 선택 버튼과 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
-                    function onClickUpload(){
-                        // 파일 업로드용 input은 display: none 처리
-                        let fileUpload = document.getElementById("file-upload-input");
-                                    fileUpload.click();   
-                    }
+            <div>
+                <div id="picture-div" , name="picture-div"></div>
+                <button type="button" class="fileupload" onclick="onClickUpload();">업로드</button>
+                <input type="file" accept="image/*" id="file-upload-input" style="display: none; width:280px; "
+                    name="picture-input" onchange="setThumbnail(event);">
+            </div>
 
-                    // 이미지 업로드 함수
-                    function setThumbnail(event) {
-                                    // FileReader 객체 생성
-                                    var reader = new FileReader(); 
-                                    //onload되었을 때 발생할 이벤트 작성
-                                    reader.onload = function(event) {
-                                        // id가 picture-content인 요소가 있다면 true 반환
-                                        var isImgExists = !!document.getElementById("picture-content");
+            <script>
+                //파일 선택 버튼과 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
+                function onClickUpload() {
+                    // 파일 업로드용 input은 display: none 처리
+                    let fileUpload = document.getElementById("file-upload-input");
+                    fileUpload.click();
+                }
 
-                                        if (isImgExists) {
-                                            // 이미 picture-content가 있다면 (즉 이미 업로드된 이미지가 있다면) - src만 변경
-                                            var imgAlready = document.getElementById("picture-content");
-                                            imgAlready.src = event.target.result;
-                                        } else {
-                                            // 업로드된 이미지 없는 경우 
-                                            // img 엘리먼트를 새로 생성하고 src 속성을 설정 > 이미지가 들어갈 div에 넣기
-                                            var img = document.createElement("img");
-                                            img.setAttribute("src", event.target.result);
-                                            img.id = 'picture-content';
-                                            document.querySelector("div#picture-div").appendChild(img);
-                                        }
-                                    };
-                              
-                                     reader.readAsDataURL(event.target.files[0]);
-                                     }
-                                    
-                </script>
+                // 이미지 업로드 함수
+                function setThumbnail(event) {
+                    // FileReader 객체 생성
+                    var reader = new FileReader();
+                    //onload되었을 때 발생할 이벤트 작성
+                    reader.onload = function (event) {
+                        // id가 picture-content인 요소가 있다면 true 반환
+                        var isImgExists = !!document.getElementById("picture-content");
 
-                <div name="이미지 옆 정보 입력">
-                    <h4 class="storeName">00가게</h4><br>
-    
-                    <div id="nickname" class="contentsAlign">
-                        <span class="contentsTitle">닉네임</span>
-                        <input type="text" name="nickname" class="nicknameInput" value="닉네임">
-                    </div><br>
-    
-                    <div id="keyword" class="contentsAlign">
-                        <span class="contentsTitle">키워드</span> 
-                        <select class="keywordDropdown" name="moodchoice">
-                            <option name="moodchoice" value="empty">분위기</option>
-                            <option name="moodchoice" value="#분위기 좋은">#분위기좋은</option>
-                            <option name="moodchoice" value="#넓은장소">#넓은장소</option>
-                            <option name="moodchoice" value="#혼밥가능">#혼밥가능</option>
-                            <option name="moodchoice" value="#아기자기한">#아기자기한</option>
-                            </select>
+                        if (isImgExists) {
+                            // 이미 picture-content가 있다면 (즉 이미 업로드된 이미지가 있다면) - src만 변경
+                            var imgAlready = document.getElementById("picture-content");
+                            imgAlready.src = event.target.result;
+                        } else {
+                            // 업로드된 이미지 없는 경우 
+                            // img 엘리먼트를 새로 생성하고 src 속성을 설정 > 이미지가 들어갈 div에 넣기
+                            var img = document.createElement("img");
+                            img.setAttribute("src", event.target.result);
+                            img.id = 'picture-content';
+                            document.querySelector("div#picture-div").appendChild(img);
+                        }
+                    };
 
-                        <select class="keywordDropdown" name="taste">
-                            <option name="taste" value="empty">맛</option>
-                            <option name="taste" value="#달달한">#달달한</option>
-                            <option name="taste" value="#매콤한">#매콤한</option>
-                            <option name="taste" value="#짭짤한">#짭짤한</option>
-                            <option name="taste" value="#고소한">#고소한</option>
-                        </select>
-                    </div><br>
-    
-                    <div id="score" class="contentsAlign">
-                        <span class="contentsTitle">평점</span>
-                        <!-- 별 그리기 -->
-                        <div class="star-rating" name="star">
-                            <input type="radio" name="star" id="5-stars" name="rating" value="5" />
-                            <label for="5-stars" class="star">&#9733;</label>
-                            <input type="radio" name="star" id="4-stars" name="rating" value="4" />
-                            <label for="4-stars" class="star">&#9733;</label>
-                            <input type="radio" name="star" id="3-stars" name="rating" value="3" />
-                            <label for="3-stars" class="star">&#9733;</label>
-                            <input type="radio"  name="star" id="2-stars" name="rating" value="2" />
-                            <label for="2-stars" class="star">&#9733;</label>
-                            <input type="radio"name="star" id="1-star" name="rating" value="1" />
-                            <label for="1-star" class="star">&#9733;</label>
-                        </div>
+                    reader.readAsDataURL(event.target.files[0]);
+                }
+
+            </script>
+
+            <div name="이미지 옆 정보 입력">
+                <h4 class="storeName">{{data}}</h4><br>
+
+                <div id="nickname" class="contentsAlign">
+                    <span class="contentsTitle">닉네임</span>
+                    <input type="text" name="nickname" class="nicknameInput" value="닉네임">
+                </div><br>
+
+                <div id="keyword" class="contentsAlign">
+                    <span class="contentsTitle">키워드</span>
+                    <select class="keywordDropdown" name="moodchoice">
+                        <option name="moodchoice" value="empty">분위기</option>
+                        <option name="moodchoice" value="#분위기 좋은">#분위기좋은</option>
+                        <option name="moodchoice" value="#넓은장소">#넓은장소</option>
+                        <option name="moodchoice" value="#혼밥가능">#혼밥가능</option>
+                        <option name="moodchoice" value="#아기자기한">#아기자기한</option>
+                    </select>
+
+                    <select class="keywordDropdown" name="taste">
+                        <option name="taste" value="empty">맛</option>
+                        <option name="taste" value="#달달한">#달달한</option>
+                        <option name="taste" value="#매콤한">#매콤한</option>
+                        <option name="taste" value="#짭짤한">#짭짤한</option>
+                        <option name="taste" value="#고소한">#고소한</option>
+                    </select>
+                </div><br>
+
+                <div id="score" class="contentsAlign">
+                    <span class="contentsTitle">평점</span>
+                    <!-- 별 그리기 -->
+                    <div class="star-rating" name="star">
+                        <input type="radio" name="star" id="5-stars" name="rating" value="5" />
+                        <label for="5-stars" class="star">&#9733;</label>
+                        <input type="radio" name="star" id="4-stars" name="rating" value="4" />
+                        <label for="4-stars" class="star">&#9733;</label>
+                        <input type="radio" name="star" id="3-stars" name="rating" value="3" />
+                        <label for="3-stars" class="star">&#9733;</label>
+                        <input type="radio" name="star" id="2-stars" name="rating" value="2" />
+                        <label for="2-stars" class="star">&#9733;</label>
+                        <input type="radio" name="star" id="1-star" name="rating" value="1" />
+                        <label for="1-star" class="star">&#9733;</label>
                     </div>
                 </div>
             </div>
-
-            <br><br>
-            <div name="리뷰 정보 등록 두 번째 문단" style="margin-left:20px">
-                <div class="contentsTitle">리뷰 상세 설명</div><br>
-                <textarea class="reviewText" name="text" value="" placeholder="맛, 가게 인테리어, 분위기 등에 대해 자유롭게 작성해주세요."></textarea>
-            </div>
-
-            <!-- <div name="리뷰 정보 등록 세 번째 문단" id="saveBtn">등록</div> -->
-
-            <div name="리뷰 정보 등록 세 번째 문단" > 
-            <input type="submit" id="saveBtn" value="등록">
-            </div>
         </div>
-        </form>
+
+        <br><br>
+        <div name="리뷰 정보 등록 두 번째 문단" style="margin-left:20px">
+            <div class="contentsTitle">리뷰 상세 설명</div><br>
+            <textarea class="reviewText" name="text" value=""
+                placeholder="맛, 가게 인테리어, 분위기 등에 대해 자유롭게 작성해주세요."></textarea>
+        </div>
+
+        <!-- <div name="리뷰 정보 등록 세 번째 문단" id="saveBtn">등록</div> -->
+
+        <div name="리뷰 정보 등록 세 번째 문단">
+            <input type="submit" id="saveBtn" value="등록">
+        </div>
+    </div>
+</form>
 
 {% endblock section %}
-       
