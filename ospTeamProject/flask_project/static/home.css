@@ -62,7 +62,7 @@ button{
 
 .moreList{
     height:25px;
-    margin:0px 60px;
+    margin:0px 5%;
 }
 .moreList button{
     float:right;
@@ -276,6 +276,7 @@ li:hover .thumb{
     z-index:10;
     background-image: url(./home/gold.svg);
     background-repeat:no-repeat;
+    width:100px;
 }
 
 .silverCrownFix{
@@ -288,6 +289,7 @@ li:hover .thumb{
     z-index:10;
     background-image: url(./home/silver.svg);
     background-repeat:no-repeat;
+    width:100px;
 }
 
 .bronzeCrownFix{
@@ -300,6 +302,7 @@ li:hover .thumb{
     z-index:10;
     background-image: url(./home/bronze.svg);
     background-repeat:no-repeat;
+    width:100px;
 }
 
 #restaurantOfMonth .restaurantTitle{
