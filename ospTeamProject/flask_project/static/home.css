@@ -55,6 +55,10 @@ button{
     color:white;
     background-color:#506A4C;
 }
+.typeButton.current{
+    color:white;
+    background-color:#506A4C;
+}
 
 .moreList{
     height:25px;
@@ -131,15 +135,13 @@ li:hover .thumb{
     background-size:150%;
 }
 
-.thumb1{
-    background-image:url(./home/food3.jpg);
-}
-
-
 .info{
     margin-right:auto;
 }
 
+.starBox{
+    display:flex;
+}
 .star-ratings {
     color: #aaa9a9; 
     position: relative;
@@ -165,6 +167,12 @@ li:hover .thumb{
 .star-ratings-base {
     z-index: 0;
     padding: 0;
+}
+
+.starNum{
+    font-size:medium;
+    font-family:'BMJUA';
+    color:#2b2a29;
 }
 
 #recommendBox .restaurantTitle{
@@ -369,4 +377,18 @@ li:hover .thumb{
     background-image:url(./home/text-restaurant.png);
     background-size:60px 60px;
     box-shadow:0px 0px 10px 10px #d9e670;
+}
+
+/*탭*/
+.tab-content{
+	display: none;
+    width:100%;
+}
+
+.tab-content.current{
+	display: inherit;
+}
+
+.forTabSize{
+    width:100%;
 }
