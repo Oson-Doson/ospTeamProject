@@ -59,7 +59,7 @@
                             {% if tot_count > 0 %}
                             {%for total in totals%}
                             <li class="innerslide">
-                                <div class="restaurant-item">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{total[1].Rname}}/';">
                                     <div class="thumb thumb1"
                                         style="background-image:url(../static/image/{{total[1].image_path}})"></div>
                                     <div class="info">
@@ -89,7 +89,7 @@
                             {% if kor_count > 0 %}
                             {%for korean in koreans%}
                             <li class="innerslide">
-                                <div class="restaurant-item">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{korean[1].Rname}}/';">
                                     <div class="thumb thumb1"
                                         style="background-image:url(../static/image/{{korean[1].image_path}})"></div>
                                     <div class="info">
@@ -119,7 +119,7 @@
                             {% if chi_count > 0 %}
                             {%for chinese in chineses%}
                             <li class="innerslide">
-                                <div class="restaurant-item">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{chinese[1].Rname}}/';">
                                     <div class="thumb thumb1"
                                         style="background-image:url(../static/image/{{chinese[1].image_path}})"></div>
                                     <div class="info">
@@ -148,7 +148,7 @@
                             {% if jap_count > 0 %}
                             {%for japanese in japaneses%}
                             <li class="innerslide">
-                                <div class="restaurant-item">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{japanese[1].Rname}}/';">
                                     <div class="thumb thumb1"
                                         style="background-image:url(../static/image/{{japanese[1].image_path}})"></div>
                                     <div class="info">
@@ -177,7 +177,7 @@
                             {% if wes_count > 0 %}
                             {%for western in westerns%}
                             <li class="innerslide">
-                                <div class="restaurant-item">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{western[1].Rname}}/';">
                                     <div class="thumb thumb1"
                                         style="background-image:url(../static/image/{{western[1].image_path}})"></div>
                                     <div class="info">
@@ -206,7 +206,7 @@
                             {% if caf_count > 0 %}
                             {%for cafe in cafes%}
                             <li class="innerslide">
-                                <div class="restaurant-item">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{cafe[1].Rname}}/';">
                                     <div class="thumb thumb1"
                                         style="background-image:url(../static/image/{{cafe[1].image_path}})"></div>
                                     <div class="info">
