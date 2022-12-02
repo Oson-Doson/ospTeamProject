@@ -109,4 +109,16 @@ $(document).ready(function(){
         }
     })
 
+    $('.sreviewTextFix').slick({
+        autoplay:true,
+        arrows:false
+    })
+    $('.breviewTextFix').slick({
+        autoplay:true,
+        arrows:false
+    })
+    $('.greviewTextFix').slick({
+        autoplay:true,
+        arrows:false
+    })
 })

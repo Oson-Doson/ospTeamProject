@@ -30,6 +30,8 @@ button{
     font-family:'BMJUA';
 }
 
+/*section 1. 탭메뉴*/
+
 #restaurantRecommend{
     margin-top:40px;
 }
@@ -180,6 +182,8 @@ li:hover .thumb{
     font-size:medium;
     font-family:'BMJUA';
     color:#2b2a29;
+    width: 42px;
+    overflow: hidden;
 }
 
 #recommendBox .restaurantTitle{
@@ -206,11 +210,10 @@ li:hover .thumb{
 
 
 
-/*이달의 맛집*/
+/*section 2. 리뷰 왕 맛집*/
 
 #restaurantOfMonth{
     margin-top:20px;
-    margin-bottom:20px;
 }
 
 #btn_restaurantOfMonth{
@@ -230,8 +233,11 @@ li:hover .thumb{
     margin:0 4%;
 }
 
-#gold,#silver,#bronze{
+.resBox_emoji{
     width:33%;
+}
+
+#gold,#silver,#bronze{
     margin: 0 1px 20px 1px;
     background-color:rgb(226,240,217);
     cursor:pointer;
@@ -247,6 +253,7 @@ li:hover .thumb{
 }
 #bronze{
     box-shadow: 5px -5px 20px -5px gray;
+    position:relative;
 }
 
 .medalBox{
@@ -316,7 +323,7 @@ li:hover .thumb{
 
 .goldemojiFix{
     position:relative;
-    top:-100px;
+    top:-120px;
     left:100px;
 }
 .goldemojiFix2{
@@ -332,7 +339,7 @@ li:hover .thumb{
 }
 .silveremojiFix{
     position:relative;
-    top:-395px;
+    top:-415px;
     right:210px;
 }
 .silveremoji{
@@ -343,7 +350,7 @@ li:hover .thumb{
 }
 .bronzeemojiFix{
     position:relative;
-    top:-395px;
+    top:-415px;
     right:200px;
 }
 .bronzeemoji{
@@ -356,33 +363,36 @@ li:hover .thumb{
 .silveremojiFix2{
     position:relative;
     top:-420px;
-    right:120px;
+    height:0;
 }
 .bronzeemojiFix2{
     position:relative;
     top:-420px;
-    right:110px;
+    height:0;
 }
 .talkemoji{
-    position:absolute;
-    z-index:50;
+    z-index:-1;
     width:200px;
-    height:100px;
+    height:85px;
 }
 
 .sreviewTextFix{
-    position:relative;
-    top:-390px;
-    left:150px;
+    position:absolute;
+    width:200px;
+    top:35px;
+    left:50%;
+    transform: translate( -50%, -50% );
 }
 .breviewTextFix{
-    position:relative;
-    top:-390px;
-    left:200px;
+    position:absolute;
+    width:200px;
+    top:35px;
+    left:50%;
+    transform: translate( -50%, -50% );
 }
+
 .reviewText{
     z-index:51;
-    position:absolute;
 }
 
 #restaurantOfMonth .restaurantTitle{
@@ -399,7 +409,7 @@ li:hover .thumb{
     bottom:20px;
     right:20px;
     cursor:pointer;
-    z-index:100;
+    z-index:10000;
 }
 
 .floating{
@@ -419,6 +429,7 @@ li:hover .thumb{
 
 .icon-menu{
     background-image:url(./home/icon-menu.png);
+    box-shadow:10px 10px 1px -3px #CADFB8;
     background-color:#3a5e11;
     background-size:50px 50px;
     margin-top:20px;
@@ -482,4 +493,36 @@ li:hover .thumb{
 
 .slick-list{
     height:50px;
+}
+
+/*section 3. 퀵메뉴*/
+#quickMenu{
+    margin:20px 5%;
+    margin-top:70px;
+    display:flex;
+}
+ #box_quickMenu{
+    margin:0;
+    width:10%;
+    height:70px;
+    background-color:#506A4C;
+    color:white;
+    font-size:large;
+    font-family:'BMDOHYUN';
+
+}
+#goto-restaurantShow,#goto-restaurantUpload,#goto-mapSearch{
+    width:30%;
+    height:70px;
+    background-color:#CADFB8;
+    border-color:#506A4C;
+    border-width:1px;
+    border-style:solid;
+    font-size:large;
+    font-family:'BMHANNAPro';
+    cursor:pointer;
+    transition:background-color 0.2s ease;
+}
+#goto-restaurantShow:hover,#goto-restaurantUpload:hover,#goto-mapSearch:hover{
+    background-color:#AACA95;
 }
