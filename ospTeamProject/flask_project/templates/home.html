@@ -235,52 +235,78 @@
         </section>
 
         <section id="restaurantOfMonth">
-            <button id="btn_restaurantOfMonth">이달의 맛집</button>
+            <button id="btn_restaurantOfMonth">리뷰 왕 맛집</button>
             <div id="box_restaurantOfMonth">
 
                 <div id="silver">
-                    <a>
-                        <div>
-                            <div class="medalBox">
+                    <form method="post" action="/review_show/{{silver['Rname']}}/">
+                        <input type="hidden" name="restaurant_name" value="{{silver['Rname']}}">
+                    <a href="/review_show/{{silver['Rname']}}/">
+                        <div><button style="width:100%; cursor:pointer;">
+                            <div class="medalBox" style="background-image:url(../static/image/{{silver['image_path']}})">
                             </div>
                             <div>
                                 <div class="silverCrownFix">
                                     <object class="silverCrown" type="image/svg+xml"></object>
                                 </div>
-                                <div class="restaurantTitle">식당 이름</div>
-                            </div>
+                                <div class="restaurantTitle">{{silver['Rname']}}</div>
+                                <div class="silveremojiFix">
+                                    <img class="silveremoji" src="{{url_for('static', filename='home/person1.png') }}">
+                                </div>
+                                <div class="silveremojiFix2">
+                                    <img class="talkemoji" src="{{url_for('static', filename='home/말풍선.png') }}">
+                                </div>
+                                <div class="sreviewTextFix">{%for i in range(snum)%}<div class="reviewText">{{sreview[i]['text']}}</div>{%endfor%}</div>
+                            </div></button>
                         </div>
-                    </a>
+                    </a></form>
                 </div>
 
                 <div id="gold">
-                    <a>
-                        <div>
-                            <div class="medalBox">
+                    <form method="post" action="/review_show/{{gold['Rname']}}/">
+                        <input type="hidden" name="restaurant_name" value="{{gold['Rname']}}">
+                    <a href="/review_show/{{gold['Rname']}}/">
+                        <div><button style="width:100%; cursor:pointer;">
+                            <div class="medalBox" style="background-image:url(../static/image/{{gold['image_path']}})">
                             </div>
                             <div>
                                 <div class="goldCrownFix">
                                     <object class="goldCrown" type="image/svg+xml"></object>
                                 </div>
-                                <div class="restaurantTitle">식당 이름</div>
-                            </div>
+                                <div class="restaurantTitle">{{gold['Rname']}}</div>
+                                <div class="goldemojiFix">
+                                    <img class="goldemoji" src="{{url_for('static', filename='home/person2.png') }}">
+                                </div>
+                                <div class="goldemojiFix2">
+                                    <img class="goldemoji" src="{{url_for('static', filename='home/person4.png') }}">
+                                </div>
+                            </div></button>
                         </div>
-                    </a>
+                    </a></form>
                 </div>
 
                 <div id="bronze">
-                    <a>
-                        <div>
-                            <div class="medalBox">
+                    <form method="post" action="/review_show/{{bronze['Rname']}}/">
+                        <input type="hidden" name="restaurant_name" value="{{bronze['Rname']}}">
+                    <a href="/review_show/{{bronze['Rname']}}/">
+                        <div><button style="width:100%; cursor:pointer;">
+                            <div class="medalBox" style="background-image:url(../static/image/{{bronze['image_path']}})">
                             </div>
                             <div>
                                 <div class="bronzeCrownFix">
                                     <object class="bronzeCrown" type="image/svg+xml"></object>
                                 </div>
-                                <div class="restaurantTitle">식당 이름</div>
-                            </div>
+                                <div class="restaurantTitle">{{bronze['Rname']}}</div>
+                                <div class="bronzeemojiFix">
+                                    <img class="bronzeemoji" src="{{url_for('static', filename='home/person3.png') }}">
+                                </div>
+                                <div class="bronzeemojiFix2">
+                                    <img class="talkemoji" src="{{url_for('static', filename='home/말풍선.png') }}">
+                                </div>
+                                <div class="breviewTextFix">{%for i in range(bnum)%}<div class="reviewText">{{breview[i]['text']}}</div>{%endfor%}</div>
+                            </div></button>
                         </div>
-                    </a>
+                    </a></form>
                 </div>
 
             </div>

@@ -30,6 +30,10 @@ button{
     font-family:'BMJUA';
 }
 
+#restaurantRecommend{
+    margin-top:40px;
+}
+
 #menuType{
     margin-top:20px;
     margin-bottom:1px;
@@ -189,6 +193,7 @@ li:hover .thumb{
     background-repeat:no-repeat;
     background-position:center center;
     background-size:50px 100px;
+    cursor:pointer;
 }
 
 .prev-slick-arrow{
@@ -202,6 +207,11 @@ li:hover .thumb{
 
 
 /*이달의 맛집*/
+
+#restaurantOfMonth{
+    margin-top:20px;
+    margin-bottom:20px;
+}
 
 #btn_restaurantOfMonth{
     height:70px;
@@ -217,7 +227,7 @@ li:hover .thumb{
     display:flex;
     justify-content: center;
     align-items: center;
-    margin:0 50px;
+    margin:0 4%;
 }
 
 #gold,#silver,#bronze{
@@ -253,7 +263,6 @@ li:hover .thumb{
     border-color:rgb(252,192,0);
     border-width:5px;
     border-style:solid;
-    background-image:url(./home/food3.jpg);
 }
 #silver .medalBox{
     border-color:rgb(127,127,127);
@@ -303,6 +312,77 @@ li:hover .thumb{
     background-image: url(./home/bronze.svg);
     background-repeat:no-repeat;
     width:100px;
+}
+
+.goldemojiFix{
+    position:relative;
+    top:-100px;
+    left:100px;
+}
+.goldemojiFix2{
+    position:relative;
+    top:-350px;
+    right:220px;
+}
+.goldemoji{
+    position:absolute;
+    z-index:50;
+    width:100px;
+    height:100px;
+}
+.silveremojiFix{
+    position:relative;
+    top:-395px;
+    right:210px;
+}
+.silveremoji{
+    position:absolute;
+    z-index:50;
+    width:100px;
+    height:100px;
+}
+.bronzeemojiFix{
+    position:relative;
+    top:-395px;
+    right:200px;
+}
+.bronzeemoji{
+    position:absolute;
+    z-index:50;
+    width:100px;
+    height:100px;
+}
+
+.silveremojiFix2{
+    position:relative;
+    top:-420px;
+    right:120px;
+}
+.bronzeemojiFix2{
+    position:relative;
+    top:-420px;
+    right:110px;
+}
+.talkemoji{
+    position:absolute;
+    z-index:50;
+    width:200px;
+    height:100px;
+}
+
+.sreviewTextFix{
+    position:relative;
+    top:-390px;
+    left:150px;
+}
+.breviewTextFix{
+    position:relative;
+    top:-390px;
+    left:200px;
+}
+.reviewText{
+    z-index:51;
+    position:absolute;
 }
 
 #restaurantOfMonth .restaurantTitle{
@@ -397,4 +477,9 @@ li:hover .thumb{
 
 .forTabSize{
     width:100%;
+}
+
+
+.slick-list{
+    height:50px;
 }

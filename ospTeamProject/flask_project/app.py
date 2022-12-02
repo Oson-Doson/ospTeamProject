@@ -87,7 +87,7 @@ def submit_review_post():
     data = request.form
 
     if DB.insert_review(data['nickname'], data, image_file.filename):
-        return render_template("home.html")
+        return redirect(url_for('osondoson_home'))
 
 
 
@@ -107,6 +107,7 @@ def osondoson_home():
     total_resname=DB.get_restaurantsName()
     #
     total_avgrate=[]
+    total_reviewnum=[]
     korean_avgrate=[]
     chinese_avgrate=[]
     japanese_avgrate=[]
@@ -117,6 +118,7 @@ def osondoson_home():
     #
     for res in total_resname:
         total_avgrate.append(DB.get_avgrate_byname(res))
+        total_reviewnum.append(DB.get_reviewnum_byname(res))
     for i in range(len(korean)):
         korean_avgrate.append(DB.get_avgrate_byname(korean[i]['Rname']))
     for i in range(len(chinese)):
@@ -131,6 +133,7 @@ def osondoson_home():
     for i in range(len(total)):
         key=total_keys[i]
         total[key]['avg_rate']=total_avgrate[i]
+        total[key]['review_num']=total_reviewnum[i]
     for i in range(len(korean)):
         korean[i]['avg_rate']=korean_avgrate[i]
     for i in range(len(chinese)):
@@ -164,6 +167,18 @@ def osondoson_home():
     western=dict(sorted(western.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
     cafe=dict(sorted(cafe.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
 
+    a=dict(sorted(total.items(),key=lambda x: x[1]['review_num'], reverse=True))
+    a_keys=list(a)
+    goldkey=a_keys[1]
+    silverkey=a_keys[2]
+    bronzekey=a_keys[3]
+    gold=a[goldkey]
+    silver=a[silverkey]
+    bronze=a[bronzekey]
+    goldreview=DB.get_review_byname(gold['Rname'])
+    silverreview=DB.get_review_byname(silver['Rname'])
+    bronzereview=DB.get_review_byname(bronze['Rname'])
+
     page = request.args.get("page", 0, type=int)
     limit = 6
     start_idx=limit*page
@@ -195,9 +210,15 @@ def osondoson_home():
         jap_count=jap_count,
         wes_count=wes_count,
         caf_count=caf_count,
-        limit=limit,
-        page=page,
-        page_count=int((tot_count/6)+1))
+        gold=gold,
+        silver=silver,
+        bronze=bronze,
+        greview=goldreview,
+        sreview=silverreview,
+        breview=bronzereview,
+        gnum=len(goldreview),
+        snum=len(silverreview),
+        bnum=len(bronzereview))
 
 
 #app.py 에서 get_restaurants 호출
