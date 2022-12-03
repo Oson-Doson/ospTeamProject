@@ -140,6 +140,7 @@ div.box2.right {
     color: #506A4C;
     font-size:30px;
     font-weight: bold;
+    margin-top:8px;
 }
 
 /* 대표메뉴 */
@@ -166,6 +167,7 @@ div.box3 {
     height:45px;;
     margin: 12px;
     font-family:'BMHANNAPro';
+    cursor: pointer;
 }
 
 /* 리뷰*/

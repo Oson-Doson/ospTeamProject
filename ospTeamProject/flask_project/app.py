@@ -115,10 +115,12 @@ def list_restaurants():
     for i in range(len(data)):
         key=keys[i]
         data[key]['avg_rate']=avg_rate[i]
-
+    print("#########data###")
     print(data)
     tot_count=len(data)
     data = dict(list(data.items())[start_idx:end_idx])
+    print("#########data2###")
+    print(data)
 
     return render_template(
         "list.html",
@@ -147,11 +149,21 @@ def review_post(name):
 # 동적 라우팅 : 맛집 세부화면 - 대표메뉴조회 화면
 @app.route("/show_menu/<res_name>/", methods=['POST'])
 def view_foods(res_name):
+    page=request.args.get("page", 0, type=int)
+    limit=3
+
+    start_idx=limit*page
+    end_idx=limit*(page+1)
     data = DB.get_food_byname(str(res_name))
+    print("#data###########")
+    print(data)
     tot_count = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    print("#data22############")
+    print(data)
     # 레스토랑 이름 전달
     res_name=res_name
-    return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name)
+    return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)+1))
 
 # 동적 라우팅 : 맛집 세부화면 - 맛집 메뉴등록 화면 
 @app.route("/menu_post/<name>/")

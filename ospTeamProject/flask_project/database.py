@@ -127,7 +127,7 @@ class DBhandler:
         if len(rates)==0:
             return 0
         else:
-            return sum(rates)/len(rates)
+            return round(sum(rates)/len(rates), 2)
     
     """맛집 이름으로 review 테이블에서 별점 가져와서 리뷰 개수 구하기"""
     def get_reviewnum_byname(self,name):
@@ -172,9 +172,11 @@ class DBhandler:
     """식당이름기반으로 등록 메뉴 검색하여 가져오기"""
     def get_food_byname(self, name):
         menu = self.db.child("menu").get()
-        target_value=[]
+        target_value={}
+
         for res in menu.each():
             value = res.val()
+            key=res.key()
             if value['restaurant_name'] == name:
-                target_value.append(value)
+                target_value[key]=value
         return target_value
