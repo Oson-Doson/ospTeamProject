@@ -190,6 +190,11 @@ li:hover .thumb{
     margin-top:30px;
     margin-bottom:20px;
     font-size:xx-large;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: normal;
 }
 
 .btn-nav{
