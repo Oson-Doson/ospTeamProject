@@ -6,7 +6,7 @@ import sys
 app = Flask(__name__)
 DB=DBhandler()
 
-DB= DBhandler()
+
 
 @app.route('/')
 def home():
@@ -101,7 +101,8 @@ def osondoson_home():
     japanese=DB.get_restaurants_byfoodchoice(str('일식'))
     western=DB.get_restaurants_byfoodchoice(str('양식'))
     cafe=DB.get_restaurants_byfoodchoice(str('카페'))
-    
+
+
     #식당의 평균 별점을 식당의 value 에 추가해주기 (후에 각 식당 정보를 별점 순으로 정렬해주기 위해서)
     #
     total_resname=DB.get_restaurantsName()

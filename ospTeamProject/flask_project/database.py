@@ -192,3 +192,42 @@ class DBhandler:
             if value['restaurant_name'] == name:
                 target_value.append(value)
         return target_value
+
+    """
+    #데이터 오류 날 때 욱여넣는 용도의 함수..
+    def insert_review(self):
+        review_content = {
+            "restaurant_name":'김밥천국',
+            "nickname": 'nick',
+            "mood": '#분위기 좋은',
+            "taste": '#달달한',
+            "star": '5',
+            "text": 'good',
+            "image_path": 'push.png'
+        }
+        self.db.child("review").push(review_content)
+        return True
+    
+    def insert_restaurantUpload(self):
+        restaurant_info = {
+            "Rname":'test2',
+            "address":'0',
+            "tel1":'0',
+            "tel2":'0',
+            "tel3":'0',
+            "foodchoice":'0',
+            "moodchoice":'0',
+            "pircechoice":'0',
+            "parking":'x',
+            "openhour":'0',
+            "openmin":'0',
+            "closehour":'0',
+            "closemin":'10',
+            "site":'www.naver.com',
+            "image_path":'push.png'
+        }
+        
+
+        self.db.child("restaurant").push(restaurant_info)
+        return True"""
+    
