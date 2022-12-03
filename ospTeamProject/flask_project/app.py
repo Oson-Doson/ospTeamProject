@@ -25,7 +25,20 @@ def reg_restaurant():
 
 @app.route('/mapSearch')
 def view_map():
-    return render_template('mapSearch.html', map_key=kakaomap_key)  
+    korean=DB.get_restaurants_byfoodchoice(str('한식'))
+    chinese=DB.get_restaurants_byfoodchoice(str('중식'))
+    japanese=DB.get_restaurants_byfoodchoice(str('일식'))
+    western=DB.get_restaurants_byfoodchoice(str('양식'))
+    cafe=DB.get_restaurants_byfoodchoice(str('카페'))
+    return render_template(
+        'mapSearch.html', 
+        map_key=kakaomap_key, 
+        korean=korean, 
+        chinese=chinese, 
+        japanese=japanese, 
+        western=western, 
+        cafe=cafe
+    )  
 
 @app.route('/allergycheck')
 def allergy_popup():
