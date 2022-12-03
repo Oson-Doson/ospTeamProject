@@ -23,8 +23,6 @@
 
         <div id="section">
 
-            <a href=" "><img src="{{url_for('static', filename='menuUpload/x.png') }}" alt="cancel" width="25px" height="25px" style="float:right"></a>
-
             <table>
 
                 <!--음식명 입력-->
@@ -125,8 +123,19 @@
 
             <!--메뉴추가 등록 버튼-->
         <div id="button">
-            <button class="add" type="button" id="btnadd">메뉴 추가</button>
-            <button class="register" type="submit" id="btnregister" onclick=" ">등록</button>
+            
+            <script>
+                function test() {
+                    if (confirm("메뉴를 더 추가하시겠습니까")) {
+                        alert("메뉴를 더 추가합니다.");
+                        history.go(0);
+                    } else {
+                        alert("대표 메뉴 리스트 화면으로 이동합니다.");
+                        history.go(1);
+                    }
+                }
+            </script>
+            <button class="register" type="submit" id="btnregister" onclick="test()" >등록</button>
         </div>
 
     </form>

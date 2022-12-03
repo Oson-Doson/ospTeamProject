@@ -9,7 +9,7 @@
     <div id="main">
         <nav> <img src="../static/restaurantUpload/resregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>
 
-        <form action="/submit_restaurant_post" enctype="multipart/form-data" method="post">
+        <form action="/submit_restaurant_post" enctype="multipart/form-data" method="post" name="upload" >
             <!--맛집 등록 입력창 table-->
             <table>
 
@@ -107,7 +107,6 @@
                     <!--주차여부 버튼 하나만 선택 -->
                     <script>
                         function checkOnlyOne(element) {
-
                             const checkboxes
                                 = document.getElementsByName("parking");
 
@@ -116,13 +115,15 @@
                             })
 
                             element.checked = true;
-
+                        
                         }</script>
+                        
+                      
                     <td><input type="checkbox" id="parkingo" name="parking" value="주차 가능" onclick='checkOnlyOne(this);'
                             getCheckboxValue() />
                         <a>주차 가능</a>
                         <input type="checkbox" id="parkingx" name="parking" value="주차 불가" onclick='checkOnlyOne(this);'
-                            getCheckboxValue() />
+                            getCheckboxValue() checked />
                         <a>주차 불가</a>
                     </td>
                 </tr>
@@ -229,52 +230,46 @@
                               onchange="setThumbnail(event);"/>
                       </div>
                       <script>
-                          // 파일 선택 버튼과 파일 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
-                          function onClickUpload() {
-                              // 파일 업로드용 input은 display: none 처리
-                              let fileUpload = document.getElementById("file-upload-input");
-                              fileUpload.click();
-                          }
+                        // 파일 선택 버튼과 파일 업로드용 input 연결하는 함수 (버튼 클릭 시 onclick 속성으로 함수 실행)
+                        function onClickUpload() {
+                            // 파일 업로드용 input은 display: none 처리
+                            let fileUpload = document.getElementById("file-upload-input");
+                            fileUpload.click();     }
 
-                          // 이미지 업로드하는 함수
-                          function setThumbnail(event) {
-                              // FileReader 객체 생성
-                              var reader = new FileReader();
+                        // 이미지 업로드하는 함수
+                        function setThumbnail(event) {
+                            // FileReader 객체 생성
+                            var reader = new FileReader();
+                            // FileReader가 로드될 때 발생할 이벤트 
+                            reader.onload = function (event) {
+                                // id가 picture-content인 요소가 있다면 true 반환
+                                var isImgExists = !!document.getElementById("picture-content");
 
-                              // FileReader가 로드될 때 발생할 이벤트 
-                              reader.onload = function (event) {
-                                  // id가 picture-content인 요소가 있다면 true 반환
-                                  var isImgExists = !!document.getElementById("picture-content");
+                                if (isImgExists) {
+                                    // 이미 picture-content가 있다면 (즉 이미 업로드된 이미지가 있다면) - src만 변경
+                                    var imgAlready = document.getElementById("picture-content");
+                                    imgAlready.src = event.target.result;
+                                } else {
+                                    // 업로드된 이미지 없는 경우 
+                                    // img 엘리먼트를 새로 생성하고 src 속성을 설정 > 이미지가 들어갈 div에 넣기
+                                    var img = document.createElement("img");
+                                    img.setAttribute("src", event.target.result);
+                                    img.id = 'picture-content';
+                                    document.querySelector("div#picture-div").appendChild(img);
+                                }
+                            };
 
-                                  if (isImgExists) {
-                                      // 이미 picture-content가 있다면 (즉 이미 업로드된 a이미지가 있다면) - src만 변경
-                                      var imgAlready = document.getElementById("picture-content");
-                                      imgAlready.src = event.target.result;
-                                  } else {
-                                      // 업로드된 이미지 없는 경우 
-                                      // img 엘리먼트를 새로 생성하고 src 속성을 설정 > 이미지가 들어갈 div에 넣기
-                                      var img = document.createElement("img");
-                                      img.setAttribute("src", event.target.result);
-                                      img.id = 'picture-content';
-                                      document.querySelector("div#picture-div").appendChild(img);
-                                  }
-                              };
-
-                              reader.readAsDataURL(event.target.files[0]);
-                          }
-                      </script>
-                        <!--
-                        <input type="image" id="picture" name="picture" value="">
-                        <button class="fileupload" onclick="">파일 선택</button>-->
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                    </script>
                     </td>
                 </tr>
 
             </table>
-            <div style=" text-align: center;">
-                <input type="submit" value="저장" />
+            <div class="save">
+                <input type="submit" value="저장"  onclick="save(this);setThumbnail()" />
             </div>
-            <!--맛집 대표 메뉴 등록 이어하기 버튼
-            <button class="gotomenuUpload" onclick="location.href='menuUpload.html'">맛집 대표 메뉴 등록 이어하기 &#9654;</button>-->
+            
         </form>
 
     </div>

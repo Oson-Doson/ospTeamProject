@@ -212,8 +212,10 @@ border: solid 1px #506A4C;
 .reviewText {
     border: solid 3px #496B49;
     resize: none;
-    width: 850px;
-    height: 300px;
+    width: 1000px;
+    height: 250px;
+    font-family: 'NanumBarunGothic';
+    font-size: 20px;
 }
 
 .reviewText::placeholder {
@@ -221,11 +223,13 @@ border: solid 1px #506A4C;
     font-size: 17px;
     text-align: center;
     vertical-align: center;
+    
+    
 }
 
 /* 등록 버튼 */
 #saveBtn {
-    margin-left: 45%; 
+    margin-left: 50%; 
     margin-right: auto; 
     /* padding: 8px 12px; */
     padding: 12px;
