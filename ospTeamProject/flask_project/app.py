@@ -74,7 +74,7 @@ def reg_menu_submit_post():
     data=request.form
     
     if DB.insert_menuUpload(data['menuname'],data,image_file.filename):
-        return render_template("home.html")
+        return redirect(url_for('osondoson_home'))
     else:
         return "Menu name already exist!"
 
