@@ -84,7 +84,7 @@ button{
     display:flex;
 }
 
-#recommendInnerBox{
+.recommendInnerBox{
     width:100%;
     padding:0;
     margin-top:5px;
@@ -393,6 +393,8 @@ li:hover .thumb{
 
 .reviewText{
     z-index:51;
+    height:50px;
+    overflow:hidden;
 }
 
 #restaurantOfMonth .restaurantTitle{
@@ -490,10 +492,15 @@ li:hover .thumb{
     width:100%;
 }
 
-
-.slick-list{
-    height:50px;
+.recommendInnerBox{
+    display:none;
+    width:100%;
 }
+.recommendInnerBox.current{
+	display: inherit;
+}
+
+
 
 /*section 3. 퀵메뉴*/
 #quickMenu{

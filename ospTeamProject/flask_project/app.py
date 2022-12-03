@@ -179,7 +179,7 @@ def osondoson_home():
     silverreview=DB.get_review_byname(silver['Rname'])
     bronzereview=DB.get_review_byname(bronze['Rname'])
 
-    page = request.args.get("page", 0, type=int)
+    page = 0
     limit = 6
     start_idx=limit*page
     end_idx=limit*(page+1)
@@ -189,6 +189,12 @@ def osondoson_home():
     jap_count=len(japanese)
     wes_count=len(western)
     caf_count=len(cafe)
+    total_sec=dict(list(total.items())[6:12])
+    korean_sec = dict(list(korean.items())[6:12])
+    chinese_sec = dict(list(chinese.items())[6:12])
+    japanese_sec = dict(list(japanese.items())[6:12])
+    western_sec = dict(list(western.items())[6:12])
+    cafe_sec = dict(list(cafe.items())[6:12])
     total = dict(list(total.items())[start_idx:end_idx])
     korean = dict(list(korean.items())[start_idx:end_idx])
     chinese = dict(list(chinese.items())[start_idx:end_idx])
@@ -199,11 +205,17 @@ def osondoson_home():
     return render_template(
         'home.html',
         totals=total.items(),
+        totals_sec=total_sec.items(), 
         koreans=korean.items(),
+        koreans_sec=korean_sec.items(),
         chineses=chinese.items(),
+        chineses_sec=chinese_sec.items(), 
         japaneses=japanese.items(),
+        japaneses_sec=japanese_sec.items(), 
         westerns=western.items(),
+        westerns_sec=western_sec.items(),
         cafes=cafe.items(),
+        cafes_sec=cafe_sec.items(), 
         tot_count=tot_count,
         kor_count=kor_count,
         chi_count=chi_count,

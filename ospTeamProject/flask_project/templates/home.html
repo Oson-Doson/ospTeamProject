@@ -54,7 +54,7 @@
                 <button class='btn-nav prev-slick-arrow' id='prev-slick-arrow'></button>
 
                 <div id="tab-1" class="tab-content current">
-                    <div id="recommendInnerBox">
+                    <div id="tab-1-1"class="recommendInnerBox current">
                         <ul class="forTabSize">
                             {% if tot_count > 0 %}
                             {%for total in totals%}
@@ -81,10 +81,37 @@
                             {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
                         </ul>
                     </div>
+                    <div id="tab-1-2" class="recommendInnerBox">
+                        <ul class="forTabSize">
+                            {% if tot_count >6 %}
+                            {%for total_sec in totals_sec%}
+                            <li class="innerslide">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{total_sec[1].Rname}}/';">
+                                    <div class="thumb thumb1"
+                                        style="background-image:url(../static/image/{{total_sec[1].image_path}})"></div>
+                                    <div class="info">
+                                        <p style="margin-top:70px;"></p>
+                                        <div class="starBox">
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg" id="starjs" style="width:{{total_sec[1].avg_rate_per}}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                        </div><span class="starNum">&nbsp;&nbsp;({{total_sec[1].avg_rate}})</span></div>
+                                        <div class="restaurantTitle">{{total_sec[1].Rname}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {%endfor%}
+                            {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
+                        </ul>
+                    </div>
                 </div>
 
                 <div id="tab-2" class="tab-content">
-                    <div id="recommendInnerBox">
+                    <div id="tab-2-1" class="recommendInnerBox current">
                         <ul class="forTabSize">
                             {% if kor_count > 0 %}
                             {%for korean in koreans%}
@@ -111,10 +138,37 @@
                             {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
                         </ul>
                     </div>
+                    <div id="tab-2-2" class="recommendInnerBox">
+                        <ul class="forTabSize">
+                            {% if kor_count >6 %}
+                            {%for korean_sec in koreans_sec%}
+                            <li class="innerslide">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{korean_sec[1].Rname}}/';">
+                                    <div class="thumb thumb1"
+                                        style="background-image:url(../static/image/{{korean_sec[1].image_path}})"></div>
+                                    <div class="info">
+                                        <p style="margin-top:70px;"></p>
+                                        <div class="starBox">
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg" id="starjs" style="width:{{korean_sec[1].avg_rate_per}}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                        </div><span class="starNum">&nbsp;&nbsp;({{korean_sec[1].avg_rate}})</span></div>
+                                        <div class="restaurantTitle">{{korean_sec[1].Rname}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {%endfor%}
+                            {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
+                        </ul>
+                    </div>
                 </div>
 
                 <div id="tab-3" class="tab-content">
-                    <div id="recommendInnerBox">
+                    <div id="tab-3-1"class="recommendInnerBox current">
                         <ul class="forTabSize"> 
                             {% if chi_count > 0 %}
                             {%for chinese in chineses%}
@@ -141,9 +195,36 @@
                             {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
                         </ul>
                     </div>
+                    <div id="tab-3-2" class="recommendInnerBox">
+                        <ul class="forTabSize">
+                            {% if chi_count >6 %}
+                            {%for chinese_sec in chineses_sec%}
+                            <li class="innerslide">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{chinese_sec[1].Rname}}/';">
+                                    <div class="thumb thumb1"
+                                        style="background-image:url(../static/image/{{chinese_sec[1].image_path}})"></div>
+                                    <div class="info">
+                                        <p style="margin-top:70px;"></p>
+                                        <div class="starBox">
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg" id="starjs" style="width:{{chinese_sec[1].avg_rate_per}}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                        </div><span class="starNum">&nbsp;&nbsp;({{chinese_sec[1].avg_rate}})</span></div>
+                                        <div class="restaurantTitle">{{chinese_sec[1].Rname}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {%endfor%}
+                            {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
+                        </ul>
+                    </div>
                 </div>
                 <div id="tab-4" class="tab-content">
-                    <div id="recommendInnerBox">
+                    <div id="tab-4-1"class="recommendInnerBox current">
                         <ul class="forTabSize">
                             {% if jap_count > 0 %}
                             {%for japanese in japaneses%}
@@ -170,11 +251,38 @@
                             {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
                         </ul>
                     </div>
+                    <div id="tab-4-2" class="recommendInnerBox">
+                        <ul class="forTabSize">
+                            {% if jap_count > 6 %}
+                            {%for japanese_sec in japaneses_sec%}
+                            <li class="innerslide">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{japanese_sec[1].Rname}}/';">
+                                    <div class="thumb thumb1"
+                                        style="background-image:url(../static/image/{{japanese_sec[1].image_path}})"></div>
+                                    <div class="info">
+                                        <p style="margin-top:70px;"></p>
+                                        <div class="starBox">
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg" id="starjs" style="width:{{japanese_sec[1].avg_rate_per}}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                        </div><span class="starNum">&nbsp;&nbsp;({{japanese_sec[1].avg_rate}})</span></div>
+                                        <div class="restaurantTitle">{{japanese_sec[1].Rname}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {%endfor%}
+                            {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
+                        </ul>
+                    </div>
                 </div>
                 <div id="tab-5" class="tab-content">
-                    <div id="recommendInnerBox">
+                    <div id="tab-5-1" class="recommendInnerBox current">
                         <ul class="forTabSize">
-                            {% if wes_count > 0 %}
+                            {%if wes_count > 0 %}
                             {%for western in westerns%}
                             <li class="innerslide">
                                 <div class="restaurant-item" onclick="location.href='/view_detail/{{western[1].Rname}}/';">
@@ -199,9 +307,36 @@
                             {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
                         </ul>
                     </div>
+                    <div id="tab-5-2" class="recommendInnerBox">
+                        <ul class="forTabSize">
+                            {% if wes_count > 6 %}
+                            {%for western_sec in westerns_sec%}
+                            <li class="innerslide">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{western_sec[1].Rname}}/';">
+                                    <div class="thumb thumb1"
+                                        style="background-image:url(../static/image/{{western_sec[1].image_path}})"></div>
+                                    <div class="info">
+                                        <p style="margin-top:70px;"></p>
+                                        <div class="starBox">
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg" id="starjs" style="width:{{western_sec[1].avg_rate_per}}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                        </div><span class="starNum">&nbsp;&nbsp;({{western_sec[1].avg_rate}})</span></div>
+                                        <div class="restaurantTitle">{{western_sec[1].Rname}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {%endfor%}
+                            {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
+                        </ul>
+                    </div>
                 </div>
                 <div id="tab-6" class="tab-content">
-                    <div id="recommendInnerBox">
+                    <div id="tab-6-1" class="recommendInnerBox current">
                         <ul class="forTabSize">
                             {% if caf_count > 0 %}
                             {%for cafe in cafes%}
@@ -221,6 +356,33 @@
                                             </div>
                                         </div><span class="starNum">&nbsp;&nbsp;({{cafe[1].avg_rate}})</span></div>
                                         <div class="restaurantTitle">{{cafe[1].Rname}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {%endfor%}
+                            {%else%}<div style="width:100%; height:240px;">맛집을 새로 등록해주세요!</div>{%endif%}
+                        </ul>
+                    </div>
+                    <div id="tab-6-2" class="recommendInnerBox">
+                        <ul class="forTabSize">
+                            {% if caf_count > 6 %}
+                            {%for cafe_sec in cafes_sec%}
+                            <li class="innerslide">
+                                <div class="restaurant-item" onclick="location.href='/view_detail/{{cafe_sec[1].Rname}}/';">
+                                    <div class="thumb thumb1"
+                                        style="background-image:url(../static/image/{{cafe_sec[1].image_path}})"></div>
+                                    <div class="info">
+                                        <p style="margin-top:70px;"></p>
+                                        <div class="starBox">
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg" id="starjs" style="width:{{cafe_sec[1].avg_rate_per}}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                        </div><span class="starNum">&nbsp;&nbsp;({{cafe_sec[1].avg_rate}})</span></div>
+                                        <div class="restaurantTitle">{{cafe_sec[1].Rname}}</div>
                                     </div>
                                 </div>
                             </li>
