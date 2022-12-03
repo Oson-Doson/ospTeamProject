@@ -116,10 +116,10 @@ def osondoson_home():
     cafe_avgrate=[]
     #
     total_keys=list(total)
-    #
+    #카테고리 별 식당의 리뷰 평점 정보를 각 변수(딕셔너리)에다가 키:값 쌍으로 추가해주기  
     for res in total_resname:
         total_avgrate.append(DB.get_avgrate_byname(res))
-        total_reviewnum.append(DB.get_reviewnum_byname(res))
+        total_reviewnum.append(DB.get_reviewnum_byname(res)) #리뷰개수 
     for i in range(len(korean)):
         korean_avgrate.append(DB.get_avgrate_byname(korean[i]['Rname']))
     for i in range(len(chinese)):
@@ -134,7 +134,7 @@ def osondoson_home():
     for i in range(len(total)):
         key=total_keys[i]
         total[key]['avg_rate']=total_avgrate[i]
-        total[key]['review_num']=total_reviewnum[i]
+        total[key]['review_num']=total_reviewnum[i] #리뷰개수
     for i in range(len(korean)):
         korean[i]['avg_rate']=korean_avgrate[i]
     for i in range(len(chinese)):
@@ -145,7 +145,7 @@ def osondoson_home():
         western[i]['avg_rate']=western_avgrate[i]
     for i in range(len(cafe)):
         cafe[i]['avg_rate']=cafe_avgrate[i]
-    #
+    #식당의 평점을 백분율로 나타내주기 위해서 20씩 곱해주기.... -> 이걸로 홈화면 section 1 별 넓이 조정 가능
     for i in range(len(total)):
         key=total_keys[i]
         total[key]['avg_rate_per']=total_avgrate[i]*20
@@ -160,14 +160,15 @@ def osondoson_home():
     for i in range(len(cafe)):
         cafe[i]['avg_rate_per']=cafe_avgrate[i]*20
     
-    #별점순으로 내림차순 정렬
+    #카테고리 별 식당을 별점순으로 내림차순 정렬하기
     total=dict(sorted(total.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
     korean=dict(sorted(korean.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
     chinese=dict(sorted(chinese.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
     japanese=dict(sorted(japanese.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
     western=dict(sorted(western.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
     cafe=dict(sorted(cafe.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
-
+    
+    #home.html section 2 ) total 을 리뷰 개수 순으로 내림차순 정렬 , 리뷰 개수가 가장 많은 세 개의 식당 정보를 goldreview, sreview, breview 변수에 저장
     a=dict(sorted(total.items(),key=lambda x: x[1]['review_num'], reverse=True))
     a_keys=list(a)
     goldkey=a_keys[0]
@@ -190,12 +191,14 @@ def osondoson_home():
     jap_count=len(japanese)
     wes_count=len(western)
     caf_count=len(cafe)
+
     total_sec=dict(list(total.items())[6:12])
     korean_sec = dict(list(korean.items())[6:12])
     chinese_sec = dict(list(chinese.items())[6:12])
     japanese_sec = dict(list(japanese.items())[6:12])
     western_sec = dict(list(western.items())[6:12])
     cafe_sec = dict(list(cafe.items())[6:12])
+    
     total = dict(list(total.items())[start_idx:end_idx])
     korean = dict(list(korean.items())[start_idx:end_idx])
     chinese = dict(list(chinese.items())[start_idx:end_idx])
