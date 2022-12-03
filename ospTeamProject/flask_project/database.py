@@ -159,6 +159,20 @@ class DBhandler:
         restaurants = self.db.child("restaurant").get().val()
         return restaurants
 
+    """음식 종류로 레스토랑 가져오기"""
+    def get_restaurants_byfoodchoice(self, foodchoice):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['foodchoice'] == foodchoice:
+                target_value.append(value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
+    
+    """식당의 value 중 Rname만 리턴해주는 함수"""
     def get_restaurantsName(self):
         restaurants = self.db.child("restaurant").get()
         names=[]
