@@ -21,7 +21,7 @@ class DBhandler:
             "tel3":data['tel3'],
             "foodchoice":data['foodchoice'],
             "moodchoice":data['moodchoice'],
-            "pircechoice":data['pricechoice'],
+            "pricechoice":data['pricechoice'],
             "parking":data['parking'],
             "openhour":data['openhour'],
             "openmin":data['openmin'],
