@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request,redirect,url_for
 from database import DBhandler
 import sys
+sys.setrecursionlimit(10**6)
 from config import kakaomap_key
 
 
@@ -198,7 +199,7 @@ def osondoson_home():
     japanese_sec = dict(list(japanese.items())[6:12])
     western_sec = dict(list(western.items())[6:12])
     cafe_sec = dict(list(cafe.items())[6:12])
-    
+
     total = dict(list(total.items())[start_idx:end_idx])
     korean = dict(list(korean.items())[start_idx:end_idx])
     chinese = dict(list(chinese.items())[start_idx:end_idx])
@@ -241,14 +242,18 @@ def osondoson_home():
 @app.route("/list_res")
 def list_restaurants():
     page = request.args.get("page", 0, type=int)
+    category = request.args.get("category", "total")
     limit = 9
 
     start_idx=limit*page
     end_idx=limit*(page+1)
 
-    data=DB.get_restaurants()
+    if category=="total":
+        data = DB.get_restaurants()
+    else:
+        data = DB.get_restaurants_byfoodchoice(category)
+
     res_name=DB.get_restaurantsName()
-    print(res_name)
     avg_rate=[]
     keys=list(data)
     print(keys)
@@ -259,11 +264,11 @@ def list_restaurants():
     for i in range(len(data)):
         key=keys[i]
         data[key]['avg_rate']=avg_rate[i]
-    print("#########data###")
+
     print(data)
     tot_count=len(data)
     data = dict(list(data.items())[start_idx:end_idx])
-    print("#########data2###")
+
     print(data)
 
     return render_template(
@@ -272,7 +277,8 @@ def list_restaurants():
         total=tot_count,
         limit=limit,
         page=page,
-        page_count=int((tot_count/9)+1))
+        page_count=int((tot_count/9)+1),
+        category=category)
                           
 
 # 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 
@@ -358,5 +364,5 @@ def review_result(res_name):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port='5001', debug=True)
+    app.run(host='0.0.0.0',port='5001', debug=True, threaded=True)
     
