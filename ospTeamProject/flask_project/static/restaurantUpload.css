@@ -65,15 +65,6 @@ input[type=text] {
     height: 30px;
 }
 
-/*사진 이미지 업로드 부분*/
-input[type=image] {
-    background-color: #D9D9D9;
-    height: 110px;
-    width: 110px;
-    margin-top: 30px;
-    ;
-}
-
 /*주차 여부 체크 박스*/
 input[type=checkbox] {
     width: 30px;
@@ -155,5 +146,11 @@ button.fileupload {
     color: white;
     font-family: 'BMHANNAPro';
     font-size: 17px;
+    margin-left:50px;
+}
+/*저장버튼*/
+div.save{
+     text-align: center;
+     margin-top:20px;
 }
 
