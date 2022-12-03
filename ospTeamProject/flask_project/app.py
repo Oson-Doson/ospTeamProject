@@ -108,93 +108,29 @@ def submit_review_post():
 
 @app.route("/osondoson")
 def osondoson_home():
-
-    #식당 정보 가져오기 (total, 한식당, 중식당, 일식당, 양식당, 카페)
-    total=DB.get_restaurants()
-    korean=DB.get_restaurants_byfoodchoice(str('한식'))
-    chinese=DB.get_restaurants_byfoodchoice(str('중식'))
-    japanese=DB.get_restaurants_byfoodchoice(str('일식'))
-    western=DB.get_restaurants_byfoodchoice(str('양식'))
-    cafe=DB.get_restaurants_byfoodchoice(str('카페'))
-    
-    #식당의 평균 별점을 식당의 value 에 추가해주기 (후에 각 식당 정보를 별점 순으로 정렬해주기 위해서)
-    #
-    total_resname=DB.get_restaurantsName()
-    #
-    total_avgrate=[]
-    total_reviewnum=[]
-    korean_avgrate=[]
-    chinese_avgrate=[]
-    japanese_avgrate=[]
-    western_avgrate=[]
-    cafe_avgrate=[]
-    #
-    total_keys=list(total)
-    #카테고리 별 식당의 리뷰 평점 정보를 각 변수(딕셔너리)에다가 키:값 쌍으로 추가해주기  
-    for res in total_resname:
-        total_avgrate.append(DB.get_avgrate_byname(res))
-        total_reviewnum.append(DB.get_reviewnum_byname(res)) #리뷰개수 
-    for i in range(len(korean)):
-        korean_avgrate.append(DB.get_avgrate_byname(korean[i]['Rname']))
-    for i in range(len(chinese)):
-        chinese_avgrate.append(DB.get_avgrate_byname(chinese[i]['Rname']))
-    for i in range(len(japanese)):
-        japanese_avgrate.append(DB.get_avgrate_byname(japanese[i]['Rname']))
-    for i in range(len(western)):
-        western_avgrate.append(DB.get_avgrate_byname(western[i]['Rname']))
-    for i in range(len(cafe)):
-        cafe_avgrate.append(DB.get_avgrate_byname(cafe[i]['Rname']))
-    #
-    for i in range(len(total)):
-        key=total_keys[i]
-        total[key]['avg_rate']=total_avgrate[i]
-        total[key]['review_num']=total_reviewnum[i] #리뷰개수
-    for i in range(len(korean)):
-        korean[i]['avg_rate']=korean_avgrate[i]
-    for i in range(len(chinese)):
-        chinese[i]['avg_rate']=chinese_avgrate[i]
-    for i in range(len(japanese)):
-        japanese[i]['avg_rate']=japanese_avgrate[i]
-    for i in range(len(western)):
-        western[i]['avg_rate']=western_avgrate[i]
-    for i in range(len(cafe)):
-        cafe[i]['avg_rate']=cafe_avgrate[i]
-    #식당의 평점을 백분율로 나타내주기 위해서 20씩 곱해주기.... -> 이걸로 홈화면 section 1 별 넓이 조정 가능
-    for i in range(len(total)):
-        key=total_keys[i]
-        total[key]['avg_rate_per']=total_avgrate[i]*20
-    for i in range(len(korean)):
-        korean[i]['avg_rate_per']=korean_avgrate[i]*20
-    for i in range(len(chinese)):
-        chinese[i]['avg_rate_per']=chinese_avgrate[i]*20
-    for i in range(len(japanese)):
-        japanese[i]['avg_rate_per']=japanese_avgrate[i]*20
-    for i in range(len(western)):
-        western[i]['avg_rate_per']=western_avgrate[i]*20
-    for i in range(len(cafe)):
-        cafe[i]['avg_rate_per']=cafe_avgrate[i]*20
-    
-    #카테고리 별 식당을 별점순으로 내림차순 정렬하기
-    total=dict(sorted(total.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
-    korean=dict(sorted(korean.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
-    chinese=dict(sorted(chinese.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
-    japanese=dict(sorted(japanese.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
-    western=dict(sorted(western.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
-    cafe=dict(sorted(cafe.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
-    
-    #home.html section 2 ) total 을 리뷰 개수 순으로 내림차순 정렬 , 리뷰 개수가 가장 많은 세 개의 식당 정보를 goldreview, sreview, breview 변수에 저장
-    a=dict(sorted(total.items(),key=lambda x: x[1]['review_num'], reverse=True))
-    a_keys=list(a)
-    goldkey=a_keys[0]
-    silverkey=a_keys[1]
-    bronzekey=a_keys[2]
-    gold=a[goldkey]
-    silver=a[silverkey]
-    bronze=a[bronzekey]
-    goldreview=DB.get_review_byname(gold['Rname'])
-    silverreview=DB.get_review_byname(silver['Rname'])
-    bronzereview=DB.get_review_byname(bronze['Rname'])
-
+    print('로딩 시간이 왜이렇게 오래걸리는지를 알기 위한 print문...')
+    total=DB.starSort()
+    print('1111111111111111111111111111111111111111111111')
+    korean=DB.starSort_cate('한식')
+    print('1111111111111111111111111111111111111111111111')
+    chinese=DB.starSort_cate('중식')
+    print('1111111111111111111111111111111111111111111111')
+    japanese=DB.starSort_cate('일식')
+    print('1111111111111111111111111111111111111111111111')
+    western=DB.starSort_cate('양식')
+    print('1111111111111111111111111111111111111111111111')
+    cafe=DB.starSort_cate('카페')
+    print('222222222222222222222222222222222222222')
+    #home.html section 2 ) total 을 리뷰 개수 순으로 내림차순 정렬 , 리뷰 개수가 가장 많은 세 개의 식당 정보를 gold, silver, bronze 변수에 저장
+    a=DB.reviewNumSort()
+    print('3333333333333333333333333333333333333')
+    gold=a[0]
+    silver=a[1]
+    bronze=a[2]
+    goldreview=DB.get_review_byname(gold[1]['Rname'])
+    silverreview=DB.get_review_byname(silver[1]['Rname'])
+    bronzereview=DB.get_review_byname(bronze[1]['Rname'])
+    print('3333333333333333333333333333333333333')
     page = 0
     limit = 6
     start_idx=limit*page
@@ -205,21 +141,21 @@ def osondoson_home():
     jap_count=len(japanese)
     wes_count=len(western)
     caf_count=len(cafe)
-
+    print('22222222222222222222222222222222222222222222222')
     total_sec=dict(list(total.items())[6:12])
     korean_sec = dict(list(korean.items())[6:12])
     chinese_sec = dict(list(chinese.items())[6:12])
     japanese_sec = dict(list(japanese.items())[6:12])
     western_sec = dict(list(western.items())[6:12])
     cafe_sec = dict(list(cafe.items())[6:12])
-
+    print('22222222222222222222222222222222222222222222222')
     total = dict(list(total.items())[start_idx:end_idx])
     korean = dict(list(korean.items())[start_idx:end_idx])
     chinese = dict(list(chinese.items())[start_idx:end_idx])
     japanese = dict(list(japanese.items())[start_idx:end_idx])
     western = dict(list(western.items())[start_idx:end_idx])
     cafe = dict(list(cafe.items())[start_idx:end_idx])
-
+    print('33333333333333333333333')
     return render_template(
         'home.html',
         totals=total.items(),

@@ -401,17 +401,17 @@
             <div id="box_restaurantOfMonth">
                 <div class="resBox_emoji">
                     <div id="silver">
-                        <form method="post" action="/review_show/{{silver['Rname']}}/">
-                            <input type="hidden" name="restaurant_name" value="{{silver['Rname']}}">
-                        <a href="/review_show/{{silver['Rname']}}/">
+                        <form method="post" action="/review_show/{{silver[1]['Rname']}}/">
+                            <input type="hidden" name="restaurant_name" value="{{silver[1]['Rname']}}">
+                        <a href="/review_show/{{silver[1]['Rname']}}/">
                             <div><button style="width:100%; cursor:pointer;">
-                                <div class="medalBox" style="background-image:url(../static/image/{{silver['image_path']}})">
+                                <div class="medalBox" style="background-image:url(../static/image/{{silver[1]['image_path']}})">
                                 </div>
                                 <div>
                                     <div class="silverCrownFix">
                                         <object class="silverCrown" type="image/svg+xml"></object>
                                     </div>
-                                    <div class="restaurantTitle">{{silver['Rname']}}</div>
+                                    <div class="restaurantTitle">{{silver[1]['Rname']}}</div>
                                 </div></button>
                             </div>
                         </a></form>
@@ -427,17 +427,17 @@
 
                 <div class="resBox_emoji" style="z-index:10; margin-top:10px;">
                     <div id="gold">
-                        <form method="post" action="/review_show/{{gold['Rname']}}/">
-                            <input type="hidden" name="restaurant_name" value="{{gold['Rname']}}">
-                        <a href="/review_show/{{gold['Rname']}}/">
+                        <form method="post" action="/review_show/{{gold[1]['Rname']}}/">
+                            <input type="hidden" name="restaurant_name" value="{{gold[1]['Rname']}}">
+                        <a href="/review_show/{{gold[1]['Rname']}}/">
                             <div><button style="width:100%; cursor:pointer;">
-                                <div class="medalBox" style="background-image:url(../static/image/{{gold['image_path']}})">
+                                <div class="medalBox" style="background-image:url(../static/image/{{gold[1]['image_path']}})">
                                 </div>
                                 <div>
                                     <div class="goldCrownFix">
                                         <object class="goldCrown" type="image/svg+xml"></object>
                                     </div>
-                                    <div class="restaurantTitle">{{gold['Rname']}}</div>
+                                    <div class="restaurantTitle">{{gold[1]['Rname']}}</div>
                                 </div></button>
                             </div>
                         </a></form>
@@ -452,17 +452,17 @@
 
                 <div class="resBox_emoji" style="position:relative;">
                     <div id="bronze">
-                        <form method="post" action="/review_show/{{bronze['Rname']}}/">
-                            <input type="hidden" name="restaurant_name" value="{{bronze['Rname']}}">
-                        <a href="/review_show/{{bronze['Rname']}}/">
+                        <form method="post" action="/review_show/{{bronze[1]['Rname']}}/">
+                            <input type="hidden" name="restaurant_name" value="{{bronze[1]['Rname']}}">
+                        <a href="/review_show/{{bronze[1]['Rname']}}/">
                             <div><button style="width:100%; cursor:pointer;">
-                                <div class="medalBox" style="background-image:url(../static/image/{{bronze['image_path']}})">
+                                <div class="medalBox" style="background-image:url(../static/image/{{bronze[1]['image_path']}})">
                                 </div>
                                 <div>
                                     <div class="bronzeCrownFix">
                                         <object class="bronzeCrown" type="image/svg+xml"></object>
                                     </div>
-                                    <div class="restaurantTitle">{{bronze['Rname']}}</div>
+                                    <div class="restaurantTitle">{{bronze[1]['Rname']}}</div>
                                 </div></button>
                             </div>
                         </a></form>
