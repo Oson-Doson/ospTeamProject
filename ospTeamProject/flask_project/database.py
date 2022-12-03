@@ -159,6 +159,30 @@ class DBhandler:
         restaurants = self.db.child("restaurant").get().val()
         return restaurants
 
+    """음식 종류로 레스토랑 가져오기"""
+    def get_restaurants_byfoodchoice(self, foodchoice):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['foodchoice'] == foodchoice:
+                target_value.append(value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
+    
+    """식당의 value 중 Rname만 리턴해주는 함수"""
+    def get_restaurantsName(self):
+        restaurants = self.db.child("restaurant").get()
+        names=[]
+
+        for res in restaurants.each():
+            value=res.val()
+            names.append(value['Rname'])
+
+        return names
+
     """식당이름기반으로 등록 메뉴 검색하여 가져오기"""
     def get_food_byname(self, name):
         menu = self.db.child("menu").get()
@@ -168,3 +192,71 @@ class DBhandler:
             if value['restaurant_name'] == name:
                 target_value.append(value)
         return target_value
+
+    #여진
+    # 음식종류(foodchoice)로 데이터 가져오기
+    def get_restaurants_byfoodchoice(self,cate):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['foodchoice'] == cate:
+                target_value.append(value)
+        print("#####target_value", target_value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+                
+        return new_dict
+
+    # 가격대(pricechoice)로 데이터 가져오기
+    def get_restaurants_bypricechoice(self,cate):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+
+            if value['pricechoice'] == cate:
+                target_value.append(value)
+        print("#####target_value", target_value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+                
+        return new_dict
+
+    # 분위기(moodchoice)로 데이터 가져오기
+    def get_restaurants_bymoodchoice(self,cate):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            #print(value['moodchoice'])
+            if value['moodchoice'] == cate:
+                #print("######value[moodchoice]", value['moodchoice'])
+                target_value.append(value)
+        print("######target_value_moodchoice", target_value)
+        #print(target_value)
+        #print("######cate_moodchoice", cate)
+        #print(cate)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        #print("######new_dict", new_dict)  
+        return new_dict
+
+    # 주차(parking)로 데이터 가져오기
+    def get_restaurants_byparking(self,cate):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            #print(value['parking'])
+            if value['parking'] == cate:
+                target_value.append(value)
+        print("######target_value", target_value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        #print(new_dict)
+        return new_dict

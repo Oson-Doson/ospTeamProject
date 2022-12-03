@@ -11,7 +11,7 @@ DB= DBhandler()
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return redirect(url_for('osondoson_home'))
 
 # 맛집리스트화면으로 연결 & 페이징
 @app.route('/list')
@@ -79,8 +79,6 @@ def reg_menu_submit_post():
         return "Menu name already exist!"
 
 
-
-
 # 리뷰 등록 post
 @app.route("/submit_review_post", methods=['POST'])
 def submit_review_post():
@@ -90,28 +88,248 @@ def submit_review_post():
     data = request.form
 
     if DB.insert_review(data['nickname'], data, image_file.filename):
-        return render_template("home.html")
+        return redirect(url_for('osondoson_home'))
+
+
+
+@app.route("/osondoson")
+def osondoson_home():
+
+    #식당 정보 가져오기 (total, 한식당, 중식당, 일식당, 양식당, 카페)
+    total=DB.get_restaurants()
+    korean=DB.get_restaurants_byfoodchoice(str('한식'))
+    chinese=DB.get_restaurants_byfoodchoice(str('중식'))
+    japanese=DB.get_restaurants_byfoodchoice(str('일식'))
+    western=DB.get_restaurants_byfoodchoice(str('양식'))
+    cafe=DB.get_restaurants_byfoodchoice(str('카페'))
+    
+    #식당의 평균 별점을 식당의 value 에 추가해주기 (후에 각 식당 정보를 별점 순으로 정렬해주기 위해서)
+    #
+    total_resname=DB.get_restaurantsName()
+    #
+    total_avgrate=[]
+    total_reviewnum=[]
+    korean_avgrate=[]
+    chinese_avgrate=[]
+    japanese_avgrate=[]
+    western_avgrate=[]
+    cafe_avgrate=[]
+    #
+    total_keys=list(total)
+    #
+    for res in total_resname:
+        total_avgrate.append(DB.get_avgrate_byname(res))
+        total_reviewnum.append(DB.get_reviewnum_byname(res))
+    for i in range(len(korean)):
+        korean_avgrate.append(DB.get_avgrate_byname(korean[i]['Rname']))
+    for i in range(len(chinese)):
+        chinese_avgrate.append(DB.get_avgrate_byname(chinese[i]['Rname']))
+    for i in range(len(japanese)):
+        japanese_avgrate.append(DB.get_avgrate_byname(japanese[i]['Rname']))
+    for i in range(len(western)):
+        western_avgrate.append(DB.get_avgrate_byname(western[i]['Rname']))
+    for i in range(len(cafe)):
+        cafe_avgrate.append(DB.get_avgrate_byname(cafe[i]['Rname']))
+    #
+    for i in range(len(total)):
+        key=total_keys[i]
+        total[key]['avg_rate']=total_avgrate[i]
+        total[key]['review_num']=total_reviewnum[i]
+    for i in range(len(korean)):
+        korean[i]['avg_rate']=korean_avgrate[i]
+    for i in range(len(chinese)):
+        chinese[i]['avg_rate']=chinese_avgrate[i]
+    for i in range(len(japanese)):
+        japanese[i]['avg_rate']=japanese_avgrate[i]
+    for i in range(len(western)):
+        western[i]['avg_rate']=western_avgrate[i]
+    for i in range(len(cafe)):
+        cafe[i]['avg_rate']=cafe_avgrate[i]
+    #
+    for i in range(len(total)):
+        key=total_keys[i]
+        total[key]['avg_rate_per']=total_avgrate[i]*20
+    for i in range(len(korean)):
+        korean[i]['avg_rate_per']=korean_avgrate[i]*20
+    for i in range(len(chinese)):
+        chinese[i]['avg_rate_per']=chinese_avgrate[i]*20
+    for i in range(len(japanese)):
+        japanese[i]['avg_rate_per']=japanese_avgrate[i]*20
+    for i in range(len(western)):
+        western[i]['avg_rate_per']=western_avgrate[i]*20
+    for i in range(len(cafe)):
+        cafe[i]['avg_rate_per']=cafe_avgrate[i]*20
+    
+    #별점순으로 내림차순 정렬
+    total=dict(sorted(total.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    korean=dict(sorted(korean.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    chinese=dict(sorted(chinese.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    japanese=dict(sorted(japanese.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    western=dict(sorted(western.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    cafe=dict(sorted(cafe.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+
+    a=dict(sorted(total.items(),key=lambda x: x[1]['review_num'], reverse=True))
+    a_keys=list(a)
+    goldkey=a_keys[1]
+    silverkey=a_keys[2]
+    bronzekey=a_keys[3]
+    gold=a[goldkey]
+    silver=a[silverkey]
+    bronze=a[bronzekey]
+    goldreview=DB.get_review_byname(gold['Rname'])
+    silverreview=DB.get_review_byname(silver['Rname'])
+    bronzereview=DB.get_review_byname(bronze['Rname'])
+
+    page = 0
+    limit = 6
+    start_idx=limit*page
+    end_idx=limit*(page+1)
+    tot_count=len(total)
+    kor_count=len(korean)
+    chi_count=len(chinese)
+    jap_count=len(japanese)
+    wes_count=len(western)
+    caf_count=len(cafe)
+    total_sec=dict(list(total.items())[6:12])
+    korean_sec = dict(list(korean.items())[6:12])
+    chinese_sec = dict(list(chinese.items())[6:12])
+    japanese_sec = dict(list(japanese.items())[6:12])
+    western_sec = dict(list(western.items())[6:12])
+    cafe_sec = dict(list(cafe.items())[6:12])
+    total = dict(list(total.items())[start_idx:end_idx])
+    korean = dict(list(korean.items())[start_idx:end_idx])
+    chinese = dict(list(chinese.items())[start_idx:end_idx])
+    japanese = dict(list(japanese.items())[start_idx:end_idx])
+    western = dict(list(western.items())[start_idx:end_idx])
+    cafe = dict(list(cafe.items())[start_idx:end_idx])
+
+    return render_template(
+        'home.html',
+        totals=total.items(),
+        totals_sec=total_sec.items(), 
+        koreans=korean.items(),
+        koreans_sec=korean_sec.items(),
+        chineses=chinese.items(),
+        chineses_sec=chinese_sec.items(), 
+        japaneses=japanese.items(),
+        japaneses_sec=japanese_sec.items(), 
+        westerns=western.items(),
+        westerns_sec=western_sec.items(),
+        cafes=cafe.items(),
+        cafes_sec=cafe_sec.items(), 
+        tot_count=tot_count,
+        kor_count=kor_count,
+        chi_count=chi_count,
+        jap_count=jap_count,
+        wes_count=wes_count,
+        caf_count=caf_count,
+        gold=gold,
+        silver=silver,
+        bronze=bronze,
+        greview=goldreview,
+        sreview=silverreview,
+        breview=bronzereview,
+        gnum=len(goldreview),
+        snum=len(silverreview),
+        bnum=len(bronzereview))
 
 
 #app.py 에서 get_restaurants 호출
 @app.route("/list_res")
 def list_restaurants():
     page = request.args.get("page", 0, type=int)
+    # get방식으로 foddchoice 값 받아옴 (여진)
+    foodchoice = request.args.get('foodchoice', 'total')
+    pricechoice=request.args.get("pricechoice","가격대")
+    moodchoice=request.args.get("moodchoice","키워드")
+    parking=request.args.get("parking","주차")
     limit = 9
 
     start_idx=limit*page
     end_idx=limit*(page+1)
-    data=DB.get_restaurants()
-    tot_count=len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
 
+    # foodchoice로 DB에서 데이터 받아오기(여진)
+    if foodchoice == "total":
+        data = DB.get_restaurants()
+    else:
+        data = DB.get_restaurants_byfoodchoice(foodchoice)
+
+    # pricechoice로 DB에서 데이터 받아오기(여진)
+    if pricechoice == "가격대":
+        data = DB.get_restaurants()
+    else:
+        data = DB.get_restaurants_bypricechoice(pricechoice)
+    #---------------------------------------------------------
+
+    #원래자리(moodchoice)
+
+    #parking으로 DB에서 데이터 받아오기(여진)--------
+    if parking == '주차':
+        data = DB.get_restaurants()
+    else:
+        data = DB.get_restaurants_byparking(parking)
+        print("주차가능 선택됨")
+    #-----------------------------------------
+
+   
+    # 1.별점
+    res_name=DB.get_restaurantsName()
+    print("별점의 식당이름")#삭제하기
+    print(res_name)
+    avg_rate=[]
+    print("별점의 데이터")#삭제하기
+    print(data) # 삭제하기
+
+
+    # 1-1 moodchoice로 DB에서 데이터 받아오기(여진)--------
+    if moodchoice == '키워드':
+        data = DB.get_restaurants()
+    else:
+        data = DB.get_restaurants_bymoodchoice(moodchoice)
+        print("키워드 값 선택됨")
+    #-----------------------------------------
+
+   
+    # 별점이어서
+    keys=list(data)
+    print("별점의 키")#삭제하기
+    print(keys)
+    for res in res_name:
+        avg_rate.append(DB.get_avgrate_byname(res))
+ 
+    
+    for i in range(len(data)):
+        key=keys[i]
+        data[key]['avg_rate']=avg_rate[i]
+
+    print("별점함수 끝난다음 data!!!!")#삭제하기
+    print(data)
+
+
+    print("이건가?")
+    tot_count=len(data)
+    if tot_count <= limit:
+        data = dict(list(data.items())[:tot_count])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
+    data = dict(sorted(data.items(), key=lambda x:x[1]['Rname'], reverse = False))
+    print("이거는 무엇을 출력하는 문장이지?")
+    print(data)
+
+    page_count = len(data)
+    print(tot_count,page_count)
     return render_template(
         "list.html",
         datas=data.items(),
         total=tot_count,
         limit=limit,
         page=page,
-        page_count=int((tot_count/9)+1))
+        page_count=math.ceil(tot_count/9),
+        foodchoice=foodchoice,
+        pricechoice=pricechoice,
+        moodchoice=moodchoice,
+        parking=parking)
+                          
                           
 
 # 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 

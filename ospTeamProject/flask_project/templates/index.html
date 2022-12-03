@@ -1,40 +1,150 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <section>
-            {% block sectionheader %}
- 
-            {% endblock sectionheader %}
-         </section>
-        <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
-        <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
-    </head>
+{% extends "index.html" %}
 
-    <body>
-        <header>
-            <!-- header 붙여넣기 -->
-            <div class="headerbackground">
-                <a href="/"><img class="osondoson" src="{{url_for('static', filename='osondoson.png') }}"></a>
-            </div>
-        </header>
+{% block sectionheader %}
+	<title>맛집리스트화면</title>
+	<link rel="stylesheet" href="{{url_for('static', filename='list.css') }}">
+	<link rel="stylesheet" href="{{url_for('static', filename='paging.css') }}">
+{% endblock sectionheader %}
 
-        <section>
-           {% block section %}
+{% block section %}
+<script>
+	//$(document).ready(function(){
+		//$('.typeButton:contains("{{foodchoice}}")').prop("onclick", true);
+	//});
+	//$("#typetotal").click(function(){}
+	 function clicking1(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='total') }}";
+	 } 
+	 function clicking2(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='한식') }}";
+	 }
+	 function clicking3(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='중식') }}";
+	 }
+	 function clicking4(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='일식') }}";
+	 }
+	 function clicking5(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='양식') }}";
+	 }
+	 function clicking6(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='카페') }}";
+	 }
+	
+	
+</script>
+	<div class="contents">
 
-           {% endblock section %}
-        </section>
+		<div id="menuType">
+			<button class="typeButton" id="typetotal" name="total" onclick="clicking1();">total</button>
+			<button class="typeButton" id="typeKorean" name=" 한식" onclick=" clicking2();">한식</button>
+			<button class="typeButton" id="typeChinese" name="중식" onclick=" clicking3();">중식</button>
+			<button class="typeButton" id="typeJapanese" name= "일식" onclick=" clicking4();">일식</button>
+			<button class="typeButton" id="typeWestern" name= "양식" onclick=" clicking5();">양식</button>
+			<button class="typeButton" id="typeCafe" name="카페" onclick="clicking6()">카페</button>
+		</div>
 
-        <footer>
-            <div id="footer">
-                <img class="osondoson" src="{{url_for('static', filename='osondoson.png') }}" alt="오손도손 로고">
-                <div class="footer-text">
-                    (주) 오손도손 컴퍼니<br>
-                    서울특별시 서대문구 이화여대길 52, 아산공학관 1층<br>
-                    ⓒ 2022. 오손도손 Co. Ltd. All rights reserved.
-                </div>
-            </div>
-        </footer>
-    </body>
-</html>
+		<!-- SORT -->
+		<div class="SORTAREA">
+			<!-- sorting img -->
+			<a class="sorting">
+				<img src="../static/list/sorting sign.png" alt="sorting sign" width="40" height="40">
+			</a>
+			<!-- 가격대 select -->
+			<!-- 페이지 로딩시 가격대 카테고리 선택되게 함-->
+			<script>
+			$(document).ready(function(){
+				$('#price option:contains("{{pricechoice}}")').prop("selected", true);
+			});
+			</script>
+			<select class="sort" id="price" name="price" onchange="location=this.value">
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='가격대')}}">&#8361;</a>&nbsp;&nbsp;가격대</option>
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='~5000')}}">~5000</option>
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='10000~15000')}}">10000~15000</option>
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='15000~20000')}}">15000~20000</option>
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='20000~')}}">20000~</option>
+			</select>
+
+			<!-- 키워드-->
+			<script>
+				$(document).ready(function(){
+					$('#moodchoice option:contains("{{moodchoice}}")').prop("selected", true);
+				});
+			</script>
+			<select class="sort" id="moodchoice" name="moodchoice" onchange="location=this.value">
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='키워드')}}">&#8361;</a>&nbsp;&nbsp;키워드</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#분위기 좋은')}}">분위기좋은</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#넓은장소')}}">넓은장소</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#혼밥가능')}}">혼밥가능</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#아기자기한')}}">아기자기한</option>
+			</select>
+			
+			<!-- 별점순 
+			<script>
+				$(document).ready(function(){
+					$('#park option:contains("{{parking}}")').prop("selected", true);
+				});
+			</script>
+			<select class="sort" id="park" name="park" onchange="location=this.value">
+					<option value="{{url_for('list_restaurants', page=i, parking='주차')}}">&#8473;</a>&nbsp;&nbsp;주차</option>
+					<option value="{{url_for('list_restaurants', page=i, parking='주차 가능')}}">주차가능</option>
+			</select>--> 
+			
+			
+			
+			
+			<!-- 주차가능 -->
+			<script>
+				$(document).ready(function(){
+					$('#park option:contains("{{parking}}")').prop("selected", true);
+				});
+			</script>
+			<select class="sort" id="park" name="park" onchange="location=this.value">
+					<option value="{{url_for('list_restaurants', page=i, parking='주차')}}">&#8473;</a>&nbsp;&nbsp;주차</option>
+					<option value="{{url_for('list_restaurants', page=i, parking='주차 가능')}}">주차가능</option>
+			</select>
+			
+
+			<!-- 영업 중 
+			<button class="sort" id="open" onclick="changeOpenButton()">
+				<b>&#9719;</b>&nbsp;&nbsp;영업중
+			</button>-->
+			<br>
+		</div>
+	{% if total > 0 %}
+	{%for data in datas%}
+		<!-- 리스트  -->
+		<div class="list">
+			<a href="/view_detail/{{data[1].Rname}}/">
+				<img src="../static/image/{{data[1].image_path}}" alt="00식당사진" width=100% height=50%>
+			</a>
+			<div class="desc">
+				<a class="store">{{data[1].Rname}}</a><br>
+				<a class="sub1">{{data[1].moodchoice}}</a><br>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub3">{{data[1].avg_rate}} </a><br>
+				<div class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</div>
+			</div>
+		</div>
+	{%endfor%}
+	<!-- 페이지네이션을 위한 코드 시작 -->
+	<div class="page-wrap">
+		<div class="page-nation">
+			<ul>
+				<li>
+				{% for i in range(page_count)%}
+				<a href="{{url_for('list_restaurants', page=i)}}" color="black">{{i}}</a>
+				{% endfor %}
+				</li>
+			</ul>
+		</div>
+	</div>
+	{% else %}
+	<p> 등록된 맛집이 없습니다. </p>
+	{%endif%}
+
+	</div>
+	
+
+{% endblock section %}
+	

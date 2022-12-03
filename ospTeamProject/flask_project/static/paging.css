@@ -28,3 +28,13 @@
     text-decoration: none;
     font-weight:bold;
     }
+    
+    /* 커서 올리면 박스 색 change*/
+    .page-nation a:hover:not(.active) {
+    background-color: rgb(206, 206, 206);
+    }
+
+    #active {
+        background-color: #506A4C;
+        color: white;
+        }

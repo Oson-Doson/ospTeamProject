@@ -7,16 +7,41 @@
 {% endblock sectionheader %}
 
 {% block section %}
-
+<script>
+	//$(document).ready(function(){
+		//$('.typeButton:contains("{{foodchoice}}")').prop("onclick", true);
+	//});
+	//$("#typetotal").click(function(){}
+	 function clicking1(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='total') }}";
+	 } 
+	 function clicking2(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='한식') }}";
+	 }
+	 function clicking3(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='중식') }}";
+	 }
+	 function clicking4(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='일식') }}";
+	 }
+	 function clicking5(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='양식') }}";
+	 }
+	 function clicking6(){
+		location.href= "{{ url_for( 'list_restaurants', page=i, foodchoice='카페') }}";
+	 }
+	
+	
+</script>
 	<div class="contents">
 
 		<div id="menuType">
-			<button class="typeButton" id="typetotal">total</button>
-			<button class="typeButton" id="typeKorean">한식</button>
-			<button class="typeButton" id="typeChinese">중식</button>
-			<button class="typeButton" id="typeJapanese">일식</button>
-			<button class="typeButton" id="typeWestern">양식</button>
-			<button class="typeButton" id="typeCafe">카페</button>
+			<button class="typeButton" id="typetotal" name="total" onclick="clicking1();">total</button>
+			<button class="typeButton" id="typeKorean" name=" 한식" onclick=" clicking2();">한식</button>
+			<button class="typeButton" id="typeChinese" name="중식" onclick=" clicking3();">중식</button>
+			<button class="typeButton" id="typeJapanese" name= "일식" onclick=" clicking4();">일식</button>
+			<button class="typeButton" id="typeWestern" name= "양식" onclick=" clicking5();">양식</button>
+			<button class="typeButton" id="typeCafe" name="카페" onclick="clicking6()">카페</button>
 		</div>
 
 		<!-- SORT -->
@@ -26,23 +51,64 @@
 				<img src="../static/list/sorting sign.png" alt="sorting sign" width="40" height="40">
 			</a>
 			<!-- 가격대 select -->
-			<select class="sort" id="price">
-				<option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
-				<option value="~5000">~5000</option>
-				<option value="10000~15000">10000~15000</option>
-				<option value="15000~20000">15000~20000</option>
-				<option value="20000~">20000~</option>
+			<!-- 페이지 로딩시 가격대 카테고리 선택되게 함-->
+			<script>
+			$(document).ready(function(){
+				$('#price option:contains("{{pricechoice}}")').prop("selected", true);
+			});
+			</script>
+			<select class="sort" id="price" name="price" onchange="location=this.value">
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='가격대')}}">&#8361;</a>&nbsp;&nbsp;가격대</option>
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='~5000')}}">~5000</option>
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='10000~15000')}}">10000~15000</option>
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='15000~20000')}}">15000~20000</option>
+				<option value="{{url_for('list_restaurants', page=i, pricechoice='20000~')}}">20000~</option>
 			</select>
 
+			<!-- 키워드-->
+			<script>
+				$(document).ready(function(){
+					$('#moodchoice option:contains("{{moodchoice}}")').prop("selected", true);
+				});
+			</script>
+			<select class="sort" id="moodchoice" name="moodchoice" onchange="location=this.value">
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='키워드')}}">&#8361;</a>&nbsp;&nbsp;키워드</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#분위기 좋은')}}">분위기좋은</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#넓은장소')}}">넓은장소</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#혼밥가능')}}">혼밥가능</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#아기자기한')}}">아기자기한</option>
+			</select>
+			
+			<!-- 별점순 
+			<script>
+				$(document).ready(function(){
+					$('#park option:contains("{{parking}}")').prop("selected", true);
+				});
+			</script>
+			<select class="sort" id="park" name="park" onchange="location=this.value">
+					<option value="{{url_for('list_restaurants', page=i, parking='주차')}}">&#8473;</a>&nbsp;&nbsp;주차</option>
+					<option value="{{url_for('list_restaurants', page=i, parking='주차 가능')}}">주차가능</option>
+			</select>--> 
+			
+			
+			
+			
 			<!-- 주차가능 -->
-			<button class="sort" id="park" onclick="changeParkButton()">
-				<b>&#8473;</b>&nbsp;&nbsp;주차가능
-			</button>
+			<script>
+				$(document).ready(function(){
+					$('#park option:contains("{{parking}}")').prop("selected", true);
+				});
+			</script>
+			<select class="sort" id="park" name="park" onchange="location=this.value">
+					<option value="{{url_for('list_restaurants', page=i, parking='주차')}}">&#8473;</a>&nbsp;&nbsp;주차</option>
+					<option value="{{url_for('list_restaurants', page=i, parking='주차 가능')}}">주차가능</option>
+			</select>
+			
 
-			<!-- 영업 중 -->
+			<!-- 영업 중 
 			<button class="sort" id="open" onclick="changeOpenButton()">
 				<b>&#9719;</b>&nbsp;&nbsp;영업중
-			</button>
+			</button>-->
 			<br>
 		</div>
 	{% if total > 0 %}
@@ -56,7 +122,7 @@
 				<a class="store">{{data[1].Rname}}</a><br>
 				<a class="sub1">{{data[1].moodchoice}}</a><br>
 				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">{{avg_rate}} </a><br>
+				<a class="sub3">{{data[1].avg_rate}} </a><br>
 				<div class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</div>
 			</div>
 		</div>
