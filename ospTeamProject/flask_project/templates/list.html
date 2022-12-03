@@ -11,12 +11,12 @@
 	<div class="contents">
 
 		<div id="menuType">
-			<button class="typeButton" id="typetotal">total</button>
-			<button class="typeButton" id="typeKorean">한식</button>
-			<button class="typeButton" id="typeChinese">중식</button>
-			<button class="typeButton" id="typeJapanese">일식</button>
-			<button class="typeButton" id="typeWestern">양식</button>
-			<button class="typeButton" id="typeCafe">카페</button>
+			<button class="typeButton current" onclick="location.href='{{url_for('list_restaurants', page=i, category='total')}}';" id="typetotal">total</button>
+			<button class="typeButton" onclick="location.href='{{url_for('list_restaurants', page=i, category='한식')}}';" id="typeKorean">한식</button>
+			<button class="typeButton" onclick="location.href='{{url_for('list_restaurants', page=i, category='중식')}}';" id="typeChinese">중식</button>
+			<button class="typeButton" onclick="location.href='{{url_for('list_restaurants', page=i, category='일식')}}';" id="typeJapanese">일식</button>
+			<button class="typeButton" onclick="location.href='{{url_for('list_restaurants', page=i, category='양식')}}';" id="typeWestern">양식</button>
+			<button class="typeButton" onclick="location.href='{{url_for('list_restaurants', page=i, category='카페')}}';" id="typeCafe">카페</button>
 		</div>
 
 		<!-- SORT -->
