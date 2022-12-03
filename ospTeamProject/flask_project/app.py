@@ -74,7 +74,7 @@ def reg_menu_submit_post():
     data=request.form
     
     if DB.insert_menuUpload(data['menuname'],data,image_file.filename):
-        return redirect(url_for('osondoson_home'))
+        return redirect(url_for('menu_result',res_name=data['Rname']))
     else:
         return "Menu name already exist!"
 
@@ -88,7 +88,7 @@ def submit_review_post():
     data = request.form
 
     if DB.insert_review(data['nickname'], data, image_file.filename):
-        return redirect(url_for('osondoson_home'))
+        return redirect(url_for('review_result',res_name=data['Rname']))
 
 
 
@@ -170,9 +170,9 @@ def osondoson_home():
 
     a=dict(sorted(total.items(),key=lambda x: x[1]['review_num'], reverse=True))
     a_keys=list(a)
-    goldkey=a_keys[1]
-    silverkey=a_keys[2]
-    bronzekey=a_keys[3]
+    goldkey=a_keys[0]
+    silverkey=a_keys[1]
+    bronzekey=a_keys[2]
     gold=a[goldkey]
     silver=a[silverkey]
     bronze=a[bronzekey]
@@ -306,15 +306,46 @@ def view_foods(res_name):
     res_name=res_name
     return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)+1))
 
+# 동적 라우팅 : 메뉴 등록 -> 메뉴조회 화면 이동
+@app.route("/menu/<res_name>/")
+def menu_result(res_name):
+    page=request.args.get("page", 0, type=int)
+    limit=3
+
+    start_idx=limit*page
+    end_idx=limit*(page+1)
+    data = DB.get_food_byname(str(res_name))
+    print("#data###########")
+    print(data)
+    tot_count = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    print("#data22############")
+    print(data)
+    # 레스토랑 이름 전달
+    res_name=res_name
+    return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)+1))
+
 # 동적 라우팅 : 맛집 세부화면 - 맛집 메뉴등록 화면 
 @app.route("/menu_post/<name>/")
 def menu_post(name):
     print(name)
     return render_template("menuUpload copy.html",data=name)
 
+
+
 # 동적 라우팅 : 맛집 세부화면 - 맛집 리뷰조회 화면 
 @app.route("/review_show/<res_name>/", methods=['POST'])
 def review_show(res_name):
+    data=DB.get_review_byname(str(res_name))  #맛집 이름으로 리뷰 데이터 가져오는 함수
+    avg_rate=DB.get_avgrate_byname(str(res_name))  #맛집 이름으로 평균 평점 가져오는 함수
+    review_num=DB.get_reviewnum_byname(str(res_name))
+    res_name=res_name
+    print("####dataaa:",data)
+    return render_template("reviewShow.html",datas=data, avg_rate=avg_rate, review_num=review_num, res_name=res_name)
+
+# 동적 라우팅 : 리뷰 등록 -> 리뷰조회 화면 이동
+@app.route("/review/<res_name>/")
+def review_result(res_name):
     data=DB.get_review_byname(str(res_name))  #맛집 이름으로 리뷰 데이터 가져오는 함수
     avg_rate=DB.get_avgrate_byname(str(res_name))  #맛집 이름으로 평균 평점 가져오는 함수
     review_num=DB.get_reviewnum_byname(str(res_name))
