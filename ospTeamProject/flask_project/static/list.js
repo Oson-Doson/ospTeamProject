@@ -10,6 +10,12 @@ $(document).ready(function () {
         //$("#" + tab_id).addClass('current');
        
     }) 
+
+    type=$('#cate_color').attr('data-cate');
+    if(type=='한식'){
+        $('.typeButton').removeClass('current');
+        $('#typeKorean').addClass('current');
+    }
 })
 
 //$('.page-nation a').attr('id', this.)

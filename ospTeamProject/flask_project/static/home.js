@@ -8,7 +8,7 @@ $(document).ready(function () {
         
         $(this).addClass('current');
         //$("#" + tab_id).addClass('current');
-        
+        $('input[name=test]').attr('value',"yes");
     })
 
     //우측 화살표 클릭 이벤트
@@ -180,6 +180,6 @@ $(document).ready(function () {
         autoplay: true,
         arrows: false
     })
-*/
 
 })
+
