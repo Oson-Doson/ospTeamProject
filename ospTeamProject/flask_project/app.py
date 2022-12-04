@@ -34,11 +34,12 @@ def view_map():
     return render_template(
         'mapSearch.html', 
         map_key=kakaomap_key, 
-        korean=korean, 
-        chinese=chinese, 
-        japanese=japanese, 
-        western=western, 
-        cafe=cafe
+        korean=list(korean.values()), 
+        # korean=korean,
+        chinese=list(chinese.values()), 
+        japanese=list(japanese.values()), 
+        western=list(western.values()), 
+        cafe=list(cafe.values())
     )  
 
 @app.route('/allergycheck')

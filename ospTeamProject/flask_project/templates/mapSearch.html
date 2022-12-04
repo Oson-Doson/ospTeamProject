@@ -9,8 +9,8 @@
 
     <!-- 탭 부분 -->
     <div id="menuType">
-        <button class="typeButton" id="typeKorean">한식</button>
-        <button class="typeButton" id="typeChinese">중식</button>
+        <button class="typeButton" id="typeKorean" onClick="clickCategory(korean)">한식</button>
+        <button class="typeButton" id="typeChinese" onClick="clickCategory(chinese)">중식</button>
         <button class="typeButton" id="typeJapanese">일식</button>
         <button class="typeButton" id="typeWestern">양식</button>
         <button class="typeButton" id="typeCafe">카페</button>
@@ -23,74 +23,66 @@
     <script>
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
             mapOption = {
-                center: new kakao.maps.LatLng(37.55901644707541, 126.94566032683886), // 지도의 중심좌표 - 이화여대 정문
-                level: 2 // 지도의 확대 레벨
+                center: new kakao.maps.LatLng(37.557596146536504, 126.94504144098624), // 지도의 중심좌표 - 이화여대 정문
+                level: 3 // 지도의 확대 레벨
             };
-
+        
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
+        var map = new kakao.maps.Map(mapContainer, mapOption);       
 
-        /* 221203 업데이트 - 주소-좌표 변환*/
+        // 카테고리 데이터 객체 배열
+        let korean = {{ korean | tojson | safe }};
+        let chinese = {{ chinese | tojson | safe }};
+        let japanese = {{ japanese | tojson | safe }};
+        let western = {{ western | tojson | safe }};
+        let cafe = {{ cafe | tojson | safe }};
+        document.write(korean);
+        console.log(korean);
+        document.write(korean.length);
+        document.write(korean[0].Rname);
 
-        // 추후 데이터베이스 불러와서 음식 종류 별로 분리를 1차로 해놓은 다음에 카테고리 클릭하면 분리해둔 데이터들을 반복문으로 보여줌
-
-        // 가게 이름 & 음식 종류 & 주소 객체 배열
-        let dummyData = [
-            {
-                r_name: "포포나무",
-                r_type: "양식",
-                r_addr: "서울 서대문구 이화여대2가길 24"
-            },
-            {
-                r_name: "이화성",
-                r_type: "중식",
-                r_addr: "서울 서대문구 이화여대길 50-8" 
-            },
-            {
-                r_name: "참참참",
-                r_type: "한식",
-                r_addr: "서울 서대문구 이화여대길 52-31"
-            },
-            {
-                r_name: "유야케도쿄",
-                r_type: "일식",
-                r_addr: "서울 서대문구 이화여대3길 28 101호"
-            },
-        ];
-
-        let getkorean = "{{korean}}";
-        console.log(getkorean);
-
+        
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new kakao.maps.services.Geocoder();
 
 
-        dummyData.map(function(arraycontent, i) {
+        // 카테고리 클릭 시 매개변수로 음식 카테고리를 전달해줌 - map함수로 배열 요소만큼 반복 후 마커 찍어주기
+        function clickCategory(foodtype) {
+            
+            foodtype.map(function(arraycontent, i) {
             // 주소로 좌표를 검색합니다 - 반복문 돌리기
-            geocoder.addressSearch(dummyData[i].r_addr, function(result, status) {
+                geocoder.addressSearch(arraycontent.address, function(result, status) {
 
-                // 정상적으로 검색이 완료됐으면 
-                if (status === kakao.maps.services.Status.OK) {
+                    // 정상적으로 검색이 완료됐으면 
+                    if (status === kakao.maps.services.Status.OK) {
 
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                        console.log(coords);
 
-                    // 결과값으로 받은 위치를 마커로 표시합니다
-                    var marker = new kakao.maps.Marker({
-                        map: map,
-                        position: coords
-                    });
+                        // 결과값으로 받은 위치를 마커로 표시합니다
+                        var marker = new kakao.maps.Marker({
+                            map: map,
+                            position: coords,
+                            clickable: true
+                        });
 
-                    // 인포윈도우로 장소에 대한 설명을 표시합니다
-                    var infowindow = new kakao.maps.InfoWindow({
-                        content: '<div style="width:150px;text-align:center;padding:6px 0;">'+dummyData[i].r_name+'</div>'
-                    });
-                    infowindow.open(map, marker);
+                        // 인포윈도우로 장소에 대한 설명을 표시합니다
+                        var infowindow = new kakao.maps.InfoWindow({
+                            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+arraycontent.Rname+'</div>',
+                            removable : true
+                        });
+                        infowindow.open(map, marker);
 
-                    // 결과값으로 받은 위치에 마커를 지도에 띄웁니다
-                    map.setMap(coords);
-                } 
-            });
-        })    
+                        // 결과값으로 받은 위치에 중앙에 띄움
+                        map.setCenter(coords);
+                    } 
+                });
+            })
+              
+        } 
+
+       
+
     </script>
 
 {% endblock section %}
