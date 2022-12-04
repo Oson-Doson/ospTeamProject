@@ -3,6 +3,7 @@ from database import DBhandler
 import sys
 sys.setrecursionlimit(10**6)
 from config import kakaomap_key
+import math 
 
 
 app = Flask(__name__)
@@ -216,8 +217,10 @@ def list_restaurants():
 
     print(data)
     tot_count=len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
-
+    if tot_count <= limit:
+        data = dict(list(data.items())[:tot_count])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
     print(data)
 
     return render_template(
@@ -226,7 +229,7 @@ def list_restaurants():
         total=tot_count,
         limit=limit,
         page=page,
-        page_count=int((tot_count/9)+1),
+        page_count=math.ceil(tot_count/9),
         category=category)
                           
 

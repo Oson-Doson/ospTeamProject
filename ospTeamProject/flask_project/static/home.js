@@ -1,13 +1,14 @@
 $(document).ready(function () {
 
     $('.typeButton').click(function () {
-        var tab_id = $(this).attr('data-tab');
+        //var tab_id = $(this).attr('data-tab');
 
         $('.typeButton').removeClass('current');
-        $('.tab-content').removeClass('current');
-
+        //$('.tab-content').removeClass('current');
+        
         $(this).addClass('current');
-        $("#" + tab_id).addClass('current');
+        //$("#" + tab_id).addClass('current');
+        
     })
 
     //우측 화살표 클릭 이벤트
@@ -179,6 +180,6 @@ $(document).ready(function () {
         autoplay: true,
         arrows: false
     })
-
+*/
 
 })
