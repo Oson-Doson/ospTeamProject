@@ -222,3 +222,5 @@ class DBhandler:
         restaurants=dict(sorted(restaurants.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
 
         return restaurants
+
+    
