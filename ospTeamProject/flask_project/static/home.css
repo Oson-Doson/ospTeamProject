@@ -508,6 +508,13 @@ li:hover .thumb{
 	display: inherit;
 }
 
+.moreList{
+    display:none;
+}
+.moreList.current{
+    display:inherit;
+}
+
 
 
 /*section 3. 퀵메뉴*/
