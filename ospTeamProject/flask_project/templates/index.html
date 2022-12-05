@@ -10,6 +10,9 @@
          </section>
         <link rel="stylesheet" href="{{url_for('static', filename='header.css') }}">
         <link rel="stylesheet" href="{{url_for('static', filename='footer.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='floatingButton.css') }}">
+        <!--Jquery 사용위해 js추가 -->
+        <scprit src = "https://code.jquery.com/jquery-latest.min.js"></scprit>
     </head>
 
     <body>
@@ -20,12 +23,29 @@
             </div>
         </header>
 
+        <!--우측하단 플로팅 버튼-->
+        <div class="floating-button">
+            <div class="floating-hidden">
+                <a href="/mapSearch">
+                    <div class="floating icon-map"></div>
+                </a>
+                <a href="/list">
+                    <div class="floating icon-restaurantList"></div>
+                </a>
+                <a href="/restaurantUpload">
+                    <div class="floating icon-restaurantUpload"></div>
+                </a>
+            </div>
+            <div class="floating icon-menu">
+            </div>
+        </div>
         <section>
            {% block section %}
 
            {% endblock section %}
         </section>
-
+        
+        <!--footer-->
         <footer>
             <div id="footer">
                 <img class="osondoson" src="{{url_for('static', filename='osondoson.png') }}" alt="오손도손 로고">

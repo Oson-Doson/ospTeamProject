@@ -194,3 +194,33 @@ class DBhandler:
             if value['restaurant_name'] == name:
                 target_value[key]=value
         return target_value
+    
+    def reviewNumSort(self):
+        restaurants = self.db.child("restaurant").get().val()
+        
+        for res in restaurants:
+            restaurants[res]['review_num']=self.get_reviewnum_byname(restaurants[res]['Rname'])
+        
+        restaurants=sorted(restaurants.items(),key=lambda x: x[1]['review_num'], reverse=True)[0:3]
+    
+        return restaurants
+    
+    def starSort(self):
+        restaurants = self.db.child("restaurant").get().val()
+
+        for res in restaurants:
+            restaurants[res]['avg_rate']=self.get_avgrate_byname(restaurants[res]['Rname'])
+        restaurants=dict(sorted(restaurants.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+        return restaurants
+    
+    def starSort_cate(self,cate):
+        restaurants = self.get_restaurants_byfoodchoice(cate)
+
+        for res in restaurants:
+            restaurants[res]['avg_rate']=self.get_avgrate_byname(restaurants[res]['Rname'])
+            restaurants[res]['avg_rate_per']=restaurants[res]['avg_rate']*20
+        restaurants=dict(sorted(restaurants.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+
+        return restaurants
+
+    
