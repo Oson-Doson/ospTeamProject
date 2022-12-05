@@ -30,7 +30,7 @@ button{
     font-family:'BMJUA';
 }
 
-/*section 1. 탭메뉴*/
+/*********************section 1. 카테고리별 식당을 별점 순으로 추천해주는 탭 메뉴********************/
 
 #restaurantRecommend{
     margin-top:40px;
@@ -213,9 +213,37 @@ li:hover .thumb{
     background-image:url(./home/right-removebg-preview.png);
 }
 
+/*탭 메뉴 기능 구현 관련 부분*/
+.tab-content{
+	display: none;
+    width:100%;
+}
+
+.tab-content.current{
+	display: inherit;
+}
+
+.forTabSize{
+    width:100%;
+}
+
+.recommendInnerBox{
+    display:none;
+    width:100%;
+}
+.recommendInnerBox.current{
+	display: inherit;
+}
+
+.moreList{
+    display:none;
+}
+.moreList.current{
+    display:inherit;
+}
 
 
-/*section 2. 리뷰 왕 맛집*/
+/**********section 2. 리뷰 개수가 가장 많은 맛집 세 개를 보여주는 '리뷰 왕 맛집'************/
 
 #restaurantOfMonth{
     margin-top:20px;
@@ -412,38 +440,8 @@ li:hover .thumb{
     margin-bottom:20px;
 }
 
-/*탭*/
-.tab-content{
-	display: none;
-    width:100%;
-}
 
-.tab-content.current{
-	display: inherit;
-}
-
-.forTabSize{
-    width:100%;
-}
-
-.recommendInnerBox{
-    display:none;
-    width:100%;
-}
-.recommendInnerBox.current{
-	display: inherit;
-}
-
-.moreList{
-    display:none;
-}
-.moreList.current{
-    display:inherit;
-}
-
-
-
-/*section 3. 퀵메뉴*/
+/************************section 3. 다른 화면으로 이동 가능하도록 배치한 quick menu****************************/
 #quickMenu{
     margin:20px 5%;
     margin-top:70px;
