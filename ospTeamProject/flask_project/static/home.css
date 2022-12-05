@@ -30,7 +30,7 @@ button{
     font-family:'BMJUA';
 }
 
-/*section 1. 탭메뉴*/
+/*********************section 1. 카테고리별 식당을 별점 순으로 추천해주는 탭 메뉴********************/
 
 #restaurantRecommend{
     margin-top:40px;
@@ -190,6 +190,11 @@ li:hover .thumb{
     margin-top:30px;
     margin-bottom:20px;
     font-size:xx-large;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: normal;
 }
 
 .btn-nav{
@@ -208,9 +213,37 @@ li:hover .thumb{
     background-image:url(./home/right-removebg-preview.png);
 }
 
+/*탭 메뉴 기능 구현 관련 부분*/
+.tab-content{
+	display: none;
+    width:100%;
+}
+
+.tab-content.current{
+	display: inherit;
+}
+
+.forTabSize{
+    width:100%;
+}
+
+.recommendInnerBox{
+    display:none;
+    width:100%;
+}
+.recommendInnerBox.current{
+	display: inherit;
+}
+
+.moreList{
+    display:none;
+}
+.moreList.current{
+    display:inherit;
+}
 
 
-/*section 2. 리뷰 왕 맛집*/
+/**********section 2. 리뷰 개수가 가장 많은 맛집 세 개를 보여주는 '리뷰 왕 맛집'************/
 
 #restaurantOfMonth{
     margin-top:20px;
@@ -407,105 +440,8 @@ li:hover .thumb{
     margin-bottom:20px;
 }
 
-/*floating button*/
 
-.floating-button{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    cursor:pointer;
-    z-index:10000;
-}
-
-.floating{
-    width:60px;
-    height:60px;
-    border-radius:100%;
-    background-color:#5b7a4c;
-    box-shadow:10px 10px 10px -5px #CADFB8;
-
-    background-position:center center;
-    background-size:40px 40px;
-    background-repeat:no-repeat;
-
-    margin-top:10px;
-    margin-bottom:10px;
-}
-
-.icon-menu{
-    background-image:url(./home/icon-menu.png);
-    box-shadow:10px 10px 1px -3px #CADFB8;
-    background-color:#3a5e11;
-    background-size:50px 50px;
-    margin-top:20px;
-}
-
-.floating-hidden{
-    display:none;
-}
-.floating-button:hover .floating-hidden{
-    display:block;
-}
-
-.icon-map{
-    background-image:url(./home/icon-map.png);
-
-    transition:box-shadow 0.1s ease;
-}
-.icon-map:hover{
-    background-color: #3d5031;
-    background-image:url(./home/text-map.png);
-    background-size:60px 60px;
-    box-shadow:0px 0px 10px 10px #d9e670;
-}
-
-.icon-restaurantUpload{
-    background-image: url(./home/icon-Upload.png);
-    transition:box-shadow 0.1s ease;
-}
-.icon-restaurantUpload:hover{
-    background-color: #3d5031;
-    background-image:url(./home/text-Upload.png);
-    background-size:60px 60px;
-    box-shadow:0px 0px 10px 10px #d9e670;
-}
-
-.icon-restaurantList{
-    background-image: url(./home/icon-restaurant.png);
-    transition:box-shadow 0.1s ease;
-}
-.icon-restaurantList:hover{
-    background-color: #3d5031;
-    background-image:url(./home/text-restaurant.png);
-    background-size:60px 60px;
-    box-shadow:0px 0px 10px 10px #d9e670;
-}
-
-/*탭*/
-.tab-content{
-	display: none;
-    width:100%;
-}
-
-.tab-content.current{
-	display: inherit;
-}
-
-.forTabSize{
-    width:100%;
-}
-
-.recommendInnerBox{
-    display:none;
-    width:100%;
-}
-.recommendInnerBox.current{
-	display: inherit;
-}
-
-
-
-/*section 3. 퀵메뉴*/
+/************************section 3. 다른 화면으로 이동 가능하도록 배치한 quick menu****************************/
 #quickMenu{
     margin:20px 5%;
     margin-top:70px;

@@ -5,9 +5,11 @@ $(document).ready(function () {
 
         $('.typeButton').removeClass('current');
         $('.tab-content').removeClass('current');
-
+        $('.moreList').removeClass('current');
+        
         $(this).addClass('current');
         $("#" + tab_id).addClass('current');
+        $('.moreList.'+tab_id).addClass('current');
     })
 
     //우측 화살표 클릭 이벤트
@@ -180,5 +182,5 @@ $(document).ready(function () {
         arrows: false
     })
 
-
 })
+

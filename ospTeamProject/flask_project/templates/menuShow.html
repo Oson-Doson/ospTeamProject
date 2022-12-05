@@ -10,7 +10,7 @@
 
 <!--상단 바-->
 <div class="cover"
-    style="border: 3px solid #506A4C; margin: 0px 60px; margin-top: 30px; position: relative; height: 800px;">
+    style="border: 3px solid #506A4C; margin: 0px 60px; margin-top: 30px; position: relative; height: 850px;">
 
     <div class="bar" style="position: absolute; width: 100%; height: 100px;">
         <img src="{{url_for('static', filename='menuShow/bar.png')}}" alt="사진 불러오기 실패"
@@ -33,9 +33,9 @@
     <div id="menu-list">
         {% for data in datas %}
         <div class="menu-card">
-            <div>
-                <img class="menu-img" src="../../static/menu-image-upload/{{data[1].image_path}}"
-                    onerror="this.src='../../static/image/failed.png';" />
+            
+           <div class="menu-img-box"
+                style="background-image:url(../../static/menu-image-upload/{{data[1].image_path}})">
             </div>
             <div class="menu-contents">
                 {% if data['vegan'] == "vegan" %}
@@ -50,27 +50,26 @@
                 <div class="menu-detail">{{data[1].menudetail}}</div>
             </div>
         </div>
-        {% endfor %}
 
+        {% endfor %}
         {% else %}
-        <p style="position: absolute; top: 0; margin-top: 120px">
+        <p style="position: absolute; top: 0; margin-top: 130px; font-family: 'BMHANNAPro';font-size:30px; margin-left:50px;">
             등록된 메뉴가 없습니다.
         </p>
         {% endif %}
-        <div class="page-wrap" style="position:relative; margin-top: 100px;">
-            <div class="page-nation">
-                <ul>
-                    <li>
-                        {% for i in range(page_count)%}
-                        <a href="{{url_for('view_foods', res_name=res_name ,page=i)}}" color="black">{{i}}</a>
-                        {% endfor %}
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
     <!-- 페이지네이션을 위한 코드 시작 -->
-
+    <div class="page-wrap" style="margin-top: 60px;">
+        <div class="page-nation">
+            <ul>
+                <li>
+                    {% for i in range(page_count)%}
+                    <a href="{{url_for('view_foods', res_name=res_name ,page=i)}}" color="black">{{i}}</a>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 {% endblock section %}
