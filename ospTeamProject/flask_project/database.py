@@ -201,4 +201,29 @@ class DBhandler:
         return target_value
     
 
-    
+    # 분위기(moodchoice)와 category로 데이터 가져오기
+    def get_restaurants_bymoodchoice(self,foodchoice,cate):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['foodchoice'] == foodchoice:
+                if value['moodchoice'] == cate:
+                    target_value.append(value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
+
+     # 분위기(moodchoice)로 데이터 가져오기
+    def get_restaurants_byOnlymoodchoice(self,cate):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['moodchoice'] == cate:
+                target_value.append(value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
