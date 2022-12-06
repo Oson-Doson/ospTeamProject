@@ -10,7 +10,7 @@
 
 <!--상단 바-->
 <div class="cover"
-    style="border: 3px solid #506A4C; margin: 0px 60px; margin-top: 30px; position: relative; height: 850px;">
+    style="border: 3px solid #506A4C; margin: 0px 60px; margin-top: 30px; position: relative; height: 800px;">
 
     <div class="bar" style="position: absolute; width: 100%; height: 100px;">
         <img src="{{url_for('static', filename='menuShow/bar.png')}}" alt="사진 불러오기 실패"
@@ -59,12 +59,12 @@
         {% endif %}
     </div>
     <!-- 페이지네이션을 위한 코드 시작 -->
-    <div class="page-wrap" style="margin-top: 60px;">
+    <div class="page-wrap" style="margin-top: 80px;">
         <div class="page-nation">
             <ul>
                 <li>
                     {% for i in range(page_count)%}
-                    <a href="{{url_for('view_foods', res_name=res_name ,page=i)}}" color="black">{{i}}</a>
+                    <a href="{{url_for('view_foods', res_name=res_name ,page=i)}}" color="black">{{i+1}}</a>
                     {% endfor %}
                 </li>
             </ul>
