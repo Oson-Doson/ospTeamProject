@@ -100,6 +100,18 @@ class DBhandler:
         return True
 
 
+    def menu_duplicate_check(self, name):
+        menus = self.db.child("menu").get()
+        for m in menus.each():
+            value = m.val()
+            if value['restaurant_name']==name:
+                #if value['menuname'] == name:
+                return False
+            if value['menuname'] == name:
+                return False
+        return True
+
+
     """맛집 이름으로 restaurant 테이블에서 정보 가져오기"""
 
     def get_restaurant_byname(self,name):

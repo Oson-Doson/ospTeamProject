@@ -1,95 +1,100 @@
 {% extends "index.html" %}
 
 {% block sectionheader %}
-	<title>맛집리스트화면</title>
-	<link rel="stylesheet" href="{{url_for('static', filename='list.css') }}">
-	<link rel="stylesheet" href="{{url_for('static', filename='paging.css') }}">
-	
-	<!--jQuery-->
-	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+   <title>맛집리스트화면</title>
+   <link rel="stylesheet" href="{{url_for('static', filename='list.css') }}">
+   <link rel="stylesheet" href="{{url_for('static', filename='paging.css') }}">
+   
+   <!--jQuery-->
+   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-	<script src="{{ url_for('static', filename='list.js') }}" defer></script>
-	{% endblock sectionheader %}
+   <script src="{{ url_for('static', filename='list.js') }}" defer></script>
+   {% endblock sectionheader %}
 
 {% block section %}
 
-	<div class="contents">
-		<!-- 페이지 로딩시 button 선택되게 함-->
-		<script>
-			$(document).ready(function(){
-				$('.typebutton option:contains("{{category}}")').prop("clicked", true);
-			});
-		</script>
-		<div id="menuType">
-			<button class="typeButton current" id="typetotal" onclick="location.href='{{url_for('list_restaurants', page=i, category='total')}}';" >total</button>
-			<button class="typeButton" id="typeKorean" onclick="location.href='{{url_for('list_restaurants', page=i, category='한식')}}';" >한식</button>
-			<button class="typeButton" id="typeChinese" onclick="location.href='{{url_for('list_restaurants', page=i, category='중식')}}';" >중식</button>
-			<button class="typeButton" id="typeJapanese" onclick="location.href='{{url_for('list_restaurants', page=i, category='일식')}}';" >일식</button>
-			<button class="typeButton" id="typeWestern" onclick="location.href='{{url_for('list_restaurants', page=i, category='양식')}}';" >양식</button>
-			<button class="typeButton" id="typeCafe" onclick="location.href='{{url_for('list_restaurants', page=i, category='카페')}}';" >카페</button>
-		</div>
-		<div id="cate_color" data-cate="{{category}}"></div>
-		<!-- SORT -->
-		<div class="SORTAREA">
-			<!-- sorting img -->
-			<a class="sorting">
-				<img src="../static/list/sorting sign.png" alt="sorting sign" width="40" height="40">
-			</a>
-			<!-- 가격대 select -->
-			<select class="sort" id="price">
-				<option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
-				<option value="~5000">~5000</option>
-				<option value="10000~15000">10000~15000</option>
-				<option value="15000~20000">15000~20000</option>
-				<option value="20000~">20000~</option>
-			</select>
+   <div class="contents">
+      <!-- 페이지 로딩시 button 선택되게 함-->
+      <script>
+         $(document).ready(function(){
+            $('.typebutton option:contains("{{category}}")').prop("clicked", true);
+         });
+      </script>
+      <div id="menuType">
+         <button class="typeButton current" id="typetotal" onclick="location.href='{{url_for('list_restaurants', page=i, category='total')}}';" >total</button>
+         <button class="typeButton" id="typeKorean" onclick="location.href='{{url_for('list_restaurants', page=i, category='한식')}}';" >한식</button>
+         <button class="typeButton" id="typeChinese" onclick="location.href='{{url_for('list_restaurants', page=i, category='중식')}}';" >중식</button>
+         <button class="typeButton" id="typeJapanese" onclick="location.href='{{url_for('list_restaurants', page=i, category='일식')}}';" >일식</button>
+         <button class="typeButton" id="typeWestern" onclick="location.href='{{url_for('list_restaurants', page=i, category='양식')}}';" >양식</button>
+         <button class="typeButton" id="typeCafe" onclick="location.href='{{url_for('list_restaurants', page=i, category='카페')}}';" >카페</button>
+      </div>
+      <div id="cate_color" data-cate="{{category}}">
+         
+      </div>
+      <!-- SORT -->
+      <div class="SORTAREA">
+         <!-- sorting img -->
+         <a class="sorting">
+            <img src="../static/list/sorting sign.png" alt="sorting sign" width="40" height="40">
+         </a>
+         <!-- 가격대 select -->
+         <select class="sort" id="price">
+            <option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
+            <option value="~5000">~5000</option>
+            <option value="10000~15000">10000~15000</option>
+            <option value="15000~20000">15000~20000</option>
+            <option value="20000~">20000~</option>
+         </select>
 
-			<!-- 주차가능 -->
-			<button class="sort" id="park" onclick="changeParkButton()">
-				<b>&#8473;</b>&nbsp;&nbsp;주차가능
-			</button>
+         
 
-			<!-- 영업 중 -->
-			<button class="sort" id="open" onclick="changeOpenButton()">
-				<b>&#9719;</b>&nbsp;&nbsp;영업중
-			</button>
-			<br>
-		</div>
-	{% if total > 0 %}
-	{%for data in datas%}
-		<!-- 리스트  -->
-		<div class="list">
-			<a href="/view_detail/{{data[1].Rname}}/">
-				<img src="../static/image/{{data[1].image_path}}" alt="00식당사진" width=100% height=50%>
-			</a>
-			<div class="desc">
-				<a class="store">{{data[1].Rname}}</a><br>
-				<a class="sub1">{{data[1].moodchoice}}</a><br>
-				<a class="star">&#10030;&nbsp;</a>
-				<a class="sub3">{{data[1].avg_rate}} </a><br>
-				<div class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</div>
-			</div>
-		</div>
-	{%endfor%}
-	<!-- 페이지네이션을 위한 코드 시작 -->
-	<div class="page-wrap">
-		<div class="page-nation">
-			<ul>
-				<li>
-				{% for i in range(page_count)%}
-				<a href="{{url_for('list_restaurants', page=i)}}" color="black">{{i+1}}</a>
-				{% endfor %}
-				</li>
-			</ul>
-		</div>
-	</div>
-	{% else %}
-	<p> 등록된 맛집이 없습니다. </p>
-	{%endif%}
+         <!-- 주차가능 
+         <button class="sort" id="park" onclick="changeParkButton()">
+            <b>&#8473;</b>&nbsp;&nbsp;주차가능
+         </button>-->
 
-	</div>
-	
+         <!-- 영업 중
+         <button class="sort" id="open" onclick="changeOpenButton()">
+            <b>&#9719;</b>&nbsp;&nbsp;영업중
+         </button> -->
+         <br>
+      </div>
+   {% if total > 0 %}
+   {%for data in datas%}
+      <!-- 리스트  -->
+      <div class="list">
+         <a href="/view_detail/{{data[1].Rname}}/">
+            <img src="../static/image/{{data[1].image_path}}" alt="00식당사진" width=100% height=50%>
+         </a>
+         <div class="desc">
+            <a class="store">{{data[1].Rname}}</a><br>
+            <a class="sub1">{{data[1].moodchoice}}</a><br>
+            <a class="star">&#10030;&nbsp;</a>
+            <a class="sub3">{{data[1].avg_rate}} </a><br>
+            <div class="sub1">{{data[1].tel1}}-{{data[1].tel2}}-{{data[1].tel3}}</div>
+         </div>
+      </div>
+   {%endfor%}
+   <!-- 페이지네이션을 위한 코드 시작 -->
+   <div class="page-wrap">
+      <div class="page-nation">
+         <ul>
+            <li>
+            {% for i in range(page_count)%}
+            <a href="{{url_for('list_restaurants', page=i, category=category)}}" color="black">{{i+1}}</a>
+
+            {% endfor %}
+            </li>
+         </ul>
+      </div>
+   </div>
+   {% else %}
+   <p> 등록된 맛집이 없습니다. </p>
+   {%endif%}
+
+   </div>
+   
 
 {% endblock section %}
-	
+   

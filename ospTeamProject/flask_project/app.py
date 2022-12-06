@@ -230,7 +230,6 @@ def list_restaurants():
     else:
         data = dict(list(data.items())[start_idx:end_idx])
     print(data)
-
     return render_template(
         "list.html",
         datas=data.items(),
