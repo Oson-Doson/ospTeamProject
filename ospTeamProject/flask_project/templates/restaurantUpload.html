@@ -9,14 +9,15 @@
     <div id="main">
         <nav> <img src="../static/restaurantUpload/resregbar.png" alt="barimg" style="width: 100%; height:100px;"></nav>
 
-        <form action="/submit_restaurant_post" enctype="multipart/form-data" method="post">
+        <form action="/submit_restaurant_post" enctype="multipart/form-data" method="post" onsubmit="return save();">
             <!--맛집 등록 입력창 table-->
             <table>
-
+                <!--식당 이름 입력-->
                 <tr>
                     <td><label>식당이름</label></td>
                     <td><input type="text" id="Rname" name="Rname" value=""></td>
                 </tr>
+                <!--주소 입력-->
                 <tr>
                     <td><label for="address">주소</label></td>
 
@@ -122,7 +123,7 @@
                             getCheckboxValue() />
                         <a>주차 가능</a>
                         <input type="checkbox" id="parkingx" name="parking" value="주차 불가" onclick='checkOnlyOne(this);'
-                            getCheckboxValue() />
+                            getCheckboxValue() checked  />
                         <a>주차 불가</a>
                     </td>
                 </tr>
@@ -262,10 +263,20 @@
 
                               reader.readAsDataURL(event.target.files[0]);
                           }
+                           
+                            /*사진 업로드 안했을 때*/
+                        function save(){
+                            const save=document.getElementById("save");
+                            var fileCheck = document.getElementById("file-upload-input").value;
+                            if(!fileCheck){                   
+                            alert("이미지 파일을 첨부해 주세요");
+                            return false; 
+                            //location.reload();//post 데이터를 포함해 페이지를 새로 고침함.
+                            
+                            }
+                        }
                       </script>
-                        <!--
-                        <input type="image" id="picture" name="picture" value="">
-                        <button class="fileupload" onclick="">파일 선택</button>-->
+                        
                     </td>
                 </tr>
 
@@ -273,8 +284,7 @@
             <div style=" text-align: center;">
                 <input type="submit" value="저장" />
             </div>
-            <!--맛집 대표 메뉴 등록 이어하기 버튼
-            <button class="gotomenuUpload" onclick="location.href='menuUpload.html'">맛집 대표 메뉴 등록 이어하기 &#9654;</button>-->
+           
         </form>
 
     </div>
