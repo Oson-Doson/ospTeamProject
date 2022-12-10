@@ -82,7 +82,7 @@ class DBhandler:
         }
 
     
-        if self.menu_duplicate_check(name):
+        if self.menu_duplicate_check(name,data['Rname']):
                 # self.db.child("menu").child(name).set(menu_info)
                 self.db.child("menu").push(menu_info)
                 print(data,image_path)
@@ -90,12 +90,12 @@ class DBhandler:
         else:
                 return False
 
-    def menu_duplicate_check(self, name):
+    def menu_duplicate_check(self, name, res_name):
         menus = self.db.child("menu").get()
         for m in menus.each():
             value = m.val()
-
-            if value['restaurant_name'] == name:
+            
+            if (value['restaurant_name'] == res_name) and (value['menuname']==name):
                 return False
         return True
 
