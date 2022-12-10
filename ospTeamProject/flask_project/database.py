@@ -176,6 +176,22 @@ class DBhandler:
         reviews = self.db.child("review").get().val()
         return reviews
 
+    """음식 카테고리(foodchoice)와 분위기(moodchoice)로 레스토랑 가져오기"""
+    def get_restaurants_byfoodchoice(self, foodchoice, moodchoice):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['foodchoice'] == foodchoice:
+                if value['moodchoice']==moodchoice:
+                    target_value.append(value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
+
+
+
     """음식 종류로 레스토랑 가져오기"""
     def get_restaurants_byfoodchoice(self, foodchoice):
         restaurants = self.db.child("restaurant").get()

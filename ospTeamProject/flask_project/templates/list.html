@@ -39,17 +39,49 @@
             <img src="../static/list/sorting sign.png" alt="sorting sign" width="40" height="40">
          </a>
          <!-- 가격대 select -->
-         <select class="sort" id="price">
-            <option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
-            <option value="~5000">~5000</option>
-            <option value="10000~15000">10000~15000</option>
-            <option value="15000~20000">15000~20000</option>
-            <option value="20000~">20000~</option>
+         <!-- 페이지 로딩시 가격대 카테고리 선택되게 함
+         <script>
+            $(document).ready(function(){
+               $('#price option:contains("{{pricechoice}}")').prop("selected", true);
+            });
+            </script>
+            <select class="sort" id="price" name="price" onchange="location=this.value">
+               <option value="{{url_for('list_restaurants', page=i, pricechoice='가격대')}}">&#8361;</a>&nbsp;&nbsp;가격대</option>
+               <option value="{{url_for('list_restaurants', page=i, pricechoice='~5000')}}">~5000</option>
+               <option value="{{url_for('list_restaurants', page=i, pricechoice='10000~15000')}}">10000~15000</option>
+               <option value="{{url_for('list_restaurants', page=i, pricechoice='15000~20000')}}">15000~20000</option>
+               <option value="{{url_for('list_restaurants', page=i, pricechoice='20000~')}}">20000~</option>
+            </select>-->
+   
+
+         <!-- 키워드-->
+         <script>
+            $(document).ready(function(){
+               $('#moodchoice option:contains("{{moodchoice}}")').prop("selected", true);
+            });
+         </script>
+         <select class="sort" id="moodchoice" name="moodchoice" onchange="location=this.value">
+            <option value="{{url_for('list_restaurants', page=i, moodchoice='키워드' , category=category)}}">&#8361;</a>&nbsp;&nbsp;키워드</option>
+            <option value="{{url_for('list_restaurants', page=i, moodchoice='#분위기 좋은' , category=category)}}">분위기좋은</option>
+            <option value="{{url_for('list_restaurants', page=i, moodchoice='#넓은장소', category=category)}}">넓은장소</option>
+            <option value="{{url_for('list_restaurants', page=i, moodchoice='#혼밥가능', category=category)}}">혼밥가능</option>
+            <option value="{{url_for('list_restaurants', page=i, moodchoice='#아기자기한', category=category)}}">아기자기한</option>
          </select>
-
+         <div  data-cate="{{moodchoice}}"></div>
          
-
          <!-- 주차가능 
+         <script>
+            $(document).ready(function(){
+               $('#park option:contains("{{parking}}")').prop("selected", true);
+            });
+         </script>
+         <select class="sort" id="park" name="park" onchange="location=this.value">
+               <option value="{{url_for('list_restaurants', page=i, parking='주차')}}">&#8473;</a>&nbsp;&nbsp;주차</option>
+               <option value="{{url_for('list_restaurants', page=i, parking='주차 가능')}}">주차가능</option>
+         </select>
+         <div data-cate="{{parking}}"></div>-->
+
+         <!-- 주차가능
          <button class="sort" id="park" onclick="changeParkButton()">
             <b>&#8473;</b>&nbsp;&nbsp;주차가능
          </button>-->
@@ -83,7 +115,6 @@
             <li>
             {% for i in range(page_count)%}
             <a href="{{url_for('list_restaurants', page=i, category=category)}}" color="black">{{i+1}}</a>
-
             {% endfor %}
             </li>
          </ul>

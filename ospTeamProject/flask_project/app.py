@@ -279,7 +279,7 @@ def review_post(name):
     return render_template("reviewUpload.html",data=name)
 
 # 동적 라우팅 : 맛집 세부화면 - 대표메뉴조회 화면
-@app.route("/show_menu/<res_name>/", methods=['POST'])
+@app.route("/show_menu/<res_name>/", methods=['POST', 'GET'])
 def view_foods(res_name):
     page=request.args.get("page", 0, type=int)
     limit=3
@@ -295,7 +295,7 @@ def view_foods(res_name):
     print(data)
     # 레스토랑 이름 전달
     res_name=res_name
-    return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)+1))
+    return render_template("menuShow.html", datas=data.items(), total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)))
 
 # 동적 라우팅 : 메뉴 등록 -> 메뉴조회 화면 이동
 @app.route("/menu/<res_name>/")
@@ -314,7 +314,7 @@ def menu_result(res_name):
     print(data)
     # 레스토랑 이름 전달
     res_name=res_name
-    return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)+1))
+    return render_template("menuShow.html", datas=data.items(), total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)))
 
 # 동적 라우팅 : 맛집 세부화면 - 맛집 메뉴등록 화면 
 @app.route("/menu_post/<name>/")
