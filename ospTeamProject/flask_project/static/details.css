@@ -48,9 +48,10 @@ div.box1 {
     margin: 0px;
     border-bottom: 1.5px solid #CADFB8 ;
     padding:15px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     float: center;
     width: 95%;
+    display: flex;
 }
 
 div.box1 img {
@@ -65,7 +66,7 @@ div.box1 img {
 
 div.desc1 {
     padding: 30px;
-    padding-left: 330px;
+    padding-left: 30px;
     text-align: left;
     line-height: 2.0em;
 }
@@ -140,6 +141,7 @@ div.box2.right {
     color: #506A4C;
     font-size:30px;
     font-weight: bold;
+    margin-top:8px;
 }
 
 /* 대표메뉴 */
@@ -166,6 +168,7 @@ div.box3 {
     height:45px;;
     margin: 12px;
     font-family:'BMHANNAPro';
+    cursor: pointer;
 }
 
 /* 리뷰*/

@@ -30,6 +30,12 @@ button{
     font-family:'BMJUA';
 }
 
+/*********************section 1. 카테고리별 식당을 별점 순으로 추천해주는 탭 메뉴********************/
+
+#restaurantRecommend{
+    margin-top:40px;
+}
+
 #menuType{
     margin-top:20px;
     margin-bottom:1px;
@@ -55,10 +61,14 @@ button{
     color:white;
     background-color:#506A4C;
 }
+.typeButton.current{
+    color:white;
+    background-color:#506A4C;
+}
 
 .moreList{
     height:25px;
-    margin:0px 60px;
+    margin:0px 5%;
 }
 .moreList button{
     float:right;
@@ -74,7 +84,7 @@ button{
     display:flex;
 }
 
-#recommendInnerBox{
+.recommendInnerBox{
     width:100%;
     padding:0;
     margin-top:5px;
@@ -131,22 +141,21 @@ li:hover .thumb{
     background-size:150%;
 }
 
-.thumb1{
-    background-image:url(./home/food3.jpg);
-}
-
-
 .info{
     margin-right:auto;
 }
 
+.starBox{
+    display:flex;
+    margin-left:30px;
+}
 .star-ratings {
     color: #aaa9a9; 
     position: relative;
     unicode-bidi: bidi-override;
     width: max-content;
     -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 1.3px;
+    -webkit-text-stroke-width: 1.7px;
     -webkit-text-stroke-color: #2b2a29;
 }
 
@@ -160,17 +169,32 @@ li:hover .thumb{
     left: 0;
     overflow: hidden;
     -webkit-text-fill-color: gold;
+    font-size:x-large;
 }
 
 .star-ratings-base {
     z-index: 0;
     padding: 0;
+    font-size:x-large;
+}
+
+.starNum{
+    font-size:medium;
+    font-family:'BMJUA';
+    color:#2b2a29;
+    width: 42px;
+    overflow: hidden;
 }
 
 #recommendBox .restaurantTitle{
     margin-top:30px;
     margin-bottom:20px;
     font-size:xx-large;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: normal;
 }
 
 .btn-nav{
@@ -178,6 +202,7 @@ li:hover .thumb{
     background-repeat:no-repeat;
     background-position:center center;
     background-size:50px 100px;
+    cursor:pointer;
 }
 
 .prev-slick-arrow{
@@ -188,9 +213,41 @@ li:hover .thumb{
     background-image:url(./home/right-removebg-preview.png);
 }
 
+/*탭 메뉴 기능 구현 관련 부분*/
+.tab-content{
+	display: none;
+    width:100%;
+}
+
+.tab-content.current{
+	display: inherit;
+}
+
+.forTabSize{
+    width:100%;
+}
+
+.recommendInnerBox{
+    display:none;
+    width:100%;
+}
+.recommendInnerBox.current{
+	display: inherit;
+}
+
+.moreList{
+    display:none;
+}
+.moreList.current{
+    display:inherit;
+}
 
 
-/*이달의 맛집*/
+/**********section 2. 리뷰 개수가 가장 많은 맛집 세 개를 보여주는 '리뷰 왕 맛집'************/
+
+#restaurantOfMonth{
+    margin-top:20px;
+}
 
 #btn_restaurantOfMonth{
     height:70px;
@@ -206,11 +263,14 @@ li:hover .thumb{
     display:flex;
     justify-content: center;
     align-items: center;
-    margin:0 50px;
+    margin:0 4%;
+}
+
+.resBox_emoji{
+    width:33%;
 }
 
 #gold,#silver,#bronze{
-    width:33%;
     margin: 0 1px 20px 1px;
     background-color:rgb(226,240,217);
     cursor:pointer;
@@ -226,6 +286,7 @@ li:hover .thumb{
 }
 #bronze{
     box-shadow: 5px -5px 20px -5px gray;
+    position:relative;
 }
 
 .medalBox{
@@ -242,7 +303,6 @@ li:hover .thumb{
     border-color:rgb(252,192,0);
     border-width:5px;
     border-style:solid;
-    background-image:url(./home/food3.jpg);
 }
 #silver .medalBox{
     border-color:rgb(127,127,127);
@@ -263,8 +323,10 @@ li:hover .thumb{
 .goldCrown{
     position:absolute;
     z-index:10;
+    width:100px;
     background-image: url(./home/gold.svg);
     background-repeat:no-repeat;
+    width:100px;
 }
 
 .silverCrownFix{
@@ -275,8 +337,10 @@ li:hover .thumb{
 .silverCrown{
     position:absolute;
     z-index:10;
+    width:100px;
     background-image: url(./home/silver.svg);
     background-repeat:no-repeat;
+    width:100px;
 }
 
 .bronzeCrownFix{
@@ -287,8 +351,86 @@ li:hover .thumb{
 .bronzeCrown{
     position:absolute;
     z-index:10;
+    width:100px;
     background-image: url(./home/bronze.svg);
     background-repeat:no-repeat;
+    width:100px;
+}
+
+.goldemojiFix{
+    position:relative;
+    top:-120px;
+    left:100px;
+}
+.goldemojiFix2{
+    position:relative;
+    top:-350px;
+    right:220px;
+}
+.goldemoji{
+    position:absolute;
+    z-index:50;
+    width:100px;
+    height:100px;
+}
+.silveremojiFix{
+    position:relative;
+    top:-415px;
+    right:210px;
+}
+.silveremoji{
+    position:absolute;
+    z-index:50;
+    width:100px;
+    height:100px;
+}
+.bronzeemojiFix{
+    position:relative;
+    top:-415px;
+    right:200px;
+}
+.bronzeemoji{
+    position:absolute;
+    z-index:50;
+    width:100px;
+    height:100px;
+}
+
+.silveremojiFix2{
+    position:relative;
+    top:-420px;
+    height:0;
+}
+.bronzeemojiFix2{
+    position:relative;
+    top:-420px;
+    height:0;
+}
+.talkemoji{
+    z-index:-1;
+    width:200px;
+    height:85px;
+}
+
+.sreviewTextFix{
+    position:absolute;
+    width:200px;
+    top:35px;
+    left:50%;
+    transform: translate( -50%, -50% );
+}
+.breviewTextFix{
+    position:absolute;
+    width:200px;
+    top:35px;
+    left:50%;
+    transform: translate( -50%, -50% );
+}
+
+.reviewText{
+    z-index:51;
+    height:50px;
+    overflow:hidden;
 }
 
 #restaurantOfMonth .restaurantTitle{
@@ -298,75 +440,35 @@ li:hover .thumb{
     margin-bottom:20px;
 }
 
-/*floating button*/
 
-.floating-button{
-    position:fixed;
-    bottom:20px;
-    right:20px;
+/************************section 3. 다른 화면으로 이동 가능하도록 배치한 quick menu****************************/
+#quickMenu{
+    margin:20px 5%;
+    margin-top:70px;
+    display:flex;
+}
+ #box_quickMenu{
+    margin:0;
+    width:10%;
+    height:70px;
+    background-color:#506A4C;
+    color:white;
+    font-size:large;
+    font-family:'BMDOHYUN';
+
+}
+#goto-restaurantShow,#goto-restaurantUpload,#goto-mapSearch{
+    width:30%;
+    height:70px;
+    background-color:#CADFB8;
+    border-color:#506A4C;
+    border-width:1px;
+    border-style:solid;
+    font-size:large;
+    font-family:'BMHANNAPro';
     cursor:pointer;
-    z-index:100;
+    transition:background-color 0.2s ease;
 }
-
-.floating{
-    width:60px;
-    height:60px;
-    border-radius:100%;
-    background-color:#5b7a4c;
-    box-shadow:10px 10px 10px -5px #CADFB8;
-
-    background-position:center center;
-    background-size:40px 40px;
-    background-repeat:no-repeat;
-
-    margin-top:10px;
-    margin-bottom:10px;
-}
-
-.icon-menu{
-    background-image:url(./home/icon-menu.png);
-    background-color:#3a5e11;
-    background-size:50px 50px;
-    margin-top:20px;
-}
-
-.floating-hidden{
-    display:none;
-}
-.floating-button:hover .floating-hidden{
-    display:block;
-}
-
-.icon-map{
-    background-image:url(./home/icon-map.png);
-
-    transition:box-shadow 0.1s ease;
-}
-.icon-map:hover{
-    background-color: #3d5031;
-    background-image:url(./home/text-map.png);
-    background-size:60px 60px;
-    box-shadow:0px 0px 10px 10px #d9e670;
-}
-
-.icon-restaurantUpload{
-    background-image: url(./home/icon-Upload.png);
-    transition:box-shadow 0.1s ease;
-}
-.icon-restaurantUpload:hover{
-    background-color: #3d5031;
-    background-image:url(./home/text-Upload.png);
-    background-size:60px 60px;
-    box-shadow:0px 0px 10px 10px #d9e670;
-}
-
-.icon-restaurantList{
-    background-image: url(./home/icon-restaurant.png);
-    transition:box-shadow 0.1s ease;
-}
-.icon-restaurantList:hover{
-    background-color: #3d5031;
-    background-image:url(./home/text-restaurant.png);
-    background-size:60px 60px;
-    box-shadow:0px 0px 10px 10px #d9e670;
+#goto-restaurantShow:hover,#goto-restaurantUpload:hover,#goto-mapSearch:hover{
+    background-color:#AACA95;
 }

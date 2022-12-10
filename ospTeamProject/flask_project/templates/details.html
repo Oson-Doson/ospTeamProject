@@ -1,82 +1,93 @@
 {% extends "index.html" %}
 
 {% block sectionheader %}
-        <title>맛집세부화면</title>
-		<link rel="stylesheet" href="{{url_for('static', filename='details.css') }}">
+<title>맛집세부화면</title>
+<link rel="stylesheet" href="{{url_for('static', filename='details.css') }}">
 {% endblock sectionheader %}
 
 {% block section %}
-	<!-- contents -->
-	<div class="contents">
+<!-- contents -->
+<div class="contents">
 	<div class="Box">
 
 		<!-- box1  -->
-		<div class="box1">
+		<div class="box1"> 
+			<!-- 해당 식당 사진-->
 			<a target="_blank" href="00식당사진">
-			<img src="../../static/image/{{data.image_path}}" alt="00식당사진" width=100% height=50%>
+				<img src="../../static/image/{{data.image_path}}" alt="00식당사진" width=100% height=50%>
 			</a>
+			<!-- 해당 식당 기본 설명 -->
 			<div class="desc1">
 				<a class="store">{{data.Rname}}</a>
 				<a style="font-size:15px;">&nbsp;&nbsp;{{data.foodchoice}}</a><br>
-				<a class= "sub1">{{data.moodchoice}}<br> 평균 평점</a>
-				<a class = "star">&#10030;&nbsp;</a>
-				<a class= "sub1"><b>{{avg_rate}}</b> / 5</a><br> 
-				<a class= "sub2">영업 중</a><br>
-				<a href="{{data.site}}">사이트</a>
-			</div>	
+				<a class="sub1">{{data.moodchoice}}<br> 평균 평점</a>
+				<a class="star">&#10030;&nbsp;</a>
+				<a class="sub1"><b>{{avg_rate}}</b> / 5</a><br>
+				<a href="{{data.site}}">사이트</a><br>
+			</div>
 		</div>
-		
+
 		<!-- box2  -->
+		<!-- 주소, 전화번호, 운영시간, 주차가능 여부 -->
 		<div class="box2 left">
 			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			<a class="sub1">{{data.address}}</a><br>
 			<a class="picto" id="exclude"> &#9742;&nbsp;&nbsp;&nbsp;</a>
-			<a class = "sub1">{{data.tel1}}-{{data.tel2}}-{{data.tel3}}</a><br>
+			<a class="sub1">{{data.tel1}}-{{data.tel2}}-{{data.tel3}}</a><br>
 		</div>
 		<div class="box2 right">
 			<a class="picto"> &#9719;&nbsp;&nbsp;&nbsp;</a>
-			<a class= "sub1">{{data.openhour}}:{{data.openmin}} ~ {{data.closehour}}:{{data.closemin}}</a><br> 
+			<a class="sub1">{{data.openhour}}:{{data.openmin}} ~ {{data.closehour}}:{{data.closemin}}</a><br>
 			<a class="picto" id="exclude">&#8473;&nbsp;&nbsp;&nbsp;</a>
-			<a class= "sub1">주차 {% if data['parking']=="주차 가능" %}가능{% endif %}{% if data['parking']=="주차 불가" %}불가{% endif %}</a><br>
+			<a class="sub1">주차 {% if data['parking']=="주차 가능" %}가능{% endif %}{% if data['parking']=="주차 불가" %}불가{% endif
+				%}</a><br>
 		</div>
 
 		<!-- box3 대표메뉴  -->
 		<div class="box3">
 			<b style="font-size:30px">대표메뉴</b><br>
 			<a class="picto" id="exclude"> &#8361;&nbsp;&nbsp;&nbsp;</a>
-			<a class="sub1">최소 5000원 ~ 최대 11000원</a><br> 
-			<a class="picto"> &#9982;&nbsp;&nbsp;</a>
-			<form method="post" action="/show_menu/{{data.Rname}}/">
-				<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
-				<div>
-					<!-- onClick : 대표메뉴이미지 -->
-					<a class=" sub1" href="/show_menu/{{data.Rname}}/"><button class="button">메뉴 보러가기 ></button></a>
-				</div>
-			</form>
-			<!-- <a class=" sub1"><button class="button" onclick="대표메뉴 페이지">메뉴 보러가기 ></button></a> -->
-			<a class=" sub1" href="/menu_post/{{data.Rname}}/"><button class="button">메뉴 등록하기 ></button></a>
-		</div>	
-		
+			<a class="sub1">가격대: {{data.pircechoice}}원</a><br>
+
+			<div style="display: flex; flex-direction: row;">
+				<a class="picto"> &#9982;&nbsp;&nbsp;</a>
+				<form method="post" action="/show_menu/{{data.Rname}}/">
+					<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
+					<div>
+						<!-- 대표메뉴 페이지 이동 버튼 -->
+						<a class=" sub1" href="/show_menu/{{data.Rname}}/"><button class="button">메뉴 보러가기 ></button></a>
+					</div>
+				</form>
+				<!-- 메뉴등록 페이지 이동 버튼-->
+				<a class=" sub1" href="/menu_post/{{data.Rname}}/"><button class="button">메뉴 등록하기></button></a>
+
+
+			</div>
+		</div>
+
 		<!-- 리뷰  -->
 		<div class="box4">
 			<b style="font-size:30px">리뷰</b><br>
-			<a class = "star">&#10030;&nbsp;&nbsp;&nbsp;</a>
-			<a class ="sub1"> 평균평점 <b>{{avg_rate}}/5 </b> &nbsp;&nbsp; 리뷰 <b>{{review_num}}</b></a> <br>
-			<a class="picto">&#10146;&nbsp;&nbsp;</a>
-		
-			<!-- onclick : 리뷰 보러가기 -->
-			<form method="post" action="/review_show/{{data.Rname}}/">
-				<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
-				<div>
-					<a class=" sub1" href="/review_show/{{data.Rname}}/"><button class="button" onclick="">리뷰 보러가기 ></button></a>
-				</div>
-			</form>			
+			<a class="star">&#10030;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1"> 평균평점 <b>{{avg_rate}}/5 </b> &nbsp;&nbsp; 리뷰 <b>{{review_num}}</b></a> <br>
 
-			
-			<a class=" sub1" href="/review_post/{{data.Rname}}/"><button class="button">리뷰 등록하기 ></button></a>
-		</div>	
-	
-	</div>
-	</div>
+			<div style="display: flex; flex-direction: row;">
+				<a class="picto">&#10146;&nbsp;&nbsp;</a>
+				<form method="post" action="/review_show/{{data.Rname}}/">
+					<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
+					<!-- 리뷰 페이지 이동 버튼-->
+					<div>
+						<a class=" sub1" href="/review_show/{{data.Rname}}/"><button class="button">리뷰 보러가기
+								></button></a>
+					</div>
+				</form>
+				<!-- 리뷰 등록 페이지 이동 버튼 -->
+				<a class=" sub1" href="/review_post/{{data.Rname}}/"><button class="button">리뷰 등록하기 ></button></a>
 
-	{% endblock section %}
+			</div>
+		</div>
+
+	</div>
+</div>
+
+{% endblock section %}

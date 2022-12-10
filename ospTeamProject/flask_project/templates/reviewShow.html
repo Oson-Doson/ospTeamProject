@@ -14,7 +14,7 @@
     <div class="bar-rank" style="width: 15%;"><span style="color: #FFc000; font-size: 40px;">★ </span>{{avg_rate}}/5
     </div>
     <div class="bar-review" style="width: 15%;">리뷰 수 {{review_num}}</div>
-    <div class="bar-goto" style="width: 25%"><span style="color: #FFC000;">{{res_name}}</span> 세부정보로 이동</div>
+    <div class="bar-goto" style="width: 25%; cursor: pointer;" OnClick="location.href='/view_detail/{{res_name}}'"><span style="color: #FFC000;">{{res_name}}</span> 세부정보로 이동</div>
 </div>
 
 
@@ -24,7 +24,7 @@
     {% for data in datas %}
     <div class="review-card">
         <div style="display: inline-block; vertical-align:top;">
-            <img class="review-img" src="../../static/review-image/{{data.image_path}}" alt="사진 불러오기 실패">
+            <img class="review-img" src="../../static/review-image/{{data.image_path}}" onerror="this.src='../../static/image/failed.png';"/>
         </div>
 
         <div style="color: gray; font-size: 25px; position: absolute; top: 10px; right: 15px;">{{data.nickname}}

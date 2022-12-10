@@ -1,6 +1,9 @@
 from flask import Flask, render_template,request,redirect,url_for
 from database import DBhandler
 import sys
+sys.setrecursionlimit(10**6)
+from config import kakaomap_key
+import math 
 
 
 app = Flask(__name__)
@@ -10,7 +13,7 @@ DB= DBhandler()
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return redirect(url_for('osondoson_home'))
 
 # 맛집리스트화면으로 연결 & 페이징
 @app.route('/list')
@@ -23,7 +26,21 @@ def reg_restaurant():
 
 @app.route('/mapSearch')
 def view_map():
-    return render_template('mapSearch.html')  
+    korean=DB.get_restaurants_byfoodchoice(str('한식'))
+    chinese=DB.get_restaurants_byfoodchoice(str('중식'))
+    japanese=DB.get_restaurants_byfoodchoice(str('일식'))
+    western=DB.get_restaurants_byfoodchoice(str('양식'))
+    cafe=DB.get_restaurants_byfoodchoice(str('카페'))
+    return render_template(
+        'mapSearch.html', 
+        map_key=kakaomap_key, 
+        korean=list(korean.values()), 
+        # korean=korean,
+        chinese=list(chinese.values()), 
+        japanese=list(japanese.values()), 
+        western=list(western.values()), 
+        cafe=list(cafe.values())
+    )  
 
 @app.route('/allergycheck')
 def allergy_popup():
@@ -67,17 +84,15 @@ def menuUpload():
 
 @app.route("/submit_menu_post", methods=['POST'])
 def reg_menu_submit_post():
-    image_file=request.files["menuimage"]
+    image_file = request.files["menuimage"]
     image_file.save("static/menu-image-upload/{}".format(image_file.filename))
 
-    data=request.form
+    data = request.form
     
-    if DB.insert_menuUpload(data['menuname'],data,image_file.filename):
-        return render_template("home.html")
+    if DB.insert_menuUpload(data['menuname'], data, image_file.filename):
+        return redirect(url_for('menu_result', res_name=data['Rname']))
     else:
         return "Menu name already exist!"
-
-
 
 
 # 리뷰 등록 post
@@ -89,22 +104,145 @@ def submit_review_post():
     data = request.form
 
     if DB.insert_review(data['nickname'], data, image_file.filename):
-        return render_template("home.html")
+        return redirect(url_for('review_result',res_name=data['Rname']))
+
+
+
+@app.route("/osondoson")
+def osondoson_home():
+
+    total=DB.get_restaurants()
+    review=DB.get_reviews()
+
+
+    korean={}
+    chinese={}
+    japanese={}
+    western={}
+    cafe={}
+    i=0
+
+    for res in total.items():
+        rates=[]
+        for re_res in review.items():
+            if(res[1]['Rname']==re_res[1]['restaurant_name']):
+                rates.append(float(re_res[1]['star']))
+        if len(rates)==0:
+            res[1]['avg_rate']=0
+            res[1]['review_num']=0
+        else:
+            res[1]['avg_rate']=round(sum(rates)/len(rates), 2)
+            res[1]['review_num']=len(rates)
+                
+    for res in total.items() :
+        res[1]['avg_rate_per']=res[1]['avg_rate']*20
+        if(res[1]['foodchoice']=='한식'):
+            korean[i]=res[1]
+        if(res[1]['foodchoice']=='중식'):
+            chinese[i]=res[1]
+        if(res[1]['foodchoice']=='일식'):
+            japanese[i]=res[1]
+        if(res[1]['foodchoice']=='양식'):
+            western[i]=res[1]
+        if(res[1]['foodchoice']=='카페'):
+            cafe[i]=res[1]
+        i=i+1
+    total=dict(sorted(total.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    korean=dict(sorted(korean.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    chinese=dict(sorted(chinese.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    japanese=dict(sorted(japanese.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    western=dict(sorted(western.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    cafe=dict(sorted(cafe.items(),key=lambda x: x[1]['avg_rate'], reverse=True))
+    print('111111111111111111111111111111111111111111111')
+    #home.html section 2 ) total 을 리뷰 개수 순으로 내림차순 정렬 , 리뷰 개수가 가장 많은 세 개의 식당 정보를 gold, silver, bronze 변수에 저장
+    a=sorted(total.items(),key=lambda x: x[1]['review_num'], reverse=True)[0:3]
+    gold=a[0]
+    silver=a[1]
+    bronze=a[2]
+    goldreview=DB.get_review_byname(gold[1]['Rname'])
+    silverreview=DB.get_review_byname(silver[1]['Rname'])
+    bronzereview=DB.get_review_byname(bronze[1]['Rname'])
+    print('2222222222222222222222222222222222222222222222222222222222222')
+    page = 0
+    limit = 6
+    start_idx=limit*page
+    end_idx=limit*(page+1)
+    tot_count=len(total)
+    kor_count=len(korean)
+    chi_count=len(chinese)
+    jap_count=len(japanese)
+    wes_count=len(western)
+    caf_count=len(cafe)
+
+    total_sec=dict(list(total.items())[6:12])
+    korean_sec = dict(list(korean.items())[6:12])
+    chinese_sec = dict(list(chinese.items())[6:12])
+    japanese_sec = dict(list(japanese.items())[6:12])
+    western_sec = dict(list(western.items())[6:12])
+    cafe_sec = dict(list(cafe.items())[6:12])
+
+    total = dict(list(total.items())[start_idx:end_idx])
+    korean = dict(list(korean.items())[start_idx:end_idx])
+    chinese = dict(list(chinese.items())[start_idx:end_idx])
+    japanese = dict(list(japanese.items())[start_idx:end_idx])
+    western = dict(list(western.items())[start_idx:end_idx])
+    cafe = dict(list(cafe.items())[start_idx:end_idx])
+
+    return render_template(
+        'home.html',
+        totals=total.items(),
+        totals_sec=total_sec.items(), 
+        koreans=korean.items(),
+        koreans_sec=korean_sec.items(),
+        chineses=chinese.items(),
+        chineses_sec=chinese_sec.items(), 
+        japaneses=japanese.items(),
+        japaneses_sec=japanese_sec.items(), 
+        westerns=western.items(),
+        westerns_sec=western_sec.items(),
+        cafes=cafe.items(),
+        cafes_sec=cafe_sec.items(), 
+        tot_count=tot_count,
+        kor_count=kor_count,
+        chi_count=chi_count,
+        jap_count=jap_count,
+        wes_count=wes_count,
+        caf_count=caf_count,
+        gold=gold,
+        silver=silver,
+        bronze=bronze,
+        greview=goldreview,
+        sreview=silverreview,
+        breview=bronzereview,
+        gnum=len(goldreview),
+        snum=len(silverreview),
+        bnum=len(bronzereview))
 
 
 #app.py 에서 get_restaurants 호출
 @app.route("/list_res")
 def list_restaurants():
     page = request.args.get("page", 0, type=int)
+    category = request.args.get("category", "total")
+    moodchoice=request.args.get("moodchoice","키워드")
     limit = 9
 
     start_idx=limit*page
     end_idx=limit*(page+1)
 
-    data=DB.get_restaurants()
+    if category=="total":
+        if moodchoice == '키워드' or moodchoice == 'All':
+            data = DB.get_restaurants()
+        else:
+            data = DB.get_restaurants_byOnlymoodchoice(moodchoice)
+    else:
+        if moodchoice == '키워드' or moodchoice == 'All':
+            data = DB.get_restaurants_byfoodchoice(category)
+        else:
+            data = DB.get_restaurants_bymoodchoice(category, moodchoice)
     res_name=DB.get_restaurantsName()
-    print(res_name)
     avg_rate=[]
+
     keys=list(data)
     print(keys)
     for res in res_name:
@@ -117,7 +255,11 @@ def list_restaurants():
 
     print(data)
     tot_count=len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
+    if tot_count <= limit:
+        data = dict(list(data.items())[:tot_count])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
+    print(data)
 
     return render_template(
         "list.html",
@@ -125,7 +267,9 @@ def list_restaurants():
         total=tot_count,
         limit=limit,
         page=page,
-        page_count=int((tot_count/9)+1))
+        page_count=math.ceil(tot_count/9),
+        moodchoice=moodchoice,
+        category=category)
                           
 
 # 동적 라우팅 : 맛집 리스트 화면 - 맛집 세부화면 연결 
@@ -144,19 +288,50 @@ def review_post(name):
     return render_template("reviewUpload.html",data=name)
 
 # 동적 라우팅 : 맛집 세부화면 - 대표메뉴조회 화면
-@app.route("/show_menu/<res_name>/", methods=['POST'])
+@app.route("/show_menu/<res_name>/", methods=['POST', 'GET'])
 def view_foods(res_name):
+    page=request.args.get("page", 0, type=int)
+    limit=3
+
+    start_idx=limit*page
+    end_idx=limit*(page+1)
     data = DB.get_food_byname(str(res_name))
+    print("#data###########")
+    print(data)
     tot_count = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    print("#data22############")
+    print(data)
     # 레스토랑 이름 전달
     res_name=res_name
-    return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name)
+    return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)+1))
+
+# 동적 라우팅 : 메뉴 등록 -> 메뉴조회 화면 이동
+@app.route("/menu/<res_name>/")
+def menu_result(res_name):
+    page=request.args.get("page", 0, type=int)
+    limit=3
+
+    start_idx=limit*page
+    end_idx=limit*(page+1)
+    data = DB.get_food_byname(str(res_name))
+    print("#data###########")
+    print(data)
+    tot_count = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    print("#data22############")
+    print(data)
+    # 레스토랑 이름 전달
+    res_name=res_name
+    return render_template("menuShow.html", datas=data, total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)+1))
 
 # 동적 라우팅 : 맛집 세부화면 - 맛집 메뉴등록 화면 
 @app.route("/menu_post/<name>/")
 def menu_post(name):
     print(name)
     return render_template("menuUpload copy.html",data=name)
+
+
 
 # 동적 라우팅 : 맛집 세부화면 - 맛집 리뷰조회 화면 
 @app.route("/review_show/<res_name>/", methods=['POST'])
@@ -168,7 +343,17 @@ def review_show(res_name):
     print("####dataaa:",data)
     return render_template("reviewShow.html",datas=data, avg_rate=avg_rate, review_num=review_num, res_name=res_name)
 
+# 동적 라우팅 : 리뷰 등록 -> 리뷰조회 화면 이동
+@app.route("/review/<res_name>/")
+def review_result(res_name):
+    data=DB.get_review_byname(str(res_name))  #맛집 이름으로 리뷰 데이터 가져오는 함수
+    avg_rate=DB.get_avgrate_byname(str(res_name))  #맛집 이름으로 평균 평점 가져오는 함수
+    review_num=DB.get_reviewnum_byname(str(res_name))
+    res_name=res_name
+    print("####dataaa:",data)
+    return render_template("reviewShow.html",datas=data, avg_rate=avg_rate, review_num=review_num, res_name=res_name)
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port='5001', debug=True)
+    app.run(host='0.0.0.0',port='5001', debug=True, threaded=True)
     

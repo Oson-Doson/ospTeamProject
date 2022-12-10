@@ -21,7 +21,7 @@ class DBhandler:
             "tel3":data['tel3'],
             "foodchoice":data['foodchoice'],
             "moodchoice":data['moodchoice'],
-            "pircechoice":data['pricechoice'],
+            "pricechoice":data['pricechoice'],
             "parking":data['parking'],
             "openhour":data['openhour'],
             "openmin":data['openmin'],
@@ -127,7 +127,7 @@ class DBhandler:
         if len(rates)==0:
             return 0
         else:
-            return sum(rates)/len(rates)
+            return round(sum(rates)/len(rates), 2)
     
     """맛집 이름으로 review 테이블에서 별점 가져와서 리뷰 개수 구하기"""
     def get_reviewnum_byname(self,name):
@@ -159,6 +159,25 @@ class DBhandler:
         restaurants = self.db.child("restaurant").get().val()
         return restaurants
 
+    # review 테이블에서 데이터 가져오기
+    def get_reviews(self):
+        reviews = self.db.child("review").get().val()
+        return reviews
+
+    """음식 종류로 레스토랑 가져오기"""
+    def get_restaurants_byfoodchoice(self, foodchoice):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['foodchoice'] == foodchoice:
+                target_value.append(value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
+    
+    """식당의 value 중 Rname만 리턴해주는 함수"""
     def get_restaurantsName(self):
         restaurants = self.db.child("restaurant").get()
         names=[]
@@ -172,9 +191,39 @@ class DBhandler:
     """식당이름기반으로 등록 메뉴 검색하여 가져오기"""
     def get_food_byname(self, name):
         menu = self.db.child("menu").get()
-        target_value=[]
+        target_value={}
+
         for res in menu.each():
             value = res.val()
+            key=res.key()
             if value['restaurant_name'] == name:
-                target_value.append(value)
+                target_value[key]=value
         return target_value
+    
+
+    # 분위기(moodchoice)와 category로 데이터 가져오기
+    def get_restaurants_bymoodchoice(self,foodchoice,cate):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['foodchoice'] == foodchoice:
+                if value['moodchoice'] == cate:
+                    target_value.append(value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
+
+     # 분위기(moodchoice)로 데이터 가져오기
+    def get_restaurants_byOnlymoodchoice(self,cate):
+        restaurants = self.db.child("restaurant").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+            if value['moodchoice'] == cate:
+                target_value.append(value)
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict

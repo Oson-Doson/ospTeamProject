@@ -53,26 +53,30 @@ button {
     }
 
 .typeButton{
-     width:16%;
-     margin-left:-1px;
-     margin-right:-1px;
-     height:50px;
-     border-top-left-radius:10px;
-     border-top-right-radius:10px;
-     background-color:#CADFB8;
-     color:#506A4C;
-     font-size:large;
+    width:15.2%;
+    margin-left:-1px;
+    margin-right:-1px;
+    margin-bottom:2px;
+    height:50px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    background-color:#CADFB8;
+    color:#506A4C;
+    font-size:large;
+    cursor:pointer;
+
+    transition:color .3s ease;
+    transition:background-color .5s ease;
 }
 
-.typeButton:hover:not(#active){
-    background-color: #506A4C;
-    color: white;
-    }
-
-#active {
-    background-color: #506A4C;
-    color: white;
-    }
+.typeButton:hover{
+    color:white;
+    background-color:#506A4C;
+}
+.typeButton.current{
+    color:white;
+    background-color:#506A4C;
+}
 
 /* sort */
 /*      */
@@ -112,6 +116,12 @@ div.SORTAREA {
     width: 100px;
     padding:10px;
     margin: 10px;
+}
+
+#keyword {
+    color: #506A4C;
+    font-family: 'BMDOHYUN';
+    font-size: 23px;
 }
 
 /* 리스트 */

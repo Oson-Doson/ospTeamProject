@@ -4,45 +4,52 @@
 	<title>맛집리스트화면</title>
 	<link rel="stylesheet" href="{{url_for('static', filename='list.css') }}">
 	<link rel="stylesheet" href="{{url_for('static', filename='paging.css') }}">
-{% endblock sectionheader %}
+	
+	<!--jQuery-->
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+	<script src="{{ url_for('static', filename='list.js') }}" defer></script>
+	{% endblock sectionheader %}
 
 {% block section %}
 
 	<div class="contents">
-
+		<!-- 페이지 로딩시 button, 키워드 선택 유지-->
+		<script>
+			$(document).ready(function(){
+				$('.typebutton option:contains("{{category}}")').prop("clicked", true);
+				$('#moodchoice option:contains("{{moodchoice}}")').prop("selected", true);
+			});
+		</script>
+		<!-- 음식 카테고리 선택 -->
 		<div id="menuType">
-			<button class="typeButton" id="typetotal">total</button>
-			<button class="typeButton" id="typeKorean">한식</button>
-			<button class="typeButton" id="typeChinese">중식</button>
-			<button class="typeButton" id="typeJapanese">일식</button>
-			<button class="typeButton" id="typeWestern">양식</button>
-			<button class="typeButton" id="typeCafe">카페</button>
+			<button class="typeButton current" id="typetotal" onclick="location.href='{{url_for('list_restaurants', page=i, category='total')}}';" >total</button>
+			<button class="typeButton" id="typeKorean" onclick="location.href='{{url_for('list_restaurants', page=i, category='한식')}}';" >한식</button>
+			<button class="typeButton" id="typeChinese" onclick="location.href='{{url_for('list_restaurants', page=i, category='중식')}}';" >중식</button>
+			<button class="typeButton" id="typeJapanese" onclick="location.href='{{url_for('list_restaurants', page=i, category='일식')}}';" >일식</button>
+			<button class="typeButton" id="typeWestern" onclick="location.href='{{url_for('list_restaurants', page=i, category='양식')}}';" >양식</button>
+			<button class="typeButton" id="typeCafe" onclick="location.href='{{url_for('list_restaurants', page=i, category='카페')}}';" >카페</button>
 		</div>
-
+		<div id="cate_color" data-cate="{{category}}">
+			
+		</div>
 		<!-- SORT -->
 		<div class="SORTAREA">
 			<!-- sorting img -->
 			<a class="sorting">
 				<img src="../static/list/sorting sign.png" alt="sorting sign" width="40" height="40">
 			</a>
-			<!-- 가격대 select -->
-			<select class="sort" id="price">
-				<option value="all">&#8361;</a>&nbsp;&nbsp;가격대</option>
-				<option value="~5000">~5000</option>
-				<option value="10000~15000">10000~15000</option>
-				<option value="15000~20000">15000~20000</option>
-				<option value="20000~">20000~</option>
+			<!-- 키워드-->
+			<select class="sort" id="moodchoice" name="moodchoice" onchange="location=this.value">
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='키워드' , category=category)}}">키워드</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='All' , category=category)}}">All</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#분위기 좋은' , category=category)}}">분위기좋은</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#넓은장소', category=category)}}">넓은장소</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#혼밥가능', category=category)}}">혼밥가능</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#아기자기한', category=category)}}">아기자기한</option>
 			</select>
-
-			<!-- 주차가능 -->
-			<button class="sort" id="park" onclick="changeParkButton()">
-				<b>&#8473;</b>&nbsp;&nbsp;주차가능
-			</button>
-
-			<!-- 영업 중 -->
-			<button class="sort" id="open" onclick="changeOpenButton()">
-				<b>&#9719;</b>&nbsp;&nbsp;영업중
-			</button>
+			<a id="keyword"> {{moodchoice}}</a>
 			<br>
 		</div>
 	{% if total > 0 %}
@@ -67,7 +74,7 @@
 			<ul>
 				<li>
 				{% for i in range(page_count)%}
-				<a href="{{url_for('list_restaurants', page=i)}}" color="black">{{i}}</a>
+				<a href="{{url_for('list_restaurants', page=i, category=category)}}" color="black">{{i+1}}</a>
 				{% endfor %}
 				</li>
 			</ul>

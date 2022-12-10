@@ -1,89 +1,75 @@
 {% extends "index.html" %}
 
 {% block sectionheader %}
-    <title>대표 메뉴 조회 화면</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='menuShow.css') }}">
+<title>대표 메뉴 조회 화면</title>
+<link rel="stylesheet" href="{{url_for('static', filename='menuShow.css') }}">
+<link rel="stylesheet" href="{{url_for('static', filename='paging.css') }}">
 {% endblock sectionheader %}
 
 {% block section %}
 
-    <!--상단 바-->
-    <div class="cover"
-        style="border: 3px solid #506A4C; margin: 0px 60px; margin-top: 30px; position: relative; height: 800px;">
+<!--상단 바-->
+<div class="cover"
+    style="border: 3px solid #506A4C; margin: 0px 60px; margin-top: 30px; position: relative; height: 800px;">
 
-        <div class="bar" style="position: absolute; width: 100%; height: 100px;">
-            <img src="{{url_for('static', filename='menuShow/bar.png') }}" alt="사진 불러오기 실패" style="width: 100%; height: 100%;" />
-            <div class="bar-title">
-                <span style="color: #FFC000;">{{res_name}}</span> 대표 메뉴 조회
-            </div>
-
-            <div class="bar-vegan">
-                <div class="bar-veganImg">
-                    <img src="{{url_for('static', filename='menuShow/vegan.png') }}" alt="사진 불러오기 실패" style="width: 60px; height: 48px;" />
-                </div>
-                <div class="bar-veganTitle" style="font-family: 'NanumBarunGothic';">비건 표시</div>
-            </div>
+    <div class="bar" style="position: absolute; width: 100%; height: 100px;">
+        <img src="{{url_for('static', filename='menuShow/bar.png')}}" alt="사진 불러오기 실패"
+            style="width: 100%; height: 100%;" />
+        <div class="bar-title">
+            <span style="color: #FFC000;">{{res_name}}</span> 대표 메뉴 조회
         </div>
 
-        <!--대표 메뉴 리스트-->
-        {% if total > 0 %}
-        <div id="menu-list">
-            {% for data in datas %}
-            <div class="menu-card">
-                <div>
-                    <img class="menu-img" src="../../static/menu-image-upload/{{data.image_path}}" alt="사진 불러오기 실패">
-                </div>
-                <div class="menu-contents">
-                    {% if data['vegan'] == "vegan" %}
-                    <img class="began-img" src="{{url_for('static', filename='menuShow/vegan.png') }}" alt="사진 불러오기 실패"
-                        style="float: right; margin-right: 20px; width: 60px; height: 48px; ">
-                    {% endif %}
-                    <span
-                        style=" font-size: 30px; font-family: 'BMHANNAPro'; margin-bottom: 12px; display: inline-block; background-color: #ffedb7;">
-                        {{data.menuname}}</span>
-                    <p style=" font-size: 23px; font-weight: bold; margin-bottom: 12px; ">\  {{data.menuprice}}</p>
-                    <p style=" font-size: 18px; font-weight: bold; margin-bottom: 12px; ">알레르기: {{data.allergylist}}</p>
-                    <div class="menu-detail">{{data.menudetail}}</div>
-                </div>
+        <div class="bar-vegan">
+            <div class="bar-veganImg">
+                <img src="{{url_for('static', filename='menuShow/vegan.png')}}" alt="사진 불러오기 실패"
+                    style="width: 60px; height: 48px;" />
             </div>
-            {% endfor %}
-            <!-- <div class="menu-card">
-                <div>
-                    <img class="menu-img" src="../static/menuShow/food2.jpg" alt="사진 불러오기 실패">
-                </div>
-                <div class="menu-contents">
-                    <span
-                        style=" font-size: 30px; font-family: 'BMHANNAPro'; margin-bottom: 12px; display: inline-block; background-color: #ffedb7;">뽀빠이
-                        Popeye</span>
-                    <p style=" font-size: 23px; font-weight: bold; margin-bottom: 12px; ">\ 13,000</p>
-                    <p style=" font-size: 18px; font-weight: bold; margin-bottom: 12px; ">알레르기: 닭고기, 우유, 밀</p>
-                    <div class="menu-detail">뽀빠이는 이스라엘 가정식 메뉴인 샥슈카 종류로 시금치,
-                        버섯, 렌틸콩, 양파등 다양한 채소와 닭가슴살
-                        그리고 수란이 들어간 스튜형태의 따듯한 건강식 메뉴입니다.</div>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div>
-                    <img class="menu-img" src="../static/menuShow/food3.jpg" alt="사진 불러오기 실패">
-                </div>
-                <div class="menu-contents">
-                    <img class="began-img" src="../static/menuShow/vegan.png" alt="사진 불러오기 실패"
-                        style="float: right; margin-right: 20px; width: 60px; height: 48px; ">
-                    <span
-                        style=" font-size: 30px; font-family: 'BMHANNAPro'; margin-bottom: 12px; display: inline-block; background-color: #ffedb7;">노바
-                        Nova</span>
-                    <p style=" font-size: 23px; font-weight: bold; margin-bottom: 12px; ">\ 13,000</p>
-                    <p style=" font-size: 18px; font-weight: bold; margin-bottom: 12px; ">알레르기: 없음</p>
-                    <div class="menu-detail">시금치 렌틸콩밥과 바질두부튀김이 특징으로 올리브유, 허브&향신료를 활용하여 만들었습니다.</div>
-                </div>
-            </div> -->
-
-        {% else %}
-            <p style="position: absolute; top: 0; margin-top: 120px">
-                등록된 메뉴가 없습니다.
-            </p>
-        {% endif %}
+            <div class="bar-veganTitle" style="font-family: 'NanumBarunGothic';">비건 표시</div>
         </div>
     </div>
+
+    <!--대표 메뉴 리스트-->
+    {% if total > 0 %}
+    <div id="menu-list">
+        {% for data in datas %}
+        <div class="menu-card">
+            
+           <div class="menu-img-box"
+                style="background-image:url(../../static/menu-image-upload/{{data[1].image_path}})">
+            </div>
+            <div class="menu-contents">
+                {% if data['vegan'] == "vegan" %}
+                <img class="began-img" src="{{url_for('static', filename='menuShow/vegan.png') }}" alt="사진 불러오기 실패"
+                    style="float: right; margin-right: 20px; width: 60px; height: 48px; ">
+                {% endif %}
+                <span
+                    style=" font-size: 30px; font-family: 'BMHANNAPro'; margin-bottom: 12px; display: inline-block; background-color: #ffedb7;">
+                    {{data[1].menuname}}</span>
+                <p style=" font-size: 23px; font-weight: bold; margin-bottom: 12px; ">\{{data[1].menuprice}}</p>
+                <p style=" font-size: 18px; font-weight: bold; margin-bottom: 12px; ">알레르기: {{data[1].allergylist}}</p>
+                <div class="menu-detail">{{data[1].menudetail}}</div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <p style="position: absolute; top: 0; margin-top: 130px; font-family: 'BMHANNAPro';font-size:30px; margin-left:50px;">
+            등록된 메뉴가 없습니다.
+        </p>
+        {% endif %}
+    </div>
+    <!-- 페이지네이션을 위한 코드 시작 -->
+    <div class="page-wrap" style="margin-top: 80px;">
+        <div class="page-nation">
+            <ul>
+                <li>
+                    {% for i in range(page_count)%}
+                    <a href="{{url_for('view_foods', res_name=res_name ,page=i)}}" color="black">{{i+1}}</a>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 {% endblock section %}
