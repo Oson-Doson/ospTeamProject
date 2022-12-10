@@ -23,7 +23,7 @@
     <script>
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
             mapOption = {
-                center: new kakao.maps.LatLng(37.557596146536504, 126.94504144098624), // 지도의 중심좌표 - 이화여대 정문
+                center: new kakao.maps.LatLng(37.558596146536504, 126.94504144098624), // 지도의 중심좌표 - 이화여대 정문
                 level: 3 // 지도의 확대 레벨
             };
         
@@ -62,6 +62,7 @@
         createMarkers(japanese);
         createMarkers(western);
         createMarkers(cafe);
+
         // 마커 일단 시범적으로 띄우기
         setTimeout(() => {console.log("0.3초 후에 실행됨"); setKoreanMarkers(map);}, 300);
 
@@ -87,7 +88,6 @@
 
         // 마커를 생성하고 마커 배열에 추가하는 함수입니다
         async function createMarkers(foodtype) {
-            console.log("createMarker시작");
             foodtype.map(async function(arraycontent, i) {
                 // 주소로 좌표 검색하기
                 let get_coords = await getCoordsByAddress(arraycontent.address);
@@ -109,16 +109,22 @@
                     koreanWindow.push(infowindow);
                 } else if (foodtype === chinese) {
                     chineseMarkers.push(marker);
+                    chineseWindow.push(infowindow);
                 } else if (foodtype === japanese) {
                     japaneseMarkers.push(marker);
+                    japaneseWindow.push(infowindow);
                 } else if (foodtype === western) {
                     westernMarkers.push(marker);
+                    westernWindow.push(infowindow);
                 } else if (foodtype === cafe) {
                     cafeMarkers.push(marker);
+                    cafeWindow.push(infowindow);
                 }
 
                 kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
                 kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                // 마커 클릭 시 상세 화면으로 이동
+                kakao.maps.event.addListener(marker, 'click', () => location.replace('/view_detail/'+arraycontent.Rname+'/'));
                 
             } );
             
@@ -139,54 +145,46 @@
             };
         }
 
-        // 마커들의 지도 표시 여부를 설정하는 함수입니다
+        // 마커들의 지도 표시 여부를 설정하는 함수입니다 (각 카테고리 별로 총 5개)
         function setKoreanMarkers(map) {    
             // 반복문 돌려서 좌표 배열을 토대로 마커 세팅
             for (var i = 0; i < koreanMarkers.length; i++) { 
-                console.log("set함수 부분"); 
-                console.log(koreanMarkers);
-                console.log(koreanWindow);
                 koreanMarkers[i].setMap(map);
+                // 인포윈도우도 같이 띄워줌
+                // koreanWindow[i].open(map, koreanMarkers[i]);
 
-                // kakao.maps.event.addListener(koreanMarkers[i], 'click', function() {
-                //     // koreanWindow[i].open(map, koreanMarkers[i]);
-                //     console.log("set함수에서 마커 클릭");
-                //     console.log(koreanMarkers[i]);
-                // });
-
-                
             }       
         }
 
         function setChineseMarkers(map) {    
 
             for (var i = 0; i < chineseMarkers.length; i++) {  
-                console.log(chineseMarkers);
                 chineseMarkers[i].setMap(map);
+                // chineseWindow[i].open(map, chineseMarkers[i]);
             }       
         }
 
         function setJapaneseMarkers(map) {    
             
             for (var i = 0; i < japaneseMarkers.length; i++) {  
-                console.log(japaneseMarkers);
                 japaneseMarkers[i].setMap(map);
+                // japaneseWindow[i].open(map, japaneseMarkers[i]);
             }       
         }
 
         function setWesternMarkers(map) {    
             
             for (var i = 0; i < westernMarkers.length; i++) {  
-                console.log(westernMarkers);
                 westernMarkers[i].setMap(map);
+                // westernWindow[i].open(map, westernMarkers[i]);
             }       
         }
 
         function setCafeMarkers(map) {    
             
             for (var i = 0; i < cafeMarkers.length; i++) {  
-                console.log(cafeMarkers);
                 cafeMarkers[i].setMap(map);
+                // cafeWindow[i].open(map, cafeMarkers[i]);
             }       
         }
 
@@ -291,9 +289,6 @@
             }
             
         }
-
-
-       
 
     </script>
 

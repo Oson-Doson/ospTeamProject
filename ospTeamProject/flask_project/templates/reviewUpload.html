@@ -30,7 +30,7 @@
                     <span class="uploadBtn">업로드</span>
                 </div> -->
 
-
+            <!-- 리뷰 등록 - 사진 업로드 부분 -->
             <div>
                 <div id="picture-div" , name="picture-div"></div>
                 <button type="button" class="fileupload" onclick="onClickUpload();">업로드</button>
@@ -89,11 +89,13 @@
             <div name="이미지 옆 정보 입력">
                 <h4 class="storeName">{{data}}</h4><br>
 
+                <!-- 닉네임 등록 -->
                 <div id="nickname" class="contentsAlign">
                     <span class="contentsTitle">닉네임</span>
                     <input type="text" name="nickname" class="nicknameInput" placeholder="닉네임">
                 </div><br>
 
+                <!-- 키워드 2개 등록 -->
                 <div id="keyword" class="contentsAlign">
                     <span class="contentsTitle">키워드</span>
                     <select class="keywordDropdown" name="moodchoice">
@@ -113,6 +115,7 @@
                     </select>
                 </div><br>
 
+                <!-- 리뷰 평점 등록 -->
                 <div id="score" class="contentsAlign">
                     <span class="contentsTitle">평점</span>
                     <!-- 별 그리기 -->
@@ -132,6 +135,7 @@
             </div>
         </div>
 
+        <!-- 리뷰 상세 설명 -->
         <br><br>
         <div name="리뷰 정보 등록 두 번째 문단" style="margin:auto;">
             <div class="contentsTitle">리뷰 상세 설명</div><br>
@@ -139,8 +143,7 @@
                 placeholder="&#13;&#10;맛, 가게 인테리어, 분위기 등에 대해 자유롭게 작성해주세요."></textarea>
         </div>
 
-        <!-- <div name="리뷰 정보 등록 세 번째 문단" id="saveBtn">등록</div> -->
-
+        <!-- 등록 버튼 -->
         <div name="리뷰 정보 등록 세 번째 문단">
             <input type="submit" id="saveBtn" value="등록">
         </div>
