@@ -224,18 +224,25 @@ def osondoson_home():
 def list_restaurants():
     page = request.args.get("page", 0, type=int)
     category = request.args.get("category", "total")
+    moodchoice=request.args.get("moodchoice","키워드")
     limit = 9
 
     start_idx=limit*page
     end_idx=limit*(page+1)
 
     if category=="total":
-        data = DB.get_restaurants()
+        if moodchoice == '키워드' or moodchoice == 'All':
+            data = DB.get_restaurants()
+        else:
+            data = DB.get_restaurants_byOnlymoodchoice(moodchoice)
     else:
-        data = DB.get_restaurants_byfoodchoice(category)
-
+        if moodchoice == '키워드' or moodchoice == 'All':
+            data = DB.get_restaurants_byfoodchoice(category)
+        else:
+            data = DB.get_restaurants_bymoodchoice(category, moodchoice)
     res_name=DB.get_restaurantsName()
     avg_rate=[]
+
     keys=list(data)
     print(keys)
     for res in res_name:
@@ -260,6 +267,7 @@ def list_restaurants():
         limit=limit,
         page=page,
         page_count=math.ceil(tot_count/9),
+        moodchoice=moodchoice,
         category=category)
                           
 
