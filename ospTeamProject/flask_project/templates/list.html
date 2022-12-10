@@ -15,13 +15,14 @@
 {% block section %}
 
 	<div class="contents">
-		<!-- 페이지 로딩시 button 선택되게 함-->
+		<!-- 페이지 로딩시 button, 키워드 선택 유지-->
 		<script>
 			$(document).ready(function(){
 				$('.typebutton option:contains("{{category}}")').prop("clicked", true);
 				$('#moodchoice option:contains("{{moodchoice}}")').prop("selected", true);
 			});
 		</script>
+		<!-- 음식 카테고리 선택 -->
 		<div id="menuType">
 			<button class="typeButton current" id="typetotal" onclick="location.href='{{url_for('list_restaurants', page=i, category='total')}}';" >total</button>
 			<button class="typeButton" id="typeKorean" onclick="location.href='{{url_for('list_restaurants', page=i, category='한식')}}';" >한식</button>

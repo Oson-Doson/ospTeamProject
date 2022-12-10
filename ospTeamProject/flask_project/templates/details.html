@@ -11,10 +11,12 @@
 	<div class="Box">
 
 		<!-- box1  -->
-		<div class="box1">
+		<div class="box1"> 
+			<!-- 해당 식당 사진-->
 			<a target="_blank" href="00식당사진">
 				<img src="../../static/image/{{data.image_path}}" alt="00식당사진" width=100% height=50%>
 			</a>
+			<!-- 해당 식당 기본 설명 -->
 			<div class="desc1">
 				<a class="store">{{data.Rname}}</a>
 				<a style="font-size:15px;">&nbsp;&nbsp;{{data.foodchoice}}</a><br>
@@ -26,6 +28,7 @@
 		</div>
 
 		<!-- box2  -->
+		<!-- 주소, 전화번호, 운영시간, 주차가능 여부 -->
 		<div class="box2 left">
 			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			<a class="sub1">{{data.address}}</a><br>
@@ -51,11 +54,11 @@
 				<form method="post" action="/show_menu/{{data.Rname}}/">
 					<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
 					<div>
-						<!-- onClick : 대표메뉴이미지 -->
+						<!-- 대표메뉴 페이지 이동 버튼 -->
 						<a class=" sub1" href="/show_menu/{{data.Rname}}/"><button class="button">메뉴 보러가기 ></button></a>
 					</div>
 				</form>
-				<!-- <a class=" sub1"><button class="button" onclick="대표메뉴 페이지">메뉴 보러가기 ></button></a> -->
+				<!-- 메뉴등록 페이지 이동 버튼-->
 				<a class=" sub1" href="/menu_post/{{data.Rname}}/"><button class="button">메뉴 등록하기></button></a>
 
 
@@ -72,11 +75,13 @@
 				<a class="picto">&#10146;&nbsp;&nbsp;</a>
 				<form method="post" action="/review_show/{{data.Rname}}/">
 					<input type="hidden" name="restaurant_name" value="{{data.Rname}}">
+					<!-- 리뷰 페이지 이동 버튼-->
 					<div>
 						<a class=" sub1" href="/review_show/{{data.Rname}}/"><button class="button">리뷰 보러가기
 								></button></a>
 					</div>
 				</form>
+				<!-- 리뷰 등록 페이지 이동 버튼 -->
 				<a class=" sub1" href="/review_post/{{data.Rname}}/"><button class="button">리뷰 등록하기 ></button></a>
 
 			</div>
