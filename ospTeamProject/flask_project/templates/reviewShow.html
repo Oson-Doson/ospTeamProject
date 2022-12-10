@@ -20,8 +20,8 @@
 
 <!--리뷰 리스트-->
 <div id="review-list">
-    {% if review_num > 0 %}
-    {% for data in datas %}
+    {% if review_num > 0 %} <!--1. 등록된 리뷰가 있는 경우-->
+    {% for data in datas %} <!--리뷰 개수만큼 review-card 반복 출력-->
     <div class="review-card">
         <div style="display: inline-block; vertical-align:top;">
             <img class="review-img" src="../../static/review-image/{{data.image_path}}" onerror="this.src='../../static/image/failed.png';"/>
@@ -38,7 +38,7 @@
     </div>
     {% endfor %}
 
-    {%else%}
+    {%else%} <!--2. 등록된 리뷰가 없는 경우-->
     <h1>등록된 리뷰가 없습니다</h1>
     {%endif%}
 
