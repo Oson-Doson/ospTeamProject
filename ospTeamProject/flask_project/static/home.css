@@ -412,16 +412,16 @@ li:hover .thumb{
     height:85px;
 }
 
-.sreviewTextFix{
+.sreviewTextFix{        /*말풍선 fix*/
     position:absolute;
-    width:200px;
+    width:180px;
     top:35px;
     left:50%;
     transform: translate( -50%, -50% );
 }
-.breviewTextFix{
+.breviewTextFix{       /*말풍선 fix*/
     position:absolute;
-    width:200px;
+    width:180px;
     top:35px;
     left:50%;
     transform: translate( -50%, -50% );
