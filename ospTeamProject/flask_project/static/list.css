@@ -157,7 +157,7 @@ div.desc {
     line-height: 2.3em;
 }
 
-div.list.photo {
+#img {
     position: static;
 }
 
@@ -169,18 +169,23 @@ div.list.text {
     font-size: 35px;
     font-weight: bold;
     font-family:'BMJUA';
-}
+    width:200px;
+    white-space:nowrap; 
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    line-height: 1.6;}
 
 .sub1 {
     font-size:19px;
-    position: static;
     font-family: 'NanumBarunGothic', 'serif';
+    line-height: 1.6;
 }
 
 .sub3 {
     font-size:25px;
     font-weight: bold;
     font-family: 'NanumBarunGothic', 'serif';
+    line-height: 1.6;
 }
 
 .star {
