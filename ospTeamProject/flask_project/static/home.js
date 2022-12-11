@@ -92,7 +92,6 @@ $(document).ready(function () {
 
     //좌측 화살표 클릭 이벤트
     $('#prev-slick-arrow').click(function () {
-        page_color_change();
         if ($('.typeButton.current').attr('data-tab') == 'tab-1') {
 
             var tab__id = $('#tab-1 .current').attr('id');
