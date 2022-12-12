@@ -44,12 +44,11 @@
 			<select class="sort" id="moodchoice" name="moodchoice" onchange="location=this.value">
 				<option value="{{url_for('list_restaurants', page=i, moodchoice='키워드' , category=category)}}">키워드</option>
 				<option value="{{url_for('list_restaurants', page=i, moodchoice='All' , category=category)}}">All</option>
-				<option value="{{url_for('list_restaurants', page=i, moodchoice='#분위기 좋은' , category=category)}}">분위기좋은</option>
-				<option value="{{url_for('list_restaurants', page=i, moodchoice='#넓은장소', category=category)}}">넓은장소</option>
-				<option value="{{url_for('list_restaurants', page=i, moodchoice='#혼밥가능', category=category)}}">혼밥가능</option>
-				<option value="{{url_for('list_restaurants', page=i, moodchoice='#아기자기한', category=category)}}">아기자기한</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#분위기 좋은' , category=category)}}">#분위기 좋은</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#넓은장소', category=category)}}">#넓은장소</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#혼밥가능', category=category)}}">#혼밥가능</option>
+				<option value="{{url_for('list_restaurants', page=i, moodchoice='#아기자기한', category=category)}}">#아기자기한</option>
 			</select>
-			<a id="keyword"> {{moodchoice}}</a>
 			<br>
 		</div>
 	{% if total > 0 %}
