@@ -19,6 +19,8 @@
     <!-- 지도 칸 - 웹서버 돌려야 보임 -->
     <div id="map"></div>
 
+    <!-- <div class="map-notice">마커를 클릭하시면 <br>맛집 상세 화면으로 이동하실 수 있습니다!</div> -->
+
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{map_key}}&libraries=services"></script>
     <script>
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -66,6 +68,9 @@
         // 마커 일단 시범적으로 띄우기
         setTimeout(() => {console.log("0.3초 후에 실행됨"); setKoreanMarkers(map);}, 300);
 
+        // 먼저 한식 카테고리 탭 선택되도록 색 바꿔주기 (초기화)
+        koreanMenu.className = 'menu_selected';
+
         // addressSearch는 비동기 방식으로 데이터 응답이 오기 전에 마커 생성 로직을 실행하면
         // 빈 배열로 실행되어 마커가 생성되지 않습니다.
         
@@ -91,15 +96,26 @@
             foodtype.map(async function(arraycontent, i) {
                 // 주소로 좌표 검색하기
                 let get_coords = await getCoordsByAddress(arraycontent.address);
-                // 마커 생성
+
+                var imageSrc = 'https://cdn-icons-png.flaticon.com/512/2499/2499159.png';
+
+                // 마커 이미지의 이미지 크기 입니다
+                var imageSize = new kakao.maps.Size(39, 42); 
+                
+                // 마커 이미지를 생성합니다    
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+                
+                
+                // 마커 생성  
                 let marker = new kakao.maps.Marker({
-                    position: get_coords
+                    position: get_coords,
+                    image : markerImage // 마커 이미지 
                 });
 
                 // 마커에 표시할 인포윈도우를 생성합니다 
                 let infowindow = new kakao.maps.InfoWindow({
-                    content: '<div style="padding:5px;">'+arraycontent.Rname+'</div>', // 인포윈도우에 표시할 내용
-                    removable : true, // 인포윈도우 지우기 가능하도록
+                    content: '<div style="padding:5px;font-family:BMHANNAPro;">'+arraycontent.Rname+'</div>', // 인포윈도우에 표시할 내용
+                    // removable : true,  // 인포윈도우 지우기 가능하도록
                     position: get_coords
                 });
 
