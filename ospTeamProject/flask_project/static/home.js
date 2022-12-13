@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // section 1 ) tab 메뉴 구현
     $('.typeButton').click(function () {
         var tab_id = $(this).attr('data-tab');
 
@@ -12,7 +13,7 @@ $(document).ready(function () {
         $('.moreList.' + tab_id).addClass('current');
     })
 
-    //우측 화살표 클릭 이벤트
+    // section 1 )우측 화살표 클릭 이벤트
     $('#next-slick-arrow').click(function () {
         if ($('.typeButton.current').attr('data-tab') == 'tab-1') {
 
@@ -90,7 +91,7 @@ $(document).ready(function () {
         }
     })
 
-    //좌측 화살표 클릭 이벤트
+    // section 1 ) 좌측 화살표 클릭 이벤트
     $('#prev-slick-arrow').click(function () {
         if ($('.typeButton.current').attr('data-tab') == 'tab-1') {
 
@@ -168,15 +169,13 @@ $(document).ready(function () {
         }
     })
 
+    // section 2 ) 사용자 리뷰 보여주는 슬라이드 (slick slider)
+
     $('.sreviewTextFix').slick({
         autoplay: true,
         arrows: false
     })
     $('.breviewTextFix').slick({
-        autoplay: true,
-        arrows: false
-    })
-    $('.greviewTextFix').slick({
         autoplay: true,
         arrows: false
     })
