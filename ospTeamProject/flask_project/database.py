@@ -10,7 +10,7 @@ class DBhandler:
         self.db = firebase.database()
 
     
-    """식당 데이터 등록""" 
+    # 식당 데이터 등록 ============================================================================================
 
     def insert_restaurantUpload(self, name, data, image_path):
         restaurant_info = {
@@ -49,7 +49,7 @@ class DBhandler:
         return True
 
 
-    """리뷰 데이터 등록"""
+    # 리뷰 데이터 등록 ============================================================================================
 
     def insert_review(self, name, data, image_path):
         review_content = {
@@ -67,7 +67,7 @@ class DBhandler:
     
 
 
-    """메뉴 데이터 등록""" 
+    # 메뉴 데이터 등록 ============================================================================================
 
     def insert_menuUpload(self,name,data,image_path):
         menu_info={
@@ -99,7 +99,7 @@ class DBhandler:
                 return False
         return True
 
-    """맛집 이름으로 restaurant 테이블에서 정보 가져오기"""
+    # 맛집 이름으로 restaurant 테이블에서 정보 가져오기 =====================================================================================
 
     def get_restaurant_byname(self,name):
         restaurants=self.db.child("restaurant").get()
@@ -112,7 +112,7 @@ class DBhandler:
         return target_value
 
 
-    """맛집 이름으로 review 테이블에서 평점 가져와서 평균 계산하기"""
+    # 맛집 이름으로 review 테이블에서 평점 가져와서 평균 계산하기 ===========================================================================
 
     def get_avgrate_byname(self,name):
         reviews=self.db.child("review").get()
@@ -128,7 +128,8 @@ class DBhandler:
         else:
             return round(sum(rates)/len(rates), 2)
     
-    """맛집 이름으로 review 테이블에서 별점 가져와서 리뷰 개수 구하기"""
+    # 맛집 이름으로 review 테이블에서 별점 가져와서 리뷰 개수 구하기 ======================================================================
+    
     def get_reviewnum_byname(self,name):
         reviews=self.db.child("review").get()
         rates=[]
@@ -140,7 +141,8 @@ class DBhandler:
             
         return len(rates)
 
-    """맛집 이름으로 review 테이블에서 정보 가져오기"""
+    # 맛집 이름으로 review 테이블에서 정보 가져오기 ======================================================================
+
     def get_review_byname(self, name):
         reviews=self.db.child("review").get()
         target_value=[]
@@ -153,17 +155,20 @@ class DBhandler:
         return target_value
 
 
-    # 맛집등록 테이블에서 데이터 가져오기
+    # 맛집등록 테이블에서 데이터 가져오기 ======================================================================
+
     def get_restaurants(self):
         restaurants = self.db.child("restaurant").get().val()
         return restaurants
 
-    # review 테이블에서 데이터 가져오기
+    # review 테이블에서 데이터 가져오기 ======================================================================
+
     def get_reviews(self):
         reviews = self.db.child("review").get().val()
         return reviews
 
-    """음식 카테고리(foodchoice)와 분위기(moodchoice)로 레스토랑 가져오기"""
+    # 음식 카테고리(foodchoice)와 분위기(moodchoice)로 레스토랑 가져오기 ======================================================================
+
     def get_restaurants_byfoodchoice(self, foodchoice, moodchoice):
         restaurants = self.db.child("restaurant").get()
         target_value=[]
@@ -179,7 +184,8 @@ class DBhandler:
 
 
 
-    """음식 종류로 레스토랑 가져오기"""
+    # 음식 종류로 레스토랑 가져오기 ======================================================================
+
     def get_restaurants_byfoodchoice(self, foodchoice):
         restaurants = self.db.child("restaurant").get()
         target_value=[]
@@ -192,7 +198,8 @@ class DBhandler:
             new_dict[k]=v
         return new_dict
     
-    """식당의 value 중 Rname만 리턴해주는 함수"""
+    # 식당의 value 중 Rname만 리턴해주는 함수 ======================================================================
+
     def get_restaurantsName(self):
         restaurants = self.db.child("restaurant").get()
         names=[]
@@ -203,7 +210,8 @@ class DBhandler:
 
         return names
 
-    """식당이름기반으로 등록 메뉴 검색하여 가져오기"""
+    # 식당이름기반으로 등록 메뉴 검색하여 가져오기 ======================================================================
+
     def get_food_byname(self, name):
         menu = self.db.child("menu").get()
         target_value={}
@@ -216,7 +224,8 @@ class DBhandler:
         return target_value
     
 
-    # 분위기(moodchoice)와 category로 데이터 가져오기
+    # 분위기(moodchoice)와 category로 데이터 가져오기 ======================================================================
+
     def get_restaurants_bymoodchoice(self,foodchoice,cate):
         restaurants = self.db.child("restaurant").get()
         target_value=[]
@@ -230,7 +239,8 @@ class DBhandler:
             new_dict[k]=v
         return new_dict
 
-     # 분위기(moodchoice)로 데이터 가져오기
+     # 분위기(moodchoice)로 데이터 가져오기 ======================================================================
+
     def get_restaurants_byOnlymoodchoice(self,cate):
         restaurants = self.db.child("restaurant").get()
         target_value=[]
