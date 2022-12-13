@@ -123,6 +123,9 @@ div.box2.left {
     line-height: 3.0em; 
     width: 45%;
     border-bottom: 1.5px solid #CADFB8 ;
+    height: 130px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 div.box2.right {
     float:left;
@@ -135,6 +138,9 @@ div.box2.right {
     line-height: 3.0em;
     width: 45%;
     border-bottom: 1.5px solid #CADFB8 ;
+    height: 130px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .picto {

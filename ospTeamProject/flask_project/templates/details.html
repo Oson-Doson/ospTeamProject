@@ -29,6 +29,24 @@
 
 		<!-- box2  -->
 		<!-- 주소, 전화번호, 운영시간, 주차가능 여부 -->
+		<div>
+		<div class="box2 left">
+			<p><a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1">{{data.address}}</a><br></p>
+			<p><a class="picto" id="exclude"> &#9742;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1">{{data.tel1}}-{{data.tel2}}-{{data.tel3}}</a><br></p>
+		</div>
+		<div class="box2 right">
+			<a class="picto"> &#9719;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1">{{data.openhour}}:{{data.openmin}} ~ {{data.closehour}}:{{data.closemin}}</a><br>
+			<a class="picto" id="exclude">&#8473;&nbsp;&nbsp;&nbsp;</a>
+			<a class="sub1">주차 {% if data['parking']=="주차 가능" %}가능{% endif %}{% if data['parking']=="주차 불가" %}불가{% endif
+				%}</a><br>
+		</div>
+		</div>
+
+		<!-- box2  
+		 주소, 전화번호, 운영시간, 주차가능 여부 
 		<div class="box2 left">
 			<a class="picto"> &#9872;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			<a class="sub1">{{data.address}}</a><br>
@@ -41,7 +59,7 @@
 			<a class="picto" id="exclude">&#8473;&nbsp;&nbsp;&nbsp;</a>
 			<a class="sub1">주차 {% if data['parking']=="주차 가능" %}가능{% endif %}{% if data['parking']=="주차 불가" %}불가{% endif
 				%}</a><br>
-		</div>
+		</div> -->
 
 		<!-- box3 대표메뉴  -->
 		<div class="box3">
