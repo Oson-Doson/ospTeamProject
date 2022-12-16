@@ -28,7 +28,7 @@ body {
 #main {
     margin: 0 auto;
     /* auto 알아서 중앙으로 맞춰줌 */
-    padding-bottom: 50px;
+    padding-bottom: 80px;
     margin: 30px 80px 30px 80px;
     height: 90%;
     border: 2px solid #506A4C;
