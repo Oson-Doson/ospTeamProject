@@ -301,12 +301,16 @@ def view_foods(res_name):
     start_idx=limit*page
     end_idx=limit*(page+1)
     data = DB.get_food_byname(str(res_name))
-    tot_count = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
+    tot_count=len(data)
+    if tot_count <= limit:
+        data = dict(list(data.items())[:tot_count])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
+    print("#####Data###",data)
     # 레스토랑 이름 전달
     res_name=res_name
 
-    return render_template("menuShow.html", datas=data.items(), total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)))
+    return render_template("menuShow.html", datas=data.items(), total=tot_count, res_name=res_name, limit=limit, page=page, page_count=math.ceil((tot_count/3)))
 
 # 동적 라우팅 : 메뉴 등록 -> 대표메뉴조회 화면 ============================================================================================
 @app.route("/menu/<res_name>/")
@@ -316,12 +320,15 @@ def menu_result(res_name):
     start_idx=limit*page
     end_idx=limit*(page+1)
     data = DB.get_food_byname(str(res_name))
-    tot_count = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
+    tot_count=len(data)
+    if tot_count <= limit:
+        data = dict(list(data.items())[:tot_count])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
     # 레스토랑 이름 전달
     res_name=res_name
 
-    return render_template("menuShow.html", datas=data.items(), total=tot_count, res_name=res_name, limit=limit, page=page, page_count=int((tot_count/3)))
+    return render_template("menuShow.html", datas=data.items(), total=tot_count, res_name=res_name, limit=limit, page=page, page_count=math.ceil((tot_count/3)))
 
 # 동적 라우팅 : 맛집 세부화면 -> 맛집 메뉴등록 화면 ====================================================================================
 @app.route("/menu_post/<name>/")
