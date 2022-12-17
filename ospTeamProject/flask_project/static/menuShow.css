@@ -123,3 +123,22 @@ body {
     margin-right: 15px;
     display: inline-block;
 }
+
+.sub1 {
+    position: static;
+    float:right;
+}
+.button {
+    float: center;
+    padding: 7px;
+    text-align: center;
+    background-color: #506A4C;
+    border-color: #506A4C;
+    color: white;
+    width:230px;
+    height:45px;;
+    margin: 12px;
+    font-family:'BMHANNAPro';
+    cursor: pointer;
+    font-size: 18px;
+}
