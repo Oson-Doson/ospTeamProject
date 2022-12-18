@@ -9,26 +9,303 @@
 
     <!-- 탭 부분 -->
     <div id="menuType">
-        <button class="typeButton" id="typeKorean">한식</button>
-        <button class="typeButton" id="typeChinese">중식</button>
-        <button class="typeButton" id="typeJapanese">일식</button>
-        <button class="typeButton" id="typeWestern">양식</button>
-        <button class="typeButton" id="typeCafe">카페</button>
+        <button class="typeButton" id="typeKorean" onClick="changeMarker('korean')">한식</button>
+        <button class="typeButton" id="typeChinese" onClick="changeMarker('chinese')">중식</button>
+        <button class="typeButton" id="typeJapanese" onClick="changeMarker('japanese')">일식</button>
+        <button class="typeButton" id="typeWestern" onClick="changeMarker('western')">양식</button>
+        <button class="typeButton" id="typeCafe" onClick="changeMarker('cafe')">카페</button>
     </div>
 
     <!-- 지도 칸 - 웹서버 돌려야 보임 -->
     <div id="map"></div>
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱 키 여기에 복붙"></script>
+    <!-- <div class="map-notice">마커를 클릭하시면 <br>맛집 상세 화면으로 이동하실 수 있습니다!</div> -->
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{map_key}}&libraries=services"></script>
     <script>
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
             mapOption = {
-                center: new kakao.maps.LatLng(37.55901644707541, 126.94566032683886), // 지도의 중심좌표 - 이화여대 정문
-                level: 2 // 지도의 확대 레벨
+                center: new kakao.maps.LatLng(37.558596146536504, 126.94504144098624), // 지도의 중심좌표 - 이화여대 정문
+                level: 3 // 지도의 확대 레벨
             };
-
+        
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
+        var map = new kakao.maps.Map(mapContainer, mapOption);       
+
+        // 카테고리 데이터 객체 배열
+        let korean = {{ korean | tojson | safe }};
+        let chinese = {{ chinese | tojson | safe }};
+        let japanese = {{ japanese | tojson | safe }};
+        let western = {{ western | tojson | safe }};
+        let cafe = {{ cafe | tojson | safe }};
+
+        // 각 카테고리 마커 객체를 가지고 있을 배열
+        let koreanMarkers = [], chineseMarkers = [], japaneseMarkers = [], westernMarkers = [], cafeMarkers = [];
+
+        // 각 카테고리 마커 인포윈도우를 가지고 있을 배열
+        let koreanWindow = [], chineseWindow = [], japaneseWindow = [], westernWindow = [], cafeWindow = [];
+
+        
+        // 카테고리 탭 id를 가져와서 변수에 담음
+        let koreanMenu = document.getElementById("typeKorean");
+        let chineseMenu = document.getElementById("typeChinese");
+        let japaneseMenu = document.getElementById("typeJapanese");
+        let westernMenu = document.getElementById("typeWestern");
+        let cafeMenu = document.getElementById("typeCafe");
+
+
+        /* 장소로 좌표 검색하는 부분*/
+        
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        createMarkers(korean);
+        createMarkers(chinese);
+        createMarkers(japanese);
+        createMarkers(western);
+        createMarkers(cafe);
+
+        // 마커 일단 시범적으로 띄우기
+        setTimeout(() => {console.log("0.3초 후에 실행됨"); setKoreanMarkers(map);}, 300);
+
+        // 먼저 한식 카테고리 탭 선택되도록 색 바꿔주기 (초기화)
+        koreanMenu.className = 'menu_selected';
+
+        // addressSearch는 비동기 방식으로 데이터 응답이 오기 전에 마커 생성 로직을 실행하면
+        // 빈 배열로 실행되어 마커가 생성되지 않습니다.
+        
+        // 주소 검색하는 함수 - promise 사용
+        function getCoordsByAddress(address) {
+            return new Promise((resolve, reject) => { //resolve는 성공할 때 값
+                    // 검색
+                    geocoder.addressSearch(address, function(result, status) {
+
+                        // 정상적으로 검색이 완료됐으면 
+                        if (status === kakao.maps.services.Status.OK) {
+                            let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                            resolve(coords);
+                        } 
+                        
+
+                    });
+            }); //promise 끝나는 시점
+        }
+
+        // 마커를 생성하고 마커 배열에 추가하는 함수입니다
+        async function createMarkers(foodtype) {
+            foodtype.map(async function(arraycontent, i) {
+                // 주소로 좌표 검색하기
+                let get_coords = await getCoordsByAddress(arraycontent.address);
+
+                var imageSrc = 'https://cdn-icons-png.flaticon.com/512/2499/2499159.png';
+
+                // 마커 이미지의 이미지 크기 입니다
+                var imageSize = new kakao.maps.Size(39, 42); 
+                
+                // 마커 이미지를 생성합니다    
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+                
+                
+                // 마커 생성  
+                let marker = new kakao.maps.Marker({
+                    position: get_coords,
+                    image : markerImage // 마커 이미지 
+                });
+
+                // 마커에 표시할 인포윈도우를 생성합니다 
+                let infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="padding:5px;font-family:BMHANNAPro;">'+arraycontent.Rname+'</div>', // 인포윈도우에 표시할 내용
+                    // removable : true,  // 인포윈도우 지우기 가능하도록
+                    position: get_coords
+                });
+
+                // 생성된 마커를 배열에 추가
+                if (foodtype === korean) {
+                    koreanMarkers.push(marker);
+                    koreanWindow.push(infowindow);
+                } else if (foodtype === chinese) {
+                    chineseMarkers.push(marker);
+                    chineseWindow.push(infowindow);
+                } else if (foodtype === japanese) {
+                    japaneseMarkers.push(marker);
+                    japaneseWindow.push(infowindow);
+                } else if (foodtype === western) {
+                    westernMarkers.push(marker);
+                    westernWindow.push(infowindow);
+                } else if (foodtype === cafe) {
+                    cafeMarkers.push(marker);
+                    cafeWindow.push(infowindow);
+                }
+
+                kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                // 마커 클릭 시 상세 화면으로 이동
+                kakao.maps.event.addListener(marker, 'click', () => location.replace('/view_detail/'+arraycontent.Rname+'/'));
+                
+            } );
+            
+            
+        }
+
+        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+        function makeOverListener(map, marker, infowindow) {
+            return function() {
+                infowindow.open(map, marker);
+            };
+        }
+
+        // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+        function makeOutListener(infowindow) {
+            return function() {
+                infowindow.close();
+            };
+        }
+
+        // 마커들의 지도 표시 여부를 설정하는 함수입니다 (각 카테고리 별로 총 5개)
+        function setKoreanMarkers(map) {    
+            // 반복문 돌려서 좌표 배열을 토대로 마커 세팅
+            for (var i = 0; i < koreanMarkers.length; i++) { 
+                koreanMarkers[i].setMap(map);
+                // 인포윈도우도 같이 띄워줌
+                // koreanWindow[i].open(map, koreanMarkers[i]);
+
+            }       
+        }
+
+        function setChineseMarkers(map) {    
+
+            for (var i = 0; i < chineseMarkers.length; i++) {  
+                chineseMarkers[i].setMap(map);
+                // chineseWindow[i].open(map, chineseMarkers[i]);
+            }       
+        }
+
+        function setJapaneseMarkers(map) {    
+            
+            for (var i = 0; i < japaneseMarkers.length; i++) {  
+                japaneseMarkers[i].setMap(map);
+                // japaneseWindow[i].open(map, japaneseMarkers[i]);
+            }       
+        }
+
+        function setWesternMarkers(map) {    
+            
+            for (var i = 0; i < westernMarkers.length; i++) {  
+                westernMarkers[i].setMap(map);
+                // westernWindow[i].open(map, westernMarkers[i]);
+            }       
+        }
+
+        function setCafeMarkers(map) {    
+            
+            for (var i = 0; i < cafeMarkers.length; i++) {  
+                cafeMarkers[i].setMap(map);
+                // cafeWindow[i].open(map, cafeMarkers[i]);
+            }       
+        }
+
+        // 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
+        function changeMarker(type) {
+            
+            if (type === 'korean') { // 한식 카테고리가 클릭됐을 때
+            
+                // 한식 카테고리를 선택된 스타일로 변경하고
+                koreanMenu.className = 'menu_selected';
+                
+                // 나머지 카테고리는 선택되지 않은 스타일로 바꿉니다
+                chineseMenu.className = 'typeButton';
+                japaneseMenu.className = 'typeButton';
+                westernMenu.className = 'typeButton';
+                cafeMenu.className = 'typeButton';
+                
+                // 한식 마커들만 지도에 표시하도록 설정합니다
+                setKoreanMarkers(map);
+                setChineseMarkers(null);
+                setJapaneseMarkers(null);
+                setWesternMarkers(null);
+                setCafeMarkers(null);
+                
+            } else if (type === 'chinese') { // 중식 카테고리가 클릭됐을 때
+
+                // 중식 카테고리를 선택된 스타일로 변경하고
+                chineseMenu.className = 'menu_selected';
+                
+                // 나머지 카테고리는 선택되지 않은 스타일로 바꿉니다
+                koreanMenu.className = 'typeButton';
+                japaneseMenu.className = 'typeButton';
+                westernMenu.className = 'typeButton';
+                cafeMenu.className = 'typeButton';
+                
+                // 중식 마커들만 지도에 표시하도록 설정합니다
+                console.log("중식 마커 표시");
+                setKoreanMarkers(null);
+                setChineseMarkers(map);
+                setJapaneseMarkers(null);
+                setWesternMarkers(null);
+                setCafeMarkers(null);
+                
+            } else if (type === 'japanese') { // 일식 카테고리가 클릭됐을 때
+
+                // 일식 카테고리를 선택된 스타일로 변경하고
+                japaneseMenu.className = 'menu_selected';
+                
+                // 나머지 카테고리는 선택되지 않은 스타일로 바꿉니다
+                koreanMenu.className = 'typeButton';
+                chineseMenu.className = 'typeButton';
+                westernMenu.className = 'typeButton';
+                cafeMenu.className = 'typeButton';
+
+                // 일식 마커들만 지도에 표시하도록 설정합니다
+                console.log("일식 마커 표시");
+                setKoreanMarkers(null);
+                setChineseMarkers(null);
+                setJapaneseMarkers(map);
+                setWesternMarkers(null);
+                setCafeMarkers(null);
+
+
+            } else if (type === 'western') { // 양식 카테고리가 클릭됐을 때
+
+                // 양식 카테고리를 선택된 스타일로 변경하고
+                westernMenu.className = 'menu_selected';
+                
+                // 나머지 카테고리는 선택되지 않은 스타일로 바꿉니다
+                koreanMenu.className = 'typeButton';
+                chineseMenu.className = 'typeButton';
+                japaneseMenu.className = 'typeButton';
+                cafeMenu.className = 'typeButton';
+
+                // 양식 마커들만 지도에 표시하도록 설정합니다
+                console.log("양식 마커 표시");
+                setKoreanMarkers(null);
+                setChineseMarkers(null);
+                setJapaneseMarkers(null);
+                setWesternMarkers(map);
+                setCafeMarkers(null);
+
+            } else if (type === 'cafe') { // 카페 카테고리가 클릭됐을 때
+
+                // 카페 카테고리를 선택된 스타일로 변경하고
+                cafeMenu.className = 'menu_selected';
+                
+                // 나머지 카테고리는 선택되지 않은 스타일로 바꿉니다
+                koreanMenu.className = 'typeButton';
+                chineseMenu.className = 'typeButton';
+                japaneseMenu.className = 'typeButton';
+                westernMenu.className = 'typeButton';
+                
+                // 카페 마커들만 지도에 표시하도록 설정합니다
+                console.log("카페 마커 표시");
+                setKoreanMarkers(null);
+                setChineseMarkers(null);
+                setJapaneseMarkers(null);
+                setWesternMarkers(null);
+                setCafeMarkers(map);
+
+            }
+            
+        }
+
     </script>
 
 {% endblock section %}

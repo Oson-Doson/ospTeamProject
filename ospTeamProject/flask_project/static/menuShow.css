@@ -34,7 +34,7 @@ body {
     left: 50px;
     color: white;
     font-family: 'BMJUA';
-    font-size: 38px;
+    font-size: 45px;
 }
 
 .bar-veganImg {
@@ -54,7 +54,7 @@ body {
 
 
 #menu-list {
-    height: 700px;
+    height: 650px;
     position: relative;
     top: 100px;
 
@@ -76,6 +76,8 @@ body {
 
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
 }
 
 
@@ -85,6 +87,20 @@ body {
     color: gray;
 }
 
+.menu-img-box {
+    width: 70%;
+    height: 250px;
+    background-color: white;
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 35px;
+    border: 2px solid #506A4C;
+    margin-left: 15%;
+
+}
+/*
 .menu-img {
     width: 70%;
     height: auto;
@@ -93,18 +109,36 @@ body {
     border: 2px solid #506A4C;
     margin-left: 15%;
 }
-
+*/
 .menu-contents {
     position: relative;
     top: 65px;
-
+    min-width: 0;
     color: black;
     height: auto;
     margin: 0% 15%;
 }
 
 .began-img {
-    float: right;
     margin-right: 15px;
     display: inline-block;
+}
+
+.sub1 {
+    position: static;
+    float:right;
+}
+.button {
+    float: center;
+    padding: 7px;
+    text-align: center;
+    background-color: #506A4C;
+    border-color: #506A4C;
+    color: white;
+    width:230px;
+    height:45px;;
+    margin: 12px;
+    font-family:'BMHANNAPro';
+    cursor: pointer;
+    font-size: 18px;
 }

@@ -10,7 +10,7 @@
 
 {% block section %}
 
-    <form action="/submit_menu_post" enctype="multipart/form-data" method="post">
+    <form action="/submit_menu_post" enctype="multipart/form-data" method="post" onsubmit="return save();">
         <div id="main">
             <input type="hidden" name="Rname" value="{{data.Rname}}">
             <nav>
@@ -23,7 +23,6 @@
 
         <div id="section">
 
-            <a href=" "><img src="{{url_for('static', filename='menuUpload/x.png') }}" alt="cancel" width="25px" height="25px" style="float:right"></a>
 
             <table>
 
@@ -118,15 +117,29 @@
 
             </table>
 
-
         </div>
 
         <div id="form_add">
-
-            <!--메뉴추가 등록 버튼-->
+            
         <div id="button">
-            <button class="add" type="button" id="btnadd">메뉴 추가</button>
-            <button class="register" type="submit" id="btnregister" onclick=" ">등록</button>
+            <script>
+                /*사진 업로드 안했을 때*/
+            function save(){
+                const save=document.getElementById("save");
+                var fileCheck = document.getElementById("file-upload-input").value;
+                if(!fileCheck){                   
+                alert("이미지 파일을 첨부해 주세요");
+                return false; 
+                
+                }
+                else{
+                    
+                        alert("입력한 메뉴가 추가되었습니다.");
+                    }
+                }  
+ 
+            </script>
+            <button class="register" type="submit" id="btnregister">등록</button>
         </div>
 
     </form>
