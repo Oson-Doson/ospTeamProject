@@ -42,6 +42,9 @@ button{
     background-color:#CADFB8;
     color:#506A4C;
     font-size:large;
+
+    transition:color .3s ease;
+    transition:background-color .5s ease;
 }
 
 .typeButton:hover {
